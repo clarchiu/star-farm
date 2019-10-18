@@ -11,17 +11,17 @@ public class TileInformation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tiles = new Tile[tileCountX,tileCountY];
-        for (int i = 0; i < tileCountX; i ++){
-            for (int j = 0; j < tileCountY; j++) {
+        tiles = new Tile[tileCountX, tileCountY];
+        for (int i = 0; i < tileCountX; i++)
+        {
+            for (int j = 0; j < tileCountY; j++)
+            {
                 tiles[i, j] = new Tile();
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public Tile GetTile(int x, int y)
     {
-        
+        return tiles[x, y];
     }
 }
