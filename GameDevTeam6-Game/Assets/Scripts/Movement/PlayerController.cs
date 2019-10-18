@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     //Configuration Parameters
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float borderOffset = 2f;
+    [SerializeField] bool restrictMovement = false;
     private float xMin, xMax, yMin, yMax;
 
     //Reference Variables
@@ -18,7 +19,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start() {
-        EstablishMovementBoundaries();
+        if (restrictMovement) {
+            EstablishMovementBoundaries();
+        }
     }
 
     private void EstablishMovementBoundaries() {
@@ -37,8 +40,12 @@ public class PlayerController : MonoBehaviour
     private void PlayerMove() {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-        var newPosX = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        var newPosY = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
+        var newPosX = transform.position.x + deltaX;
+        var newPosY = transform.position.y + deltaY;
+        if (restrictMovement) {
+            newPosX = Mathf.Clamp(newPosX, xMin, xMax);
+            newPosY = Mathf.Clamp(newPosY, yMin, yMax);
+        }
         transform.position = new Vector2(newPosX, newPosY);
     }
 }
