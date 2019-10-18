@@ -18,7 +18,7 @@ public class MoveFly : MonoBehaviour
         bool up = Input.GetKey("up");
         bool down = Input.GetKey("down");
 
-        if (right == true) {
+        if (right) {
             transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, 0);
         } else if (left) {
         	transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);

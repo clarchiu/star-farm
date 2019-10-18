@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 444297693}
   - component: {fileID: 444297692}
   - component: {fileID: 444297694}
+  - component: {fileID: 444297695}
   m_Layer: 0
   m_Name: frog
   m_TagString: Untagged
@@ -197,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444297691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.8, y: 0.85, z: 0}
+  m_LocalScale: {x: 0.49678198, y: 0.54254645, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -215,6 +216,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7584524bd81527e4c81af0083d828ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &444297695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444297691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.616113, y: 7.87387, z: 0.2}
+  m_Center: {x: -0.049426135, y: -0.04525478, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,3 +381,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3650fa039cede9d4e83d8dc711696e80, type: 3}
+--- !u!1 &2139944327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139944329}
+  - component: {fileID: 2139944328}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2139944328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139944327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941ada8d80b744ee8a25656b22a13497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fly: {fileID: 1111899332085933702, guid: e2767f1d538e24cb697fb249a625feec, type: 3}
+--- !u!4 &2139944329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139944327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07811879, y: -0.04094268, z: -9.257398}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
