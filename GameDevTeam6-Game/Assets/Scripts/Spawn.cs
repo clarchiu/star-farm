@@ -25,8 +25,8 @@ public class Spawn : MonoBehaviour
 
     	Vector3 positionAlongEdge = new Vector3(0,0,0);
 
-		int randomEdge = Random.Range(0,4);
-        float randomPos = Random.Range(0.0f, 1.0f);
+		int randomEdge = Random.Range(0,4);   //choose a random edge
+        float randomPos = Random.Range(0.0f, 1.0f); //choose a random position along the edge
 
 		if (randomEdge == 0) //top Edge
 		{
