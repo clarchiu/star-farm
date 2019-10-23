@@ -9,6 +9,11 @@ public class Tile
 
     public Tile()
     {
+        ResetTileInfo();
+    }
+
+    public void ResetTileInfo()
+    {
         objectOnTile = null;
         breakMode = Modes.unbreakable;
     }

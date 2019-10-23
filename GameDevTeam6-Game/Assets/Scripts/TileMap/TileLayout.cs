@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileInformation : MonoBehaviour
+public class TileLayout : MonoBehaviour
 {
     public int tileCountX;
     public int tileCountY;
