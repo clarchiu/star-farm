@@ -14,11 +14,27 @@ public class TestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool y = Input.GetKey("w");
+        bool right = Input.GetKey("d");
+        bool left = Input.GetKey("a");
+        bool up = Input.GetKey("w");
+        bool down = Input.GetKey("s");
 
-        if (y == true)
+        if (right)
         {
-            transform.position = new Vector3(transform.position.x + 0.1f, 0, 0);
+            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, 0);
+        }
+        if (left)
+        {
+            transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
+        }
+        if (up)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, 0);
+        }
+        if (down)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, 0);
         }
     }
+
 }
