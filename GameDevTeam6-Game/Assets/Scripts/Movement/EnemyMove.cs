@@ -8,19 +8,6 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 5f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void moveTowardsObject(GameObject obj) {
 
     	float objX;
@@ -34,10 +21,6 @@ public class EnemyMove : MonoBehaviour
             return;
         }
 
-        int randomDirection = Random.range(0,1);
-
-        
-
-    	
+        int randomDirection = Random.Range(0,1);    	
     }
 }
