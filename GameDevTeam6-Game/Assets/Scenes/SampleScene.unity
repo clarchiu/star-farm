@@ -121,26 +121,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &240088521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7543713869912708821, guid: 703932862058fd042a46676a31908c1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1028418805}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &240088524
-MonoBehaviour:
+--- !u!1001 &217194698
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240088521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efcf4ba3f486d84bad99f2103f32946, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  moveSpeed: 10
-  borderOffset: 2
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2523465596433796775, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.07811879
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04094268
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.257398
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6998779234381798919, guid: 30f41363dc3704831ba6686ffad7d533,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d8c3af9a0c3049c7b5f4765120129d9, type: 3}
 --- !u!1 &306221888
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,8 +224,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -188,8 +243,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -254,8 +309,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -460,6 +515,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Froggy
       objectReference: {fileID: 0}
+    - target: {fileID: 6419899908814337390, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5837500938509653315, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -567,8 +627,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -584,8 +644,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -665,8 +725,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36143d0197dc1454b93daa7ac5e24240, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   timeText: {fileID: 512824850}
 --- !u!114 &2061216408
 MonoBehaviour:
@@ -678,8 +738,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c139ee85236891f4fb88c0dc5756f45a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 120
 --- !u!4 &2061216409
 Transform:

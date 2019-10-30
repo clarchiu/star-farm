@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnEnemy", 2.0f, 1.0f);	//spawn fly every second starting at 2 seconds
+        InvokeRepeating("spawnEnemy", 2.0f, 1.0f);	//spawn enemy every second starting at 2 seconds
     }
 
     // Update is called once per frame
