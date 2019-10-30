@@ -6,10 +6,14 @@ public class EnemySpawn : MonoBehaviour
 {
 	public GameObject enemy;
 
+    [SerializeField] private float startSpawnTime = 2f;
+    [SerializeField] private float spawnInterval = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnEnemy", 2.0f, 1.0f);	//spawn enemy every second starting at 2 seconds
+        //spawn enemy every spawnInterval starting at startSpawnTime
+        InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);	
     }
 
     // Update is called once per frame
@@ -20,7 +24,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void spawnEnemy() 
     {
-    	Vector3 positionAlongEdge = new Vector3(0,0,0);
+    	Vector3 positionAlongEdge;
 
 		int randomEdge = Random.Range(0,4);   //choose a random edge
         float randomPos = Random.Range(0.0f, 1.0f); //choose a random position along the edge

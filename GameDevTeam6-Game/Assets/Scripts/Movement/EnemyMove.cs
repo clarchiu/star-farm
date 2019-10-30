@@ -6,6 +6,9 @@ public class EnemyMove : MonoBehaviour
 {
 	public GameObject player;
 
+    [SerializeField] private float moveSpeed = 5f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +21,22 @@ public class EnemyMove : MonoBehaviour
         
     }
 
-    private void moveTowardsObject(GameObject object) {
+    private void moveTowardsObject(GameObject obj) {
 
-    	float x = 0.0f;
-    	float y = 0.0f;
+    	float objX;
+    	float objY;
 
-    	Transform objTransform = object.GetComponent<Transform>();
-    	if (objTransform) {
-    		x = objTransform.position.x;
-    		y = objTransform.position.y;
-    	}
+    	Transform objTransform = obj.GetComponent<Transform>(); 
+    	if (objTransform) { //check object has transform component
+    		objX = objTransform.position.x;
+    		objY = objTransform.position.y;
+    	} else {
+            return
+        }
+
+        int randomDirection = Random.range(0,1);
+
+        if ()
 
     	
     }
