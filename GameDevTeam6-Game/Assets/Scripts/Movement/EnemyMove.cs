@@ -31,12 +31,12 @@ public class EnemyMove : MonoBehaviour
     		objX = objTransform.position.x;
     		objY = objTransform.position.y;
     	} else {
-            return
+            return;
         }
 
         int randomDirection = Random.range(0,1);
 
-        if ()
+        
 
     	
     }
