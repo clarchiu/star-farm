@@ -34,7 +34,7 @@ public class EnemyMove : MonoBehaviour
             return;
         }
 
-        int randomDirection = Random.range(0,1);
+        int randomDirection = Random.Range(0,1);
 
         
 

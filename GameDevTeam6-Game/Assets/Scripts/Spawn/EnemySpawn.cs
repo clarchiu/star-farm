@@ -12,7 +12,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spawn enemy every spawnInterval starting at startSpawnTime
+        //spawn enemy every spawnInterval starting at spawnInterval
         InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);	
     }
 
@@ -24,7 +24,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void spawnEnemy() 
     {
-    	Vector3 positionAlongEdge;
+    	Vector3 positionAlongEdge = new Vector3(0,0,0);
 
 		int randomEdge = Random.Range(0,4);   //choose a random edge
         float randomPos = Random.Range(0.0f, 1.0f); //choose a random position along the edge
