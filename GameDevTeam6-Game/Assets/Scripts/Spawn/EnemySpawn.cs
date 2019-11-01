@@ -16,12 +16,6 @@ public class EnemySpawn : MonoBehaviour
         InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);	
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void spawnEnemy() 
     {
     	Vector3 positionAlongEdge = new Vector3(0,0,0);
