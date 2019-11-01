@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1138e295c33e8b840bfef6d6506b6311, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   background: {fileID: 2136904939}
 --- !u!4 &656417103
 Transform:
@@ -377,12 +377,43 @@ PrefabInstance:
     - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 2100000, guid: 47eb477adea32a54c833d3b3e53d32e2, type: 2}
+    - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 867f1d8e46e3d0140a0f99db080e4c94,
+        type: 3}
+    - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.941309
+      objectReference: {fileID: 0}
+    - target: {fileID: 608379492815943897, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4675152964016704122, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
       propertyPath: borderOffset
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675152964016704122, guid: 703932862058fd042a46676a31908c1d,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 703932862058fd042a46676a31908c1d, type: 3}
@@ -480,8 +511,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cd7a856db55bf149aee8bf70f34c26e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   cameraOffsetZ: -50
 --- !u!1 &1260783118 stripped
 GameObject:
@@ -499,8 +530,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d7abf40286a5242851d0290cd8f175, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   soil: {fileID: 3514045397886662005, guid: a282379c8815d8f40a5a6f854012f7d3, type: 3}
 --- !u!1 &1342205044
 GameObject:
@@ -664,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 902452993071033452, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}
       propertyPath: timeText
-      value:
+      value: 
       objectReference: {fileID: 1608074082}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3c4600ff86d8547a4b8d129fa68ca4, type: 3}
@@ -702,8 +733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -106.2, y: -422.4}
-  m_SizeDelta: {x: 1707.7, y: 235.2}
+  m_AnchoredPosition: {x: 0, y: -350}
+  m_SizeDelta: {x: 1000, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608074082
 MonoBehaviour:
@@ -715,8 +746,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -725,12 +756,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 200
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -855,8 +886,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -872,8 +903,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1

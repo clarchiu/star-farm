@@ -20,14 +20,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         PlayerMove();
     }
 
     private void PlayerMove() {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        var deltaX = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * moveSpeed;
+        var deltaY = Input.GetAxis("Vertical") * Time.fixedDeltaTime * moveSpeed;
         playerRB.velocity = new Vector2(deltaX, deltaY);
     }
 }
