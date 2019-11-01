@@ -13,7 +13,7 @@ public class EnemyMove : MonoBehaviour
     	float objX;
     	float objY;
 
-    	Transform objTransform = obj.GetComponent<Transform>(); 
+    	Transform objTransform = obj.GetComponent<Transform>();
     	if (objTransform) { //check object has transform component
     		objX = objTransform.position.x;
     		objY = objTransform.position.y;
@@ -21,6 +21,6 @@ public class EnemyMove : MonoBehaviour
             return;
         }
 
-        int randomDirection = Random.Range(0,1);    	
+        int randomDirection = Random.Range(0,1);
     }
 }
