@@ -13,18 +13,12 @@ public class EnemySpawn : MonoBehaviour
     void Start()
     {
         //spawn enemy every spawnInterval starting at startSpawnTime
-        InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);	
+        InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void spawnEnemy()
     {
-        
-    }
-
-    private void spawnEnemy() 
-    {
-    	Vector3 positionAlongEdge = new Vector3(0, 0, 0);
+    	Vector3 positionAlongEdge = new Vector3(0,0,0);
 
 		int randomEdge = Random.Range(0,4);   //choose a random edge
         float randomPos = Random.Range(0.0f, 1.0f); //choose a random position along the edge
