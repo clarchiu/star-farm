@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ToolUI : MonoBehaviour
 {
     public Text toolText;
-    public MultiTool multiTool;
+    private MultiTool multiTool;
 
     private void Start()
     {
