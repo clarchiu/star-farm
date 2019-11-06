@@ -1,0 +1,425 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"getDirectionToMoveOnAxis(float selfPos, float objPos)\tint"
+			],
+			[
+				"obj",
+				"objTransform"
+			],
+			[
+				"g",
+				"GetComponent"
+			],
+			[
+				"ran",
+				"randomPos"
+			],
+			[
+				"d",
+				"d"
+			],
+			[
+				"ut",
+				"uthread_t"
+			],
+			[
+				"uthre",
+				"uthread_join"
+			],
+			[
+				"uth",
+				"uthread_join"
+			],
+			[
+				"u",
+				"uthread_join"
+			],
+			[
+				"std",
+				"stdlib.h\tstandard header"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"print",
+				"printInOrder"
+			],
+			[
+				"to",
+				"toNode"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Scripts/Movement/EnemyMove.cs",
+			"settings":
+			{
+				"buffer_size": 1209,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Movement/PlayerController.cs",
+			"settings":
+			{
+				"buffer_size": 1586,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Pac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Movement",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Spawn"
+	],
+	"file_history":
+	[
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/GameDevTeam6-Game.sln",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Spawn/EnemySpawn.cs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Movement/EnemyMove.cs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Movement/PlayerController.cs",
+		"/Users/Clarence/Documents/GitHub/Pong-Haskell/src/Main.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/MagicSum.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/TestDo.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/BSTree2.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/BSTree.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-313/a2/sort.c",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/EnemyMove.cs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/Spawn.cs",
+		"/Users/Clarence/Documents/GitHub/Pong-Haskell/Pong-Haskell.cabal",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/gloss-examples-1.13.0.2/picture/Bitmap/Main.hs",
+		"/Users/Clarence/Documents/GitHub/Pong-Haskell/Main.hs",
+		"/Users/Clarence/Documents/GitHub/Pong-Haskell/Setup.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/test-sdl.hs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/MoveFly.cs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/move.cs",
+		"/Users/Clarence/Documents/GitHub/GameDevTeam6/GameDevTeam6-Game/Assets/Scripts/TestScript.cs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/Lists2.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/Lists.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/Types.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/as1_41962135.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC-312/as1.hs",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a8/a8/sm-jt.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a8/code/q3/sm.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a8/a8/q2.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a8/a8/q2.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/assign-solutions/soln-a7/q3/list.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/assign-solutions/soln-a7/q3/main.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/assign-solutions/soln-a7/q3/tree.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a9/a9/aRead.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/a10part2/BONUS.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/uthread_sem.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/uthread_mutex_cond.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/spinlock.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/uthread.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/assign-solutions/soln a10/smoke.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/uthread_util.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a10/code/uthreads/uthread.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a7/shellcode.s.machine",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a7/a7/q1test.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/a6/q4a.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a7/str3.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a7/code/q1test.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/a6/q3.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/code/S7-static-call.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/code/S9-args.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/tree.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/q3.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/main.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/list.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/element.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/q3/element.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/a6/q2b.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a6/a6/q2a.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a6/CPU.java",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/tree.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a5/list.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/code-1/q3/element.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/code-1/q3/list.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/code-1/q3/tree.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/code-1/q3/refcount.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/20190711/refcount.h",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/a5/q1.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/a5/q1-desc.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/a5/q1.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a5/a5/q1.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q3.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/a4/q3.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/S4-instance-var.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/S4-instance-var.java",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/S4-instance-var.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/20190711/node.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/greet.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/BinaryTree.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q1e.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q1d.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q1c.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q1b.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/q1a.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/Makefile",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a4/code/greet.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/handin/bubble_sort_dynamic.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/handin/bubble_sort_awesome.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/q2.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/q1.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/q5.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/q4.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/q3.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/bubble_sort_awesome.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/Assignments Solutions/soln a3/bubble_sort_dynamic.c",
+		"/Users/Clarence/Desktop/q1.txt",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/q5.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/q1.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/handin/swap.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/handin/math.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/handin/CPU.java",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/code/S2-global-dyn-array.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/code/S2-global-dyn-array.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e4.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e4.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e3.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e3.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e2.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e2.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e1.s",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a3/code/examples/e1.c",
+		"/Users/Clarence/Documents/CPSC/CPSC 213/a2/code/S2-global-dyn-array.java"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/Movement/EnemyMove.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								980,
+								980
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Movement/PlayerController.cs",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1321,
+								1321
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 108.0
+	},
+	"pinned_build_system": "",
+	"project": "GameDevTeam6-game.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

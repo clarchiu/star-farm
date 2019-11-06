@@ -39,5 +39,7 @@ public class EnemySpawn : MonoBehaviour
         	positionAlongEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, randomPos, Camera.main.nearClipPlane));
 
     	GameObject newEnemy = Instantiate(enemy, positionAlongEdge, Quaternion.identity);
+
+        
     }
 }
