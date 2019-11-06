@@ -12,17 +12,12 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spawn enemy every spawnInterval starting at spawnInterval
-        InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);	
+        //spawn enemy every spawnInterval starting at startSpawnTime
+        InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void spawnEnemy() 
+    private void spawnEnemy()
     {
     	Vector3 positionAlongEdge = new Vector3(0,0,0);
 
@@ -40,6 +35,6 @@ public class EnemySpawn : MonoBehaviour
 
     	GameObject newEnemy = Instantiate(enemy, positionAlongEdge, Quaternion.identity);
 
-        
+
     }
 }

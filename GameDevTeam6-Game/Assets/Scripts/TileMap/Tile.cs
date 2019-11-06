@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile
 {
     private GameObject objectOnTile;
-    private Modes breakMode;
+    private Modes tileMode;
 
     public Tile()
     {
@@ -15,16 +15,17 @@ public class Tile
     public void ResetTileInfo()
     {
         objectOnTile = null;
-        breakMode = Modes.unbreakable;
+        tileMode = Modes.unbreakable;
     }
     public GameObject getObjectOnTile() { return objectOnTile; }
     public void setObjectOnTile(GameObject obj) { objectOnTile = obj; }
-    public Modes getBreakMode() { return breakMode; }
-    public void setBreakMode(Modes mode) { breakMode = mode; } 
+    public Modes getBreakMode() { return tileMode; }
+    public void setBreakMode(Modes mode) { tileMode = mode; } 
 }
 
 public enum Modes
 {
     breakable,
-    unbreakable
+    unbreakable,
+    soil
 }

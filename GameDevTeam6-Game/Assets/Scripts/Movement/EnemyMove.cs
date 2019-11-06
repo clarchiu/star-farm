@@ -31,12 +31,12 @@ public class EnemyMove : MonoBehaviour
    		moveTowardsObject(player, randomDirection);
     }
 
-    private void moveTowardsObject(GameObject obj, int randomDirection) 
+    private void moveTowardsObject(GameObject obj, int randomDirection)
     {
     	float objX = 0f;
     	float objY = 0f;
 
-    	Transform objTransform = obj.GetComponent<Transform>(); 
+    	Transform objTransform = obj.GetComponent<Transform>();
     	if (objTransform) { //check object has transform component
     		objX = objTransform.position.x;
     		objY = objTransform.position.y;
@@ -61,8 +61,8 @@ public class EnemyMove : MonoBehaviour
     }
 
     private int getDirectionToMoveOnAxis(float selfPos, float objPos ) {
-        if (selfPos < objPos) { return 1; } 
+        if (selfPos < objPos) { return 1; }
         else if (selfPos > objPos) { return -1; }
-        else { return 0; } 
+        else { return 0; }
     }
 }

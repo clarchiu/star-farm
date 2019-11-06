@@ -11,11 +11,11 @@ public class TileLayout : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlaceObjects place = FindObjectOfType<PlaceObjects>();
+
         tiles = new Tile[tileCountX, tileCountY];
-        for (int i = 0; i < tileCountX; i++)
-        {
-            for (int j = 0; j < tileCountY; j++)
-            {
+        for (int i = 0; i < tileCountX; i++) {
+            for (int j = 0; j < tileCountY; j++) {
                 tiles[i, j] = new Tile();
             }
         }
@@ -23,5 +23,12 @@ public class TileLayout : MonoBehaviour
     public Tile GetTile(int x, int y)
     {
         return tiles[x, y];
+    }
+
+    public int getTileCountX() {
+        return tileCountX;
+    }
+    public int getTileCountY() {
+        return tileCountY;
     }
 }
