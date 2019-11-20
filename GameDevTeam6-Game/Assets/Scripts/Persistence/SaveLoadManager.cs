@@ -14,6 +14,8 @@ public static class SaveLoadManager
 
         formatter.Serialize(stream, saveData);
         stream.Close();
+
+        Debug.Log(filePath);
     }
 
     public static SaveData LoadGame() {
@@ -23,7 +25,7 @@ public static class SaveLoadManager
             FileStream stream = new FileStream(filePath, FileMode.Open);
 
             SaveData loadedData = formatter.Deserialize(stream) as SaveData;
-            return loadedData;
+            return loadedData as SaveData;
 
         } else {
 
