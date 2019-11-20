@@ -26,7 +26,7 @@ public class MultiTool : MonoBehaviour
         if (index == 0) { mode = ToolModes.defaultMode; }
         if (index == 1) { mode = ToolModes.seedsMode; }
         if (index == 2) { mode = ToolModes.buildingMode; }
-        if (index == 3) { mode = ToolModes.breakMode; }
+        if (index == 3) { mode = ToolModes.hoeMode; }
         if (index == 4) { mode = ToolModes.swordMode; }
     }
 
@@ -41,6 +41,6 @@ public enum ToolModes
     defaultMode,
     seedsMode,
     buildingMode,
-    breakMode,
+    hoeMode,
     swordMode
 }

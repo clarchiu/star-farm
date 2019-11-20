@@ -6,7 +6,7 @@ public class Soil : MonoBehaviour
 {
     private GameObject plant;
 
-    void Start() {
+    void Awake() {
         plant = null;
     }
 
@@ -15,6 +15,10 @@ public class Soil : MonoBehaviour
     }
 
     public void SetPlant(GameObject p) {
-        plant = p;
+        if (plant != null) {
+            Debug.Log("Tried to plant where there already is a plant");
+            return;
+        } 
+        plant = Instantiate(p, transform.position, Quaternion.identity);
     }
 }

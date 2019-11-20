@@ -6,15 +6,19 @@ public class HoeGround : MonoBehaviour
 {
     public GameObject soil;
     private PlaceObjects place;
+    private MultiTool tool;
 
-    private void Start()
+    private void Awake()
     {
         place = FindObjectOfType<PlaceObjects>();
+        tool = FindObjectOfType<MultiTool>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown("e"))
-        {
+        if (!(tool.GetMode() == ToolModes.hoeMode)) {
+            return;
+        }
+        if (Input.GetMouseButtonDown(0)) {
             CreateSoil();
         }
     }

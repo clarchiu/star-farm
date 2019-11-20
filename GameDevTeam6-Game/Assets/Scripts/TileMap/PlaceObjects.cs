@@ -6,16 +6,23 @@ public class PlaceObjects : MonoBehaviour
 {
     private int pixelSize = 16;
     public GameObject testObject;
+    private MultiTool tool;
+
+    private void Awake()
+    {
+        tool = FindObjectOfType<MultiTool>();
+    }
 
     void Update() {
+        if (!(tool.GetMode() == ToolModes.buildingMode)) {
+            return;
+        }
         if (Input.GetMouseButtonDown(0)) {
             CreateObject(testObject);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            int tileX = 0;
-            int tileY = 0;
-            GetMouseTile(out tileX, out tileY);
+            GetMouseTile(out int tileX, out int tileY);
             DestroyObject(tileX, tileY);
         }
     }
@@ -71,7 +78,7 @@ public class PlaceObjects : MonoBehaviour
         GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
     }
 
-    private bool InBounds(int x, int y)
+    public bool InBounds(int x, int y)
     {
         if (x < 0 || x > GetComponent<TileLayout>().tileCountX - 1)
         {
@@ -84,7 +91,7 @@ public class PlaceObjects : MonoBehaviour
         return true;
     }
 
-    private void GetMouseTile(out int tileX, out int tileY)
+    public void GetMouseTile(out int tileX, out int tileY)
     {
         Vector2 mouseToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         tileX = Mathf.RoundToInt(mouseToWorld.x);
