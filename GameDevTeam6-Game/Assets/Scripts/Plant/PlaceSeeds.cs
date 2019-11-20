@@ -38,7 +38,6 @@ public class PlaceSeeds : MonoBehaviour
 
         GameObject obj = tiles.GetTile(tileX, tileY).getObjectOnTile();
         if (obj != null && obj.CompareTag("Soil") == true) {
-            Debug.Log("setting");
             obj.GetComponent<Soil>().SetPlant(plant);
         }
     }
