@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlaceObjects : MonoBehaviour
 {
-    private int pixelSize = 16;
+    //private int pixelSize = 16;
     public GameObject testObject;
 
     void Update() {

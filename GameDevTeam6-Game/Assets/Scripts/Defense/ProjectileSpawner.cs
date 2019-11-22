@@ -6,9 +6,10 @@ public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] private Projectile bullet = null;
 
-    public Projectile SpawnProjectile(Vector3 position, Quaternion rotation) {
+    public Projectile SpawnProjectile(Vector3 position, Vector3 rotation) {
 
-        Projectile projectile = Instantiate(bullet, position, rotation) as Projectile;
+        Projectile projectile = Instantiate(bullet, position, Quaternion.Euler(rotation)) as Projectile;
+        projectile.InitializeVelocity(rotation);
         return projectile;
     }
 }
