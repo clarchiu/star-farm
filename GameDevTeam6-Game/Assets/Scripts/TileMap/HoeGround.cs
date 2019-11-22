@@ -26,7 +26,7 @@ public class HoeGround : MonoBehaviour
     }
     void CreateSoil()
     {
-        playerDir dir = player.GetComponent<PlayerDirection>().GetDirection();
+        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
         int posX = Mathf.RoundToInt(player.transform.position.x);
         int posY = Mathf.RoundToInt(player.transform.position.y);
         switch (dir) {

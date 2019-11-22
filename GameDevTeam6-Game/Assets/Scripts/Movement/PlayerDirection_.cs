@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDirection : MonoBehaviour
+public class PlayerDirection_ : MonoBehaviour
 {
     private playerDir direction;
     public Sprite playerUp, playerDown, playerLeft, playerRight;
