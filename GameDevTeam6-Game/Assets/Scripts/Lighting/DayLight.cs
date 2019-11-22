@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DayLight : MonoBehaviour
 {
-    public Light light;
+    public Light theLight;
     public TimeSystem timeSystem;
 
     // Start is called before the first frame update

@@ -43,7 +43,7 @@ public class PlaceObjects : MonoBehaviour
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
         }
-        
+
     }
     public void CreateObject(GameObject newObj)
     {

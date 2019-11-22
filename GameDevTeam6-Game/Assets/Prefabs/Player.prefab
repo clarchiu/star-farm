@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1363468489
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 867f1d8e46e3d0140a0f99db080e4c94, type: 3}
   m_Color: {r: 0, g: 0.941309, b: 1, a: 1}
@@ -90,9 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072768721494001332}
-  - component: {fileID: 5204767736036554070}
   - component: {fileID: 637952554841790956}
   - component: {fileID: 637952554841790867}
+  - component: {fileID: 5204767736036554070}
+  - component: {fileID: 5045046902973177374}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -115,19 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5204767736036554070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4660193582413793375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efcf4ba3f486d84bad99f2103f32946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 25
 --- !u!50 &637952554841790956
 Rigidbody2D:
   serializedVersion: 4
@@ -175,3 +163,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &5204767736036554070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660193582413793375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efcf4ba3f486d84bad99f2103f32946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 25
+--- !u!114 &5045046902973177374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660193582413793375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6164188b4cd1d8547a8278664ea14168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootProjectiles: 0
+  rateOfFire: 0.2
+  bullet: {fileID: 4008322384143437378, guid: 7573accd5e1ada545bff58d497aa5e8b, type: 3}
