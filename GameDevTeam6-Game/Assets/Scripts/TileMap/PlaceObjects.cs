@@ -7,9 +7,16 @@ public class PlaceObjects : MonoBehaviour
     private int pixelSize = 16;
     public GameObject testObject;
     private MultiTool tool;
+    private GameObject player;
 
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
+        if (!tool)
+        {
+            gameObject.SetActive(false);
+            Debug.LogWarning("no tool found!!");
+        }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update() {
@@ -39,8 +46,8 @@ public class PlaceObjects : MonoBehaviour
         }
         
     }
-    //Creates object at mouse position if there is no other object
-    public void CreateObject(GameObject newObj) {
+    public void CreateObject(GameObject newObj)
+    {
         GetMouseTile(out int tileX, out int tileY);
         CreateObject(newObj, tileX, tileY);
     }
