@@ -9,7 +9,7 @@ public class TileLayout : MonoBehaviour
     Tile[,] tiles;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         PlaceObjects place = FindObjectOfType<PlaceObjects>();
 
