@@ -20,24 +20,6 @@ public class HoeGround : MonoBehaviour
         if (!(tool.GetMode() == ToolModes.hoeMode)) {
             return;
         }
-        if (Input.GetMouseButtonDown(0)) {
-            CreateSoil();
-        }
-    }
-    void CreateSoil()
-    {
-        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
-        int posX = Mathf.RoundToInt(player.transform.position.x);
-        int posY = Mathf.RoundToInt(player.transform.position.y);
-        switch (dir) {
-            case playerDir.up:
-                place.CreateObject(soil, posX, posY+1); break;
-            case playerDir.down:
-                place.CreateObject(soil, posX, posY-1); break;
-            case playerDir.left:
-                place.CreateObject(soil, posX-1, posY); break;
-            case playerDir.right:
-                place.CreateObject(soil, posX+1, posY); break;
-        }
+        place.CheckAndPlaceUpdate(soil, 2, soil);
     }
 }

@@ -4,31 +4,68 @@ using UnityEngine;
 
 public class PlaceObjects : MonoBehaviour
 {
-    public GameObject testObject;
+    public GameObject currentObject;
+    public GameObject indicator;
+
     private MultiTool tool;
     private GameObject player;
+    private Color32 red;
+    private Color32 green;
+    private Color32 orange;
+    private SpriteRenderer indicatorRenderer;
 
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
-        if (!tool)
-        {
+        if (!tool) {
             gameObject.SetActive(false);
             Debug.LogWarning("no tool found!!");
         }
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void Start() {
+        red = new Color32(255, 0, 0, 100);
+        green = new Color32(30, 255, 0, 100);
+        orange = new Color32(200, 150, 0, 100);
+        indicatorRenderer = indicator.GetComponent<SpriteRenderer>();
+    }
+
     void Update() {
         if (!(tool.GetMode() == ToolModes.buildingMode)) {
             return;
         }
-        if (Input.GetMouseButtonDown(0)) {
-            CreateObject(testObject);
+        CheckAndPlaceUpdate(currentObject, 4, null);
+    }
+
+    //Checks mouse clicks and creates or destroys object at mouse position if it meets requirements
+    public void CheckAndPlaceUpdate(GameObject obj, int limit, GameObject destroyObject) {
+        indicatorRenderer.sprite = currentObject.GetComponent<SpriteRenderer>().sprite;
+
+        GetMouseTile(out int tileX, out int tileY);
+        indicator.transform.position = new Vector2(tileX, tileY);
+
+        if (InBounds(tileX, tileY) && NearPlayer(tileX, tileY, limit)) {
+            GameObject tileObject = GetComponent<TileLayout>().GetTile(tileX, tileY).getObjectOnTile();
+            if (tileObject == null) {
+                indicatorRenderer.color = green;
+                if (Input.GetMouseButtonDown(0)) {
+                    CreateObject(obj, tileX, tileY);
+                }
+            }
+            else if (destroyObject == null || tileObject.name == destroyObject.name) {
+                indicatorRenderer.color = orange;
+                if (Input.GetMouseButtonDown(1)) {
+                    DestroyObject(tileX, tileY);
+                }
+            } else {
+                indicatorRenderer.color = red;
+            }
         }
-        if (Input.GetMouseButtonDown(1)) {
-            DestroyObject();
+        else {
+            indicatorRenderer.color = red;
         }
     }
+
     //Creates object at Tile[x,y] if there is no other object
     public void CreateObject(GameObject newObj, int x, int y) {
         if (!InBounds(x, y)) {
@@ -37,20 +74,13 @@ public class PlaceObjects : MonoBehaviour
         }
         Tile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject oldObj = tile.getObjectOnTile();
-        if (oldObj == null)
-        {
+        if (oldObj == null) {
             Vector2 position = new Vector2(x, y);
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
         }
-
     }
-    public void CreateObject(GameObject newObj)
-    {
-        GetMouseTile(out int tileX, out int tileY);
-        CreateObject(newObj, tileX, tileY);
-    }
-
+    //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
@@ -64,12 +94,7 @@ public class PlaceObjects : MonoBehaviour
         }
         GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
     }
-    //Destroys object at mouse position
-    public void DestroyObject()
-    {
-        GetMouseTile(out int tileX, out int tileY);
-        DestroyObject(tileX, tileY);
-    }
+
 
     public bool InBounds(int x, int y) {
         if (x < 0 || x > GetComponent<TileLayout>().tileCountX - 1) {
@@ -81,10 +106,15 @@ public class PlaceObjects : MonoBehaviour
         return true;
     }
 
-    public void GetMouseTile(out int tileX, out int tileY)
-    {
+    public void GetMouseTile(out int tileX, out int tileY) {
         Vector2 mouseToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         tileX = Mathf.RoundToInt(mouseToWorld.x);
         tileY = Mathf.RoundToInt(mouseToWorld.y);
+    }
+
+    public bool NearPlayer(int x, int y, int limit) {
+        int playerX = Mathf.RoundToInt(player.transform.position.x);
+        int playerY = Mathf.RoundToInt(player.transform.position.y);
+        return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);
     }
 }
