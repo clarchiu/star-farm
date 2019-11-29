@@ -16,6 +16,7 @@ public class PlayerDirection_ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetAxisRaw("Horizontal") == -1) {
             direction = playerDir.left;
             anim.SetFloat("Horizontal", -1);
@@ -39,6 +40,7 @@ public class PlayerDirection_ : MonoBehaviour
             anim.SetFloat("Vertical", 0);
             anim.SetFloat("Horizontal", 0);
         }
+        */
     }
 
     public playerDir GetDirection() {
