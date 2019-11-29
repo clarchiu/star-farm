@@ -6,10 +6,10 @@ public class MusicPlayer : MonoBehaviour
 {
      AudioSource MpPlayer;
      [SerializeField] AudioClip NightClip = null;
-     [SerializeField] AudioClip NightClip = null;
+     [SerializeField] AudioClip DayClip= null;
      // Use this for initialization
      void Start () {
-         MpPlayer.clip = FirstClip;
+         MpPlayer.clip = NightClip;
          MpPlayer.loop = false;
          MpPlayer.Play();
          StartCoroutine(WaitForTrackTOend());
@@ -26,7 +26,7 @@ public class MusicPlayer : MonoBehaviour
              yield return new WaitForSeconds(0.01f);
              
          }
-         MpPlayer.clip = FirstClip;
+         MpPlayer.clip = NightClip;
          MpPlayer.loop = true ;
          MpPlayer.Play();
         
