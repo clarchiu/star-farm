@@ -5,11 +5,11 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
      AudioSource MpPlayer;
-     [SerializeField] AudioClip NightClip = null;
-     [SerializeField] AudioClip NightClip = null;
+     [SerializeField] AudioClip dayClip = null;
+     [SerializeField] AudioClip nightClip = null;
      // Use this for initialization
      void Start () {
-         MpPlayer.clip = FirstClip;
+         MpPlayer.clip = dayClip;
          MpPlayer.loop = false;
          MpPlayer.Play();
          StartCoroutine(WaitForTrackTOend());
@@ -26,8 +26,8 @@ public class MusicPlayer : MonoBehaviour
              yield return new WaitForSeconds(0.01f);
              
          }
-         MpPlayer.clip = FirstClip;
-         MpPlayer.loop = true ;
+         MpPlayer.clip = dayClip;
+         MpPlayer.loop = true;
          MpPlayer.Play();
         
      }
