@@ -26,8 +26,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerMove() {
-        var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime * moveSpeed * 10;
-        var deltaY = Input.GetAxisRaw("Vertical") * Time.fixedDeltaTime * moveSpeed * 10;
-        playerRB.velocity = new Vector2(deltaX, deltaY);
+        var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime;
+        var deltaY = Input.GetAxisRaw("Vertical") * Time.fixedDeltaTime;
+        Vector2 newVelocity = new Vector2(deltaX, deltaY);
+        newVelocity.Normalize();
+        playerRB.velocity = newVelocity * moveSpeed;
     }
 }
