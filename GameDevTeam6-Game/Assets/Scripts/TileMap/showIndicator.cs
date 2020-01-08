@@ -16,7 +16,7 @@ public class showIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tool.GetMode() == ToolModes.buildingMode || tool.GetMode() == ToolModes.hoeMode)
+        if (tool.GetMode() == ToolModes.buildingMode || tool.GetMode() == ToolModes.farmMode)
         {
             indicator.SetActive(true);
         } else

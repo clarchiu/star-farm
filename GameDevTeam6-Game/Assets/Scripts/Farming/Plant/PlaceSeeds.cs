@@ -18,7 +18,7 @@ public class PlaceSeeds : MonoBehaviour
 
     private void Update()
     {
-        if (!(tool.GetMode() == ToolModes.seedsMode)) {
+        if (!(tool.GetMode() == ToolModes.farmMode)) {
             return;
         }
 

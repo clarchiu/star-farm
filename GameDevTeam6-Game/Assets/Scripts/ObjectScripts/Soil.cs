@@ -20,5 +20,6 @@ public class Soil : MonoBehaviour
             return;
         } 
         plant = Instantiate(p, transform.position, Quaternion.identity);
+        plant.transform.parent = gameObject.transform;
     }
 }

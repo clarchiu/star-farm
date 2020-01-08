@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour
 {
-    [SerializeField] bool shootProjectiles = false;
-    private bool shooting = false;
+    [SerializeField] public bool shootProjectiles = false;
+    bool shooting = false;
     [SerializeField] float rateOfFire = 0.5f;
     private Coroutine shootCoroutine = null;
     [SerializeField] private Projectile bullet = null;

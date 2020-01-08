@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Soil
   - indicator
+  - wheel
   layers:
   - Default
   - TransparentFX
