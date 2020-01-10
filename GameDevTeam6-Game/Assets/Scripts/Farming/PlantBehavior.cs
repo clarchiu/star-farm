@@ -6,6 +6,7 @@ public class PlantBehavior : MonoBehaviour
 {
     private Plants plantProperties;
     private TimeSystem system;
+    public float timeCounter;
 
     void Start()
     {
@@ -13,34 +14,27 @@ public class PlantBehavior : MonoBehaviour
         system = GetComponent<TimeSystem>();
     }
 
-
     void Update()
     {
-/*
-        if (growTime == 480 && numFruit != maxFruit) //fruit grows every 8 min
-        {
-            Instantiate(fruit); //spawn fruit
-            fruitGrowTime -= 480;
-            numFruit++;
-        }
-*/
-
+        timeCounter++;
     }
 
-    public void planting(int currTime, string species) //bring in current time from TimeSystem
+    public void planting(string species) //bring in current time from TimeSystem
     {
         Plants newPlant = new Plants(species);
+        float currTime = system.getSeconds();
         Instantiate(newPlant);
         growing(currTime);
+        growFruits(currTime);
     }
 
-    public void growing(int time)
+    public void growing(float time)
     {
-        float growTime = system.getSeconds();
+        int stages = plantProperties.getStages();
 
-        if (growTime - time >= 360 && plantProperties.getStages() <= 5)
+        if (timeCounter - time >= 360 && stages <= 5) //change stage 360 sec after growing() is callled
         {
-            plantProperties.setStages(plantProperties.getStages() + 1);
+            plantProperties.setStages(stages + 1);
         }        
     }
 
@@ -56,15 +50,14 @@ public class PlantBehavior : MonoBehaviour
         }
     }
 
-    public void growFruits()
+    public void growFruits(float time)
     {
         int countFruits = plantProperties.getCountFruits();
 
-        if (countFruits < 5)
+        if (timeCounter - time >= 480 && countFruits < 5) //add fruit 480 sec (8min) after growFruits() is called
         {
             plantProperties.setArrFruits(countFruits, true);
             plantProperties.setCountFruits(countFruits + 1);
-
         }
 
     }
