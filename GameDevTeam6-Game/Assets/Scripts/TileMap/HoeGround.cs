@@ -17,7 +17,7 @@ public class HoeGround : MonoBehaviour
     }
     private void Update()
     {
-        if (!(tool.GetMode() == ToolModes.hoeMode)) {
+        if (!(tool.GetMode() == ToolModes.farmMode)) {
             return;
         }
         place.CheckAndPlaceUpdate(soil, 2, soil);
