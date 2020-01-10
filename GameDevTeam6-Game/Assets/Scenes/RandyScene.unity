@@ -34528,7 +34528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theLight: {fileID: 781279943}
-  timeSystem: {fileID: 1417319304}
+  timeSystem: {fileID: 0}
 --- !u!1 &862002335
 GameObject:
   m_ObjectHideFlags: 0
@@ -34683,7 +34683,7 @@ PrefabInstance:
     - target: {fileID: 1072768721494001332, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1072768721494001332, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
@@ -34973,6 +34973,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 886573591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1138137721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138137720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46ca6d74d4075a4c9d5db5246251200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1138137725
 MonoBehaviour:
   m_ObjectHideFlags: 0

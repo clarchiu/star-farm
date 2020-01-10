@@ -26,9 +26,9 @@ public class Daylight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          int hour = timeSystem.getHour();
 
-          if (hour > 12 && hour < 14)
+        int hour = timeSystem.getHour();
+        if (hour > 12 && hour < 14)
           {
               brightness -= 0.0001f;
           }

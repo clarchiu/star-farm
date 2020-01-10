@@ -7,6 +7,7 @@ public class PlayerMelee : MonoBehaviour
     private MultiTool tool;
     private GameObject player;
     private PlayerDirection_ direction;
+    private Health health;
 
     private void Awake()
     {
@@ -16,7 +17,6 @@ public class PlayerMelee : MonoBehaviour
     }
     private void Update()
     {
-
         runAttack();
 
     }
@@ -29,39 +29,47 @@ public class PlayerMelee : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             checkMelee();
-            Debug.Log("Swinging Weapon");
         }
 
     }
     public Collider2D[] checkMelee()
     {
         int i = 0;
+        float hitPosX = player.transform.position.x;
+        float hitPosY = player.transform.position.y;
         Collider2D[] hitColliders;
+        
+          if (direction.GetDirection() == playerDir.left)
+          {
+            hitPosX -= 10;
+          }
+          else if (direction.GetDirection() == playerDir.right)
+          {
+            hitPosX += 10;
+          }
+          else if (direction.GetDirection() == playerDir.up)
+          {
+            hitPosY += 10;
+          }
+          else if (direction.GetDirection() == playerDir.down)
+          {
+            hitPosY -= 10;
+          }
+          hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(20f, 20f), 0f);
 
-        hitColliders = Physics2D.OverlapBoxAll(player.transform.position, new Vector2(20f, 20f), 0f, default, default, default);
-
-        /*  if (direction.getDirection() == playerDir.left)
-          {
-              hitColliders = Physics2D.OverlapBoxAll(player.transform.position, new Vector2(20f, 20f), 0f, default, default, default);
-          }
-          else if (direction.getDirection() == playerDir.right)
-          {
-              hitColliders = Physics2D.OverlapBoxAll(player.transform.position, new Vector2(20f, 20f), 0f, default, default, default);
-          }
-          else if (direction.getDirection() == playerDir.up)
-          {
-              hitColliders = Physics2D.OverlapBoxAll(player.transform.position, new Vector2(20f, 20f), 0f, default, default, default);
-          }
-          else if (direction.getDirection() == playerDir.down)
-          {
-              hitColliders = Physics2D.OverlapBoxAll(player.transform.position, new Vector2(20f, 20f), 0f, default, default, default);
-          }*/
 
         while (i < hitColliders.Length)
         {
             //Output all of the collider names
-            Debug.Log("Hit : " + hitColliders[i].name + i);
+          // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
+      
+            if(hitColliders[i].name == "fly(Clone)")
+            {
+                health = hitColliders[i].GetComponent<Health>();
+                health.removeHealth(20);
+               
+            }
             i++;
         }
 
