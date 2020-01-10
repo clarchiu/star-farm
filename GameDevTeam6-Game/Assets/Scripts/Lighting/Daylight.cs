@@ -8,14 +8,14 @@ public class Daylight : MonoBehaviour
     public TimeSystem timeSystem;
 
 
-    float xPos;
+
     float brightness;
     // Start is called before the first frame update
     void Start()
     {
    
         brightness = 1f;
-        transform.position = new Vector3(xPos, 29, -80);
+        transform.position = new Vector3(29, 29, -80);
         timeSystem = FindObjectOfType<TimeSystem>();
         
 
@@ -37,7 +37,7 @@ public class Daylight : MonoBehaviour
               brightness += 0.0001f;
           }
 
-        //  theLight.color = new Color(brightness, brightness, brightness, 1f);
+          theLight.color = new Color(brightness, brightness, brightness, 1f);
 
 
     }
