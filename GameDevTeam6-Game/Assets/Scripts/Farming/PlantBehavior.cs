@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlantBehavior : MonoBehaviour
 {
+   
     private Plants plantProperties;
     private TimeSystem system;
-    public float timeCounter;
+    public float timeCounter = 0;
 
     void Start()
     {
@@ -19,23 +20,29 @@ public class PlantBehavior : MonoBehaviour
         timeCounter++;
     }
 
-    public void planting(string species) //bring in current time from TimeSystem
+    public void planting(string species) 
     {
         Plants newPlant = new Plants(species);
-        float currTime = system.getSeconds();
+        float currTime = system.getSeconds(); //bring in current time from TimeSystem
         Instantiate(newPlant);
-        growing(currTime);
-        growFruits(currTime);
+        growing(newPlant, currTime);
+        growFruits(newPlant, currTime);
     }
 
-    public void growing(float time)
+    public void growing(Plants plant, float time)
     {
-        int stages = plantProperties.getStages();
+        int stages = 1;
 
         if (timeCounter - time >= 360 && stages <= 5) //change stage 360 sec after growing() is callled
         {
-            plantProperties.setStages(stages + 1);
-        }        
+            plant.setStages(stages + 1);
+
+            if (plant.getStages() == 5)
+            {
+                growFruits(plant, time);
+            }
+        }    
+        
     }
 
     public void harvesting()
@@ -50,13 +57,13 @@ public class PlantBehavior : MonoBehaviour
         }
     }
 
-    public void growFruits(float time)
+    public void growFruits(Plants plant, float time)
     {
-        int countFruits = plantProperties.getCountFruits();
+        int countFruits = plant.getCountFruits();
 
         if (timeCounter - time >= 480 && countFruits < 5) //add fruit 480 sec (8min) after growFruits() is called
         {
-            plantProperties.setArrFruits(countFruits, true);
+            plant.setArrFruits(countFruits, true);
             plantProperties.setCountFruits(countFruits + 1);
         }
 

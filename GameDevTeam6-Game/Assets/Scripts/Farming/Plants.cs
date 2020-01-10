@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class Plants : MonoBehaviour
 {
     public Sprite plantImg2;
@@ -11,16 +9,18 @@ public class Plants : MonoBehaviour
     public Sprite plantImg4;
     public Sprite plantImg5;
 
+    private PlantBehavior plantBehav;
+    public GameObject plantPrefab;
     private int stages;
     private string species;
     private bool[] arrFruits = new bool[5];
     private int countFruits;
 
-
     void Start()
     {
-       /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        Sprite plantImage = renderer.sprite;*/
+        /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+         Sprite plantImage = renderer.sprite;*/
+        plantBehav.planting("species1");
     }
 
     public Plants(string species)

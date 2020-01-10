@@ -3,7 +3,11 @@ guid: 5fb357630f29156459b766cc9f4fb591
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - plantImg2: {fileID: 21300000, guid: eb05d455512f99a489897fc05581cb82, type: 3}
+  - plantImg3: {fileID: 21300000, guid: 588d2be7794233948861a27d71bb2b85, type: 3}
+  - plantImg4: {fileID: 21300000, guid: de9586df4730db146957024cba1b5b54, type: 3}
+  - plantImg5: {fileID: 21300000, guid: 4bdba2fcfef6edc43986e116be359aa6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
