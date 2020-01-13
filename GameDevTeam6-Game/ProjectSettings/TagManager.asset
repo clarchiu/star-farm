@@ -9,6 +9,7 @@ TagManager:
   - wheel
   - Dregling
   - Enemy
+  - Ship
   layers:
   - Default
   - TransparentFX

@@ -6,33 +6,38 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    public Text nameText;
+    public Text subtextText;
     public Text dialogueText;
 
     public Animator animator;
 
-    public Queue<string> sentences;
+    public Queue<Sentence> sentences;
 
-    void Start()
+    void Awake()
     {
-        sentences = new Queue<string>();
+        sentences = new Queue<Sentence>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("isOpen", true);
 
-        nameText.text = dialogue.name;
+        bool startDialogue = false;
+        if (sentences.Count == 0)
+        {
+            startDialogue = true;
+        }
 
-        sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (Sentence sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
-
+        if (startDialogue)
+        {
+            DisplayNextSentence();
+        }
     }
 
     public void DisplayNextSentence()
@@ -42,24 +47,31 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        string sentence = sentences.Dequeue();
+        subtextText.text = "";
+        Sentence sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
 
-    IEnumerator TypeSentence(string sentence)
+    IEnumerator TypeSentence(Sentence sentence)
     {
         dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        foreach (char letter in sentence.text.ToCharArray())
         {
             dialogueText.text += letter;
             yield return null;
         }
+        displaySubtext(sentence);
     }
 
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+    }
+
+    void displaySubtext(Sentence sentence)
+    {
+        subtextText.text = sentence.subtext;
     }
 
     private void Update()

@@ -32,7 +32,7 @@ public class InitializeObjects : MonoBehaviour
         for (int i = 0; i < tileCountX; i++) {
             for (int j = 0; j < tileCountY; j++) {
                 Sprite spr = map.GetSprite(new Vector3Int(i-1, j-1, 0));
-                if (spr.name == "dirtc")
+                if (spr.name == "hd_0")
                 {
                     place.CreateObject(boulder, i, j);
                 }

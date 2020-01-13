@@ -72,7 +72,7 @@ public class PlaceObjects : MonoBehaviour
             Debug.Log("Tried to create an object outside of bounds and failed");
             return;
         }
-        Tile tile = GetComponent<TileLayout>().GetTile(x, y);
+        ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject oldObj = tile.getObjectOnTile();
         if (oldObj == null) {
             Vector2 position = new Vector2(x, y);
@@ -87,7 +87,7 @@ public class PlaceObjects : MonoBehaviour
             return;
         }
 
-        Tile tile = GetComponent<TileLayout>().GetTile(x, y);
+        ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject objectOnTile = tile.getObjectOnTile();
         if (objectOnTile != null) {
             Destroy(objectOnTile);

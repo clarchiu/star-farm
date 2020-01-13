@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlaceSeeds : MonoBehaviour
 {
+    public Tilemap tileMap;
     PlaceObjects place;
     TileLayout tiles;
     MultiTool tool;
@@ -22,23 +24,8 @@ public class PlaceSeeds : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            SetPlant(plant);
-        }
-    }
-
-    private void SetPlant(GameObject plant)
-    {
         place.GetMouseTile(out int tileX, out int tileY);
-        if (!place.InBounds(tileX, tileY))
-        {
-            Debug.Log("Tried to create a seed outside of bounds and failed");
-            return;
-        }
 
-        GameObject obj = tiles.GetTile(tileX, tileY).getObjectOnTile();
-        if (obj != null && obj.CompareTag("Soil") == true) {
-            obj.GetComponent<Soil>().SetPlant(plant);
-        }
+        place.CheckAndPlaceUpdate(plant, 2, plant);
     }
 }
