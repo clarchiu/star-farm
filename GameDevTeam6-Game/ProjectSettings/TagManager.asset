@@ -7,6 +7,8 @@ TagManager:
   - Soil
   - indicator
   - wheel
+  - Dregling
+  - Enemy
   layers:
   - Default
   - TransparentFX
