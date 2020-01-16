@@ -7,6 +7,7 @@ public class PlaceObjects : MonoBehaviour
     public GameObject currentObject;
     public GameObject indicator;
 
+    private Tutorial tutorial;
     private MultiTool tool;
     private GameObject player;
     private Color32 red;
@@ -16,6 +17,7 @@ public class PlaceObjects : MonoBehaviour
 
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
+        tutorial = FindObjectOfType<Tutorial>();
         if (!tool) {
             gameObject.SetActive(false);
             Debug.LogWarning("no tool found!!");
@@ -34,37 +36,33 @@ public class PlaceObjects : MonoBehaviour
         if (!(tool.GetMode() == ToolModes.buildingMode)) {
             return;
         }
-        CheckAndPlaceUpdate(currentObject, 4, null);
-    }
-
-    //Checks mouse clicks and creates or destroys object at mouse position if it meets requirements
-    public void CheckAndPlaceUpdate(GameObject obj, int limit, GameObject destroyObject) {
         indicatorRenderer.sprite = currentObject.GetComponent<SpriteRenderer>().sprite;
-
         GetMouseTile(out int tileX, out int tileY);
         indicator.transform.position = new Vector2(tileX, tileY);
 
-        if (InBounds(tileX, tileY) && NearPlayer(tileX, tileY, limit)) {
+        if (InBounds(tileX, tileY) && NearPlayer(tileX, tileY, 4))
+        {
             GameObject tileObject = GetComponent<TileLayout>().GetTile(tileX, tileY).getObjectOnTile();
-            if (tileObject == null) {
+            if (tileObject == null)
+            {
                 indicatorRenderer.color = green;
-                if (Input.GetMouseButtonDown(0)) {
-                    CreateObject(obj, tileX, tileY);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    CreateObject(currentObject, tileX, tileY);
                 }
             }
-            else if (destroyObject == null || tileObject.name == destroyObject.name) {
+            else {
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
                 }
-            } else {
-                indicatorRenderer.color = red;
             }
-        }
-        else {
+        } else
+        {
             indicatorRenderer.color = red;
         }
     }
+
 
     //Creates object at Tile[x,y] if there is no other object
     public void CreateObject(GameObject newObj, int x, int y) {
@@ -82,6 +80,7 @@ public class PlaceObjects : MonoBehaviour
     }
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
+        tutorial.TriggerDialogue(5);
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;

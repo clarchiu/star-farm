@@ -226,7 +226,7 @@ MonoBehaviour:
   tileMap: {fileID: 369400995}
   tiles:
   - {fileID: 11400000, guid: 4b8d06d7bd5a4214aabe4820c71b1120, type: 2}
-  - {fileID: 11400000, guid: 35f9afee995b46d47bae197e68b38fe4, type: 2}
+  - {fileID: 11400000, guid: 1fc523d14a2b0d94eb8c3d2fdf75c6e4, type: 2}
   - {fileID: 11400000, guid: 3e08e007246f236419b70bc2ee76d1ba, type: 2}
   - {fileID: 11400000, guid: 8311ae3a206e7154299fd8050b618c79, type: 2}
   - {fileID: 11400000, guid: 39dad91a162b44e478639f88c9a15948, type: 2}
@@ -245,6 +245,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  indicator: {fileID: 177142978}
+  plant: {fileID: 6303488983831204135, guid: 9c2c6fe1e27d8444d90e4777c9a59bd8, type: 3}
 --- !u!4 &171277553
 Transform:
   m_ObjectHideFlags: 0
@@ -34522,8 +34524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -249}
-  m_SizeDelta: {x: 1400, y: 200}
+  m_AnchoredPosition: {x: 0, y: -262}
+  m_SizeDelta: {x: 1400, y: 298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &709443094
 CanvasRenderer:
@@ -34553,7 +34555,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e738f55d2067c554d8e7eeff361fb812, type: 3}
-    m_FontSize: 80
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -35209,7 +35211,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -35357,20 +35359,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 352460068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1260783123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260783118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 837bd9a4bb43ffb45b067df3b34f8347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileMap: {fileID: 369400995}
-  plant: {fileID: 6303488983831204135, guid: 9c2c6fe1e27d8444d90e4777c9a59bd8, type: 3}
 --- !u!114 &1260783124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35431,8 +35419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30.825003}
-  m_SizeDelta: {x: 1400, y: 258.35}
+  m_AnchoredPosition: {x: 0, y: -0.3}
+  m_SizeDelta: {x: 1400, y: 320.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1391756745
 CanvasRenderer:
@@ -35578,6 +35566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b8acb9057266c4b946000615d0ef7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipInfo: {fileID: 676648738}
 --- !u!114 &1458503926
 MonoBehaviour:
   m_ObjectHideFlags: 0

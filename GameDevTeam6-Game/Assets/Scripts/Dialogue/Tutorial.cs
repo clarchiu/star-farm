@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    public GameObject shipInfo;
+    private MultiTool multiTool;
+
     private Dialogue[] dialogues;
     private int numOfDialogues = 10;
     private int currentDialogue = 0;
 
+    private void Awake()
+    {
+        multiTool = FindObjectOfType<MultiTool>();
+    }
     private void Start()
     {
         dialogues = new Dialogue[numOfDialogues];
@@ -26,7 +33,11 @@ public class Tutorial : MonoBehaviour
         switch(currentDialogue)
         {
             case 2: CheckForWASD();
-                    break;
+                break;
+            case 3: WaitForShipInteraction();
+                break;
+            case 4: CheckForTab();
+                break;
         }
     }
 
@@ -56,22 +67,40 @@ public class Tutorial : MonoBehaviour
         dialogues[2].sentences[0].subtext = "This is your ship, left click to interact.";
 
         dialogues[3].initializeSentences(1);
-        dialogues[3].sentences[0].text = "Captain! This is your universal multi-tool. Model MIDA-X872A made from the most durable alloys ever. It is suitable for any hazardous environment in this universe!";
-        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game, there are many modes. Hold tab to select mode";
+        dialogues[3].sentences[0].text = "Captain! I have equipped you with your universal multi-tool. Model MIDA-X872A made from the most durable alloys ever. It is suitable for any hazardous environment in this universe!";
+        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game. Hold tab to select mode.";
 
         dialogues[4].initializeSentences(1);
         dialogues[4].sentences[0].text = "Sensor detecting familiar metal object. Captain! Can you please use your multi-tool to obtain a sample so I can analyze its component.";
-        dialogues[4].sentences[0].subtext = "Select build mode on your multi-tool and try to break the first obstacle using right mouse button";
+        dialogues[4].sentences[0].subtext = "Select build mode on your multi-tool and try to break the first obstacle using right mouse button.";
 
         dialogues[5].initializeSentences(3);
         dialogues[5].sentences[0].text = "Analyzing unknown structure.. It appears that this unknown object has similar organic structure as the native fauna.";
-        dialogues[5].sentences[1].text = "Captain!Could this unknown object be a seed of the native plants over there?";
+        dialogues[5].sentences[1].text = "Captain! Could this unknown object be a seed of the native plants over there?";
         dialogues[5].sentences[2].text = "Your multi-tool is specifically equipped to interact with alien environment, why not try it out?";
-        dialogues[5].sentences[2].subtext = "Press tab to open the multi-tool wheel, select farming mode and plant the seed on the processed ground";
+        dialogues[5].sentences[2].subtext = "Press tab to open the multi-tool wheel and select farming mode. Right mouse click to process ground and Left mouse click to plant seed";
 
         dialogues[6].initializeSentences(1);
-        dialogues[6].sentences[0].text = "Captain!As the alien object lay growing, you should explore the surroundings and find some more similar space rocks! I always wanted to leave this ship and see a new planet!";
+        dialogues[6].sentences[0].text = "Captain! As the alien object lay growing, you should explore the surroundings and find some more similar space rocks! I always wanted to leave this ship and see a new planet!";
         dialogues[6].sentences[0].subtext = "As you wait for the seed to grow, you can break more with your multi-tool use the mode wheel to switch back to building mode";
+
+        dialogues[7].initializeSentences(2);
+        dialogues[7].sentences[0].text = "Alert! Alert! Sensor detecting abnormal organic activity! Captain! It appears to be celestial organism that is native to this planet!";
+        dialogues[7].sentences[1].text = "Oh no! It appears these creatures are hostile! Captain! There is built-in MIDA-LS close combat unit in the multi-tool, time to fight some bad guys!";
+        dialogues[7].sentences[1].subtext = "Use the mode wheel to switch to combat mode";
+
+        dialogues[8].initializeSentences(1);
+        dialogues[8].sentences[0].text = "Sensor detecting more hostile movements! Captain it appears that these creatures are going after the seed!";
+        dialogues[8].sentences[0].subtext = "Clear more enemies until the day comes";
+
+        dialogues[9].initializeSentences(2);
+        dialogues[9].sentences[0].text = "AI: Looks like the hostile creatures have turned into rust! We need to find out why in the future.";
+        dialogues[9].sentences[1].text = "Look like the seeds you planted have matured!Try to harvest them with your multi-tool";
+        dialogues[9].sentences[1].subtext = "Use farming mode to harvest resources";
+
+        dialogues[10].initializeSentences(1);
+        dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our storage";
+        dialogues[10].sentences[1].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
 
     }
 
@@ -80,9 +109,23 @@ public class Tutorial : MonoBehaviour
         foreach (string k in keys) {
             if (Input.GetKeyDown(k)) {
                 TriggerDialogue(2);
-                TriggerDialogue(3);
                 break;
             }
+        }
+    }
+    private void WaitForShipInteraction()
+    {
+        if (shipInfo.active)
+        {
+            TriggerDialogue(3);
+        }
+    }
+
+    private void CheckForTab()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TriggerDialogue(4);
         }
     }
 }

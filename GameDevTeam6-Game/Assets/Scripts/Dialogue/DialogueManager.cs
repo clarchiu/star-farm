@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     public Queue<Sentence> sentences;
+    private Sentence currentSentence = null;
 
     void Awake()
     {
@@ -23,7 +24,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isOpen", true);
 
         bool startDialogue = false;
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && currentSentence == null)
         {
             startDialogue = true;
         }
@@ -47,10 +48,11 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+
         subtextText.text = "";
-        Sentence sentence = sentences.Dequeue();
+        currentSentence = sentences.Dequeue();
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(TypeSentence(currentSentence));
     }
 
     IEnumerator TypeSentence(Sentence sentence)
@@ -67,6 +69,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        currentSentence = null;
     }
 
     void displaySubtext(Sentence sentence)
