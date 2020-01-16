@@ -8,12 +8,16 @@ public class Tutorial : MonoBehaviour
     private MultiTool multiTool;
 
     private Dialogue[] dialogues;
-    private int numOfDialogues = 10;
+    private int numOfDialogues = 11;
     private int currentDialogue = 0;
+    private TimeSystem timeSystem;
+
+    private bool timeRunOnce = true;
 
     private void Awake()
     {
         multiTool = FindObjectOfType<MultiTool>();
+        timeSystem = FindObjectOfType<TimeSystem>();
     }
     private void Start()
     {
@@ -38,6 +42,8 @@ public class Tutorial : MonoBehaviour
                 break;
             case 4: CheckForTab();
                 break;
+            case 7: SetTime();
+                break;
         }
     }
 
@@ -46,8 +52,9 @@ public class Tutorial : MonoBehaviour
         if (dialogueID == currentDialogue)
         {
             GetComponent<DialogueManager>().StartDialogue(dialogues[dialogueID]);
+            currentDialogue++;
+            Debug.Log(currentDialogue);
         }
-        currentDialogue++;
     }
 
     private void InitializeDialogues()
@@ -100,7 +107,7 @@ public class Tutorial : MonoBehaviour
 
         dialogues[10].initializeSentences(1);
         dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our storage";
-        dialogues[10].sentences[1].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
+        dialogues[10].sentences[0].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
 
     }
 
@@ -127,5 +134,20 @@ public class Tutorial : MonoBehaviour
         {
             TriggerDialogue(4);
         }
+    }
+
+    private void SetTime()
+    {
+        if (timeRunOnce)
+        {
+            timeSystem.setHour(13);
+            timeSystem.setMinute(0);
+            timeRunOnce = false;
+        }
+        if (timeSystem.getHour() == 14)
+        {
+            TriggerDialogue(7);
+        }
+
     }
 }
