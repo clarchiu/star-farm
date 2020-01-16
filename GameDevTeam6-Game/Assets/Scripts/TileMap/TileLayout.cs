@@ -6,21 +6,21 @@ public class TileLayout : MonoBehaviour
 {
     public int tileCountX;
     public int tileCountY;
-    Tile[,] tiles;
+    ObjectTile[,] tiles;
 
     // Start is called before the first frame update
     void Awake()
     {
         PlaceObjects place = FindObjectOfType<PlaceObjects>();
 
-        tiles = new Tile[tileCountX, tileCountY];
+        tiles = new ObjectTile[tileCountX, tileCountY];
         for (int i = 0; i < tileCountX; i++) {
             for (int j = 0; j < tileCountY; j++) {
-                tiles[i, j] = new Tile();
+                tiles[i, j] = new ObjectTile();
             }
         }
     }
-    public Tile GetTile(int x, int y)
+    public ObjectTile GetTile(int x, int y)
     {
         return tiles[x, y];
     }

@@ -29,7 +29,6 @@ public class MusicPlayer : MonoBehaviour
          MpPlayer.clip = dayClip;
          MpPlayer.loop = true;
          MpPlayer.Play();
-
      }
 
 }
