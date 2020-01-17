@@ -8,6 +8,10 @@ public class PlayerMelee : MonoBehaviour
     private GameObject player;
     private PlayerDirection_ direction;
     private Health health;
+    private HealthBar hpBar;
+    private Rigidbody2D body;
+    float attackDelay = 0;
+
 
     private void Awake()
     {
@@ -17,18 +21,24 @@ public class PlayerMelee : MonoBehaviour
     }
     private void Update()
     {
-        runAttack();
-
+        if (attackDelay <= 0)
+        {
+            StartCoroutine(runAttack());
+        }
     }
-    void runAttack()
+    IEnumerator runAttack()
     {
+        Debug.Log("running Coroutine!");
         if (!(tool.GetMode() == ToolModes.combatMode))
         {
-            return;
+            yield return null;
         }
         else if (Input.GetMouseButtonDown(0))
         {
             checkMelee();
+            attackDelay = 1;
+            yield return new WaitForSeconds(1f);
+            attackDelay = 0;
         }
 
     }
@@ -64,11 +74,13 @@ public class PlayerMelee : MonoBehaviour
           // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
       
-            if(hitColliders[i].name == "fly(Clone)")
+            if(hitColliders[i].name == "fly(Clone)" || hitColliders[i].name == "fly")
             {
                 health = hitColliders[i].GetComponent<Health>();
                 health.removeHealth(20);
-               
+                hpBar = hitColliders[i].GetComponent<HealthBar>();
+                hpBar.UpdateHealthBar();
+                knockBackObject(hitColliders[i], 20f);
             }
             i++;
         }
@@ -76,4 +88,30 @@ public class PlayerMelee : MonoBehaviour
         return hitColliders;
 
     }
+    public void knockBackObject(Collider2D enemyCollider, float amount)
+    {
+        float knockbackX = 0;
+        float knockbackY = 0;
+
+        body = enemyCollider.GetComponent<Rigidbody2D>();
+
+        if (direction.GetDirection() == playerDir.left)
+        {
+            knockbackX -= amount;
+        }
+        else if (direction.GetDirection() == playerDir.right)
+        {
+            knockbackX += amount;
+        }
+        else if (direction.GetDirection() == playerDir.up)
+        {
+            knockbackY += amount;
+        }
+        else if (direction.GetDirection() == playerDir.down)
+        {
+            knockbackY -= amount;
+        }
+        body.AddForce(new Vector2(knockbackX, knockbackY), ForceMode2D.Force);
+    }
+
 }
