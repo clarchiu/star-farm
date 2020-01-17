@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D myRigidBody;
+    private Health myHealth;
 
     protected Vector2 direction;
     public bool IsMoving
@@ -20,7 +21,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract string PreferredTarget { get; }
     protected abstract float Speed { get; }
-    protected abstract int Health { get; set; }
+    protected abstract int BaseHealth { get; }
     protected abstract int Damage { get; }
 
     private GameObject target;
@@ -30,6 +31,8 @@ public abstract class Enemy : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
+        myHealth = GetComponent<Health>();
+        myHealth.SetHealth(BaseHealth);
     }
 
     protected virtual void Update()
@@ -37,45 +40,10 @@ public abstract class Enemy : MonoBehaviour
         HandleLayers();
     }
 
-    protected abstract void Attack(GameObject target);
-
-    //should be part of targetable interface
-    //there should be some kind of targetable interface
-    public void TakeDamage(int damage) //interface methods
-    {
-        Health -= damage;
-    }
-
     public void Move() //FixedUpdate is frame rate independent
     {
         myRigidBody.velocity = direction.normalized * Speed;
     }
-
-    public void HandleLayers()
-    {
-        if (IsMoving)
-        {
-            ActivateLayer("Walk Layer");
-            animator.SetFloat("x", direction.x);
-            animator.SetFloat("y", direction.y);
-        }
-        else
-        {
-            ActivateLayer("Idle Layer");
-        }
-    }
-
-    public void ActivateLayer(string layerName)
-    {
-        for (int i = 0; i < animator.layerCount; i++)
-        {
-            animator.SetLayerWeight(i, 0);
-        }
-
-        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
-
-    }
-
 
     protected void FollowTarget()
     {
@@ -120,7 +88,30 @@ public abstract class Enemy : MonoBehaviour
         return closestObj;
     }
 
+    public void HandleLayers()
+    {
+        if (IsMoving)
+        {
+            ActivateLayer("Walk Layer");
+            animator.SetFloat("x", direction.x);
+            animator.SetFloat("y", direction.y);
+        }
+        else
+        {
+            ActivateLayer("Idle Layer");
+        }
+    }
 
+    public void ActivateLayer(string layerName)
+    {
+        for (int i = 0; i < animator.layerCount; i++)
+        {
+            animator.SetLayerWeight(i, 0);
+        }
+
+        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
+
+    }
 
 
 }

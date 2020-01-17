@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int healthBar;
-    
+    private int healthBar;
+
     // Start is called before the first frame update
-    public void OnEnable()
+    private void Start()
     {
-        healthBar = 100;
     }
 
-    // Update is called once per frame
-    // public void Update()
-    // {
-        
-    // }
+    //make sure you call this when initializing targetable object
+    public void SetHealth(int health)
+    {
+        healthBar = health;
+    }
 
-    public void removeHealth(int amount) {
+    public void RemoveHealth(int amount) {
         healthBar -= amount;
         Debug.Log(amount + " health removed");
         Debug.Log(healthBar);
+
+        if (healthBar <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void gainHealth(int amount) {
+    public void GainHealth(int amount) {
         healthBar += amount;
     }
 }

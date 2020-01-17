@@ -42,6 +42,7 @@ public class PlayerMelee : MonoBehaviour
         }
 
     }
+
     public Collider2D[] checkMelee()
     {
         int i = 0;
@@ -77,7 +78,7 @@ public class PlayerMelee : MonoBehaviour
             if(hitColliders[i].name == "fly(Clone)" || hitColliders[i].name == "fly")
             {
                 health = hitColliders[i].GetComponent<Health>();
-                health.removeHealth(20);
+                health.RemoveHealth(20);
                 hpBar = hitColliders[i].GetComponent<HealthBar>();
                 hpBar.UpdateHealthBar();
                 knockBackObject(hitColliders[i], 20f);
