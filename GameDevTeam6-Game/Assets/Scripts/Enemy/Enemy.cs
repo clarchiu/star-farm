@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //enemy will eventually be an abstract class, need a targetable interface
-public abstract class Enemy : MonoBehaviour 
+public abstract class Enemy : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D myRigidBody;
@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected abstract string PreferredTarget { get; }
-    protected abstract float Speed { get; } 
+    protected abstract float Speed { get; }
     protected abstract int Health { get; set; }
     protected abstract int Damage { get; }
 

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile
+public class ObjectTile
 {
     private GameObject objectOnTile;
     private TileMode tileMode;
 
-    public Tile()
+    public ObjectTile()
     {
         ResetTileInfo();
     }

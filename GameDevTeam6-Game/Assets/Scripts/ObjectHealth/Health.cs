@@ -20,6 +20,8 @@ public class Health : MonoBehaviour
 
     public void removeHealth(int amount) {
         healthBar -= amount;
+        Debug.Log(amount + " health removed");
+        Debug.Log(healthBar);
     }
 
     public void gainHealth(int amount) {

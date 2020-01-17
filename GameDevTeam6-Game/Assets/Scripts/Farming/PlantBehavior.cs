@@ -7,33 +7,32 @@ public class PlantBehavior : MonoBehaviour
     private Plants plantProperties;
     private TimeSystem system;
     public float timeCounter;
+    private int delay = 30;
+    private int previousTime;
 
     void Start()
     {
         plantProperties = GetComponent<Plants>();
-        system = GetComponent<TimeSystem>();
+        //system = GetComponent<TimeSystem>();
+        previousTime = 0;
     }
 
     void Update()
     {
-        timeCounter++;
+        timeCounter+= Time.deltaTime;
+        //float currTime = system.getSeconds();
+        growing(timeCounter);
+        //growFruits(currTime);
     }
 
-    public void planting(string species) //bring in current time from TimeSystem
-    {
-        Plants newPlant = new Plants(species);
-        float currTime = system.getSeconds();
-        Instantiate(newPlant);
-        growing(currTime);
-        growFruits(currTime);
-    }
 
     public void growing(float time)
     {
         int stages = plantProperties.getStages();
 
-        if (timeCounter - time >= 360 && stages <= 5) //change stage 360 sec after growing() is callled
+        if (previousTime + delay < time && stages <= 5) //change stage 360 sec after growing() is callled
         {
+            previousTime += delay;
             plantProperties.setStages(stages + 1);
         }        
     }
@@ -49,7 +48,7 @@ public class PlantBehavior : MonoBehaviour
             plantProperties.setCountFruits(countFruits - 1);
         }
     }
-
+    
     public void growFruits(float time)
     {
         int countFruits = plantProperties.getCountFruits();
@@ -61,5 +60,4 @@ public class PlantBehavior : MonoBehaviour
         }
 
     }
-
 }
