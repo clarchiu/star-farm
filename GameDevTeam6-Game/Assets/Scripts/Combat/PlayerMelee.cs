@@ -28,7 +28,6 @@ public class PlayerMelee : MonoBehaviour
     }
     IEnumerator runAttack()
     {
-        Debug.Log("running Coroutine!");
         if (!(tool.GetMode() == ToolModes.combatMode))
         {
             yield return null;
@@ -36,9 +35,9 @@ public class PlayerMelee : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             checkMelee();
-            attackDelay = 1;
-            yield return new WaitForSeconds(1f);
-            attackDelay = 0;
+          //  attackDelay = 1;
+            //yield return new WaitForSeconds(1f);
+           // attackDelay = 0;
         }
 
     }
@@ -52,36 +51,35 @@ public class PlayerMelee : MonoBehaviour
         
           if (direction.GetDirection() == playerDir.left)
           {
-            hitPosX -= 10;
+            hitPosX -= 5;
           }
           else if (direction.GetDirection() == playerDir.right)
           {
-            hitPosX += 10;
+            hitPosX += 5;
           }
           else if (direction.GetDirection() == playerDir.up)
           {
-            hitPosY += 10;
+            hitPosY += 5;
           }
           else if (direction.GetDirection() == playerDir.down)
           {
-            hitPosY -= 10;
+            hitPosY -= 5;
           }
-          hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(20f, 20f), 0f);
+          hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(10f, 10f), 0f);
 
 
         while (i < hitColliders.Length)
         {
             //Output all of the collider names
-          // Debug.Log("Hit : " + hitColliders[i].name + i);
+            // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
-      
-            if(hitColliders[i].name == "fly(Clone)" || hitColliders[i].name == "fly")
-            {
+            if (hitColliders[i].name == "Dregling(Clone)")
+            { 
                 health = hitColliders[i].GetComponent<Health>();
                 health.RemoveHealth(20);
                 hpBar = hitColliders[i].GetComponent<HealthBar>();
                 hpBar.UpdateHealthBar();
-                knockBackObject(hitColliders[i], 20f);
+                knockBackObject(hitColliders[i], 200f);
             }
             i++;
         }

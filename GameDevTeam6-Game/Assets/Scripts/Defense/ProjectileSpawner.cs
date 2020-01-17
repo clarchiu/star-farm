@@ -23,16 +23,16 @@ public class ProjectileSpawner : MonoBehaviour
     IEnumerator ShootCoroutine() {
         shooting = true;
         while (shootProjectiles) {
-            SpawnProjectile(gameObject.transform.position, gameObject.transform.eulerAngles);
+            SpawnProjectile(gameObject.transform.position, GetComponent<PlayerDirection>().GetLookDirection());
             yield return new WaitForSeconds(rateOfFire);
         }
         shooting = false;
     }
 
-    public Projectile SpawnProjectile(Vector3 position, Vector3 rotation) {
+    public Projectile SpawnProjectile(Vector3 position, Quaternion rotation) {
 
-        Projectile projectile = Instantiate(bullet, position, Quaternion.Euler(rotation)) as Projectile;
-        projectile.InitializeVelocity(rotation);
+        Projectile projectile = Instantiate(bullet, position, rotation) as Projectile;
+        projectile.InitializeVelocity(rotation.eulerAngles);
         return projectile;
     }
 }

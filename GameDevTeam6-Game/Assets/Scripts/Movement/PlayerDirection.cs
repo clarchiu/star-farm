@@ -21,15 +21,13 @@ public class PlayerDirection : MonoBehaviour
             Debug.LogError("No Game Camera Found!");
         }
     }
-    void Update()
-    {
-        UpdateLookDirection();
-    }
 
-    void UpdateLookDirection() {
+    public Quaternion GetLookDirection() {
         mousePos = gameCamera.ScreenToWorldPoint(Input.mousePosition);
         playerPos = transform.position;
         lookAngle = Mathf.Atan2((mousePos - playerPos).y, (mousePos - playerPos).x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(0, 0, lookAngle - 90);
+        Vector3 eularAngles = new Vector3(0, 0, lookAngle - 90);
+        Quaternion currentRoation = Quaternion.Euler(eularAngles);
+        return currentRoation;
     }
 }
