@@ -53,4 +53,17 @@ public class TimeSystem : MonoBehaviour
         return seconds % 60;
     }
 
+    public void setHour(int h)
+    {
+        hour = h;
+    }
+    public void setMinute(int m)
+    {
+        minute = m;
+    }
+    public void setSeconds(int s)
+    {
+        seconds = s;
+    }
+
 }

@@ -4,45 +4,38 @@ using UnityEngine;
 
 public class PlantBehavior : MonoBehaviour
 {
-   
+
     private Plants plantProperties;
     private TimeSystem system;
-    public float timeCounter = 0;
+    public float timeCounter;
+    private int delay = 30;
+    private int previousTime;
 
     void Start()
     {
         plantProperties = GetComponent<Plants>();
-        system = GetComponent<TimeSystem>();
+        //system = GetComponent<TimeSystem>();
+        previousTime = 0;
     }
 
     void Update()
     {
-        timeCounter++;
+        timeCounter+= Time.deltaTime;
+        //float currTime = system.getSeconds();
+        growing(timeCounter);
+        //growFruits(currTime);
     }
 
-    public void planting(string species) 
-    {
-        Plants newPlant = new Plants(species);
-        float currTime = system.getSeconds(); //bring in current time from TimeSystem
-        Instantiate(newPlant);
-        growing(newPlant, currTime);
-        growFruits(newPlant, currTime);
-    }
 
     public void growing(Plants plant, float time)
     {
         int stages = 1;
 
-        if (timeCounter - time >= 360 && stages <= 5) //change stage 360 sec after growing() is callled
+        if (previousTime + delay < time && stages <= 5) //change stage 360 sec after growing() is callled
         {
-            plant.setStages(stages + 1);
-
-            if (plant.getStages() == 5)
-            {
-                growFruits(plant, time);
-            }
-        }    
-        
+            previousTime += delay;
+            plantProperties.setStages(stages + 1);
+        }
     }
 
     public void harvesting()
@@ -57,7 +50,7 @@ public class PlantBehavior : MonoBehaviour
         }
     }
 
-    public void growFruits(Plants plant, float time)
+    public void growFruits(float time)
     {
         int countFruits = plant.getCountFruits();
 
@@ -68,5 +61,4 @@ public class PlantBehavior : MonoBehaviour
         }
 
     }
-
 }

@@ -9,6 +9,8 @@ TagManager:
   - wheel
   - Dregling
   - Enemy
+  - Ship
+  - Plant
   layers:
   - Default
   - TransparentFX
