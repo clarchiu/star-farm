@@ -14,7 +14,7 @@ public class ShootWeapon : MonoBehaviour
     {
         if (multiTool.GetMode() != ToolModes.combatMode) return;
         else {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 GetComponent<ProjectileSpawner>().shootProjectiles = true;
             } else if (Input.GetMouseButtonUp(0))
