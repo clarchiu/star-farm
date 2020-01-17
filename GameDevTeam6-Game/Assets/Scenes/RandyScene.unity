@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_RaycastTarget: 1
@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d7abf40286a5242851d0290cd8f175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   tileMap: {fileID: 369400995}
   tiles:
   - {fileID: 11400000, guid: 4b8d06d7bd5a4214aabe4820c71b1120, type: 2}
@@ -422,12 +422,12 @@ PrefabInstance:
     - target: {fileID: 9150737481513563917, guid: 29e6f9e559734a14a961095b9a52a371,
         type: 3}
       propertyPath: indicator
-      value: 
+      value:
       objectReference: {fileID: 177142978}
     - target: {fileID: 9150737481513563917, guid: 29e6f9e559734a14a961095b9a52a371,
         type: 3}
       propertyPath: currentObject
-      value: 
+      value:
       objectReference: {fileID: 3514045397886662005, guid: 8a44df4466eb5194aa73abf9e8f3e57c,
         type: 3}
     m_RemovedComponents: []
@@ -34204,7 +34204,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -34218,8 +34218,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
@@ -34311,8 +34311,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -34389,8 +34389,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8537736, g: 0.86873573, b: 1, a: 0.8}
   m_RaycastTarget: 1
@@ -34464,8 +34464,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
@@ -34545,8 +34545,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -34651,6 +34651,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value:
+      objectReference: {fileID: 6998779234381798919, guid: 30f41363dc3704831ba6686ffad7d533,
+        type: 3}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value:
+      objectReference: {fileID: 6565849916385576505, guid: 065ac1cf556aa4665bf6a8325f531cc4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8c3af9a0c3049c7b5f4765120129d9, type: 3}
 --- !u!1 &781279942
@@ -34756,8 +34768,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e520973c231a5ae4f854e7393dd79976, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   theLight: {fileID: 781279943}
   timeSystem: {fileID: 0}
 --- !u!1 &862002335
@@ -34808,8 +34820,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8537736, g: 0.86873573, b: 1, a: 0.72156864}
   m_RaycastTarget: 1
@@ -34881,8 +34893,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -35051,7 +35063,7 @@ PrefabInstance:
     - target: {fileID: 4159329979597836618, guid: 703932862058fd042a46676a31908c1d,
         type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: -8868272330977153355, guid: 4309a6a8e673d4b48a828374869e2a0a,
         type: 3}
     - target: {fileID: 4159329979597836618, guid: 703932862058fd042a46676a31908c1d,
@@ -35258,8 +35270,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13ceba5027eb03a48b8a980183a9cf83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!4 &1055026809
 Transform:
   m_ObjectHideFlags: 0
@@ -35368,8 +35380,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cd7a856db55bf149aee8bf70f34c26e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   cameraOffsetZ: -50
 --- !u!1 &1138137720 stripped
 GameObject:
@@ -35387,8 +35399,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46ca6d74d4075a4c9d5db5246251200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &1138137725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35399,8 +35411,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16f16cb23867f5942aa8932d8b7deb32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!95 &1138137727
 Animator:
   serializedVersion: 3
@@ -35416,7 +35428,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -35480,8 +35492,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 783e40fc9b180454a8d2b034b3d0aa6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1260783118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9150737481513563912, guid: 29e6f9e559734a14a961095b9a52a371,
@@ -35498,8 +35510,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1d43d7d9a88ce94ba16a5b71c77955f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   map: {fileID: 369400995}
   boulder: {fileID: 1128533525796180358, guid: 953ef6ac2a91b614b8ff8aa499bcbd63, type: 3}
 --- !u!114 &1260783125
@@ -35512,8 +35524,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caafa41ce1dbf1248b17e76b8b51c316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1391756743
 GameObject:
   m_ObjectHideFlags: 0
@@ -35569,8 +35581,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -35656,7 +35668,7 @@ PrefabInstance:
     - target: {fileID: 902452993071033452, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}
       propertyPath: timeText
-      value: 
+      value:
       objectReference: {fileID: 1608074082}
     - target: {fileID: 902452993071033453, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}
@@ -35693,8 +35705,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95b8acb9057266c4b946000615d0ef7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   shipInfo: {fileID: 676648738}
 --- !u!114 &1458503926
 MonoBehaviour:
@@ -35706,8 +35718,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9da7e150de4f7f8438869dfa2a38d46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   subtextText: {fileID: 709443095}
   dialogueText: {fileID: 1391756746}
   animator: {fileID: 380174796}
@@ -35772,8 +35784,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_RaycastTarget: 1
@@ -35845,8 +35857,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -35885,12 +35897,12 @@ PrefabInstance:
     - target: {fileID: 6979637525683287364, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
         type: 3}
       propertyPath: dayClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
     - target: {fileID: 6979637525683287364, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
         type: 3}
       propertyPath: nightClip
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
     - target: {fileID: 6979637525683287366, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
         type: 3}
@@ -35984,8 +35996,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8537736, g: 0.86873573, b: 1, a: 0.72156864}
   m_RaycastTarget: 1
@@ -36129,8 +36141,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6b3ff2aeba3ead468fe96276e2e6269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   infoPanel: {fileID: 676648738}
 --- !u!1 &1830920596
 GameObject:
@@ -36179,8 +36191,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_RaycastTarget: 1
@@ -36270,8 +36282,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8537736, g: 0.86873573, b: 1, a: 0.72156864}
   m_RaycastTarget: 1
@@ -36369,8 +36381,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -36386,8 +36398,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
