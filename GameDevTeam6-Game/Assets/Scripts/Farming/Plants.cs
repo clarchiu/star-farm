@@ -20,7 +20,7 @@ public class Plants : MonoBehaviour
     {
         /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
          Sprite plantImage = renderer.sprite;*/
-        plantBehav.planting("species1");
+        //plantBehav.planting("species1");
     }
 
     public Plants(string species)

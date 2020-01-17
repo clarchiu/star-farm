@@ -27,7 +27,7 @@ public class PlantBehavior : MonoBehaviour
     }
 
 
-    public void growing(Plants plant, float time)
+    public void growing(float time)
     {
         int stages = 1;
 
@@ -49,7 +49,7 @@ public class PlantBehavior : MonoBehaviour
             plantProperties.setCountFruits(countFruits - 1);
         }
     }
-
+    /*
     public void growFruits(float time)
     {
         int countFruits = plant.getCountFruits();
@@ -61,4 +61,5 @@ public class PlantBehavior : MonoBehaviour
         }
 
     }
+    */
 }

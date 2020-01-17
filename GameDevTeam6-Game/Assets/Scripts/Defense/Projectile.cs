@@ -8,9 +8,15 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rigidBody = null;
     //Config Params
     [SerializeField] private float projectileSpeed = 10f;
+    private GameObject player;
+
+    private float lifeTime = 2;
+    private float currentTime = 0;
 
     void Awake(){
         FindRigidBody();
+        player = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
     }
 
     private void FindRigidBody(){
@@ -25,6 +31,15 @@ public class Projectile : MonoBehaviour
         float xVelocity = projectileSpeed * Mathf.Cos(angle);
         float yVelocity = projectileSpeed * Mathf.Sin(angle);
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
+    }
+
+    private void Update()
+    {
+        currentTime += Time.deltaTime;
+        if (currentTime > lifeTime)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void DestroyProjectile(){
