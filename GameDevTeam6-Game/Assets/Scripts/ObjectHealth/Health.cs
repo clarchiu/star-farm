@@ -26,6 +26,8 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log("Health remaining: " + healthBar);
+
     }
 
     public void GainHealth(int amount) {
