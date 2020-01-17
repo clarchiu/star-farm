@@ -6,50 +6,102 @@ using UnityEngine;
 //enemy will eventually be an abstract class, need a targetable interface
 public abstract class Enemy : MonoBehaviour 
 {
-    protected float speed; //temporary
+    private Animator animator;
+    private Rigidbody2D myRigidBody;
+
     protected Vector2 direction;
+    public bool IsMoving
+    {
+        get
+        {
+            return direction.x != 0 || direction.y != 0;
+        }
+    }
 
-    protected string preferredTarget;
+    protected abstract string PreferredTarget { get; }
+    protected abstract float Speed { get; } 
+    protected abstract int Health { get; set; }
+    protected abstract int Damage { get; }
 
-    protected int health;
-    protected int damage;
-
-    protected GameObject target;
+    private GameObject target;
     public GameObject Target { get => target; set => target = value; }
 
+    protected virtual void Start()
+    {
+        animator = GetComponent<Animator>();
+        myRigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    protected virtual void Update()
+    {
+        HandleLayers();
+    }
+
     protected abstract void Attack(GameObject target);
-    protected abstract void InitializeProperties();
 
     //should be part of targetable interface
     //there should be some kind of targetable interface
     public void TakeDamage(int damage) //interface methods
     {
-        health -= damage;
+        Health -= damage;
     }
 
-    public void Move()
+    public void Move() //FixedUpdate is frame rate independent
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        myRigidBody.velocity = direction.normalized * Speed;
     }
-  
+
+    public void HandleLayers()
+    {
+        if (IsMoving)
+        {
+            ActivateLayer("Walk Layer");
+            animator.SetFloat("x", direction.x);
+            animator.SetFloat("y", direction.y);
+        }
+        else
+        {
+            ActivateLayer("Idle Layer");
+        }
+    }
+
+    public void ActivateLayer(string layerName)
+    {
+        for (int i = 0; i < animator.layerCount; i++)
+        {
+            animator.SetLayerWeight(i, 0);
+        }
+
+        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
+
+    }
+
 
     protected void FollowTarget()
     {
-        if(target != null)
+        if (target != null)
         {
+            direction = (target.transform.position - transform.position).normalized;
             transform.position = Vector2.MoveTowards(transform.position,
-                target.transform.position, speed * Time.deltaTime);
-        } else
-        {
-            transform.position = Vector2.MoveTowards(transform.position,
-                new Vector2(0f, 0f), speed * Time.deltaTime);
+                target.transform.position, Speed * Time.deltaTime);
         }
+        else
+        {
+            direction = Vector2.zero;
+        }
+        //else
+        //{
+        //    Vector2 origin = new Vector2(27f, 27f);
+        //    direction = (origin - (Vector2)transform.position).normalized;
+        //    transform.position = Vector2.MoveTowards(transform.position,
+        //        origin, Speed * Time.deltaTime);
+        //}
     }
 
     protected GameObject FindClosestTarget()
     {
         GameObject[] gameObjs;
-        gameObjs = GameObject.FindGameObjectsWithTag(preferredTarget);
+        gameObjs = GameObject.FindGameObjectsWithTag(PreferredTarget);
 
         GameObject closestObj = null;
         float closestDis = Mathf.Infinity;
@@ -67,6 +119,8 @@ public abstract class Enemy : MonoBehaviour
 
         return closestObj;
     }
+
+
 
 
 }
