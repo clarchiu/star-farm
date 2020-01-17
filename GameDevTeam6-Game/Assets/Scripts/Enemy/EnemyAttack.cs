@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
             if (hitColliders[i].name == "Player")
             {
                 health = player.GetComponent<Health>();
-                health.removeHealth(20);
+                health.RemoveHealth(20);
 
 }
             i++;
