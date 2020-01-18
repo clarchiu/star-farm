@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject player;
     private Health health;
     private HealthBar hpBar;
-
+    private int hitDamage;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
             if (hitColliders[i].name == "Player")
             {
                 health = player.GetComponent<Health>();
-                health.removeHealth(20);
+                health.RemoveHealth(hitDamage);
 
 }
             i++;
