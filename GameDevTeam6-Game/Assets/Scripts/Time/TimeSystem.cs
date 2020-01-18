@@ -5,9 +5,9 @@ using UnityEngine;
 public class TimeSystem : MonoBehaviour
 {
     public float speed;
-    private int hour;
-    private int minute;
-    private float seconds;
+    public int hour;
+    public int minute;
+    public float seconds;
 
     // Start is called before the first frame update
     void Start()
