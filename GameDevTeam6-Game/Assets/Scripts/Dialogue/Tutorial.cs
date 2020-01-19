@@ -53,7 +53,6 @@ public class Tutorial : MonoBehaviour
         {
             GetComponent<DialogueManager>().StartDialogue(dialogues[dialogueID]);
             currentDialogue++;
-            Debug.Log(currentDialogue);
         }
     }
 
@@ -94,7 +93,7 @@ public class Tutorial : MonoBehaviour
         dialogues[7].initializeSentences(2);
         dialogues[7].sentences[0].text = "Alert! Alert! Sensor detecting abnormal organic activity! Captain! It appears to be celestial organism that is native to this planet!";
         dialogues[7].sentences[1].text = "Oh no! It appears these creatures are hostile! Captain! There is built-in MIDA-LS close combat unit in the multi-tool, time to fight some bad guys!";
-        dialogues[7].sentences[1].subtext = "Use the mode wheel to switch to combat mode";
+        dialogues[7].sentences[1].subtext = "Use the mode wheel to switch to combat mode Left click for melee, right click for ranged attack";
 
         dialogues[8].initializeSentences(1);
         dialogues[8].sentences[0].text = "Sensor detecting more hostile movements! Captain it appears that these creatures are going after the seed!";
@@ -122,7 +121,7 @@ public class Tutorial : MonoBehaviour
     }
     private void WaitForShipInteraction()
     {
-        if (shipInfo.active)
+        if (shipInfo.activeSelf)
         {
             TriggerDialogue(3);
         }

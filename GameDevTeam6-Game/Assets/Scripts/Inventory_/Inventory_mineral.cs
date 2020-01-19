@@ -6,6 +6,10 @@ public class Inventory_mineral : MonoBehaviour
 {
     List<Mineral_item> items;
 
+    private void Awake()
+    {
+        items = new List<Mineral_item>();
+    }
     public void gainItem(Mineral_item item)
     {
         foreach (Mineral_item i in items)
