@@ -329,7 +329,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1767728859
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -18334,8 +18334,8 @@ Tilemap:
   - first: {x: 25, y: 30, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 7
+      m_TileIndex: 4
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -18343,8 +18343,8 @@ Tilemap:
   - first: {x: 26, y: 30, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 24
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34015,11 +34015,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: d26bd69e431733245a24ad5241cdfeef, type: 2}
   - m_RefCount: 116
     m_Data: {fileID: 11400000, guid: cc31c55084f98d245a0e4d53c135d75c, type: 2}
-  - m_RefCount: 865
+  - m_RefCount: 864
     m_Data: {fileID: 11400000, guid: 1fc523d14a2b0d94eb8c3d2fdf75c6e4, type: 2}
   - m_RefCount: 46
     m_Data: {fileID: 11400000, guid: 39dad91a162b44e478639f88c9a15948, type: 2}
-  - m_RefCount: 39
+  - m_RefCount: 40
     m_Data: {fileID: 11400000, guid: a9248a5c42c1b664c9e6b518b926e1b3, type: 2}
   - m_RefCount: 137
     m_Data: {fileID: 11400000, guid: aa0f8ede0b8ad6d49aa04e407d70378a, type: 2}
@@ -34027,7 +34027,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 57dd9ae1c1f954646afe80eba405a5f0, type: 2}
   - m_RefCount: 71
     m_Data: {fileID: 11400000, guid: 3d2a003a0a72b7541967d1cbdd74114b, type: 2}
-  - m_RefCount: 84
+  - m_RefCount: 83
     m_Data: {fileID: 11400000, guid: 6bcb4bac3ff296049a4d0076c9088148, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -34059,7 +34059,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4b8d06d7bd5a4214aabe4820c71b1120, type: 2}
   - m_RefCount: 63
     m_Data: {fileID: 11400000, guid: 8311ae3a206e7154299fd8050b618c79, type: 2}
-  - m_RefCount: 55
+  - m_RefCount: 56
     m_Data: {fileID: 11400000, guid: 35f9afee995b46d47bae197e68b38fe4, type: 2}
   - m_RefCount: 61
     m_Data: {fileID: 11400000, guid: 3e08e007246f236419b70bc2ee76d1ba, type: 2}
@@ -34070,17 +34070,17 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 93da0a6846825324ca5570c55d39734c, type: 3}
   - m_RefCount: 137
     m_Data: {fileID: 21300000, guid: 20806ae4b113c4949beefac167cf2e1c, type: 3}
-  - m_RefCount: 865
+  - m_RefCount: 864
     m_Data: {fileID: 21300000, guid: b232e7c0b0219be418f5d69ef99fdfab, type: 3}
   - m_RefCount: 71
     m_Data: {fileID: 21300000, guid: b866f182a0d26b74aa3e3b5f1f3be4f5, type: 3}
   - m_RefCount: 2026
     m_Data: {fileID: 21300000, guid: 386ed79cff98ded45a849c8f48c97f4e, type: 3}
-  - m_RefCount: 55
+  - m_RefCount: 56
     m_Data: {fileID: 21300000, guid: d4cc731b63e855549825cebdb85f6b98, type: 3}
-  - m_RefCount: 39
+  - m_RefCount: 40
     m_Data: {fileID: 21300000, guid: dee7cbec54907ef45a853393915d865d, type: 3}
-  - m_RefCount: 84
+  - m_RefCount: 83
     m_Data: {fileID: 21300000, guid: 810320d303cbaf445bb4b37f12c2b5e6, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -34343,6 +34343,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521654019}
   m_CullTransparentMesh: 0
+--- !u!1 &551891684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6979637525683287387, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1660587284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &551891687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551891684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d178158b08c1b8498dc0bd150b2456f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayClip: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
+  nightClip: {fileID: 8300000, guid: 48e89c5df5caa8f419283c89b7cf6ba2, type: 3}
 --- !u!1 &556465878
 GameObject:
   m_ObjectHideFlags: 0
@@ -34696,7 +34716,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -35894,7 +35914,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nightClip
       value: 
-      objectReference: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
+      objectReference: {fileID: 8300000, guid: 48e89c5df5caa8f419283c89b7cf6ba2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef78e0d7b39a1145b96ff214c3265fe, type: 3}
 --- !u!224 &1693972533
@@ -36016,7 +36036,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 47eb477adea32a54c833d3b3e53d32e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

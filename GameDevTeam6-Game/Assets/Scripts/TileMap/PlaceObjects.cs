@@ -7,7 +7,6 @@ public class PlaceObjects : MonoBehaviour
     public GameObject currentObject;
     public GameObject indicator;
 
-    private Tutorial tutorial;
     private MultiTool tool;
     private GameObject player;
     private Color32 red;
@@ -17,7 +16,6 @@ public class PlaceObjects : MonoBehaviour
 
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
-        tutorial = FindObjectOfType<Tutorial>();
         if (!tool) {
             gameObject.SetActive(false);
             Debug.LogWarning("no tool found!!");
@@ -80,7 +78,7 @@ public class PlaceObjects : MonoBehaviour
     }
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
-        tutorial.TriggerDialogue(5);
+        Tutorial.Instance.TriggerDialogue(5);
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;

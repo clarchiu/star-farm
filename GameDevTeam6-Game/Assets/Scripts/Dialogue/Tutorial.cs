@@ -8,17 +8,32 @@ public class Tutorial : MonoBehaviour
     private MultiTool multiTool;
 
     private Dialogue[] dialogues;
-    private int numOfDialogues = 11;
+    private int numOfDialogues = 12;
     private int currentDialogue = 0;
     private TimeSystem timeSystem;
 
     private bool timeRunOnce = true;
 
+    private static Tutorial _instance;
+
+    public static Tutorial Instance { get { return _instance; } }
+
+    //Singleton
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         multiTool = FindObjectOfType<MultiTool>();
         timeSystem = FindObjectOfType<TimeSystem>();
     }
+
     private void Start()
     {
         dialogues = new Dialogue[numOfDialogues];
@@ -44,6 +59,8 @@ public class Tutorial : MonoBehaviour
                 break;
             case 7: SetTime();
                 break;
+            case 9: WaitForDay();
+                break;
         }
     }
 
@@ -54,6 +71,7 @@ public class Tutorial : MonoBehaviour
             GetComponent<DialogueManager>().StartDialogue(dialogues[dialogueID]);
             currentDialogue++;
         }
+        Debug.Log(currentDialogue);
     }
 
     private void InitializeDialogues()
@@ -100,13 +118,17 @@ public class Tutorial : MonoBehaviour
         dialogues[8].sentences[0].subtext = "Clear more enemies until the day comes";
 
         dialogues[9].initializeSentences(2);
-        dialogues[9].sentences[0].text = "AI: Looks like the hostile creatures have turned into rust! We need to find out why in the future.";
-        dialogues[9].sentences[1].text = "Look like the seeds you planted have matured!Try to harvest them with your multi-tool";
-        dialogues[9].sentences[1].subtext = "Use farming mode to harvest resources";
+        dialogues[9].sentences[0].text = "Looks like the hostile creatures have turned into rust! We need to find out why in the future.";
+        dialogues[9].sentences[1].text = "Look like the seeds you planted have matured! Try to harvest them with your multi-tool";
+        dialogues[9].sentences[1].subtext = "Use farming mode, right click to harvest resources from the plant ";
 
         dialogues[10].initializeSentences(1);
         dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our storage";
         dialogues[10].sentences[0].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
+
+        dialogues[11].initializeSentences(1);
+        dialogues[11].sentences[0].text = "";
+        dialogues[11].sentences[0].subtext = "Thank you for playing the tutorial!";
 
     }
 
@@ -139,14 +161,21 @@ public class Tutorial : MonoBehaviour
     {
         if (timeRunOnce)
         {
-            timeSystem.setHour(13);
-            timeSystem.setMinute(0);
+            timeSystem.hour = 19;
+            timeSystem.minute = 0;
             timeRunOnce = false;
         }
-        if (timeSystem.getHour() == 14)
+        if (timeSystem.hour == 20)
         {
             TriggerDialogue(7);
         }
+    }
 
+    private void WaitForDay()
+    {
+        if (timeSystem.isDay())
+        {
+            TriggerDialogue(9);
+        }
     }
 }

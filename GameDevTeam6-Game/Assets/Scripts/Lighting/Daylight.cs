@@ -14,7 +14,7 @@ public class Daylight : MonoBehaviour
     void Start()
     {
    
-        brightness = 1f;
+        brightness = 0.8f;
         transform.position = new Vector3(29, 29, -80);
         timeSystem = FindObjectOfType<TimeSystem>();
         
@@ -27,17 +27,16 @@ public class Daylight : MonoBehaviour
     void Update()
     {
 
-        int hour = timeSystem.getHour();
-        if (hour > 12 && brightness > 0.2f)
-          {
-              brightness -= 0.05f * Time.deltaTime;
-          }
-          if (hour > 22 && brightness < 1)
-          {
-              brightness += 0.05f * Time.deltaTime;
-          }
+        if (!timeSystem.isDay() && brightness > 0.2f)
+        {
+            brightness -= 0.05f * Time.deltaTime;
+        }
+        else if (timeSystem.isDay() && brightness < 0.8)
+        {
+            brightness += 0.05f * Time.deltaTime;
+        }
 
-          theLight.color = new Color(brightness, brightness, brightness, 1f);
+        theLight.color = new Color(brightness, brightness, brightness, 1f);
 
 
     }
