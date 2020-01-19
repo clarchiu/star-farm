@@ -34,7 +34,7 @@ public class Daylight : MonoBehaviour
           }
           if (hour > 22 && brightness < 1)
           {
-              brightness += 0.0001f;
+              brightness += 0.00011f;
           }
 
           theLight.color = new Color(brightness, brightness, brightness, 1f);
