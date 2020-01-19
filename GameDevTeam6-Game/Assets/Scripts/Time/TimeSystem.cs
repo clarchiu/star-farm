@@ -14,7 +14,7 @@ public class TimeSystem : MonoBehaviour
     {
         seconds = 0;
         minute = 0;
-        hour = 14;
+        hour = 0;
     }
 
     // Update is called once per frame
@@ -38,32 +38,15 @@ public class TimeSystem : MonoBehaviour
         }
     }
 
-    public int getHour()
+    public bool isDay()
     {
-        return hour;
-    }
-
-    public int getMinute()
-    {
-        return minute;
-    }
-
-    public float getSeconds()
-    {
-        return seconds % 60;
-    }
-
-    public void setHour(int h)
-    {
-        hour = h;
-    }
-    public void setMinute(int m)
-    {
-        minute = m;
-    }
-    public void setSeconds(int s)
-    {
-        seconds = s;
+        if (hour < 13)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
 }

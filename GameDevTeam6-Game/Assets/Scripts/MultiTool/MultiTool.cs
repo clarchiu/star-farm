@@ -69,6 +69,7 @@ public class MultiTool : MonoBehaviour
             else if (currentImage == bottomLeft)
             {
                 mode = ToolModes.combatMode;
+                Tutorial.Instance.TriggerDialogue(8);
             }
             else if (currentImage == bottomRight)
             {

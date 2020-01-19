@@ -39,8 +39,10 @@ public class MusicPlayer : MonoBehaviour
             yield return null;
         }
 
-       // audioSource.Stop();
+        audioSource.Stop();
         audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.Play();
         audioSource.volume = startVolume;
     }
 

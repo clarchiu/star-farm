@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         player.MpPlayer.clip = dayClip;
-        player.MpPlayer.loop = false;
+        player.MpPlayer.loop = true;
         player.MpPlayer.Play();
         StartCoroutine(player.WaitForTrackToEnd());
     }
@@ -29,7 +29,7 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nightClip && time.getHour() > 12 && time.getHour() < 22)
+        if (!time.isDay())
         {
             if (flag)
             {
