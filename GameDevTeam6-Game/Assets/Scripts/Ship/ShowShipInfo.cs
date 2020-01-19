@@ -17,7 +17,7 @@ public class ShowShipInfo : MonoBehaviour
 
     private void toggleInfoPanel()
     {
-        if (infoPanel.active)
+        if (infoPanel.activeSelf)
         {
             infoPanel.SetActive(false);
         } else

@@ -51,21 +51,21 @@ public class PlayerMelee : MonoBehaviour
         
           if (direction.GetDirection() == playerDir.left)
           {
-            hitPosX -= 5;
+            hitPosX -= 0.75f;
           }
           else if (direction.GetDirection() == playerDir.right)
           {
-            hitPosX += 5;
+            hitPosX += 0.75f;
           }
           else if (direction.GetDirection() == playerDir.up)
           {
-            hitPosY += 5;
+            hitPosY += 0.75f;
           }
           else if (direction.GetDirection() == playerDir.down)
           {
-            hitPosY -= 5;
+            hitPosY -= 0.75f;
           }
-          hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(10f, 10f), 0f);
+          hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(1.5f, 1.5f), 0f);
 
 
         while (i < hitColliders.Length)

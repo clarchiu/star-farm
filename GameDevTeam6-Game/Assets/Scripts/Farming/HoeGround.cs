@@ -9,7 +9,7 @@ public class HoeGround : MonoBehaviour
     private MultiTool tool;
     private GameObject player;
     [SerializeField]
-    private Tilemap tileMap;
+    private Tilemap tileMap = null;
     private TileLayout tileLayout;
     public Tile[] tiles;
 

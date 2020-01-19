@@ -28,13 +28,13 @@ public class Daylight : MonoBehaviour
     {
 
         int hour = timeSystem.getHour();
-        if (hour > 12 && hour < 14)
+        if (hour > 12 && brightness > 0.2f)
           {
-              brightness -= 0.0001f;
+              brightness -= 0.05f * Time.deltaTime;
           }
           if (hour > 22 && brightness < 1)
           {
-              brightness += 0.0001f;
+              brightness += 0.05f * Time.deltaTime;
           }
 
           theLight.color = new Color(brightness, brightness, brightness, 1f);
