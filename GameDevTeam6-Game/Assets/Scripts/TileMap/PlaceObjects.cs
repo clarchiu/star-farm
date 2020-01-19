@@ -53,6 +53,7 @@ public class PlaceObjects : MonoBehaviour
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
+                    //PlayAttackAnimation();
                 }
             }
         } else
@@ -114,4 +115,30 @@ public class PlaceObjects : MonoBehaviour
         int playerY = Mathf.RoundToInt(player.transform.position.y);
         return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);
     }
+    /*
+    public void PlayAttackAnimation()
+    {
+        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
+        Animator ani = player.GetComponent<Animator>();
+
+        ani.speed = 1;
+        if (dir == playerDir.left)
+        {
+            ani.Play("attack_left");
+        }
+        else if (dir == playerDir.right)
+        {
+            ani.Play("attack_right");
+        }
+        else if (dir == playerDir.up)
+        {
+            ani.Play("attack_up");
+        }
+        else if (dir == playerDir.down)
+        {
+            ani.Play("attack_down");
+        }
+
+    }
+    */
 }
