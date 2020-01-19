@@ -7,7 +7,6 @@ public class PlaceObjects : MonoBehaviour
     public GameObject currentObject;
     public GameObject indicator;
 
-    private Tutorial tutorial;
     private MultiTool tool;
     private GameObject player;
     private Color32 red;
@@ -17,7 +16,6 @@ public class PlaceObjects : MonoBehaviour
 
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
-        tutorial = FindObjectOfType<Tutorial>();
         if (!tool) {
             gameObject.SetActive(false);
             Debug.LogWarning("no tool found!!");
@@ -55,6 +53,7 @@ public class PlaceObjects : MonoBehaviour
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
+                    //PlayAttackAnimation();
                 }
             }
         } else
@@ -80,7 +79,7 @@ public class PlaceObjects : MonoBehaviour
     }
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
-        tutorial.TriggerDialogue(5);
+        Tutorial.Instance.TriggerDialogue(5);
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;
@@ -116,4 +115,30 @@ public class PlaceObjects : MonoBehaviour
         int playerY = Mathf.RoundToInt(player.transform.position.y);
         return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);
     }
+    /*
+    public void PlayAttackAnimation()
+    {
+        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
+        Animator ani = player.GetComponent<Animator>();
+
+        ani.speed = 1;
+        if (dir == playerDir.left)
+        {
+            ani.Play("attack_left");
+        }
+        else if (dir == playerDir.right)
+        {
+            ani.Play("attack_right");
+        }
+        else if (dir == playerDir.up)
+        {
+            ani.Play("attack_up");
+        }
+        else if (dir == playerDir.down)
+        {
+            ani.Play("attack_down");
+        }
+
+    }
+    */
 }

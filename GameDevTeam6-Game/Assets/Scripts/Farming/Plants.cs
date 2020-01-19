@@ -9,8 +9,6 @@ public class Plants : MonoBehaviour
     public Sprite plantImg4;
     public Sprite plantImg5;
 
-    private PlantBehavior plantBehav;
-    public GameObject plantPrefab;
     private int stages;
     private string species;
     private bool[] arrFruits = new bool[5];
@@ -36,10 +34,10 @@ public class Plants : MonoBehaviour
         return stages;
     }
 
-    public void setStages(int stages)
+    public void setStages(int st)
     {
-        this.stages = stages;
-       
+        stages = st;
+
         switch(stages)
         {
             case 2:

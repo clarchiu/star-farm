@@ -15,9 +15,8 @@ public class TimeUI : MonoBehaviour
 
     void Update()
     {
-        int hour = system.getHour();
-        int minute = system.getMinute();
-        float seconds = system.getSeconds();
+        int hour = system.hour;
+        int minute = system.minute;
 
         string h = hour.ToString();
         string m = minute.ToString();

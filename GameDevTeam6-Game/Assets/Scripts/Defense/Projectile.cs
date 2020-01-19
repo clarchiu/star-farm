@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
 
     private float lifeTime = 2;
     private float currentTime = 0;
+    private Health health;
+    private HealthBar hpBar;
 
     void Awake(){
         FindRigidBody();
@@ -46,5 +48,18 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
         //TODO
         //Add Object Pooling to Avoid Memory Issues
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
+        Debug.Log(col.gameObject.name);
+        if (col.gameObject.name == "Dregling(Clone)")
+        {
+            health = col.gameObject.GetComponent<Health>();
+            health.RemoveHealth(10);
+            hpBar = col.gameObject.GetComponent<HealthBar>();
+            hpBar.UpdateHealthBar();
+        }
     }
 }
