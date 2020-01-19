@@ -25,6 +25,14 @@ public class FollowState : IState
             //move towards target
             parent.transform.position = Vector2.MoveTowards(parent.transform.position,
                 parent.Target.transform.position, parent.Speed * Time.deltaTime);
+
+            float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
+
+            if (distance <= parent.AttackRange)
+            {
+                parent.ChangeState(new AttackState());
+            }
+
         }
         else
         {

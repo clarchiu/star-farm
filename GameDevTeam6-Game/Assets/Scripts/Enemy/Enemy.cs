@@ -22,6 +22,7 @@ public abstract class Enemy : MonoBehaviour
     public abstract float Speed { get; }
     protected abstract int BaseHealth { get; }
     protected abstract int Damage { get; }
+    public abstract float AttackRange { get; }
 
     public bool IsMoving { get => direction.x != 0 || direction.y != 0; }
 
