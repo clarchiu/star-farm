@@ -10,22 +10,20 @@ public abstract class Enemy : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private Health myHealth;
 
-    protected Vector2 direction;
-    public bool IsMoving
-    {
-        get
-        {
-            return direction.x != 0 || direction.y != 0;
-        }
-    }
+    private IState currentState;
 
-    protected abstract string PreferredTarget { get; }
-    protected abstract float Speed { get; }
-    protected abstract int BaseHealth { get; }
-    protected abstract int Damage { get; }
+    private Vector2 direction;
+    public Vector2 Direction { get => direction; set => direction = value; }
 
     private GameObject target;
     public GameObject Target { get => target; set => target = value; }
+
+    protected abstract string PreferredTarget { get; }
+    public abstract float Speed { get; }
+    protected abstract int BaseHealth { get; }
+    protected abstract int Damage { get; }
+
+    public bool IsMoving { get => direction.x != 0 || direction.y != 0; }
 
     protected virtual void Start()
     {
@@ -35,35 +33,20 @@ public abstract class Enemy : MonoBehaviour
         myHealth.SetHealth(BaseHealth);
     }
 
+    protected void Awake()
+    {
+        ChangeState(new IdleState());
+    }
+
     protected virtual void Update()
     {
+        currentState.Update();
         HandleLayers();
     }
 
     public void Move() //FixedUpdate is frame rate independent
     {
         myRigidBody.velocity = direction.normalized * Speed;
-    }
-
-    protected void FollowTarget()
-    {
-        if (target != null)
-        {
-            direction = (target.transform.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position,
-                target.transform.position, Speed * Time.deltaTime);
-        }
-        else
-        {
-            direction = Vector2.zero;
-        }
-        //else
-        //{
-        //    Vector2 origin = new Vector2(27f, 27f);
-        //    direction = (origin - (Vector2)transform.position).normalized;
-        //    transform.position = Vector2.MoveTowards(transform.position,
-        //        origin, Speed * Time.deltaTime);
-        //}
     }
 
     protected GameObject FindClosestTarget()
@@ -113,5 +96,14 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
+    public void ChangeState(IState newState)
+    {
+        if (currentState != null)
+        {
+            currentState.Exit();
+        }
+        currentState = newState;
+        currentState.Enter(this);
+    }
 
 }

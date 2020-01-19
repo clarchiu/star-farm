@@ -6,7 +6,7 @@ public class Dregling : Enemy
 
     private int baseHealth = 50;
     protected override int BaseHealth { get => baseHealth; }
-    protected override float Speed => 1f;
+    public override float Speed => 1f;
     protected override int Damage => 10;
     protected override string PreferredTarget => "Player";
 
@@ -17,7 +17,6 @@ public class Dregling : Enemy
 
     protected override void Update()
     {
-        FollowTarget();
         base.Update();
     }
 

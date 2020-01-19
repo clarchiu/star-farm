@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
     public TimeSystem timeSystem;
 
     [SerializeField] private float startSpawnTime = 2f;
-    [SerializeField] private float spawnInterval = 1f;
+    [SerializeField] private float spawnInterval = 5f;
 
     // Start is called before the first frame update
     void Start()
