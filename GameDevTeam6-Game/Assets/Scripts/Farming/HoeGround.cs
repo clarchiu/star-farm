@@ -13,8 +13,6 @@ public class HoeGround : MonoBehaviour
     private TileLayout tileLayout;
     public Tile[] tiles;
 
-    private Tutorial tutorial;
-
     public GameObject indicator;
     private SpriteRenderer indicatorRenderer;
 
@@ -24,7 +22,6 @@ public class HoeGround : MonoBehaviour
 
     private void Awake()
     {
-        tutorial = FindObjectOfType<Tutorial>();
         place = FindObjectOfType<PlaceObjects>();
         tool = FindObjectOfType<MultiTool>();
         tileLayout = FindObjectOfType<TileLayout>();
@@ -72,7 +69,7 @@ public class HoeGround : MonoBehaviour
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    tutorial.TriggerDialogue(6);
+                    Tutorial.Instance.TriggerDialogue(6);
                     place.CreateObject(plant, tileX, tileY);
                 }
                 if (Input.GetMouseButtonDown(1))
@@ -82,10 +79,16 @@ public class HoeGround : MonoBehaviour
             } else {
                 indicatorRenderer.color = red;
                 if (Input.GetMouseButtonDown(1)) {
-                    tileMap.SetTile(new Vector3Int(tileX - 1, tileY - 1, 0), tiles[1]);
-                    if (tileLayout.GetTile(tileX, tileY).getObjectOnTile().tag == "Plant")
-                    {
+                    if (tileLayout.GetTile(tileX, tileY).getObjectOnTile().tag == "Plant") {
+                        if (tileLayout.GetTile(tileX, tileY).getObjectOnTile().GetComponent<Plants>().getStages() == 5)
+                        {
+                            Tutorial.Instance.TriggerDialogue(10);
+                            Tutorial.Instance.TriggerDialogue(11);
+                            Debug.Log("yay");
+                        }
                         place.DestroyObject(tileX, tileY);
+                    } else {
+                        tileMap.SetTile(new Vector3Int(tileX - 1, tileY - 1, 0), tiles[1]);
                     }
                 }
             }

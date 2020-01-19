@@ -20,8 +20,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void spawnEnemy()
     {
-        int hour = timeSystem.getHour();
-        if (hour >= 14 && hour < 22)
+        if (!timeSystem.isDay())
         {
             Vector3 positionAlongEdge = new Vector3(0, 0, 0);
 

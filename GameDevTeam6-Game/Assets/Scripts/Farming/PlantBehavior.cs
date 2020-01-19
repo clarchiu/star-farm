@@ -8,7 +8,7 @@ public class PlantBehavior : MonoBehaviour
     private Plants plantProperties;
     private TimeSystem system;
     public float timeCounter;
-    private int delay = 30;
+    private int delay = 10;
     private int previousTime;
 
     void Start()
@@ -29,7 +29,7 @@ public class PlantBehavior : MonoBehaviour
 
     public void growing(float time)
     {
-        int stages = 1;
+        int stages = plantProperties.getStages();
 
         if (previousTime + delay < time && stages <= 5) //change stage 360 sec after growing() is callled
         {
