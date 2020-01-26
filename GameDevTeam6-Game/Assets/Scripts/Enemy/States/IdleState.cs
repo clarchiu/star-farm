@@ -8,6 +8,7 @@ public class IdleState: IState
     public void Enter(Enemy parent)
     {
         this.parent = parent;
+        Debug.Log("enemy in idle state");
     }
 
     public void Exit()
@@ -18,7 +19,8 @@ public class IdleState: IState
     {
         if (parent.Target != null)
         {
-            parent.ChangeState(new FollowState());
+            Debug.Log("target found in Idle");
+            parent.ChangeState(new PathState());
         }
     }
 }

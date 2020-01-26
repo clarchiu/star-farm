@@ -11,6 +11,9 @@ TagManager:
   - Enemy
   - Ship
   - Plant
+  - Unwalkable
+  - Walkable
+  - AStarSquare
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Obstacle
   - 
   - 
   - 

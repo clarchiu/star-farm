@@ -6,9 +6,19 @@ using UnityEngine;
 //enemy will eventually be an abstract class, need a targetable interface
 public abstract class Enemy : MonoBehaviour
 {
+    //public TileLayout Tilemap { get; set; }
+    [SerializeField]
+    private AStarInscope astar;
+    public AStarInscope MyAstar { get => astar; }
+
+    public Stack<Vector3> MyPath;
+
     private Animator animator;
-    private Rigidbody2D myRigidBody;
-    private Health myHealth;
+    public Animator MyAnimator { get => animator; }
+
+    private Rigidbody2D rigidBody;
+    public Rigidbody2D MyRigidBody { get => rigidBody; }
+
 
     private IState currentState;
 
@@ -18,18 +28,24 @@ public abstract class Enemy : MonoBehaviour
     private GameObject target;
     public GameObject Target { get => target; set => target = value; }
 
+    //properties to handle animation layers
+    public bool IsMoving { get => direction.x != 0 || direction.y != 0; }
+    public bool IsAttacking { get; set; }
+
+    private Health myHealth;
+
+    //enemy attributes that need to be initialized by subclasses
     protected abstract string PreferredTarget { get; }
-    public abstract float Speed { get; }
     protected abstract int BaseHealth { get; }
     protected abstract int Damage { get; }
+    public abstract float Speed { get; }
     public abstract float AttackRange { get; }
-
-    public bool IsMoving { get => direction.x != 0 || direction.y != 0; }
 
     protected virtual void Start()
     {
+        //Tilemap = FindObjectOfType<TileLayout>();
         animator = GetComponent<Animator>();
-        myRigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         myHealth = GetComponent<Health>();
         myHealth.SetHealth(BaseHealth);
     }
@@ -45,11 +61,21 @@ public abstract class Enemy : MonoBehaviour
         HandleLayers();
     }
 
-    public void Move() //FixedUpdate is frame rate independent
+    protected virtual void FixedUpdate()
     {
-        myRigidBody.velocity = direction.normalized * Speed;
+        Move();
     }
 
+
+    public void Move() //FixedUpdate is frame rate independent
+    {
+        if (MyPath == null)
+        {
+            rigidBody.velocity = direction.normalized * Speed;
+        }
+    }
+
+    //TODO: needs to be different for different subclasses
     protected GameObject FindClosestTarget()
     {
         GameObject[] gameObjs;
@@ -80,6 +106,11 @@ public abstract class Enemy : MonoBehaviour
             animator.SetFloat("x", direction.x);
             animator.SetFloat("y", direction.y);
         }
+        else if (IsAttacking)
+        {
+            //TODO: add attack layer
+            ActivateLayer("Attack Layer");
+        }
         else
         {
             ActivateLayer("Idle Layer");
@@ -106,5 +137,4 @@ public abstract class Enemy : MonoBehaviour
         currentState = newState;
         currentState.Enter(this);
     }
-
 }

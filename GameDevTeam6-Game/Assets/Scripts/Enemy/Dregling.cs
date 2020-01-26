@@ -9,7 +9,7 @@ public class Dregling : Enemy
     public override float Speed => 1f;
     protected override int Damage => 10;
     protected override string PreferredTarget => "Player";
-    public override float AttackRange => 1.2f;
+    public override float AttackRange => 0.8f;
 
     protected override void Start()
     {

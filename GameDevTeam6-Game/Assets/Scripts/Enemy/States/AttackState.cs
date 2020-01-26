@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class AttackState : IState
@@ -8,6 +9,10 @@ public class AttackState : IState
     public void Enter(Enemy parent)
     {
         this.parent = parent;
+        Debug.Log("enemy in attack state");
+
+        parent.MyRigidBody.velocity = Vector2.zero;
+        parent.Direction = Vector2.zero;
     }
 
     public void Exit()
@@ -31,5 +36,13 @@ public class AttackState : IState
         {
             parent.ChangeState(new IdleState());
         }
+    }
+
+    public IEnumerator Attack()
+    {
+        parent.IsAttacking = true;
+        parent.MyAnimator.SetTrigger("attack");
+
+        yield return new WaitForSeconds(parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
     }
 }

@@ -23,7 +23,7 @@ public class EnemyRange : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             parent.Target = collision.gameObject;
-            //print("target found");
+            print("target found");
         }
     }
 

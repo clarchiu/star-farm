@@ -8,6 +8,7 @@ public class FollowState : IState
     public void Enter(Enemy parent)
     {
         this.parent = parent;
+        Debug.Log("enemy in follow state");
     }
 
     public void Exit()
@@ -22,10 +23,7 @@ public class FollowState : IState
             //Find the target's direction
             parent.Direction = (parent.Target.transform.position - parent.transform.position).normalized;
 
-            //move towards target
-            parent.transform.position = Vector2.MoveTowards(parent.transform.position,
-                parent.Target.transform.position, parent.Speed * Time.deltaTime);
-
+            //calculate distance between target and itself
             float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
 
             if (distance <= parent.AttackRange)
