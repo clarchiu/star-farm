@@ -11,6 +11,8 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float nextWayPointDistance = 0.5f;
 
+    //Path path;
+
 
     // Start is called before the first frame update
     void Start()
