@@ -46,17 +46,17 @@ public class EnemyGFX : MonoBehaviour
 
         if (IsMoving)
         {
-            Debug.LogFormat("is moving: {0}", direction);
+            //Debug.LogFormat("is moving: {0}", direction);
             ActivateLayer("Walk Layer");
         }
         else if (IsAttacking)
         {
-            Debug.Log("is attacking");
+            //Debug.Log("is attacking");
             ActivateLayer("Attack Layer");
         }
         else
         {
-            Debug.Log("is idling");
+            //Debug.Log("is idling");
             ActivateLayer("Idle Layer");
         }
     }
