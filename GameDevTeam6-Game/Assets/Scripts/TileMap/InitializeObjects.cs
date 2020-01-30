@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Pathfinding;
 
 public class InitializeObjects : MonoBehaviour
 {
@@ -42,5 +43,8 @@ public class InitializeObjects : MonoBehaviour
                 }
             }
         }
+
+        //this is critical - Clarence
+        AstarPath.active.Scan(); //scans the map to create grid graph for pathfinding
     }
 }

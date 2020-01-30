@@ -1,24 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
 
-public class IdleState: IState
+internal class IdleState: IState
 {
-    private Enemy parent;
+    private EnemyAI parent;
 
-    public void Enter(Enemy parent)
+    public void Enter(EnemyAI parent)
     {
         this.parent = parent;
     }
 
     public void Exit()
     {
+
     }
 
     public void Update()
     {
-        if (parent.Target != null)
-        {
-            parent.ChangeState(new FollowState());
-        }
+
     }
 }
+
