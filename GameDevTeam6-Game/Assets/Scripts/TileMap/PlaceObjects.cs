@@ -89,6 +89,7 @@ public class PlaceObjects : MonoBehaviour
         GameObject objectOnTile = tile.getObjectOnTile();
         if (objectOnTile != null) {
             Destroy(objectOnTile);
+            Inventory_mineral.Instance.GainItem(Mineral_type.iron, 1);
         }
         GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
     }
