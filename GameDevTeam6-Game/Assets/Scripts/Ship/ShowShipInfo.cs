@@ -8,6 +8,7 @@ public class ShowShipInfo : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log(this.gameObject.name);
         infoPanel.SetActive(false);
     }
 

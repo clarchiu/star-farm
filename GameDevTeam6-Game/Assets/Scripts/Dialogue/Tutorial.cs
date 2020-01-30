@@ -72,6 +72,7 @@ public class Tutorial : MonoBehaviour
             currentDialogue++;
         }
         Debug.Log(currentDialogue);
+        Debug.Log(this.gameObject.name);
     }
 
     private void InitializeDialogues()
