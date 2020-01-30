@@ -73,7 +73,7 @@ public class PlayerMelee : MonoBehaviour
             //Output all of the collider names
             // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
-            if (hitColliders[i].name == "Dregling(Clone)")
+            if (hitColliders[i].CompareTag("Enemy"))
             { 
                 health = hitColliders[i].GetComponent<Health>();
                 health.RemoveHealth(20);

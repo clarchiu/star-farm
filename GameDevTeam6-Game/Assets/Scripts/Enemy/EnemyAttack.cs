@@ -8,11 +8,12 @@ public class EnemyAttack : MonoBehaviour
     private Health health;
     private HealthBar hpBar;
     private int hitDamage;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    // Start is called before the first frame update
+
     public Collider2D[] attackPlayer()
     {
         int i = 0;
@@ -37,5 +38,4 @@ public class EnemyAttack : MonoBehaviour
 
         return hitColliders;
     }
-        // Update is called once per frame
 }
