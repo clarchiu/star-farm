@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         float yVelocity = projectileSpeed * Mathf.Sin(angle);
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
     }
-
+    /*
     private void Update()
     {
         currentTime += Time.deltaTime;
@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    */
     void DestroyProjectile(){
         Destroy(gameObject);
         //TODO
@@ -61,5 +61,8 @@ public class Projectile : MonoBehaviour
             hpBar = col.gameObject.GetComponent<HealthBar>();
             hpBar.UpdateHealthBar();
         }
+
+     Destroy(this.gameObject);
+
     }
 }

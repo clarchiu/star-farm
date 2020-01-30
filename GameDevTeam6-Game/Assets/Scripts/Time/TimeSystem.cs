@@ -8,6 +8,7 @@ public class TimeSystem : MonoBehaviour
     public int hour;
     public int minute;
     public float seconds;
+    public int day;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class TimeSystem : MonoBehaviour
         seconds = 0;
         minute = 0;
         hour = 0;
+        day = 1;
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class TimeSystem : MonoBehaviour
         if (hour >= 24)
         {
             hour -= 24;
+            day += 1;
         }
     }
 
