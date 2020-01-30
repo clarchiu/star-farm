@@ -7,6 +7,7 @@ public class InitializeObjects : MonoBehaviour
 {
     public Tilemap map;
     public GameObject boulder;
+    public Sprite[] boulderSprites;
 
     private TileLayout layout;
     private PlaceObjects place;
@@ -35,6 +36,9 @@ public class InitializeObjects : MonoBehaviour
                 if (spr.name == "hd_0")
                 {
                     place.CreateObject(boulder, i, j);
+                    int random = Random.Range(0, 2);
+                    GameObject obj = layout.GetTile(i, j).getObjectOnTile();
+                    obj.GetComponent<SpriteRenderer>().sprite = boulderSprites[random];
                 }
             }
         }
