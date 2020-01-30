@@ -77,9 +77,9 @@ public class PlayerMelee : MonoBehaviour
             if (hitColliders[i].CompareTag("Enemy"))
             {
                // enemy = hitColliders[i].gameObject.GetComponentInChild);
-                health = hitColliders[i].gameObject.GetComponentInChildren<Health>();
+                health = hitColliders[i].gameObject.GetComponent<Health>();
                 health.RemoveHealth(20);
-                hpBar = hitColliders[i].gameObject.GetComponentInChildren<HealthBar>();
+                hpBar = hitColliders[i].gameObject.GetComponent<HealthBar>();
                 hpBar.UpdateHealthBar();
                 knockBackObject(hitColliders[i], 200f);
             }

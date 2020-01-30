@@ -17,7 +17,6 @@ public class HealthBar : MonoBehaviour
         health = GetComponent<Health>();
         maxHp = health.healthBar;
         hpBar = healthBar.transform.GetChild(0);
-        Debug.Log(health.healthBar);
         hpBar.transform.localScale = new Vector3(health.healthBar * (1.0f) / maxHp * (1.0f), hpBar.transform.localScale.y, hpBar.transform.localScale.z);
     }
 

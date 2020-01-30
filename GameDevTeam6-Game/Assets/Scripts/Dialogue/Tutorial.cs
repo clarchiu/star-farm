@@ -71,8 +71,7 @@ public class Tutorial : MonoBehaviour
             GetComponent<DialogueManager>().StartDialogue(dialogues[dialogueID]);
             currentDialogue++;
         }
-        Debug.Log(currentDialogue);
-        Debug.Log(this.gameObject.name);
+     
     }
 
     private void InitializeDialogues()
