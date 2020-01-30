@@ -3,26 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+/*
+ * This class handles the logical layer of an enemy in order to separate
+ * the graphical layer from the logical layer.
+ * An enemy can have different behaviours - each behaviour is defined as a state.
+ * Each state is responsible for changing to another state
+ * 
+ * - Clarence
+ */
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI: MonoBehaviour
 {
-    public Transform target;
+    private IState currentState;
 
-    public float speed;
-    public float nextWayPointDistance = 0.5f;
-
-    //Path path;
-
-
-    // Start is called before the first frame update
-    void Start()
+    private GameObject target;
+    public GameObject Target
     {
-        
+        get
+        {
+            return target;
+        }
+        set
+        {
+            target = value;
+            GetComponent<AIDestinationSetter>().target = this.target.transform;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public AIPath aiPath;
+
+    private void Awake()
     {
-        
+        ChangeState(new SearchState());
+    }
+
+    private void Start()
+    {
+    }
+
+    private void Update()
+    {
+        currentState.Update();
+    }
+
+    public void ChangeState(IState newState)
+    {
+        if (currentState != null)
+        {
+            currentState.Exit();
+        }
+        currentState = newState;
+        currentState.Enter(this);
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        GetComponentInChildren<EnemyGFX>().Direction = direction;
     }
 }

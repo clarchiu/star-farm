@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//enemy will eventually be an abstract class, need a targetable interface
 public abstract class Enemy : MonoBehaviour
 {
     //public TileLayout Tilemap { get; set; }
@@ -20,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     public Rigidbody2D MyRigidBody { get => rigidBody; }
 
 
-    private IState currentState;
+    //private IState currentState;
 
     private Vector2 direction;
     public Vector2 Direction { get => direction; set => direction = value; }
@@ -52,12 +51,12 @@ public abstract class Enemy : MonoBehaviour
 
     protected void Awake()
     {
-        ChangeState(new IdleState());
+        //ChangeState(new IdleState());
     }
 
     protected virtual void Update()
     {
-        currentState.Update();
+        //currentState.Update();
         HandleLayers();
     }
 
@@ -73,29 +72,6 @@ public abstract class Enemy : MonoBehaviour
         {
             rigidBody.velocity = direction.normalized * Speed;
         }
-    }
-
-    //TODO: needs to be different for different subclasses
-    protected GameObject FindClosestTarget()
-    {
-        GameObject[] gameObjs;
-        gameObjs = GameObject.FindGameObjectsWithTag(PreferredTarget);
-
-        GameObject closestObj = null;
-        float closestDis = Mathf.Infinity;
-        Vector3 selfPos = transform.position;
-        foreach (GameObject obj in gameObjs)
-        {
-            Vector3 diff = obj.transform.position - selfPos;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < closestDis)
-            {
-                closestObj = obj;
-                closestDis = curDistance;
-            }
-        }
-
-        return closestObj;
     }
 
     public void HandleLayers()
@@ -117,7 +93,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void ActivateLayer(string layerName)
+    private void ActivateLayer(string layerName)
     {
         for (int i = 0; i < animator.layerCount; i++)
         {
@@ -128,13 +104,13 @@ public abstract class Enemy : MonoBehaviour
 
     }
 
-    public void ChangeState(IState newState)
-    {
-        if (currentState != null)
-        {
-            currentState.Exit();
-        }
-        currentState = newState;
-        currentState.Enter(this);
-    }
+    //public void ChangeState(IState newState)
+    //{
+    //    if (currentState != null)
+    //    {
+    //        currentState.Exit();
+    //    }
+    //    currentState = newState;
+    //    currentState.Enter(this);
+    //}
 }

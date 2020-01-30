@@ -25,10 +25,15 @@ public class ObjectTile
     public void setObjectOnTile(GameObject obj)
     {
         objectOnTile = obj;
+
+        objectOnTile.layer = 8; //this is critical for pathfinding - Clarence
+
+        //this is for older version of astar pathfinding - Clarence
         if (objectOnTile.CompareTag("Unwalkable"))
         {
             Walkable = false;
-        } else
+        }
+        else
         {
             Walkable = true;
         }

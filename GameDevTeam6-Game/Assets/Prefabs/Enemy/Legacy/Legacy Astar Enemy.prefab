@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 263295482943470564}
   - component: {fileID: 263295482943470363}
   m_Layer: 0
-  m_Name: AStarDregling
+  m_Name: Inscope Astar Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,12 +205,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 263295482943470362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4b91f56519c44ec92b9e2d0e9444fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 85e996d46600e4430bd3f80fc284abdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   astarsquare: {fileID: 3514045397886662005, guid: 8821c056823d0476ba518afa688715c6,
     type: 3}
-  objectTileController: {fileID: 0}
+  objectTileController: {fileID: 5357311604643866460, guid: b489ad8e15b004f189ae90380148cbe4,
+    type: 3}
 --- !u!1 &263295483679671664
 GameObject:
   m_ObjectHideFlags: 0

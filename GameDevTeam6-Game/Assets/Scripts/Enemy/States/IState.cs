@@ -1,7 +1,8 @@
 ﻿using System;
+
 public interface IState
 {
-    void Enter(Enemy parent);
+    void Enter(EnemyAI parent);
 
     void Update();
 

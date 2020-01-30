@@ -1,64 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Pathfinding;
 
-public class PathState : IState
+/*
+ * Path state responsible for turning on AIPath class to start searching for paths
+ * to the target.
+ * From path state, the agent can go into attack state or search state
+ * - Clarence 
+ */
+internal class PathState : IState
 {
-    private Enemy parent;
-    private Vector3 destination;
-    private Vector3 current;
-    private Vector3 goal;
-    private Transform transform;
+    private EnemyAI parent;
 
-    public void Enter(Enemy parent)
+
+    public void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in path state");
         this.parent = parent;
-        this.transform = parent.transform;
-        this.goal = parent.Target.transform.position;
-
-        parent.MyPath = parent.MyAstar.FindPath(parent.transform.position, goal);
-        this.current = transform.position;
-        this.destination = parent.MyPath.Pop();
+        parent.aiPath.canMove = true;
+        parent.aiPath.canSearch = true;
     }
-
 
     public void Exit()
     {
-        parent.MyPath = null;
+        parent.aiPath.canMove = false;
+        parent.aiPath.canSearch = false;
+        //throw new System.NotImplementedException();
     }
 
     public void Update()
     {
-        if (parent.MyPath != null)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, destination, parent.Speed * Time.deltaTime);
-
-            parent.Direction = (destination - transform.position).normalized;
-
-            float distance = Vector2.Distance(destination, transform.position);
-            float totalDistance = Vector2.Distance(parent.Target.transform.position, transform.position);
-
-            if (totalDistance <= parent.AttackRange)
-            {
-                parent.ChangeState(new AttackState());
-            }
-
-            if (distance <= 0)
-            {
-                if (parent.MyPath.Count > 0)
-                {
-                    destination = parent.MyPath.Pop();
-                }
-                else
-                {
-                    parent.MyPath = null;
-                    parent.ChangeState(new IdleState());
-                }
-            }
-        }
-
-        
-
+        //from path state you can go into attack state, search state
     }
 }

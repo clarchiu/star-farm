@@ -1,26 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
 
-public class IdleState: IState
+internal class IdleState: IState
 {
-    private Enemy parent;
+    private EnemyAI parent;
 
-    public void Enter(Enemy parent)
+    public void Enter(EnemyAI parent)
     {
         this.parent = parent;
-        Debug.Log("enemy in idle state");
     }
 
     public void Exit()
     {
+
     }
 
     public void Update()
     {
-        if (parent.Target != null)
-        {
-            Debug.Log("target found in Idle");
-            parent.ChangeState(new PathState());
-        }
+
     }
 }
+
