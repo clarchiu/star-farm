@@ -28,5 +28,12 @@ internal class PathState : IState
     public void Update()
     {
         //from path state you can go into attack state, search state
+        if (parent.Target == null)
+        {
+            parent.ChangeState(new SearchState());
+        } else if ( parent.aiPath.reachedEndOfPath == true )
+        {
+            //parent.ChangeState(new AttackState());
+        }
     }
 }
