@@ -11,6 +11,7 @@ public class PlayerMelee : MonoBehaviour
     private HealthBar hpBar;
     private Rigidbody2D body;
     float attackDelay = 0;
+    private GameObject enemy;
 
 
     private void Awake()
@@ -74,10 +75,11 @@ public class PlayerMelee : MonoBehaviour
             // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
             if (hitColliders[i].CompareTag("Enemy"))
-            { 
-                health = hitColliders[i].GetComponent<Health>();
+            {
+               // enemy = hitColliders[i].gameObject.GetComponentInChild);
+                health = hitColliders[i].gameObject.GetComponentInChildren<Health>();
                 health.RemoveHealth(20);
-                hpBar = hitColliders[i].GetComponent<HealthBar>();
+                hpBar = hitColliders[i].gameObject.GetComponentInChildren<HealthBar>();
                 hpBar.UpdateHealthBar();
                 knockBackObject(hitColliders[i], 200f);
             }
