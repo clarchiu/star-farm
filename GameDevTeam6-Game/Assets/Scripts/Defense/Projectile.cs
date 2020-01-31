@@ -52,9 +52,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("OnCollisionEnter2D");
-        Debug.Log(col.gameObject.name);
-        if (col.gameObject.name == "Dregling(Clone)")
+        if (col.gameObject.CompareTag("Enemy"))
         {
             health = col.gameObject.GetComponent<Health>();
             health.RemoveHealth(10);
