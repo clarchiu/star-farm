@@ -14,6 +14,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        throw new System.Exception("deprecated, don't use this -Clarence");
         randomDirection = Random.Range(0,2);
     }
 

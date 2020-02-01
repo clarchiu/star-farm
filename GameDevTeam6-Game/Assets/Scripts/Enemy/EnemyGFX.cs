@@ -56,9 +56,6 @@ public class EnemyGFX : MonoBehaviour
         }
     }
 
-    //the following booleans decide which animation set should be played
-    public bool IsAttacking { get; set; }
-
     private void Awake()
     {
         direction = Vector2.zero;
@@ -73,7 +70,7 @@ public class EnemyGFX : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         //HandleLayers();
     }
 
@@ -87,10 +84,14 @@ public class EnemyGFX : MonoBehaviour
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
     }
 
+
     //TODO: deprecated, delete this after more testing
 
     //private AIPath aiPath;
     //private Rigidbody2D rb;
+
+    //the following booleans decide which animation set should be played
+    //public bool IsAttacking { get; set; }
 
     //public void HandleLayers()
     //{
