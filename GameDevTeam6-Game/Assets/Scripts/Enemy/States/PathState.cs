@@ -18,6 +18,7 @@ internal class PathState : IState
         this.parent = parent;
         parent.aiPath.canMove = true;
         parent.aiPath.canSearch = true;
+        parent.GFX.MyState = GFXStates.Moving;
     }
 
     public void Exit()
@@ -29,6 +30,8 @@ internal class PathState : IState
 
     public void Update()
     {
+        parent.GFX.Direction = parent.aiPath.velocity.normalized;
+
         if (parent.Target == null)
         {
             parent.ChangeState(new SearchState());

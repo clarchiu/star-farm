@@ -9,68 +9,72 @@ using Pathfinding;
  * - Clarence
  */
 
-public class EnemyGFX : MonoBehaviour 
+public enum GFXStates
 {
-    private AIPath aiPath;
-    private Rigidbody2D rb;
+    Moving,
+    Attacking,
+    Idling
+}
 
+public class EnemyGFX : MonoBehaviour
+{
     private Animator animator;
     public Animator MyAnimator { get => animator; }
 
     private Vector2 direction;
-    public Vector2 Direction { set => direction = (Vector2) value.normalized; }
+    public Vector2 Direction //make it the responsibility of the logical layer to set direction
+    {
+        set
+        {
+            direction = (Vector2)value.normalized;
+            animator.SetFloat("x", direction.x);
+            animator.SetFloat("y", direction.y);
+        }
+    }
+
+    private GFXStates state;
+    public GFXStates MyState //make it the responsibility of the logical layer to set state
+    {
+        set
+        {
+            state = value;
+
+            if (state == GFXStates.Moving)
+            {
+                ActivateLayer("Walk Layer");
+            }
+            else if (state == GFXStates.Attacking)
+            {
+                //Debug.Log("is attacking");
+                ActivateLayer("Attack Layer");
+            }
+            else
+            {
+                //Debug.Log("is idling");
+                ActivateLayer("Idle Layer");
+            }
+        }
+    }
 
     //the following booleans decide which animation set should be played
     public bool IsAttacking { get; set; }
-    private bool IsMoving { get => aiPath.canMove || !rb.velocity.Equals(Vector2.zero); }
-    
+
+    private void Awake()
+    {
+        direction = Vector2.zero;
+        state = GFXStates.Idling;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        aiPath = GetComponentInParent<AIPath>();
-        rb = GetComponentInParent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        direction = Vector2.zero;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //direction has to be set by GFX in update otherwise it won't be accurate - Clarence 
-        if (aiPath.canMove == true) //use the velocity from AIPath if it is moving
-        {
-            direction = aiPath.velocity.normalized;
-        }
-        else if (!IsAttacking) //otherwise it is in follow state and use the rigidbody
-        {
-            direction = rb.velocity.normalized;
-        }
-
-        HandleLayers();
-    }
-
-    public void HandleLayers()
-    {
-        if (IsMoving)
-        {
-            //Debug.LogFormat("is moving: {0}", direction);
-            ActivateLayer("Walk Layer");
-            animator.SetFloat("x", direction.x);
-            animator.SetFloat("y", direction.y);
-        }
-        else if (IsAttacking)
-        {
-            //Debug.Log("is attacking");
-            ActivateLayer("Attack Layer");
-            animator.SetFloat("x", direction.x);
-            animator.SetFloat("y", direction.y);
-        }
-        else
-        {
-            //Debug.Log("is idling");
-            ActivateLayer("Idle Layer");
-        }
+    { 
+        //HandleLayers();
     }
 
     private void ActivateLayer(string layerName)
@@ -82,4 +86,32 @@ public class EnemyGFX : MonoBehaviour
 
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
     }
+
+    //TODO: deprecated, delete this after more testing
+
+    //private AIPath aiPath;
+    //private Rigidbody2D rb;
+
+    //public void HandleLayers()
+    //{
+    //    if (IsMoving)
+    //    {
+    //        //Debug.LogFormat("is moving: {0}", direction);
+    //        ActivateLayer("Walk Layer");
+    //        //animator.SetFloat("x", direction.x);
+    //        //animator.SetFloat("y", direction.y);
+    //    }
+    //    else if (IsAttacking)
+    //    {
+    //        //Debug.Log("is attacking");
+    //        ActivateLayer("Attack Layer");
+    //        //animator.SetFloat("x", direction.x);
+    //        //animator.SetFloat("y", direction.y);
+    //    }
+    //    else
+    //    {
+    //        //Debug.Log("is idling");
+    //        ActivateLayer("Idle Layer");
+    //    }
+    //}
 }

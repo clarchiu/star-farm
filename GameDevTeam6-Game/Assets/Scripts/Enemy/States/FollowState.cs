@@ -11,18 +11,17 @@ using UnityEngine;
 internal class FollowState: IState
 {
     private EnemyAI parent;
-    private Rigidbody2D rb;
 
     public void Enter(EnemyAI parent)
     {
         this.parent = parent;
-        this.rb = parent.GetComponent<Rigidbody2D>();
+        parent.GFX.MyState = GFXStates.Moving;
         Debug.Log("enemy in follow state");
     }
 
     public void Exit()
     {
-        rb.velocity = Vector2.zero;
+        parent.RB.velocity = Vector2.zero;
     }
 
     public void Update()
@@ -32,8 +31,9 @@ internal class FollowState: IState
             //Find the target's direction
             Vector3 direction = (parent.Target.transform.position - parent.transform.position).normalized;
 
-            rb.velocity = direction * 2f;
-            //parent.transform.position = parent.transform.position + (direction * 2f * Time.deltaTime);
+            parent.RB.velocity = direction * 2f;
+
+            parent.GFX.Direction = parent.RB.velocity.normalized;
 
             //calculate distance between target and itself
             float distance = Vector3.Distance(parent.Target.transform.position, parent.transform.position);

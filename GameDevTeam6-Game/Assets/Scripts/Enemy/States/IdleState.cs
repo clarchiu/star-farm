@@ -8,6 +8,7 @@ internal class IdleState: IState
     public void Enter(EnemyAI parent)
     {
         this.parent = parent;
+        parent.GFX.MyState = GFXStates.Idling;
     }
 
     public void Exit()

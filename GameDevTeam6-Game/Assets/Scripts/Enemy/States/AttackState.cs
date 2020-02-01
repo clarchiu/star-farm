@@ -11,7 +11,6 @@ using UnityEngine;
 internal class AttackState : IState
 {
     EnemyAI parent;
-    EnemyGFX gfx;
 
     private float attackCoolDown;
 
@@ -19,13 +18,13 @@ internal class AttackState : IState
     {
         Debug.Log("enenmy in attack state");
         this.parent = parent;
-        gfx = parent.GetComponentInChildren<EnemyGFX>();
         attackCoolDown = 0f;
+        parent.GFX.MyState = GFXStates.Attacking;
     }
 
     public void Exit()
     {
-        gfx.IsAttacking = false;
+        //parent.GFX.IsAttacking = false;
     }
 
     public void Update()
@@ -42,20 +41,19 @@ internal class AttackState : IState
             {
                 //this makes it so that the enemy always faces the target
                 Vector2 directionToTarget = (parent.Target.transform.position - parent.transform.position).normalized;
-                gfx.Direction = directionToTarget;
+                parent.GFX.Direction = directionToTarget;
 
                 ITargetable targetable = parent.Target.GetComponent<ITargetable>();
-                if (targetable != null && attackCoolDown <= 0 && gfx.IsAttacking != true) 
+
+                if (targetable != null && attackCoolDown <= 0 /*&& parent.GFX.IsAttacking != true*/) 
                 {
                     parent.StartCoroutine(Attack(targetable));
-                    //Debug.Log("attacking");
 
                     attackCoolDown = 2.5f; //TODO: make this different for differnt enemy types
                 }
 
                 attackCoolDown -= Time.deltaTime;
 
-                //Debug.Log(attackCoolDown);
             }
         } else
         {
@@ -63,18 +61,17 @@ internal class AttackState : IState
         }
     }
 
-    private IEnumerator Attack(ITargetable targetable) //TODO: check if this actualy runs animation
+    private IEnumerator Attack(ITargetable targetable) //TODO: might be able to define this in EnemyGFX
     {
-        //Debug.Log("coroutine started");
-        gfx.IsAttacking = true;
-        gfx.MyAnimator.SetTrigger("attack");
+        //parent.GFX.IsAttacking = true;
 
-        //targetable.RemoveHealth(10); //change to variable depending on enemy type
-        //targetable.KnockBack(parent.transform.position, 50f);
+        parent.GFX.MyAnimator.SetTrigger("attack");
 
-        yield return new WaitForSeconds(gfx.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is
+        targetable.RemoveHealth(10); //TODO: change damage amount to variable depending on enemy type
+        targetable.KnockBack(parent.transform.position, 50f); //TODO: make amount of knockback scale with damage?
 
-        gfx.IsAttacking = false;
-        //Debug.Log("coroutine finished");
+        yield return new WaitForSeconds(parent.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is
+
+        //parent.GFX.IsAttacking = false;
     }
 }

@@ -16,6 +16,7 @@ internal class SearchState: IState
     public void Enter(EnemyAI parent)
     {
         this.parent = parent;
+        parent.GFX.MyState = GFXStates.Idling;
         Debug.Log("enemy in search state");
     }
 

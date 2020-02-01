@@ -17,6 +17,11 @@ public class EnemyAI: MonoBehaviour, ITargetable
     public AIPath aiPath;
 
     private Rigidbody2D rb;
+    public Rigidbody2D RB { get => rb; }
+
+    private EnemyGFX gfx;
+    public EnemyGFX GFX { get => gfx; }
+
     private AIDestinationSetter destSetter;
     private HealthBar_ healthBar;
 
@@ -40,12 +45,12 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     private void Awake()
     {
-        ChangeState(new SearchState());
+        GetComponents();
     }
 
     private void Start()
     {
-        GetComponents();
+        ChangeState(new SearchState());
     }
 
     private void Update()
@@ -58,6 +63,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         healthBar = GetComponent<HealthBar_>();
         destSetter = GetComponent<AIDestinationSetter>();
         rb = GetComponent<Rigidbody2D>();
+        gfx = GetComponentInChildren<EnemyGFX>();
     }
 
     public void ChangeState(IState newState)
@@ -68,11 +74,6 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
         currentState = newState;
         currentState.Enter(this);
-    }
-
-    public void SetDirection(Vector2 direction)
-    {
-        GetComponentInChildren<EnemyGFX>().Direction = direction;
     }
 
     //TODO: set this somewhere else

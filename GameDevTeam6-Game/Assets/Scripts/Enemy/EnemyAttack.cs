@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * TODO: Change this to use ITargetable interface
+ * Use this only if enemy ever needs to perform an AOE attack -Clarence
+ */
 public class EnemyAttack : MonoBehaviour
 {
     public GameObject player;
