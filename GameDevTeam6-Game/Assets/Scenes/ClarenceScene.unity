@@ -446,6 +446,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6340924448828446567, guid: 8d725cdddb4934b0dae471b2c09cf35e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -398.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340924449365559507, guid: 8d725cdddb4934b0dae471b2c09cf35e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -425.00003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d725cdddb4934b0dae471b2c09cf35e, type: 3}
 --- !u!1001 &718279449
@@ -658,7 +668,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1767728859
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -775,7 +785,7 @@ PrefabInstance:
     - target: {fileID: 7292628999002052757, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
         type: 3}
       propertyPath: drawGizmos
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7292628999002052757, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
         type: 3}
@@ -800,25 +810,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d38aef24a0e2c4c5caf4fe0a7437a512, type: 3}
---- !u!1 &1096453756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
-    type: 3}
-  m_PrefabInstance: {fileID: 1096453755}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1096453757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096453756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2641f97df790624eb40d2c0fc2e43f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: 100
 --- !u!1001 &1124883001
 PrefabInstance:
   m_ObjectHideFlags: 0
