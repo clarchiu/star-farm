@@ -11,6 +11,7 @@ public class PlayerMelee : MonoBehaviour
     private HealthBar hpBar;
     private Rigidbody2D body;
     float attackDelay = 0;
+    private GameObject enemy;
 
 
     private void Awake()
@@ -47,7 +48,7 @@ public class PlayerMelee : MonoBehaviour
         float hitPosX = player.transform.position.x;
         float hitPosY = player.transform.position.y;
         Collider2D[] hitColliders;
-        
+
           if (direction.GetDirection() == playerDir.left)
           {
             hitPosX -= 0.75f;
@@ -73,6 +74,7 @@ public class PlayerMelee : MonoBehaviour
             //Increase the number of Colliders in the array
             if (hitColliders[i].CompareTag("Enemy"))
             {
+
                 /*can't assume rigidbody for enenmies
                  *use ITargetable interface instead
                  *- Clarence

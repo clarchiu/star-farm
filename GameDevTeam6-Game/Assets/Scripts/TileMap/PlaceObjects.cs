@@ -53,7 +53,7 @@ public class PlaceObjects : MonoBehaviour
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
-                    //PlayAttackAnimation();
+                    PlayAttackAnimation();
                 }
             }
         } else
@@ -89,7 +89,12 @@ public class PlaceObjects : MonoBehaviour
         GameObject objectOnTile = tile.getObjectOnTile();
         if (objectOnTile != null) {
             Destroy(objectOnTile);
-            Inventory_mineral.Instance.GainItem(Mineral_type.iron, 1);
+            if (objectOnTile.GetComponent<ObjectDropItem>() == null)
+            {
+                Debug.Log("No object drop item set for this object");
+            } else {
+                Drop_item.Instance.DropItem(objectOnTile.GetComponent<ObjectDropItem>().type, objectOnTile.transform.position.x, objectOnTile.transform.position.y);
+            }
         }
         GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
     }
@@ -116,11 +121,12 @@ public class PlaceObjects : MonoBehaviour
         int playerY = Mathf.RoundToInt(player.transform.position.y);
         return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);
     }
-    /*
+    
     public void PlayAttackAnimation()
     {
         playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
         Animator ani = player.GetComponent<Animator>();
+       // Animation anim = ani.GetCurrentAnimatorStateInfo(0);
 
         ani.speed = 1;
         if (dir == playerDir.left)
@@ -141,5 +147,5 @@ public class PlaceObjects : MonoBehaviour
         }
 
     }
-    */
+    
 }

@@ -52,11 +52,10 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("OnCollisionEnter2D");
-        Debug.Log(col.gameObject.name);
+
         if (col.gameObject.CompareTag("Enemy"))
         {
-            /* use ITargetable interface instead b/c 
+            /* use ITargetable interface instead b/c
              * more verbose, easier to read/debug and
              * easier to implement custom logic for when enemy dies
              * - Clarence

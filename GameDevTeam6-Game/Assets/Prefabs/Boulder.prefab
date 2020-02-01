@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3122813755633111133}
   - component: {fileID: 8719311768663815708}
   - component: {fileID: 1075479851366763531}
+  - component: {fileID: 3332359340548302458}
+  - component: {fileID: 1561527715970307067}
   m_Layer: 0
   m_Name: Boulder
   m_TagString: Unwalkable
@@ -68,10 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 834598487
-  m_SortingLayer: 3
+  m_SortingLayerID: -1444775863
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9915540ccf74f54488d429186b232f41, type: 3}
+  m_Sprite: {fileID: -2006765479483123057, guid: af47a85a507d92b4eb884454a3795587,
+    type: 3}
   m_Color: {r: 0.754717, g: 0.28835887, b: 0.62627697, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,3 +111,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &3332359340548302458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128533525796180358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94644d4eebc93a04e9b0e5c90d862933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+--- !u!114 &1561527715970307067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128533525796180358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0658fb0be8bc124291a6f77d1ea8ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -2006765479483123057, guid: af47a85a507d92b4eb884454a3795587, type: 3}
+  - {fileID: -5272074167968763241, guid: af47a85a507d92b4eb884454a3795587, type: 3}
