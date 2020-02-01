@@ -32,7 +32,7 @@ public class EnemyAttack : MonoBehaviour
                 health = player.GetComponent<Health>();
                 health.RemoveHealth(hitDamage);
 
-}
+            }
             i++;
         }
 

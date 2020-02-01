@@ -3,9 +3,11 @@
 /*
  * Path state responsible for turning on AIPath class to start searching for paths
  * to the target.
- * From path state, the agent can go into attack state or search state
+ * From path state, the agent can go into search state if the target ever becomes null
+ * or the agent can go into follow state once it is close enough
  * - Clarence 
  */
+
 internal class PathState : IState
 {
     private EnemyAI parent;
@@ -27,13 +29,12 @@ internal class PathState : IState
 
     public void Update()
     {
-        //from path state you can go into attack state, search state
         if (parent.Target == null)
         {
             parent.ChangeState(new SearchState());
         } else if ( parent.aiPath.reachedEndOfPath == true )
         {
-            //parent.ChangeState(new AttackState());
+            parent.ChangeState(new FollowState());
         }
     }
 }

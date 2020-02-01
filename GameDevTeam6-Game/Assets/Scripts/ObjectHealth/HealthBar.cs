@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* use HealthBar_ instead, they're basically the same but the other one is a little bit
+ * easier to read and is compatible with ITargetable interface -Clarence
+ */
 public class HealthBar : MonoBehaviour
 {
     public GameObject Bar;
+    private Transform hpBar;
     public Health health;
     int maxHp;
-    private Transform hpBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        throw new System.Exception("use HealthBar_ instead, read the comment at the top of this script to see why - Clarence");
 
         GameObject healthBar = Instantiate(Bar, transform);
         health = GetComponent<Health>();

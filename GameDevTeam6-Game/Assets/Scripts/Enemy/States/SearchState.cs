@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Search state responsible for finding a target for the agent
- * Search state can go to path state if a target is found 
+ * Search state can go to path state if a target is found or idle if there are no more targets 
  * - Clarence 
  */
 
@@ -16,6 +16,7 @@ internal class SearchState: IState
     public void Enter(EnemyAI parent)
     {
         this.parent = parent;
+        Debug.Log("enemy in search state");
     }
 
     public void Exit()
@@ -34,6 +35,9 @@ internal class SearchState: IState
                 Debug.Log("target found");
                 parent.Target = target;
                 parent.ChangeState(new PathState());
+            } else
+            {
+                parent.ChangeState(new IdleState());
             }
         }
         

@@ -62,9 +62,9 @@ public class EnemyPathAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        //Vector2 force = direction * speed * Time.deltaTime;
+        Vector2 force = direction * speed * Time.deltaTime * 10;
 
-        rb.velocity = direction * speed;
+        rb.AddForce(force);
         gfx.Direction = direction;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);

@@ -44,7 +44,6 @@ public class PlayerMelee : MonoBehaviour
 
     public Collider2D[] checkMelee()
     {
-        int i = 0;
         float hitPosX = player.transform.position.x;
         float hitPosY = player.transform.position.y;
         Collider2D[] hitColliders;
@@ -67,28 +66,35 @@ public class PlayerMelee : MonoBehaviour
           }
           hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(1.5f, 1.5f), 0f);
 
-
-        while (i < hitColliders.Length)
+        for (int i = 0; i < hitColliders.Length; i++)
         {
             //Output all of the collider names
             // Debug.Log("Hit : " + hitColliders[i].name + i);
             //Increase the number of Colliders in the array
             if (hitColliders[i].CompareTag("Enemy"))
-            { 
-                health = hitColliders[i].GetComponent<Health>();
-                health.RemoveHealth(20);
-                hpBar = hitColliders[i].GetComponent<HealthBar>();
-                hpBar.UpdateHealthBar();
-                knockBackObject(hitColliders[i], 200f);
+            {
+                /*can't assume rigidbody for enenmies
+                 *use ITargetable interface instead
+                 *- Clarence
+                 */
+                ITargetable targetable = hitColliders[i].GetComponent<ITargetable>();
+                targetable.RemoveHealth(20);
+                targetable.KnockBack(player.transform.position, 1f);
+
+                //health = hitColliders[i].GetComponent<Health>();
+                //health.RemoveHealth(20);
+                //hpBar = hitColliders[i].GetComponent<HealthBar>();
+                //hpBar.UpdateHealthBar();
+                //knockBackObject(hitColliders[i], 1500f);
             }
-            i++;
         }
 
         return hitColliders;
-
     }
+
     public void knockBackObject(Collider2D enemyCollider, float amount)
     {
+        throw new System.Exception("Use ITargetable interface instead -Clarence");
         float knockbackX = 0;
         float knockbackY = 0;
 
@@ -110,6 +116,7 @@ public class PlayerMelee : MonoBehaviour
         {
             knockbackY -= amount;
         }
+
         body.AddForce(new Vector2(knockbackX, knockbackY), ForceMode2D.Force);
     }
 
