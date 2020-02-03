@@ -6,7 +6,6 @@ using UnityEngine;
 /*
  * Use this interface if you want your class to be targetable -Clarence
  * Make sure your class specifies its maxhealth and current health
- * TODO: possibly change this to an abstract class
  */
 public interface ITargetable
 {
@@ -17,5 +16,5 @@ public interface ITargetable
     void GainHealth(int amount);
 
     //you can leave the implementation blank if your object doesn't need to 
-    void KnockBack(Vector3 origin, float amount);
+    void KnockBack(Vector2 origin, float amount);
 }

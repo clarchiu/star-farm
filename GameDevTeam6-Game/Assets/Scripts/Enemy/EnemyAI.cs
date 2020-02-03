@@ -23,6 +23,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
     public EnemyGFX GFX { get => gfx; }
 
     private AIDestinationSetter destSetter;
+
     private HealthBar_ healthBar;
 
     private IState currentState;
@@ -72,6 +73,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         {
             currentState.Exit();
         }
+
         currentState = newState;
         currentState.Enter(this);
     }
@@ -91,7 +93,8 @@ public class EnemyAI: MonoBehaviour, ITargetable
         {
             health -= amount;
             healthBar.UpdateHealthBar((float)health / MaxHealth);
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
@@ -102,14 +105,15 @@ public class EnemyAI: MonoBehaviour, ITargetable
         health += amount;
     }
 
-    void ITargetable.KnockBack(Vector3 origin, float amount)
+    void ITargetable.KnockBack(Vector2 origin, float amount)
     {
-        Vector3 deltaPosition = (this.transform.position - origin).normalized * amount;
+        Vector2 deltaPosition = ((Vector2) this.transform.position - origin).normalized * amount;
 
         if (aiPath.canMove == true)
         {
             aiPath.Move(deltaPosition);
-        } else
+        }
+        else
         {
             rb.AddForce(deltaPosition * amount * 1000f, ForceMode2D.Force);
         }

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         health += amount;
     }
 
-    void ITargetable.KnockBack(Vector3 origin, float amount)
+    void ITargetable.KnockBack(Vector2 origin, float amount)
     {
         //throw new System.NotImplementedException();
     }
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour, ITargetable
             health -= amount;
         } else
         {
+            health = 0;
             //Destroy(gameObject);
             //TODO: what is the logic for when a player dies? - Clarence 
             Debug.Log("player died");

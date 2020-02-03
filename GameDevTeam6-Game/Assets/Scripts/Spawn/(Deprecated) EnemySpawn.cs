@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class Deprecated_EnemySpawn : MonoBehaviour
 {
 	public GameObject enemy;
     public TimeSystem timeSystem;
@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        throw new System.Exception("this is deprecated, use the new WaveSpawner -Clarence");
         //spawn enemy every spawnInterval starting at startSpawnTime
         InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);
     }

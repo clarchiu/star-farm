@@ -1,4 +1,8 @@
-﻿using Pathfinding;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Pathfinding;
 
 /*
  * Path state responsible for turning on AIPath class to start searching for paths
@@ -8,36 +12,48 @@
  * - Clarence 
  */
 
-internal class PathState : IState
+internal class PathState : EnemyState
 {
-    private EnemyAI parent;
-
-
-    public void Enter(EnemyAI parent)
+    public override void Enter(EnemyAI parent)
     {
-        this.parent = parent;
+        Debug.Log("enemy in path state");
+
+        base.Enter(parent);
+
         parent.aiPath.canMove = true;
         parent.aiPath.canSearch = true;
-        parent.GFX.MyState = GFXStates.Moving;
     }
 
-    public void Exit()
+    public override void Exit()
     {
         parent.aiPath.canMove = false;
         parent.aiPath.canSearch = false;
-        //throw new System.NotImplementedException();
     }
 
-    public void Update()
+    public override void Update()
     {
-        parent.GFX.Direction = parent.aiPath.velocity.normalized;
+        SetGFXDirection();
 
         if (parent.Target == null)
         {
+            //Debug.Log("target null");
             parent.ChangeState(new SearchState());
-        } else if ( parent.aiPath.reachedEndOfPath == true )
+            return;
+        }
+        else if ( parent.aiPath.reachedEndOfPath == true )
         {
             parent.ChangeState(new FollowState());
+            return;
         }
+    }
+
+    protected override void SetGFXDirection()
+    {
+        parent.GFX.Direction = parent.aiPath.velocity.normalized;
+    }
+
+    protected override void SetGFXState()
+    {
+        parent.GFX.MyState = GFXStates.MOVING;
     }
 }

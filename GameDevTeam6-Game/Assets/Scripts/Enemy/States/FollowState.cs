@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * Follow state responsible for following a target once it is close enough.
@@ -8,45 +7,53 @@ using UnityEngine;
  * - Clarence 
  */
 
-internal class FollowState: IState
+internal class FollowState: EnemyState
 {
-    private EnemyAI parent;
-
-    public void Enter(EnemyAI parent)
+    public override void Enter(EnemyAI parent)
     {
-        this.parent = parent;
-        parent.GFX.MyState = GFXStates.Moving;
         Debug.Log("enemy in follow state");
+
+        base.Enter(parent);
     }
 
-    public void Exit()
+    public override void Exit()
     {
         parent.RB.velocity = Vector2.zero;
     }
 
-    public void Update()
+    public override void Update()
     {
         if (parent.Target != null)
         {
             //Find the target's direction
-            Vector3 direction = (parent.Target.transform.position - parent.transform.position).normalized;
+            Vector2 direction = (parent.Target.transform.position - parent.transform.position).normalized;             
+            parent.RB.velocity = direction * 2f; //TODO: use variable instead
 
-            parent.RB.velocity = direction * 2f;
-
-            parent.GFX.Direction = parent.RB.velocity.normalized;
+            SetGFXDirection();
 
             //calculate distance between target and itself
-            float distance = Vector3.Distance(parent.Target.transform.position, parent.transform.position);
+            float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
 
-            if (distance <= 1)
+            if (distance <= 1.3) //TODO: use variable instead
             {
                 parent.ChangeState(new AttackState());
+                return;
             }
         }
         else
         {
             parent.ChangeState(new SearchState());
+            return;
         }
+    }
 
+    protected override void SetGFXDirection()
+    {
+        parent.GFX.Direction = parent.RB.velocity.normalized;
+    }
+
+    protected override void SetGFXState()
+    {
+        parent.GFX.MyState = GFXStates.MOVING;
     }
 }

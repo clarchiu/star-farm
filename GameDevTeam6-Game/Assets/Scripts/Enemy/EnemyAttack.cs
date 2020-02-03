@@ -15,6 +15,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        throw new System.Exception("don't use this, EnemyAi is in charge of its own attack -Clarence");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

@@ -76,7 +76,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 0}
-  boulder: {fileID: 1128533525796180358, guid: 953ef6ac2a91b614b8ff8aa499bcbd63, type: 3}
+  objects:
+  - {fileID: 1128533525796180358, guid: 953ef6ac2a91b614b8ff8aa499bcbd63, type: 3}
+  - {fileID: 3484086711567329744, guid: d567aa3a0ca0b7a4d8ca2f9f7cee4d2c, type: 3}
 --- !u!114 &3793453400045374309
 MonoBehaviour:
   m_ObjectHideFlags: 0

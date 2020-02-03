@@ -11,9 +11,9 @@ using Pathfinding;
 
 public enum GFXStates
 {
-    Moving,
-    Attacking,
-    Idling
+    MOVING,
+    ATTACKING,
+    IDLING
 }
 
 public class EnemyGFX : MonoBehaviour
@@ -39,11 +39,11 @@ public class EnemyGFX : MonoBehaviour
         {
             state = value;
 
-            if (state == GFXStates.Moving)
+            if (state == GFXStates.MOVING)
             {
                 ActivateLayer("Walk Layer");
             }
-            else if (state == GFXStates.Attacking)
+            else if (state == GFXStates.ATTACKING)
             {
                 //Debug.Log("is attacking");
                 ActivateLayer("Attack Layer");
@@ -58,14 +58,14 @@ public class EnemyGFX : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         direction = Vector2.zero;
-        state = GFXStates.Idling;
+        state = GFXStates.IDLING;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
