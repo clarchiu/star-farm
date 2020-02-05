@@ -419,75 +419,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95627110}
   m_CullTransparentMesh: 0
---- !u!1001 &122946166
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5079274738494575889, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_Name
-      value: A_
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5079274738494575895, guid: bcffb90597542ec489fcd4cde0f59118,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bcffb90597542ec489fcd4cde0f59118, type: 3}
 --- !u!1 &139083544
 GameObject:
   m_ObjectHideFlags: 0
@@ -35780,35 +35711,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
-        type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
-        type: 3}
-    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
-        type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
-        type: 3}
-    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
-        type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
-        type: 3}
-    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
-        type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
-        type: 3}
-    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
-        type: 3}
-      propertyPath: timeSystem
-      value: 
-      objectReference: {fileID: 1323952472}
     - target: {fileID: 2523465596433796777, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35864,6 +35766,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
+        type: 3}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
+        type: 3}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
+        type: 3}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7292628999002052752, guid: d38aef24a0e2c4c5caf4fe0a7437a512,
+        type: 3}
+    - target: {fileID: 2523465596433796776, guid: 2d8c3af9a0c3049c7b5f4765120129d9,
+        type: 3}
+      propertyPath: timeSystem
+      value: 
+      objectReference: {fileID: 1323952472}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8c3af9a0c3049c7b5f4765120129d9, type: 3}
 --- !u!1 &757775412
@@ -37122,10 +37053,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1138137720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2641f97df790624eb40d2c0fc2e43f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2efcf4ba3f486d84bad99f2103f32946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: 100
+  moveSpeed: 3
+  MaxHealth: 200
+  health: 200
 --- !u!114 &1138137725
 MonoBehaviour:
   m_ObjectHideFlags: 0

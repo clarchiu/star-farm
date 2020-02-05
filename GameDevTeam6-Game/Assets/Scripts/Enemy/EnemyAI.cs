@@ -34,7 +34,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     #region Public Properties
     //Constants for enemy type
-    public Stats MyStats;
+    public EnemyStats MyStats;
 
     //Set by attackRangeCollider
     public bool InAttackRange { get; private set; } = false;

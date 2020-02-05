@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deprecated_EnemySpawn : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
 	public GameObject enemy;
     public TimeSystem timeSystem;
