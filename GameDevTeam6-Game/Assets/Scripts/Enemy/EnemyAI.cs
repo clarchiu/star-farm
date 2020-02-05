@@ -161,6 +161,13 @@ public class EnemyAI: MonoBehaviour, ITargetable
             throw new System.Exception("missing components on enemy, add in inspector");
         }
 
+        if (MyStats.currentHealth == 0 && MyStats.maxHealth == 0 && MyStats.speed == 0
+            && MyStats.attackCoolDown == 0 && MyStats.attackDamage == 0 && MyStats.attackRange == 0)
+        {
+            this.gameObject.SetActive(false);
+            throw new System.Exception("missing MyStats values on EnemyAI script in inspector");
+        }
+
         aiPath.maxSpeed = MyStats.speed;
         attackRangeCollider.radius = MyStats.attackRange;
     }
