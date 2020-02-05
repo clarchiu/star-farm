@@ -13,20 +13,40 @@ using Pathfinding;
  */
 
 public class EnemyAI: MonoBehaviour, ITargetable
-{ 
-    public AIPath aiPath;
-
-    private Rigidbody2D rb;
-    public Rigidbody2D RB { get => rb; }
-
+{
+    #region Components
+    //GFX
     private EnemyGFX gfx;
     public EnemyGFX GFX { get => gfx; }
 
+    //Pathing
+    public AIPath aiPath;
     private AIDestinationSetter destSetter;
 
-    private HealthBar_ healthBar;
+    //Physics
+    private Rigidbody2D rb;
+    public Rigidbody2D RB { get => rb; }
 
-    private IState currentState;
+    //Combat
+    private HealthBar_ healthBar;
+    private CircleCollider2D attackRangeCollider;
+    #endregion
+
+    #region Public Properties
+    //Constants for enemy type
+    public Stats MyStats;
+
+    //Set by attackRangeCollider
+    public bool InAttackRange { get; private set; } = false;
+
+    //Set target to null if not in aggro range
+    public bool TargetInAggroRange
+    {
+        get
+        {   //calculates whether target is within 5 units of enemy
+            return (target.transform.position - transform.position).sqrMagnitude <= 5 * 5;
+        }
+    }
 
     private GameObject target;
     public GameObject Target
@@ -43,10 +63,15 @@ public class EnemyAI: MonoBehaviour, ITargetable
                 destSetter.target = this.target.transform;
         }
     }
+    #endregion
+
+    #region Private Fields
+    private IState currentState;
+    #endregion
 
     private void Awake()
     {
-        GetComponents();
+        SetupComponents();
     }
 
     private void Start()
@@ -59,14 +84,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         currentState.Update();
     }
 
-    private void GetComponents()
-    {
-        healthBar = GetComponent<HealthBar_>();
-        destSetter = GetComponent<AIDestinationSetter>();
-        rb = GetComponent<Rigidbody2D>();
-        gfx = GetComponentInChildren<EnemyGFX>();
-    }
-
+    #region Public Methods
     public void ChangeState(IState newState)
     {
         if (currentState != null)
@@ -77,32 +95,39 @@ public class EnemyAI: MonoBehaviour, ITargetable
         currentState = newState;
         currentState.Enter(this);
     }
+    #endregion
 
-    //TODO: set this somewhere else
-    public int MaxHealth;
-    public int health;
-
+    #region ITargetable Implementation
     void ITargetable.SetHealth(int amount)
     {
-        health = amount;
+        MyStats.currentHealth = amount;
     }
 
-    void ITargetable.RemoveHealth(int amount)
+    void ITargetable.RemoveHealth(GameObject source, int amount)
     {
-        if (health - amount > 0)
+        if (MyStats.currentHealth - amount > 0)
         {
-            health -= amount;
-            healthBar.UpdateHealthBar((float)health / MaxHealth);
+            MyStats.currentHealth -= amount;
+            healthBar.UpdateHealthBar((float) MyStats.currentHealth / MyStats.maxHealth);
+
+            if (!GameObject.ReferenceEquals(target, source))
+            {
+                if (source.GetComponent<ITargetable>() != null)
+                {
+                    Target = source;
+                }
+            }
         }
         else
         {
+            MyStats.currentHealth = 0;
             Destroy(gameObject);
         }
     }
 
     void ITargetable.GainHealth(int amount)
     {
-        health += amount;
+        MyStats.currentHealth += amount;
     }
 
     void ITargetable.KnockBack(Vector2 origin, float amount)
@@ -118,4 +143,44 @@ public class EnemyAI: MonoBehaviour, ITargetable
             rb.AddForce(deltaPosition * amount * 1000f, ForceMode2D.Force);
         }
     }
+    #endregion
+
+    #region Private Methods
+    private void SetupComponents()
+    {
+        healthBar = GetComponent<HealthBar_>();
+        destSetter = GetComponent<AIDestinationSetter>();
+        rb = GetComponent<Rigidbody2D>();
+        gfx = GetComponentInChildren<EnemyGFX>();
+        attackRangeCollider = GetComponent<CircleCollider2D>();
+
+        if (healthBar == null || destSetter == null || rb == null
+            || gfx == null || aiPath == null || attackRangeCollider == null)
+        {
+            this.gameObject.SetActive(false);
+            throw new System.Exception("missing components on enemy, add in inspector");
+        }
+
+        aiPath.maxSpeed = MyStats.speed;
+        attackRangeCollider.radius = MyStats.attackRange;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (GameObject.ReferenceEquals(target, collision.gameObject))
+        {
+            InAttackRange = true;
+            Debug.Log("enemy in range");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (GameObject.ReferenceEquals(target, collision.gameObject))
+        {
+            InAttackRange = false;
+            Debug.Log("enemy out of range");
+        }
+    }
+    #endregion
 }

@@ -45,6 +45,11 @@ internal class PathState : EnemyState
             parent.ChangeState(new FollowState());
             return;
         }
+        else if (parent.InAttackRange)
+        {
+            parent.ChangeState(new AttackState());
+            return;
+        }
     }
 
     protected override void SetGFXDirection()

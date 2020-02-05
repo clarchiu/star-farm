@@ -22,7 +22,7 @@ internal class AttackState: EnemyState
 
     public override void Exit()
     {
-        //parent.GFX.IsAttacking = false;
+        isAttacking = false;
     }
 
     public override void Update()
@@ -31,21 +31,18 @@ internal class AttackState: EnemyState
         {
             SetGFXDirection();
 
-            float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
-
-            if (distance > 1.7) //TODO: follow distance is gona be 1.3 times of attack range
-            {
-                parent.ChangeState(new FollowState());
-                return;
-            }
-            else if (distance <= 1.3) //TODO: this needs to be changed to a variable depending on the enemy type
+            if (parent.InAttackRange)
             {
                 ITargetable targetable = parent.Target.GetComponent<ITargetable>();
 
-                if (targetable != null && attackCoolDown <= 0 && !isAttacking) 
+                if (targetable != null && attackCoolDown <= 0 && !isAttacking)
                 {
                     parent.StartCoroutine(Attack(targetable));
                 }
+            } else 
+            {
+                parent.ChangeState(new FollowState());
+                return;
             }
 
             attackCoolDown -= Time.deltaTime;
@@ -72,11 +69,11 @@ internal class AttackState: EnemyState
     private IEnumerator Attack(ITargetable targetable) //TODO: might be able to define this in EnemyGFX
     {
         isAttacking = true;
-        attackCoolDown = 2.5f; //TODO: make this different for differnt enemy types
+        attackCoolDown = parent.MyStats.attackCoolDown; 
 
         parent.GFX.MyAnimator.SetTrigger("attack");
 
-        targetable.RemoveHealth(10); //TODO: change damage amount to variable depending on enemy type
+        targetable.RemoveHealth(parent.gameObject, parent.MyStats.attackDamage); 
         targetable.KnockBack(parent.transform.position, 50f); //TODO: make amount of knockback scale with damage?
 
         yield return new WaitForSeconds(parent.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is

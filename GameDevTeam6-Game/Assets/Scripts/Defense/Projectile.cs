@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour
              * - Clarence
              */
             ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
-            targetable.RemoveHealth(10);
+            targetable.RemoveHealth(player,10);
 
             //health = col.gameObject.GetComponent<Health>();
             //health.RemoveHealth(10);

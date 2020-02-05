@@ -20,7 +20,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        throw new System.Exception("use ITargetable interface instead, read the comment at the top of this script definition to see why - Clarence");
+        gameObject.SetActive(false);
+        throw new System.Exception("Health is deprecated. Use ITargetable interface instead, read the comment at the top of this script definition to see why - Clarence");
     }
 
     //make sure you call this when initializing targetable object

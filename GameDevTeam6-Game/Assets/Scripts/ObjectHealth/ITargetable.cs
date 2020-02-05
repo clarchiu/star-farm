@@ -11,7 +11,7 @@ public interface ITargetable
 {
     void SetHealth(int amount);
 
-    void RemoveHealth(int amount);
+    void RemoveHealth(GameObject source, int amount); //use source if you need to aggro the source of damage
 
     void GainHealth(int amount);
 

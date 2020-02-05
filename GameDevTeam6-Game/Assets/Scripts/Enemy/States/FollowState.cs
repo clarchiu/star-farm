@@ -23,18 +23,20 @@ internal class FollowState: EnemyState
 
     public override void Update()
     {
+        if (!parent.TargetInAggroRange)
+        {
+            parent.Target = null;
+        }
+
         if (parent.Target != null)
         {
             //Find the target's direction
             Vector2 direction = (parent.Target.transform.position - parent.transform.position).normalized;             
-            parent.RB.velocity = direction * 2f; //TODO: use variable instead
+            parent.RB.velocity = direction * parent.MyStats.speed; 
 
             SetGFXDirection();
 
-            //calculate distance between target and itself
-            float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
-
-            if (distance <= 1.3) //TODO: use variable instead
+            if (parent.InAttackRange) 
             {
                 parent.ChangeState(new AttackState());
                 return;

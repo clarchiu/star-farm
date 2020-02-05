@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour, ITargetable
 {
     //Configuration Parameters
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 3f;
 
     //Reference Variables
     private Rigidbody2D playerRB;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         //throw new System.NotImplementedException();
     }
 
-    void ITargetable.RemoveHealth(int amount)
+    void ITargetable.RemoveHealth(GameObject source, int amount) //no need to use source 
     {
         if (health - amount > 0)
         {

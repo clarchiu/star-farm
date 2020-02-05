@@ -41,16 +41,19 @@ public class WaveSpawner : MonoBehaviour
 
         if (spawnPoints.Length == 0)
         {
+            gameObject.SetActive(false);
             throw new System.Exception("specify spawn points using inspector -Clarence");
         }
 
         if (waves.Length == 0)
         {
+            gameObject.SetActive(false);
             throw new System.Exception("specify waves using inspector -Clarence");
         }
 
         if (timeSystem == null)
         {
+            gameObject.SetActive(false);
             throw new System.Exception("specify TimeSystem using inspector -Clarence");
         }
     }

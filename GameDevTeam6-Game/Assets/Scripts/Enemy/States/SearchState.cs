@@ -64,6 +64,7 @@ internal class SearchState: EnemyState
         List<GameObject> gameObjs = new List<GameObject>(GameObject.FindGameObjectsWithTag("Plant"));
         gameObjs.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure")));
         gameObjs.Add(GameObject.FindGameObjectWithTag("Player"));
+        gameObjs.Add(GameObject.FindGameObjectWithTag("Ship"));
 
         GameObject closestObj = null;
 

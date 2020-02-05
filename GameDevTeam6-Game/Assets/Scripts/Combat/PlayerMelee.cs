@@ -7,11 +7,12 @@ public class PlayerMelee : MonoBehaviour
     private MultiTool tool;
     private GameObject player;
     private PlayerDirection_ direction;
-    private Health health;
-    private HealthBar hpBar;
     private Rigidbody2D body;
     float attackDelay = 0;
-    private GameObject enemy;
+
+    //private Health health;
+    //private HealthBar hpBar;
+    //private GameObject enemy;
 
 
     private void Awake()
@@ -20,27 +21,23 @@ public class PlayerMelee : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         direction = FindObjectOfType<PlayerDirection_>();
     }
-    private void Update()
+
+    //make the check before running the coroutine, more efficient that way -Clarence
+    private void Update() 
     {
-        if (attackDelay <= 0)
+        if (attackDelay <= 0 && tool.GetMode() == ToolModes.combatMode && Input.GetMouseButtonDown(0))
         {
             StartCoroutine(runAttack());
         }
     }
     IEnumerator runAttack()
     {
-        if (!(tool.GetMode() == ToolModes.combatMode))
-        {
-            yield return null;
-        }
-        else if (Input.GetMouseButtonDown(0))
-        {
-            checkMelee();
-          //  attackDelay = 1;
-            //yield return new WaitForSeconds(1f);
-           // attackDelay = 0;
-        }
+        checkMelee();
 
+        yield return new WaitForSeconds(0.5f);
+        //  attackDelay = 1;
+        //
+        // attackDelay = 0;
     }
 
     public Collider2D[] checkMelee()
@@ -80,7 +77,7 @@ public class PlayerMelee : MonoBehaviour
                  *- Clarence
                  */
                 ITargetable targetable = hitColliders[i].GetComponent<ITargetable>();
-                targetable.RemoveHealth(20);
+                targetable.RemoveHealth(player,20);
                 targetable.KnockBack(player.transform.position, 1f);
 
                 //health = hitColliders[i].GetComponent<Health>();

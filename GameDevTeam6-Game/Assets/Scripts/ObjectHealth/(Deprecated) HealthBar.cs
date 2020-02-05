@@ -15,6 +15,7 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(false);
         throw new System.Exception("use HealthBar_ instead, read the comment at the top of this script to see why - Clarence");
 
         GameObject healthBar = Instantiate(Bar, transform);
