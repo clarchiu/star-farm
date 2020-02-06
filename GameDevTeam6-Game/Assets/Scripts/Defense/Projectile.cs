@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rigidBody = null;
     //Config Params
     [SerializeField] private float projectileSpeed = 10f;
-    private GameObject player;
 
     private float lifeTime = 2;
     private float currentTime = 0;
@@ -17,8 +16,6 @@ public class Projectile : MonoBehaviour
 
     void Awake(){
         FindRigidBody();
-        player = GameObject.FindGameObjectWithTag("Player");
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
     }
 
     private void FindRigidBody(){
