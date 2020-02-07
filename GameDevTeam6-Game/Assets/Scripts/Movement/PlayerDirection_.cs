@@ -17,9 +17,39 @@ public class PlayerDirection_ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = GetComponent<Rigidbody2D>().velocity.normalized;
-        anim.SetFloat("Horizontal", direction.x);
-        anim.SetFloat("Vertical", direction.y);
+        if (Input.GetAxisRaw("Horizontal") == -1) {
+            anim.speed = 1;
+            direction = playerDir.left;
+            anim.SetFloat("Horizontal", -1);
+            anim.SetFloat("Vertical", 0);
+            walking = true;
+        } else if (Input.GetAxisRaw("Horizontal") == 1) {
+            anim.speed = 1;
+            direction = playerDir.right;
+            anim.SetFloat("Horizontal", 1);
+            anim.SetFloat("Vertical", 0);
+            walking = true;
+        } else if (Input.GetAxisRaw("Vertical") == -1)
+        {
+            anim.speed = 1;
+            direction = playerDir.down;
+            anim.SetFloat("Vertical", -1);
+            anim.SetFloat("Horizontal", 0);
+            walking = true;
+        } else if (Input.GetAxisRaw("Vertical") == 1)
+        {
+            anim.speed = 1;
+            direction = playerDir.up;
+            anim.SetFloat("Vertical", 1);
+            anim.SetFloat("Horizontal", 0);
+            walking = true;
+        } else
+        {
+            if (walking == true) { 
+                anim.speed = 0;
+                walking = false;
+            }
+        }
     }
 
     public playerDir GetDirection() {

@@ -124,9 +124,27 @@ public class PlaceObjects : MonoBehaviour
     
     public void PlayAttackAnimation()
     {
+        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
+        Animator ani = player.GetComponent<Animator>();
+       // Animation anim = ani.GetCurrentAnimatorStateInfo(0);
 
-
-        //ani.SetBool("isAttacking", true);
+        ani.speed = 1;
+        if (dir == playerDir.left)
+        {
+            ani.Play("attack_left");
+        }
+        else if (dir == playerDir.right)
+        {
+            ani.Play("attack_right");
+        }
+        else if (dir == playerDir.up)
+        {
+            ani.Play("attack_up");
+        }
+        else if (dir == playerDir.down)
+        {
+            ani.Play("attack_down");
+        }
 
     }
     
