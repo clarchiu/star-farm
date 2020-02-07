@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * TODO: Change this to use ITargetable interface
+ * Use this only if enemy ever needs to perform an AOE attack -Clarence
+ */
 public class EnemyAttack : MonoBehaviour
 {
     public GameObject player;
@@ -11,6 +15,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        throw new System.Exception("don't use this, EnemyAi is in charge of its own attack -Clarence");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -32,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
                 health = player.GetComponent<Health>();
                 health.RemoveHealth(hitDamage);
 
-}
+            }
             i++;
         }
 

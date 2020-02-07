@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class DeprecatedEnemy : MonoBehaviour
 {
     //public TileLayout Tilemap { get; set; }
     [SerializeField]
@@ -42,6 +42,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        throw new System.Exception("deprecated, don't use this -Clarence");
         //Tilemap = FindObjectOfType<TileLayout>();
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();

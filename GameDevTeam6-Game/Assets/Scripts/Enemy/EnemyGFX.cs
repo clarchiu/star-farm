@@ -9,25 +9,63 @@ using Pathfinding;
  * - Clarence
  */
 
-public class EnemyGFX : MonoBehaviour 
+public enum GFXStates
 {
-    private AIPath aiPath;
+    MOVING,
+    ATTACKING,
+    IDLING
+}
+
+public class EnemyGFX : MonoBehaviour
+{
     private Animator animator;
+    public Animator MyAnimator { get => animator; }
 
     private Vector2 direction;
-    public Vector2 Direction { set => direction = (Vector2) value.normalized; }
+    public Vector2 Direction //make it the responsibility of the logical layer to set direction
+    {
+        set
+        {
+            direction = (Vector2)value.normalized;
+            animator.SetFloat("x", direction.x);
+            animator.SetFloat("y", direction.y);
+        }
+    }
 
-    //the following booleans decide which animation set should be played
-    public bool IsAttacking { get; set; }
-    private bool IsMoving { get => !direction.Equals(Vector2.zero); }
-    
+    private GFXStates state;
+    public GFXStates MyState //make it the responsibility of the logical layer to set state
+    {
+        set
+        {
+            state = value;
+
+            if (state == GFXStates.MOVING)
+            {
+                ActivateLayer("Walk Layer");
+            }
+            else if (state == GFXStates.ATTACKING)
+            {
+                //Debug.Log("is attacking");
+                ActivateLayer("Attack Layer");
+            }
+            else
+            {
+                //Debug.Log("is idling");
+                ActivateLayer("Idle Layer");
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        direction = Vector2.zero;
+        state = GFXStates.IDLING;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        aiPath = GetComponentInParent<AIPath>();
-        animator = GetComponent<Animator>();
-        direction = Vector2.zero;
     }
 
     // Update is called once per frame

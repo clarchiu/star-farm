@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Dregling : Enemy
+public class DeprecatedDregling : DeprecatedEnemy
 {
 
     private int baseHealth = 50;
@@ -13,6 +13,7 @@ public class Dregling : Enemy
 
     protected override void Start()
     {
+        throw new System.Exception("deprecated, don't use this -Clarence");
         base.Start();
     }
 
