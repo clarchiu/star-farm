@@ -1,56 +1,42 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 /*
  * Search state responsible for finding a target for the agent
- * Search state can go to path state if a target is found or idle if there are no more targets 
+ * Search state can go to path state if a target is found 
  * - Clarence 
  */
 
-internal class SearchState: EnemyState
+internal class SearchState: IState
 {
-    private float searchCoolDown; 
+    private EnemyAI parent;
 
-    public override void Enter(EnemyAI parent)
+    public void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in search state");
-
-        base.Enter(parent);
-
-        searchCoolDown = 2f;
+        this.parent = parent;
     }
 
-    public override void Exit()
+    public void Exit()
     {
-        //implementation not needed
+
     }
 
-    public override void Update()
+    public void Update()
     {
-        if (parent.Target == null && searchCoolDown <= 0)
+        if (parent.Target == null)
         {
-            GameObject target = FindClosestTarget();
+            GameObject target = FindPlayer();
 
             if (target != null)
             {
-                //Debug.Log("target found");
-
+                Debug.Log("target found");
                 parent.Target = target;
                 parent.ChangeState(new PathState());
-                return;
-            }
-            else
-            {
-                //set cooldown to 5 if target can't be found the first time
-                //to avoid unnecessary computation when there are no targets available
-                searchCoolDown = 5f; 
             }
         }
-
-        searchCoolDown -= Time.deltaTime;   //enemy can only search when searchCoolDown == 0
+        
     }
 
     private GameObject FindPlayer()
@@ -58,24 +44,19 @@ internal class SearchState: EnemyState
         return GameObject.FindGameObjectWithTag("Player");
     }
 
-    //TODO: needs to be different for different enemies
+    //TODO: needs to be different for different subclasses
     private GameObject FindClosestTarget()
     {
-        List<GameObject> gameObjs = new List<GameObject>(GameObject.FindGameObjectsWithTag("Plant"));
-        gameObjs.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure")));
-        gameObjs.Add(GameObject.FindGameObjectWithTag("Player"));
-        gameObjs.Add(GameObject.FindGameObjectWithTag("Ship"));
+        GameObject[] gameObjs;
+        gameObjs = GameObject.FindGameObjectsWithTag("Targetable");
 
         GameObject closestObj = null;
-
         float closestDis = Mathf.Infinity;
         Vector3 selfPos = parent.transform.position;
-
         foreach (GameObject obj in gameObjs)
         {
             Vector3 diff = obj.transform.position - selfPos;
             float curDistance = diff.sqrMagnitude;
-
             if (curDistance < closestDis)
             {
                 closestObj = obj;
@@ -83,17 +64,6 @@ internal class SearchState: EnemyState
             }
         }
 
-        Debug.Log(closestObj.tag);
         return closestObj;
-    }
-
-    protected override void SetGFXState()
-    {
-        parent.GFX.MyState = GFXStates.IDLING;
-    }
-
-    protected override void SetGFXDirection()
-    {
-        //implementation not needed
     }
 }

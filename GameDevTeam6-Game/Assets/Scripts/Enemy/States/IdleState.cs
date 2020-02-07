@@ -1,32 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
 
-internal class IdleState: EnemyState
+internal class IdleState: IState
 {
-    public override void Enter(EnemyAI parent)
-    {
-        Debug.Log("enemy in idle state");
+    private EnemyAI parent;
 
-        base.Enter(parent);
+    public void Enter(EnemyAI parent)
+    {
+        this.parent = parent;
     }
 
-    public override void Exit()
+    public void Exit()
     {
-        //implementation not needed
+
     }
 
-    public override void Update()
+    public void Update()
     {
-        //implementation not needed
-    }
 
-    protected override void SetGFXDirection()
-    {
-        //implementation not needed
-    }
-
-    protected override void SetGFXState()
-    {
-        parent.GFX.MyState = GFXStates.IDLING;
     }
 }
 

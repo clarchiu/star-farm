@@ -13,8 +13,6 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
-        throw new System.Exception("this is deprecated, use the new WaveSpawner -Clarence");
         //spawn enemy every spawnInterval starting at startSpawnTime
         InvokeRepeating("spawnEnemy", startSpawnTime, spawnInterval);
     }

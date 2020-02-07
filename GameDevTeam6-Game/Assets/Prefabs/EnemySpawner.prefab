@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2523465596433796777}
-  - component: {fileID: 5309544642435166931}
+  - component: {fileID: 2523465596433796776}
   m_Layer: 0
-  m_Name: (Deprecated) EnemySpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5309544642435166931
+--- !u!114 &2523465596433796776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,10 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2523465596433796775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a9d4d7ae9841406db78562d45f1a59b, type: 3}
+  m_Script: {fileID: 11500000, guid: 941ada8d80b744ee8a25656b22a13497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  timeSystem: {fileID: 0}
+  enemy: {fileID: 6565849916385576505, guid: 065ac1cf556aa4665bf6a8325f531cc4, type: 3}
   startSpawnTime: 2
-  spawnInterval: 5
+  spawnInterval: 1

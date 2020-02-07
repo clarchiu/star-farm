@@ -49,21 +49,12 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-
         if (col.gameObject.CompareTag("Enemy"))
         {
-            /* use ITargetable interface instead b/c
-             * more verbose, easier to read/debug and
-             * easier to implement custom logic for when enemy dies
-             * - Clarence
-             */
-            ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
-            targetable.RemoveHealth(player,10);
-
-            //health = col.gameObject.GetComponent<Health>();
-            //health.RemoveHealth(10);
-            //hpBar = col.gameObject.GetComponent<HealthBar>();
-            //hpBar.UpdateHealthBar();
+            health = col.gameObject.GetComponent<Health>();
+            health.RemoveHealth(10);
+            hpBar = col.gameObject.GetComponent<HealthBar>();
+            hpBar.UpdateHealthBar();
         }
 
      Destroy(this.gameObject);
