@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class EnemyStats
+public class EnemyAttributes
 {
     public float speed;
 
