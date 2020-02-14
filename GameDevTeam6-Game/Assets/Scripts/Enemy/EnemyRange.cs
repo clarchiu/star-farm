@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyRange : MonoBehaviour
 {
-    private Enemy parent;
+    private EnemyAI parent;
 
     // Start is called before the first frame update
     void Start()
     {
-        parent = GetComponentInParent<Dregling>();
+        parent = GetComponentInParent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -18,21 +18,21 @@ public class EnemyRange : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            parent.Target = collision.gameObject;
-            print("target found");
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        parent.Target = collision.gameObject;
+    //        //print("target found");
+    //    }
+    //}
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             parent.Target = null;
-            //print("target found");
+            print("target null");
         }
     }
 

@@ -12,11 +12,8 @@ using Pathfinding;
  * - Clarence
  */
 
-public class EnemyAI: MonoBehaviour
+public class EnemyAI: MonoBehaviour, ITargetable
 {
-<<<<<<< Updated upstream
-    private IState currentState;
-=======
     #region Components
     //GFX
     private EnemyGFX gfx;
@@ -50,7 +47,6 @@ public class EnemyAI: MonoBehaviour
             return (target.transform.position - transform.position).sqrMagnitude <= 5 * 5;
         }
     }
->>>>>>> Stashed changes
 
     private GameObject target;
     public GameObject Target
@@ -62,19 +58,25 @@ public class EnemyAI: MonoBehaviour
         set
         {
             target = value;
-            GetComponent<AIDestinationSetter>().target = this.target.transform;
+
+            if (target != null)
+                destSetter.target = this.target.transform;
         }
     }
+    #endregion
 
-    public AIPath aiPath;
+    #region Private Fields
+    private IState currentState;
+    #endregion
 
     private void Awake()
     {
-        ChangeState(new SearchState());
+        SetupComponents();
     }
 
     private void Start()
     {
+        ChangeState(new SearchState());
     }
 
     private void Update()
@@ -82,17 +84,17 @@ public class EnemyAI: MonoBehaviour
         currentState.Update();
     }
 
+    #region Public Methods
     public void ChangeState(IState newState)
     {
         if (currentState != null)
         {
             currentState.Exit();
         }
+
         currentState = newState;
         currentState.Enter(this);
     }
-<<<<<<< Updated upstream
-=======
     #endregion
 
     #region ITargetable Implementation
@@ -122,13 +124,9 @@ public class EnemyAI: MonoBehaviour
             Destroy(gameObject);
         }
     }
->>>>>>> Stashed changes
 
-    public void SetDirection(Vector2 direction)
+    void ITargetable.GainHealth(int amount)
     {
-<<<<<<< Updated upstream
-        GetComponentInChildren<EnemyGFX>().Direction = direction;
-=======
         MyAttributes.currentHealth += amount;
     }
 
@@ -190,6 +188,6 @@ public class EnemyAI: MonoBehaviour
             InAttackRange = false;
             Debug.Log("enemy out of range");
         }
->>>>>>> Stashed changes
     }
+    #endregion
 }
