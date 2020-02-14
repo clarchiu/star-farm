@@ -19,7 +19,11 @@ GameObject:
   - component: {fileID: 2757563621985368532}
   - component: {fileID: 7292628999002052759}
   m_Layer: 9
+<<<<<<< Updated upstream:GameDevTeam6-Game/Assets/Prefabs/Enemy/Astar Enemy.prefab
   m_Name: Astar Enemy
+=======
+  m_Name: Astar Dregling
+>>>>>>> Stashed changes:GameDevTeam6-Game/Assets/Prefabs/Enemy/Astar Dregling.prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,6 +233,7 @@ MonoBehaviour:
     attackDamage: 10
     attackRange: 0.8
     attackCoolDown: 2.5
+<<<<<<< Updated upstream:GameDevTeam6-Game/Assets/Prefabs/Enemy/Astar Enemy.prefab
 --- !u!1 &7292628999824353213
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,45 +307,80 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 3251893252893223399, guid: 5b6421cd2e5a04e4594969874c5eface,
+=======
+--- !u!1001 &4535906225643425494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7292628999002052758}
+    m_Modifications:
+    - target: {fileID: 6613071792142264683, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_Name
+      value: Dregling
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4f5dd6c1e23f4723a8d410aee812284, type: 3}
+--- !u!4 &7292628999824353214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
+>>>>>>> Stashed changes:GameDevTeam6-Game/Assets/Prefabs/Enemy/Astar Dregling.prefab
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.57, y: 2.06}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &7292628999824353185
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_PrefabInstance: {fileID: 4535906225643425494}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7292628999824353213}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77994936a66f34a40a3b8c8df1d12c9d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2921858650842457974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7292628999824353213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240bbe9bfc44d40e887b4c8c7d494cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
