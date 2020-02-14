@@ -222,12 +222,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 7292628999002052756}
-  MyStats:
+  MyAttributes:
     speed: 2
-    maxHealth: 100
-    currentHealth: 100
+    maxHealth: 60
+    currentHealth: 60
     attackDamage: 10
-    attackRange: 0.8
+    attackRange: 1
     attackCoolDown: 2.5
 --- !u!1001 &4535906225643425494
 PrefabInstance:
