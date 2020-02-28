@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         float yVelocity = projectileSpeed * Mathf.Sin(angle);
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);
     }
-
+    /*
     private void Update()
     {
         currentTime += Time.deltaTime;
@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    */
     void DestroyProjectile(){
         Destroy(gameObject);
         //TODO
@@ -52,14 +52,24 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("OnCollisionEnter2D");
-        Debug.Log(col.gameObject.name);
-        if (col.gameObject.name == "Dregling(Clone)")
+
+        if (col.gameObject.CompareTag("Enemy"))
         {
-            health = col.gameObject.GetComponent<Health>();
-            health.RemoveHealth(10);
-            hpBar = col.gameObject.GetComponent<HealthBar>();
-            hpBar.UpdateHealthBar();
+            /* use ITargetable interface instead b/c
+             * more verbose, easier to read/debug and
+             * easier to implement custom logic for when enemy dies
+             * - Clarence
+             */
+            ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
+            targetable.RemoveHealth(player,10);
+
+            //health = col.gameObject.GetComponent<Health>();
+            //health.RemoveHealth(10);
+            //hpBar = col.gameObject.GetComponent<HealthBar>();
+            //hpBar.UpdateHealthBar();
         }
+
+     Destroy(this.gameObject);
+
     }
 }

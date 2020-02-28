@@ -16,13 +16,22 @@ public class TileLayout : MonoBehaviour
         tiles = new ObjectTile[tileCountX, tileCountY];
         for (int i = 0; i < tileCountX; i++) {
             for (int j = 0; j < tileCountY; j++) {
+
+
                 tiles[i, j] = new ObjectTile();
             }
         }
     }
     public ObjectTile GetTile(int x, int y)
     {
-        return tiles[x, y];
+        if (x<0 || y<0) //need to check if x and y are out of bounds
+        {
+            return null;
+        }
+        else 
+        {
+            return tiles[x, y];
+        }
     }
 
     public int getTileCountX() {

@@ -6,6 +6,7 @@ public class PlayerDirection_ : MonoBehaviour
 {
     private playerDir direction;
     private Animator anim;
+    private bool walking;
 
     void Start()
     {
@@ -21,26 +22,33 @@ public class PlayerDirection_ : MonoBehaviour
             direction = playerDir.left;
             anim.SetFloat("Horizontal", -1);
             anim.SetFloat("Vertical", 0);
+            walking = true;
         } else if (Input.GetAxisRaw("Horizontal") == 1) {
             anim.speed = 1;
             direction = playerDir.right;
             anim.SetFloat("Horizontal", 1);
             anim.SetFloat("Vertical", 0);
+            walking = true;
         } else if (Input.GetAxisRaw("Vertical") == -1)
         {
             anim.speed = 1;
             direction = playerDir.down;
             anim.SetFloat("Vertical", -1);
             anim.SetFloat("Horizontal", 0);
+            walking = true;
         } else if (Input.GetAxisRaw("Vertical") == 1)
         {
             anim.speed = 1;
             direction = playerDir.up;
             anim.SetFloat("Vertical", 1);
             anim.SetFloat("Horizontal", 0);
+            walking = true;
         } else
         {
-            anim.speed = 0;
+            if (walking == true) { 
+                anim.speed = 0;
+                walking = false;
+            }
         }
     }
 

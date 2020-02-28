@@ -11,6 +11,9 @@ TagManager:
   - Enemy
   - Ship
   - Plant
+  - Unwalkable
+  - Walkable
+  - AStarSquare
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -53,6 +56,9 @@ TagManager:
     locked: 0
   - name: Blocks
     uniqueID: 2850191433
+    locked: 0
+  - name: Dropped items
+    uniqueID: 3097193473
     locked: 0
   - name: Plant
     uniqueID: 834598487

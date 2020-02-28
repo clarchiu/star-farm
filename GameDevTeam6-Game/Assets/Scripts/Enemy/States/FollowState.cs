@@ -1,45 +1,61 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FollowState : IState
+/*
+ * Follow state responsible for following a target once it is close enough.
+ * Follow state can go to attack state if target is within attack range or
+ * it can go to search state if the target is killed or out of aggro range
+ * - Clarence 
+ */
+
+internal class FollowState: EnemyState
 {
-    private Enemy parent;
-
-    public void Enter(Enemy parent)
+    public override void Enter(EnemyAI parent)
     {
-        this.parent = parent;
+        Debug.Log("enemy in follow state");
+
+        base.Enter(parent);
     }
 
-    public void Exit()
+    public override void Exit()
     {
-        parent.Direction = Vector2.zero;
+        parent.RB.velocity = Vector2.zero;
     }
 
-    public void Update()
+    public override void Update()
     {
+        if (!parent.TargetInAggroRange)
+        {
+            parent.Target = null;
+        }
+
         if (parent.Target != null)
         {
             //Find the target's direction
-            parent.Direction = (parent.Target.transform.position - parent.transform.position).normalized;
+            Vector2 direction = (parent.Target.transform.position - parent.transform.position).normalized;             
+            parent.RB.velocity = direction * parent.MyAttributes.speed; 
 
-            //move towards target
-            parent.transform.position = Vector2.MoveTowards(parent.transform.position,
-                parent.Target.transform.position, parent.Speed * Time.deltaTime);
+            SetGFXDirection();
 
-            float distance = Vector2.Distance(parent.Target.transform.position, parent.transform.position);
-
-            if (distance <= parent.AttackRange)
+            if (parent.InAttackRange) 
             {
                 parent.ChangeState(new AttackState());
+                return;
             }
-
         }
         else
         {
-            parent.ChangeState(new IdleState());
+            parent.ChangeState(new SearchState());
+            return;
         }
-
     }
 
+    protected override void SetGFXDirection()
+    {
+        parent.GFX.Direction = parent.RB.velocity.normalized;
+    }
 
+    protected override void SetGFXState()
+    {
+        parent.GFX.MyState = GFXStates.MOVING;
+    }
 }

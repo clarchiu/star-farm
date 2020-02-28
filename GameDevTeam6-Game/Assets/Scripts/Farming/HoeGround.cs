@@ -82,10 +82,12 @@ public class HoeGround : MonoBehaviour
                     if (tileLayout.GetTile(tileX, tileY).getObjectOnTile().tag == "Plant") {
                         if (tileLayout.GetTile(tileX, tileY).getObjectOnTile().GetComponent<Plants>().getStages() == 5)
                         {
-                            Tutorial.Instance.TriggerDialogue(10);
-                            Tutorial.Instance.TriggerDialogue(11);
-                            Debug.Log("yay");
+                           
                         }
+                        Debug.Log("farmed");
+                        Tutorial.Instance.TriggerDialogue(10);
+                        Tutorial.Instance.TriggerDialogue(11);
+                        Inventory_mineral.Instance.GainItem(Mineral_type.copper, 1);
                         place.DestroyObject(tileX, tileY);
                     } else {
                         tileMap.SetTile(new Vector3Int(tileX - 1, tileY - 1, 0), tiles[1]);

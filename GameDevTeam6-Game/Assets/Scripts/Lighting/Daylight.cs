@@ -22,8 +22,9 @@ public class Daylight : MonoBehaviour
     }
 
 
-
+    
     // Update is called once per frame
+    //TODO Change this to a function that gets called in timeSystem
     void Update()
     {
 
