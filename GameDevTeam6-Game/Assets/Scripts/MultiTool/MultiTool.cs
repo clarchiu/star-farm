@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MultiTool : MonoBehaviour
 {
+
     private ToolModes mode;
-    int index;
 
     private MultiTool multiTool;
     private GameObject wheel;
@@ -33,7 +33,7 @@ public class MultiTool : MonoBehaviour
         bottomRight = wheel.transform.Find("BottomRight").GetComponent<Image>();
 
         currentImage = null;
-        selectedImage = null;
+        selectedImage = bottomRight;
 
         blue = new Color32(182, 205, 242, 190);
         darkBlue = new Color32(34, 90, 200, 190);
@@ -57,26 +57,90 @@ public class MultiTool : MonoBehaviour
         }
         else if (Input.GetKeyUp("tab"))
         {
-            wheel.SetActive(false);
-            if (currentImage == topLeft)
+                 wheel.SetActive(false);
+            if (selectedImage == topLeft)
             {
                 mode = ToolModes.buildingMode;
             }
-            else if (currentImage == topRight)
+            else if (selectedImage == topRight)
             {
                 mode = ToolModes.farmMode;
-            }
-            else if (currentImage == bottomLeft)
+            }   
+            else if (selectedImage == bottomLeft)
             {
                 mode = ToolModes.combatMode;
                 Tutorial.Instance.TriggerDialogue(8);
             }
-            else if (currentImage == bottomRight)
+            else if (selectedImage == bottomRight)
             {
                 mode = ToolModes.defaultMode;
             }
 
         }
+
+        // Cycles through tools with a Q
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+                mode += 1;
+            if (mode == ToolModes.end)
+                mode = ToolModes.defaultMode;
+                 
+            if (mode == ToolModes.farmMode)
+            {
+                selectedImage = topRight;
+            }
+
+            else if (mode == ToolModes.buildingMode)
+            {
+                selectedImage = topLeft;
+            }
+
+            else if (mode == ToolModes.defaultMode)
+            {
+
+                selectedImage = bottomRight;
+            }
+
+            else if (mode == ToolModes.combatMode) 
+            {
+
+                selectedImage = bottomLeft;
+
+            }
+
+        }
+
+        //Cylces backwards with E
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            mode -= 1;
+            if (mode == ToolModes.start)
+                mode = ToolModes.farmMode;
+
+            if (mode == ToolModes.farmMode)
+            {
+                selectedImage = topRight;
+            }
+
+            else if (mode == ToolModes.buildingMode)
+            {
+                selectedImage = topLeft;
+            }
+
+            else if (mode == ToolModes.defaultMode)
+            {
+
+                selectedImage = bottomRight;
+            }
+
+            else if (mode == ToolModes.combatMode)
+            {
+
+                selectedImage = bottomLeft;
+
+            }
+        }
+
 
         if (Input.GetKey(KeyCode.Tab))
         {
@@ -120,12 +184,16 @@ public class MultiTool : MonoBehaviour
             selectedImage.color = darkBlue;
         }
     }
+
 }
 
 public enum ToolModes
 {
+    start,
     defaultMode,
+    combatMode, 
     buildingMode,
     farmMode,
-    combatMode
+    end,
+    
 }
