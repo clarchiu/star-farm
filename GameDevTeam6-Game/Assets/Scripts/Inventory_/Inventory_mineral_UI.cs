@@ -24,6 +24,7 @@ public class Inventory_mineral_UI : MonoBehaviour
         {
             _instance = this;
         }
+        panel.SetActive(false);
     }
 
     private void Update()
