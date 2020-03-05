@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour, ITargetable
 {
     //Configuration Parameters
     [SerializeField] float moveSpeed = 3f;
+    private float maxX = 58, minX = 0, maxY = 58, minY = 0;
 
     //Reference Variables
     private Rigidbody2D playerRB;
@@ -30,6 +31,15 @@ public class PlayerController : MonoBehaviour, ITargetable
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
+
+        //Stop going off screen
+        if (transform.position.x < minX) { transform.position = new Vector2(minX, transform.position.y); }
+        if (transform.position.x > maxX) { transform.position = new Vector2(maxX, transform.position.y); }
+        if (transform.position.y < minY) { transform.position = new Vector2(transform.position.x, minY); }
+        if (transform.position.y > maxY) { transform.position = new Vector2(transform.position.x, maxY); }
+
+        //Set sorting order so that player sprite is below trees, this requires trees and player to be on same sorting layer
+        transform.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y);
     }
 
     //TODO: set this somewhere else, possibly have a different script - Clarence

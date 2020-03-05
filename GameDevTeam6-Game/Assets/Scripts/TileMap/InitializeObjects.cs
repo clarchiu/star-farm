@@ -7,7 +7,14 @@ using Pathfinding;
 public class InitializeObjects : MonoBehaviour
 {
     public Tilemap map;
-    public GameObject[] objects;
+    public GameObject boulder;
+    public GameObject tree;
+    public GameObject tree2;
+
+    public Sprite[] boulderSprites;
+    public Sprite[] treeSprites;
+    public Sprite[] tree2Sprites;
+
 
     private TileLayout layout;
     private PlaceObjects place;
@@ -30,18 +37,30 @@ public class InitializeObjects : MonoBehaviour
 
     void placeBoulders()
     {
+        //Places boulders and trees when the map is first loaded - Randy
         for (int i = 0; i < tileCountX; i++) {
             for (int j = 0; j < tileCountY; j++) {
                 Sprite spr = map.GetSprite(new Vector3Int(i-1, j-1, 0));
                 if (spr.name == "hd_0")
                 {
-                    int random = Random.Range(0, 20);
-                    if (random > 18)
+                    //To spawn or not
+                    if (Random.Range(1, 20) > 6)
                     {
-                        place.CreateObject(objects[1], i, j);
-                    } else
-                    {
-                        place.CreateObject(objects[0], i, j);
+
+                        //Pick object to spawn
+                        int random = Random.Range(0, 20);
+
+                        if (random < 15) {
+                            place.CreateObject(boulder, i, j);
+                            TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = boulderSprites[Random.Range(0, boulderSprites.Length)];
+                        } else if (random < 18) {
+                            place.CreateObject(tree, i, j);
+                            TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = treeSprites[Random.Range(0, treeSprites.Length)];
+                        } else
+                        {
+                            place.CreateObject(tree2, i, j);
+                            TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = tree2Sprites[Random.Range(0, tree2Sprites.Length)];
+                        }
                     }
                 }
             }
