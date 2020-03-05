@@ -26,7 +26,7 @@ public class PlayerDirection : MonoBehaviour
         mousePos = gameCamera.ScreenToWorldPoint(Input.mousePosition);
         playerPos = transform.position;
         lookAngle = Mathf.Atan2((mousePos - playerPos).y, (mousePos - playerPos).x) * Mathf.Rad2Deg;
-        Vector3 eularAngles = new Vector3(0, 0, lookAngle - 90);
+        Vector3 eularAngles = new Vector3(0, 0, lookAngle);
         Quaternion currentRoation = Quaternion.Euler(eularAngles);
         return currentRoation;
     }

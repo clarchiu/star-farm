@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     private GameObject player;
 
     private float lifeTime = 2;
-    private float currentTime = 0;
     private Health health;
     private HealthBar hpBar;
 
@@ -29,7 +28,7 @@ public class Projectile : MonoBehaviour
     }
     public void InitializeVelocity(Vector3 rotation)
     {
-        float angle = Mathf.Deg2Rad *( rotation.z + 90);
+        float angle = Mathf.Deg2Rad *( rotation.z);
         float xVelocity = projectileSpeed * Mathf.Cos(angle);
         float yVelocity = projectileSpeed * Mathf.Sin(angle);
         rigidBody.velocity = new Vector2(xVelocity, yVelocity);

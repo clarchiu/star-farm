@@ -14,6 +14,7 @@ TagManager:
   - Unwalkable
   - Walkable
   - AStarSquare
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - 
   - 
   - Obstacle
-  - 
-  - 
+  - Player
+  - DropItem
   - 
   - 
   - 
@@ -54,17 +55,23 @@ TagManager:
   - name: Background
     uniqueID: 1622155443
     locked: 0
-  - name: Blocks
-    uniqueID: 2850191433
-    locked: 0
   - name: Dropped items
     uniqueID: 3097193473
+    locked: 0
+  - name: Bullets
+    uniqueID: 3289673917
     locked: 0
   - name: Plant
     uniqueID: 834598487
     locked: 0
-  - name: Player
-    uniqueID: 2931498807
+  - name: Break effect
+    uniqueID: 491766129
+    locked: 0
+  - name: Ship
+    uniqueID: 407277549
+    locked: 0
+  - name: Blocks
+    uniqueID: 2850191433
     locked: 0
   - name: Healthbar
     uniqueID: 1520299531

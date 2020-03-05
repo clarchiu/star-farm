@@ -22,7 +22,6 @@ public class Mineral_item
 
     public void AddAmount(int i)
     {
-        Debug.Log("gained item");
         amount += i;
         Inventory_mineral_UI.Instance.RefreshImages();
     }

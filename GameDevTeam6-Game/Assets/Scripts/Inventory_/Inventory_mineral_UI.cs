@@ -51,7 +51,7 @@ public class Inventory_mineral_UI : MonoBehaviour
         {
             if (i < images.Count)
             {
-                images[i].GetComponent<Image>().sprite = ItemInfo.Instance.GetSprite(Inventory_mineral.Instance.items[i].GetMineralType());
+                images[i].GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[i].GetMineralType());
                 images[i].GetComponentInChildren<Text>().text = Inventory_mineral.Instance.items[i].GetAmount().ToString();
             }
         }
