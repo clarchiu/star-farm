@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8496308788165085335
 Transform:
@@ -78,12 +78,15 @@ MonoBehaviour:
   map: {fileID: 0}
   boulder: {fileID: 1128533525796180358, guid: 953ef6ac2a91b614b8ff8aa499bcbd63, type: 3}
   tree: {fileID: 3484086711567329744, guid: d567aa3a0ca0b7a4d8ca2f9f7cee4d2c, type: 3}
+  tree2: {fileID: 3484086711567329744, guid: 44bd63fb73f36534ebeb32dfa0925127, type: 3}
   boulderSprites:
   - {fileID: -2006765479483123057, guid: af47a85a507d92b4eb884454a3795587, type: 3}
   - {fileID: -5272074167968763241, guid: af47a85a507d92b4eb884454a3795587, type: 3}
   treeSprites:
   - {fileID: 21300000, guid: 8f9444a823b48e34cb755153a7e5172d, type: 3}
   - {fileID: 21300000, guid: becb4f0739bcd814589516c2c87983a0, type: 3}
+  - {fileID: 21300000, guid: 398b95795e36a9740a726450be720e00, type: 3}
+  tree2Sprites:
   - {fileID: 21300000, guid: 398b95795e36a9740a726450be720e00, type: 3}
 --- !u!114 &8496308788165085331
 MonoBehaviour:
