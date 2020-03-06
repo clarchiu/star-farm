@@ -2,14 +2,18 @@
 
 public class PlayerController : MonoBehaviour, ITargetable
 {
+   
     //Configuration Parameters
     [SerializeField] float moveSpeed = 3f;
 
+    
     //Reference Variables
     private Rigidbody2D playerRB;
 
+    
     private void Awake() {
         FindPlayerRB();
+
     }
 
     private void FindPlayerRB() {
@@ -25,11 +29,14 @@ public class PlayerController : MonoBehaviour, ITargetable
         PlayerMove();
     }
     private void PlayerMove() {
+     
         var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime;
         var deltaY = Input.GetAxisRaw("Vertical") * Time.fixedDeltaTime;
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
+        //plays the sound when you move -B
+        SoundManager.PlaySound();
     }
 
     //TODO: set this somewhere else, possibly have a different script - Clarence
