@@ -35479,7 +35479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.8, y: 0.64031965}
-  m_AnchoredPosition: {x: 44, y: 84.08}
+  m_AnchoredPosition: {x: 34, y: 84.08}
   m_SizeDelta: {x: -39, y: -23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681393443
@@ -37310,6 +37310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObjectTileController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599001553018501681, guid: b489ad8e15b004f189ae90380148cbe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6599001554181278900, guid: b489ad8e15b004f189ae90380148cbe4,
         type: 3}

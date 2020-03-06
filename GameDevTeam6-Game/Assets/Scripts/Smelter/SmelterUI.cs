@@ -6,6 +6,8 @@ public class SmelterUI : MonoBehaviour
 {
     public GameObject smelterPanel;
 
+    private GameObject item1;
+    private GameObject item2;
     private void Awake()
     {
         Debug.Log(this.gameObject.name);
@@ -27,5 +29,8 @@ public class SmelterUI : MonoBehaviour
         {
             smelterPanel.SetActive(true);
         }
+        item1 = this.transform.GetChild(0);
+        item2 = this.transform.GetChild(1);
+
     }
 }
