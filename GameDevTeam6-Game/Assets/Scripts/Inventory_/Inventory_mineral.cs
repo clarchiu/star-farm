@@ -35,7 +35,6 @@ public class Inventory_mineral : MonoBehaviour
             
             if (i.GetMineralType().ToString().Equals(item.ToString()))
             {
-                Debug.Log("yeeee");
                 i.AddAmount(amount);
                 return;
             }

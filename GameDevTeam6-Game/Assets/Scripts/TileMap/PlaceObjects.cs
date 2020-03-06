@@ -75,6 +75,7 @@ public class PlaceObjects : MonoBehaviour
             Vector2 position = new Vector2(x, y);
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
+            obj.GetComponent<SpriteRenderer>().sortingOrder = -y;
         }
     }
     //Destroys object at Tile[x,y] if there is an object there
@@ -88,15 +89,19 @@ public class PlaceObjects : MonoBehaviour
         ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject objectOnTile = tile.getObjectOnTile();
         if (objectOnTile != null) {
+            GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
             Destroy(objectOnTile);
-            if (objectOnTile.GetComponent<ObjectDropItem>() == null)
+            PlayEffect.Instance.PlayBreakEffect(new Vector2(x,y));
+            if (objectOnTile.GetComponent<Drop_mineral>() == null)
             {
                 Debug.Log("No object drop item set for this object");
             } else {
-                Drop_item.Instance.DropItem(objectOnTile.GetComponent<ObjectDropItem>().type, objectOnTile.transform.position.x, objectOnTile.transform.position.y);
+
+                for (int i = 0; i < Random.Range(2, 5); i++) {
+                    objectOnTile.GetComponent<Drop_mineral>().DropItem(objectOnTile.transform.position.x, objectOnTile.transform.position.y);
+                }
             }
         }
-        GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
     }
 
 
