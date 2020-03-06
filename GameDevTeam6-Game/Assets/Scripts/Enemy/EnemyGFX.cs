@@ -83,36 +83,4 @@ public class EnemyGFX : MonoBehaviour
 
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
     }
-
-
-    //TODO: deprecated, delete this after more testing
-
-    //private AIPath aiPath;
-    //private Rigidbody2D rb;
-
-    //the following booleans decide which animation set should be played
-    //public bool IsAttacking { get; set; }
-
-    //public void HandleLayers()
-    //{
-    //    if (IsMoving)
-    //    {
-    //        //Debug.LogFormat("is moving: {0}", direction);
-    //        ActivateLayer("Walk Layer");
-    //        //animator.SetFloat("x", direction.x);
-    //        //animator.SetFloat("y", direction.y);
-    //    }
-    //    else if (IsAttacking)
-    //    {
-    //        //Debug.Log("is attacking");
-    //        ActivateLayer("Attack Layer");
-    //        //animator.SetFloat("x", direction.x);
-    //        //animator.SetFloat("y", direction.y);
-    //    }
-    //    else
-    //    {
-    //        //Debug.Log("is idling");
-    //        ActivateLayer("Idle Layer");
-    //    }
-    //}
 }
