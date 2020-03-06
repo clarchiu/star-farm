@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8496308788165085320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8496308788165085335}
+  - component: {fileID: 8496308788165085334}
+  - component: {fileID: 8496308788165085321}
+  - component: {fileID: 8496308788165085330}
+  - component: {fileID: 8496308788165085331}
+  m_Layer: 0
+  m_Name: ObjectTileController 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8496308788165085335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496308788165085320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8496308788165085334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496308788165085320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58638ba3d8ed57d42b7b11a4e33beb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCountX: 59
+  tileCountY: 59
+--- !u!114 &8496308788165085321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496308788165085320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d935524e31e944ab040d237fceb560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentObject: {fileID: 1368018415672811490, guid: e800dcbad2a9a504798b20ecb17f2b76,
+    type: 3}
+  indicator: {fileID: 0}
+--- !u!114 &8496308788165085330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496308788165085320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d43d7d9a88ce94ba16a5b71c77955f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  boulder: {fileID: 1128533525796180358, guid: 953ef6ac2a91b614b8ff8aa499bcbd63, type: 3}
+  tree: {fileID: 3484086711567329744, guid: d567aa3a0ca0b7a4d8ca2f9f7cee4d2c, type: 3}
+  tree2: {fileID: 3484086711567329744, guid: 44bd63fb73f36534ebeb32dfa0925127, type: 3}
+  boulderSprites:
+  - {fileID: -2006765479483123057, guid: af47a85a507d92b4eb884454a3795587, type: 3}
+  - {fileID: -5272074167968763241, guid: af47a85a507d92b4eb884454a3795587, type: 3}
+  treeSprites:
+  - {fileID: 21300000, guid: 8f9444a823b48e34cb755153a7e5172d, type: 3}
+  - {fileID: 21300000, guid: becb4f0739bcd814589516c2c87983a0, type: 3}
+  - {fileID: 21300000, guid: 398b95795e36a9740a726450be720e00, type: 3}
+  tree2Sprites:
+  - {fileID: 21300000, guid: 398b95795e36a9740a726450be720e00, type: 3}
+--- !u!114 &8496308788165085331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496308788165085320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caafa41ce1dbf1248b17e76b8b51c316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

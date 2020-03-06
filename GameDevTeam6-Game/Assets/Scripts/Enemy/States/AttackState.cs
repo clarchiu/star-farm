@@ -69,11 +69,11 @@ internal class AttackState: EnemyState
     private IEnumerator Attack(ITargetable targetable) //TODO: might be able to define this in EnemyGFX
     {
         isAttacking = true;
-        attackCoolDown = parent.MyStats.attackCoolDown; 
+        attackCoolDown = parent.MyAttributes.attackCoolDown; 
 
         parent.GFX.MyAnimator.SetTrigger("attack");
 
-        targetable.RemoveHealth(parent.gameObject, parent.MyStats.attackDamage); 
+        targetable.RemoveHealth(parent.gameObject, parent.MyAttributes.attackDamage); 
         targetable.KnockBack(parent.transform.position, 50f); //TODO: make amount of knockback scale with damage?
 
         yield return new WaitForSeconds(parent.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is

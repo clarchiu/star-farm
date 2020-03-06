@@ -32,7 +32,7 @@ internal class FollowState: EnemyState
         {
             //Find the target's direction
             Vector2 direction = (parent.Target.transform.position - parent.transform.position).normalized;             
-            parent.RB.velocity = direction * parent.MyStats.speed; 
+            parent.RB.velocity = direction * parent.MyAttributes.speed; 
 
             SetGFXDirection();
 

@@ -34,7 +34,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     #region Public Properties
     //Constants for enemy type
-    public EnemyStats MyStats;
+    public EnemyAttributes MyAttributes;
 
     //Set by attackRangeCollider
     public bool InAttackRange { get; private set; } = false;
@@ -100,15 +100,15 @@ public class EnemyAI: MonoBehaviour, ITargetable
     #region ITargetable Implementation
     void ITargetable.SetHealth(int amount)
     {
-        MyStats.currentHealth = amount;
+        MyAttributes.currentHealth = amount;
     }
 
     void ITargetable.RemoveHealth(GameObject source, int amount)
     {
-        if (MyStats.currentHealth - amount > 0)
+        if (MyAttributes.currentHealth - amount > 0)
         {
-            MyStats.currentHealth -= amount;
-            healthBar.UpdateHealthBar((float) MyStats.currentHealth / MyStats.maxHealth);
+            MyAttributes.currentHealth -= amount;
+            healthBar.UpdateHealthBar((float) MyAttributes.currentHealth / MyAttributes.maxHealth);
 
             if (!GameObject.ReferenceEquals(target, source))
             {
@@ -120,14 +120,14 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
         else
         {
-            MyStats.currentHealth = 0;
+            MyAttributes.currentHealth = 0;
             Destroy(gameObject);
         }
     }
 
     void ITargetable.GainHealth(int amount)
     {
-        MyStats.currentHealth += amount;
+        MyAttributes.currentHealth += amount;
     }
 
     void ITargetable.KnockBack(Vector2 origin, float amount)
@@ -161,15 +161,15 @@ public class EnemyAI: MonoBehaviour, ITargetable
             throw new System.Exception("missing components on enemy, add in inspector");
         }
 
-        if (MyStats.currentHealth == 0 && MyStats.maxHealth == 0 && MyStats.speed == 0
-            && MyStats.attackCoolDown == 0 && MyStats.attackDamage == 0 && MyStats.attackRange == 0)
+        if (MyAttributes.currentHealth == 0 && MyAttributes.maxHealth == 0 && MyAttributes.speed == 0
+            && MyAttributes.attackCoolDown == 0 && MyAttributes.attackDamage == 0 && MyAttributes.attackRange == 0)
         {
             this.gameObject.SetActive(false);
             throw new System.Exception("missing MyStats values on EnemyAI script in inspector");
         }
 
-        aiPath.maxSpeed = MyStats.speed;
-        attackRangeCollider.radius = MyStats.attackRange;
+        aiPath.maxSpeed = MyAttributes.speed;
+        attackRangeCollider.radius = MyAttributes.attackRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
