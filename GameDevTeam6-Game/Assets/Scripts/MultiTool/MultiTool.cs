@@ -20,6 +20,7 @@ public class MultiTool : MonoBehaviour
     private Color32 blue;
     private Color32 darkBlue;
     private Color32 white;
+  
 
 
     private void Start() {
@@ -79,7 +80,7 @@ public class MultiTool : MonoBehaviour
         }
 
         // Cycles through tools with a Q
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
                 mode += 1;
             if (mode == ToolModes.end)
@@ -88,11 +89,14 @@ public class MultiTool : MonoBehaviour
             if (mode == ToolModes.farmMode)
             {
                 selectedImage = topRight;
+                //QDBuildTool.alpha = 1;
+                
             }
 
             else if (mode == ToolModes.buildingMode)
             {
                 selectedImage = topLeft;
+
             }
 
             else if (mode == ToolModes.defaultMode)
@@ -111,15 +115,17 @@ public class MultiTool : MonoBehaviour
         }
 
         //Cylces backwards with E
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             mode -= 1;
             if (mode == ToolModes.start)
                 mode = ToolModes.farmMode;
 
+
             if (mode == ToolModes.farmMode)
             {
                 selectedImage = topRight;
+           
             }
 
             else if (mode == ToolModes.buildingMode)
@@ -141,6 +147,8 @@ public class MultiTool : MonoBehaviour
             }
         }
 
+        
+                                                       
 
         if (Input.GetKey(KeyCode.Tab))
         {
