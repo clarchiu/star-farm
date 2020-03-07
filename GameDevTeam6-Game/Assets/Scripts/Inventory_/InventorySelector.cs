@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class InventorySelector: MonoBehaviour
 {
-    public GameObject button1;
+    public SmelterUI smelterUI;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +18,21 @@ public class InventorySelector: MonoBehaviour
 
     }
 
-   public void TaskOnClick(int buttonNum)
+    public void TaskOnClick(int buttonNum)
     {
-        if (1 == Inventory_mineral.Instance.items.Count)
+        if (buttonNum < Inventory_mineral.Instance.items.Count)
         {
             Inventory_mineral.Instance.items[buttonNum].GetMineralType();
             Debug.Log("You h clicked the button!");
             Debug.Log(Inventory_mineral.Instance.items[buttonNum].GetMineralType().ToString());
+
+
+
+            if (smelterUI.smelterPanel.activeSelf == true)
+            {
+                smelterUI.setItems(buttonNum);
+            }
+
         }
     }
 }

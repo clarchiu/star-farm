@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5747283068568826748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395385200994187732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d178158b08c1b8498dc0bd150b2456f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayClip: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
+  nightClip: {fileID: 8300000, guid: 48e89c5df5caa8f419283c89b7cf6ba2, type: 3}
 --- !u!1 &5747283068132929517
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,20 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ceba5027eb03a48b8a980183a9cf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5747283068568826748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3395385200994187732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d178158b08c1b8498dc0bd150b2456f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayClip: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
-  nightClip: {fileID: 8300000, guid: 48e89c5df5caa8f419283c89b7cf6ba2, type: 3}
 --- !u!1 &5747283068771590548
 GameObject:
   m_ObjectHideFlags: 0
@@ -34358,26 +34358,9 @@ PrefabInstance:
       objectReference: {fileID: 5747283069006691673}
     - target: {fileID: 8496308788165085330, guid: 6519bd1bb38795744892e341d034eaa9,
         type: 3}
-      propertyPath: tree2Sprites.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8496308788165085330, guid: 6519bd1bb38795744892e341d034eaa9,
-        type: 3}
       propertyPath: map
       value: 
       objectReference: {fileID: 5747283068797377848}
-    - target: {fileID: 8496308788165085330, guid: 6519bd1bb38795744892e341d034eaa9,
-        type: 3}
-      propertyPath: tree2
-      value: 
-      objectReference: {fileID: 3484086711567329744, guid: 44bd63fb73f36534ebeb32dfa0925127,
-        type: 3}
-    - target: {fileID: 8496308788165085330, guid: 6519bd1bb38795744892e341d034eaa9,
-        type: 3}
-      propertyPath: tree2Sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 398b95795e36a9740a726450be720e00,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6519bd1bb38795744892e341d034eaa9, type: 3}
 --- !u!4 &5747283070057858954 stripped
@@ -34393,11 +34376,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5747283069689683336}
     m_Modifications:
-    - target: {fileID: 4784536013286633186, guid: 49d1d86bd99c94390839481c70558fae,
-        type: 3}
-      propertyPath: m_Name
-      value: WaveSpawner
-      objectReference: {fileID: 0}
     - target: {fileID: 4784536013286633184, guid: 49d1d86bd99c94390839481c70558fae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34453,6 +34431,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4784536013286633186, guid: 49d1d86bd99c94390839481c70558fae,
+        type: 3}
+      propertyPath: m_Name
+      value: WaveSpawner
+      objectReference: {fileID: 0}
     - target: {fileID: 4784536013286633185, guid: 49d1d86bd99c94390839481c70558fae,
         type: 3}
       propertyPath: timeSystem
@@ -34473,6 +34456,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5747283069689683336}
     m_Modifications:
+    - target: {fileID: 4507754868288457465, guid: d9401dde48e984fdf81e4640abc71457,
+        type: 3}
+      propertyPath: m_Name
+      value: A_
+      objectReference: {fileID: 0}
     - target: {fileID: 4507754868288457471, guid: d9401dde48e984fdf81e4640abc71457,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34527,11 +34515,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507754868288457465, guid: d9401dde48e984fdf81e4640abc71457,
-        type: 3}
-      propertyPath: m_Name
-      value: A_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9401dde48e984fdf81e4640abc71457, type: 3}
@@ -34608,16 +34591,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6979637525683287364, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
-        type: 3}
-      propertyPath: dayClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
-    - target: {fileID: 6979637525683287364, guid: 4ef78e0d7b39a1145b96ff214c3265fe,
-        type: 3}
-      propertyPath: nightClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ef78e0d7b39a1145b96ff214c3265fe, type: 3}
 --- !u!1 &3395385200994187732 stripped
@@ -34639,6 +34612,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5747283069689683336}
     m_Modifications:
+    - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+        type: 3}
+      propertyPath: hour
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 902452993071033453, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+        type: 3}
+      propertyPath: m_Name
+      value: TimeController
+      objectReference: {fileID: 0}
     - target: {fileID: 902452993071033442, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34693,26 +34676,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: speed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: hour
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 902452993071033453, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: m_Name
-      value: TimeController
-      objectReference: {fileID: 0}
-    - target: {fileID: 902452993071033452, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: timeText
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3c4600ff86d8547a4b8d129fa68ca4, type: 3}
