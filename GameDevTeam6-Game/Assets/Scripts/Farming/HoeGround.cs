@@ -48,13 +48,6 @@ public class HoeGround : MonoBehaviour
         bool leftMouse = Input.GetMouseButtonDown(0);
         bool rightMouse = Input.GetMouseButtonDown(1);
 
-        //Set indicator color
-        if (!place.InBounds(tileX, tileY) || !place.NearPlayer(tileX, tileY, 2) || (objectExists && !plantExists)) {
-            indicatorRenderer.color = red;
-        }
-        else {
-            indicatorRenderer.color = green;
-        }
 
         if (!isFarmTile) {
             indicator.GetComponent<SpriteRenderer>().sprite = farmTile.GetComponent<SpriteRenderer>().sprite;
@@ -62,8 +55,19 @@ public class HoeGround : MonoBehaviour
             indicator.GetComponent<SpriteRenderer>().sprite = plant.GetComponent<SpriteRenderer>().sprite;
         }
 
+        //Set indicator color
+        if (!place.InBounds(tileX, tileY) || !place.NearPlayer(tileX, tileY, 2))
+        {
+            indicatorRenderer.color = red;
+            return;
+        }
+        else
+        {
+            indicatorRenderer.color = green;
+        }
+
         //Create plant
-        if (isFarmTile && leftMouse)
+        if (isFarmTile && leftMouse && !plantExists)
         {
             Tutorial.Instance.TriggerDialogue(6);
             GameObject plantObj = Instantiate(plant, new Vector2(tileX, tileY), Quaternion.identity);
@@ -71,7 +75,7 @@ public class HoeGround : MonoBehaviour
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
         }
         //Remove plant
-        else if (plantExists && rightMouse && !plantExists)
+        else if (plantExists && rightMouse)
         {
             Tutorial.Instance.TriggerDialogue(10);
             Tutorial.Instance.TriggerDialogue(11);

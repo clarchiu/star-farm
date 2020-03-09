@@ -190,7 +190,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444775863
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -8868272330977153355, guid: 4309a6a8e673d4b48a828374869e2a0a,
     type: 3}
@@ -252,6 +252,8 @@ MonoBehaviour:
   shootProjectiles: 0
   rateOfFire: 0.5
   bullet: {fileID: 4008322384143437378, guid: 7573accd5e1ada545bff58d497aa5e8b, type: 3}
+  invisibleCollider: {fileID: 29549391653788627, guid: 61a5101d6b805fc4c93f8e262bf1810a,
+    type: 3}
 --- !u!114 &1123309850
 MonoBehaviour:
   m_ObjectHideFlags: 0

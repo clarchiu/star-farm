@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class TimeUI : MonoBehaviour
 {
-    public Text timeText;
+    private Text timeText;
     private TimeSystem system;
 
     private void Start()
     {
         system = GetComponent<TimeSystem>();
+        timeText =  GameObject.Find("Time").GetComponent<Text>();
     }
 
     void Update()
