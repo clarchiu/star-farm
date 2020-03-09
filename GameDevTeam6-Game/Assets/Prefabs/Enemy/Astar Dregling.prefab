@@ -222,13 +222,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 7292628999002052756}
-  MyStats:
+  MyAttributes:
     speed: 2
-    maxHealth: 100
-    currentHealth: 100
-    attackDamage: 10
-    attackRange: 0.8
-    attackCoolDown: 2.5
+    maxHealth: 10
+    currentHealth: 10
+    attackDamage: 5
+    attackRange: 5
+    attackCoolDown: 5
 --- !u!1001 &4535906225643425494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,11 +236,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7292628999002052758}
     m_Modifications:
-    - target: {fileID: 6613071792142264683, guid: a4f5dd6c1e23f4723a8d410aee812284,
-        type: 3}
-      propertyPath: m_Name
-      value: Dregling
-      objectReference: {fileID: 0}
     - target: {fileID: 6613071792142264680, guid: a4f5dd6c1e23f4723a8d410aee812284,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,6 +290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613071792142264683, guid: a4f5dd6c1e23f4723a8d410aee812284,
+        type: 3}
+      propertyPath: m_Name
+      value: Dregling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f5dd6c1e23f4723a8d410aee812284, type: 3}

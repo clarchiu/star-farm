@@ -16,8 +16,16 @@ public class ShootWeapon : MonoBehaviour
         else {
             if (Input.GetMouseButtonDown(1))
             {
+                GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 GetComponent<ProjectileSpawner>().shootProjectiles = true;
-            } else if (Input.GetMouseButtonUp(1))
+            } else if (Input.GetMouseButton(1))
+            {
+                if (GetComponent<PlayerStates>().GetState() != playerStates.INTERACTING)
+                {
+                    GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
+                }
+            }
+            else if (Input.GetMouseButtonUp(1))
             {
                 GetComponent<ProjectileSpawner>().shootProjectiles = false;
             }
