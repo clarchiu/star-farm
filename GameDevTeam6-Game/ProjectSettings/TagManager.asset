@@ -55,6 +55,12 @@ TagManager:
   - name: Background
     uniqueID: 1622155443
     locked: 0
+  - name: Farm tile background
+    uniqueID: 1427697533
+    locked: 0
+  - name: Farm tile
+    uniqueID: 478479845
+    locked: 0
   - name: Dropped items
     uniqueID: 3097193473
     locked: 0

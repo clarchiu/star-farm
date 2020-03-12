@@ -9,7 +9,13 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] float rateOfFire = 0.5f;
     private Coroutine shootCoroutine = null;
     [SerializeField] private Projectile bullet = null;
+    [SerializeField] private GameObject invisibleCollider;
 
+
+    private void Awake()
+    {
+        Physics2D.IgnoreCollision(bullet.GetComponent<BoxCollider2D>(), invisibleCollider.GetComponent<BoxCollider2D>());
+    }
     void Update(){
         if (shootProjectiles && !shooting) {
             shootCoroutine = StartCoroutine(ShootCoroutine());
@@ -23,7 +29,7 @@ public class ProjectileSpawner : MonoBehaviour
     IEnumerator ShootCoroutine() {
         shooting = true;
         while (shootProjectiles) {
-            SpawnProjectile(gameObject.transform.position, GetComponent<PlayerDirection>().GetLookDirection());
+            SpawnProjectile(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.2f), GetComponent<PlayerDirection>().GetLookDirection());
             yield return new WaitForSeconds(rateOfFire);
         }
         shooting = false;

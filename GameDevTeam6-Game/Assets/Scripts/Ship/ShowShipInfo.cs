@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ShowShipInfo : MonoBehaviour
 {
-    public GameObject infoPanel;
+    private GameObject infoPanel;
 
-    private void Awake()
+    private void Start()
     {
+        infoPanel = GameObject.Find("Ship info");
         infoPanel.SetActive(false);
     }
 

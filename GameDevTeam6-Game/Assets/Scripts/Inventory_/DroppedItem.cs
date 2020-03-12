@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
+    [HideInInspector]
     public Mineral_type type;
 
     private void OnTriggerEnter2D(Collider2D collision)

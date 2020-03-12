@@ -38,7 +38,7 @@ public class PlaceObjects : MonoBehaviour
         GetMouseTile(out int tileX, out int tileY);
         indicator.transform.position = new Vector2(tileX, tileY);
 
-        if (InBounds(tileX, tileY) && NearPlayer(tileX, tileY, 4))
+        if (InBounds(tileX, tileY) && NearPlayer(tileX, tileY, 2))
         {
             GameObject tileObject = GetComponent<TileLayout>().GetTile(tileX, tileY).getObjectOnTile();
             if (tileObject == null)
@@ -53,7 +53,7 @@ public class PlaceObjects : MonoBehaviour
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
-                    PlayAttackAnimation();
+                    player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 }
             }
         } else
@@ -75,7 +75,10 @@ public class PlaceObjects : MonoBehaviour
             Vector2 position = new Vector2(x, y);
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
-            obj.GetComponent<SpriteRenderer>().sortingOrder = -y;
+            if (obj.GetComponent<SpriteRenderer>() != null)
+            {
+                obj.GetComponent<SpriteRenderer>().sortingOrder = -y;
+            }
         }
     }
     //Destroys object at Tile[x,y] if there is an object there
@@ -85,21 +88,24 @@ public class PlaceObjects : MonoBehaviour
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;
         }
-
         ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject objectOnTile = tile.getObjectOnTile();
-        if (objectOnTile != null) {
+        if (objectOnTile != null && tile.getBreakMode() != TileMode.unbreakable) {
             GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
             Destroy(objectOnTile);
             PlayEffect.Instance.PlayBreakEffect(new Vector2(x,y));
-            if (objectOnTile.GetComponent<Drop_mineral>() == null)
-            {
-                Debug.Log("No object drop item set for this object");
-            } else {
+            DropItem(objectOnTile);
+        }
+    }
 
-                for (int i = 0; i < Random.Range(2, 5); i++) {
-                    objectOnTile.GetComponent<Drop_mineral>().DropItem(objectOnTile.transform.position.x, objectOnTile.transform.position.y);
-                }
+    public void DropItem(GameObject obj)
+    {
+        if (obj.GetComponent<Drop_mineral>() == null) {
+            Debug.Log("No object drop item set for this object");
+        }
+        else  {
+            for (int i = 0; i < Random.Range(2, 5); i++) {
+                obj.GetComponent<Drop_mineral>().DropItem(obj.transform.position.x, obj.transform.position.y);
             }
         }
     }
@@ -126,31 +132,4 @@ public class PlaceObjects : MonoBehaviour
         int playerY = Mathf.RoundToInt(player.transform.position.y);
         return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);
     }
-    
-    public void PlayAttackAnimation()
-    {
-        playerDir dir = player.GetComponent<PlayerDirection_>().GetDirection();
-        Animator ani = player.GetComponent<Animator>();
-       // Animation anim = ani.GetCurrentAnimatorStateInfo(0);
-
-        ani.speed = 1;
-        if (dir == playerDir.left)
-        {
-            ani.Play("attack_left");
-        }
-        else if (dir == playerDir.right)
-        {
-            ani.Play("attack_right");
-        }
-        else if (dir == playerDir.up)
-        {
-            ani.Play("attack_up");
-        }
-        else if (dir == playerDir.down)
-        {
-            ani.Play("attack_down");
-        }
-
-    }
-    
 }
