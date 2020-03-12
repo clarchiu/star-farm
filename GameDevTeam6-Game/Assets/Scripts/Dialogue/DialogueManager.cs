@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    public Text subtextText;
-    public Text dialogueText;
+    private Text subtextText;
+    private Text dialogueText;
 
-    public Animator animator;
+    private Animator animator;
 
     public Queue<Sentence> sentences;
     private Sentence currentSentence = null;
@@ -17,6 +17,9 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         sentences = new Queue<Sentence>();
+        animator = GameObject.Find("DialogueBox").GetComponent<Animator>();
+        subtextText = GameObject.Find("subtext").GetComponent<Text>();
+        dialogueText = GameObject.Find("Dialogue text").GetComponent<Text>();
     }
 
     public void StartDialogue(Dialogue dialogue)

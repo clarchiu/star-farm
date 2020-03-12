@@ -16,7 +16,7 @@ public class ObjectTile
     public void ResetTileInfo()
     {
         objectOnTile = null;
-        tileMode = TileMode.unbreakable;
+        tileMode = TileMode.breakable;
         Walkable = true;
     }
 
@@ -53,5 +53,5 @@ public enum TileMode
 {
     breakable,
     unbreakable,
-    soil
+    farm
 }

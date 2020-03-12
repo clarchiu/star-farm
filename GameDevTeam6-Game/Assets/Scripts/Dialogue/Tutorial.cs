@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    public GameObject shipInfo;
+    private GameObject shipInfo;
     private MultiTool multiTool;
 
     private Dialogue[] dialogues;
@@ -30,6 +30,7 @@ public class Tutorial : MonoBehaviour
             _instance = this;
         }
 
+        shipInfo = GameObject.Find("Ship info");
         multiTool = FindObjectOfType<MultiTool>();
         timeSystem = FindObjectOfType<TimeSystem>();
     }

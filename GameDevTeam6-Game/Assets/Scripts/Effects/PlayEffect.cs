@@ -24,7 +24,7 @@ public class PlayEffect : MonoBehaviour
     {
         var emitParams = new ParticleSystem.EmitParams();
         emitParams.position = pos;
-        ParticleSystem obj = Instantiate(breakEffect, pos, Quaternion.identity);
+        ParticleSystem obj = Instantiate(breakEffect, pos, Quaternion.Euler(new Vector3(0,0,45)));
         obj.Emit(emitParams, 10);
     }
 }
