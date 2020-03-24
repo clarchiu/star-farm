@@ -40,7 +40,7 @@ public class Inventory_mineral : MonoBehaviour
             }
         }
         //If not found
-        items.Add(new Mineral_item(item, 1));
+        items.Add(new Mineral_item(item, amount));
         Inventory_mineral_UI.Instance.RefreshImages();
     }
 

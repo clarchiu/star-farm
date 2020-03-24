@@ -60,7 +60,7 @@ public class ItemHover : MonoBehaviour
             itemName.text = "Granite";
             itemDescription.text = "Granite-like substance that native to the planet. Durable after hardening can be made more durable by mixing with more hard metals";
         }
-        if (type == Mineral_type.copper)
+        if (type == Mineral_type.bronze)
         {
             itemName.text = "Bronze";
             itemDescription.text = "Advanced metal, needs to be mixed with copper and tin in the smelter. More durable than iron and copper, can be used for upgrading tools and ship";
@@ -72,7 +72,7 @@ public class ItemHover : MonoBehaviour
         }
         if (type == Mineral_type.steel)
         {
-            itemName.text = "Copper";
+            itemName.text = "Steel";
             itemDescription.text = "Advanced metal, needs to be processed through smelter with Iron. Durable and useful in many upgrades";
         }
         if (type == Mineral_type.tungsten)

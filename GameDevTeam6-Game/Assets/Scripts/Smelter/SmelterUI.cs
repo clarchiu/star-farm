@@ -11,6 +11,9 @@ public class SmelterUI : MonoBehaviour
 
 
     public GameObject item2;
+    public GameObject resultImg;
+
+
     public InventorySelector inventory;
     private bool item1In;
     private bool item2In;
@@ -25,16 +28,28 @@ public class SmelterUI : MonoBehaviour
     Text item1Text;
     Text item2Text;
     bool smelterRunning;
+    Mineral_type resultType;
+    public GameObject resultNum;
+    public GameObject result;
+    public GameObject progressBar;
+    float progressTime;
+    float timeRemaining;
+    Text resultNume;
+    Text resulte;
+    bool smelterDone;
 
     private void Start()
     {
-        Debug.Log(this.gameObject.name);
+       // Debug.Log(this.gameObject.name);
        // item1 = gameObject.transform.GetChild(0).gameObject;
        //item2 = gameObject.transform.GetChild(1).gameObject;
     }
     private void Awake()
     {
         smelterPanel.SetActive(false);
+        resultNume = resultNum.GetComponent<Text>();
+        resulte = result.GetComponent<Text>();
+
     }
 
     private void Update()
@@ -59,6 +74,35 @@ public class SmelterUI : MonoBehaviour
         {
             itemNum2.SetActive(false);
         }
+        if (item1In == true && item2In == true && smelterRunning == false)
+        {
+            if (CheckSmeltRecipe() == true)
+            {
+                resultImg.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(resultType);
+                resultNume.text = (item1Amount+item2Amount).ToString();
+                resulte.text = char.ToUpper(resultType.ToString()[0]) + resultType.ToString().Substring(1);
+            }
+            else 
+            {
+                resultNume.text = "";
+                resulte.text = "";
+                resultImg.GetComponent<Image>().sprite = blank;
+            }
+        }
+        if(smelterRunning == true)
+        {
+            //Debug.Log(progressTime);
+            if (timeRemaining >= 0)
+            {
+               // Debug.Log(timeRemaining);
+                timeRemaining = timeRemaining - 100 * Time.deltaTime;
+                progressBar.transform.localScale = new Vector2(1 - timeRemaining / progressTime, 1);
+            }
+            else
+            {
+                smelterDone = true;
+            }
+        }
     }
 
     public void TaskOnClick(int buttonNum)
@@ -76,9 +120,56 @@ public class SmelterUI : MonoBehaviour
                 item2Amount--;
             }
         }
+        if(buttonNum == 3)
+        {
+            if (CheckSmeltRecipe() == true && Inventory_mineral.Instance.FindAmount(itemType1) >= item1Amount && Inventory_mineral.Instance.FindAmount(itemType2) >= item2Amount && item1Amount != 0 && item2Amount != 0 && smelterRunning == false && smelterDone == false) 
+            {
+               // Debug.Log("SmelterRecipe Correct");
+                Inventory_mineral.Instance.RemoveItem(itemType1, item1Amount);
+                Inventory_mineral.Instance.RemoveItem(itemType2, item2Amount);
+                smelterRunning = true;
+            }
+        }
+        if(buttonNum == 4)
+        {
+            if(smelterDone == true)
+            {
+                Inventory_mineral.Instance.GainItem(resultType, item1Amount+item2Amount);
+                smelterDone = false;
+                smelterRunning = false;
+                item1In = false;
+                item2In = false;
+                item1Amount = 0;
+                item2Amount = 0;
+                swap = false;
+                item1.GetComponent<Image>().sprite = blank;
+                item2.GetComponent<Image>().sprite = blank;
+                smelterDone = false;
+                progressBar.transform.localScale = new Vector2(0, 1);
+                resultNume.text = "";
+                resulte.text = "";
+                resultImg.GetComponent<Image>().sprite = blank;
+            }
+        }
     }
 
-        private void OnMouseDown()
+    private bool CheckSmeltRecipe()
+    {
+
+        if ((itemType1 == Mineral_type.copper && itemType2 == Mineral_type.tin) || (itemType2 == Mineral_type.copper && itemType1 == Mineral_type.tin))
+        {
+            resultType = Mineral_type.bronze;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnMouseDown()
     {
         toggleInfoPanel();
     }
@@ -92,8 +183,14 @@ public class SmelterUI : MonoBehaviour
             swap = false;
             item1.GetComponent<Image>().sprite = blank;
             item2.GetComponent<Image>().sprite = blank;
-            item1Amount--;
-            item2Amount--;
+            item1Amount = 0;
+            item2Amount = 0;
+            // progressBar.transform.localScale = new Vector2( 0, 1);
+            resultNume.text = "";
+            resulte.text = "";
+            resultImg.GetComponent<Image>().sprite = blank;
+            item1Amount = 0;
+            item2Amount = 0;
         }
         if (smelterPanel.activeSelf)
         {
@@ -107,35 +204,36 @@ public class SmelterUI : MonoBehaviour
     }
     public void setItems(int buttonNum)
     {
-        Debug.Log("Item1In is originally equal to = " + item1In);
-        Debug.Log("Item2In is originally equal to = " + item1In);
-        if (item1In == false)
+        if (smelterRunning == false)
         {
-            item1.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
-            item1In = true;
-            itemType1 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
-            Debug.Log("Item1In is NOW equal to = " + item1In);
+            if (item1In == false)
+            {
+                item1.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
+                item1In = true;
+                itemType1 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
+               // Debug.Log("Item1In is NOW equal to = " + item1In);
 
-        }
-        else if(item2In == false)
-        {
-            item2.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
-            item2In = true;
-            itemType2 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
-            Debug.Log("Item2In is Now equal to = " + item1In);
-        }
-        else if(item1In == true && item2In == true && swap ==  false)
-        {
+            }
+            else if (item2In == false)
+            {
+                item2.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
+                item2In = true;
+                itemType2 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
+//Debug.Log("Item2In is Now equal to = " + item1In);
+            }
+            else if (item1In == true && item2In == true && swap == false)
+            {
 
-            item1.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
-            itemType1 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
-            swap = true;
-        }
-        else if (item1In == true && item2In == true && swap == true)
-        {
-            item2.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
-            itemType2 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
-            swap = false;
+                item1.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
+                itemType1 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
+                swap = true;
+            }
+            else if (item1In == true && item2In == true && swap == true)
+            {
+                item2.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[buttonNum].GetMineralType());
+                itemType2 = Inventory_mineral.Instance.items[buttonNum].GetMineralType();
+                swap = false;
+            }
         }
     }
 }
