@@ -1184,7 +1184,8 @@ MonoBehaviour:
   breakText1: {fileID: 1256269854}
   breakText2: {fileID: 1777795654}
   rangText1: {fileID: 1952621064}
-  rangText2: {fileID: 1065809619}
+  rangText2: {fileID: 1807699310}
+  Ship: {fileID: 196680895}
 --- !u!1 &207334300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &212727304
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3870,7 +3871,7 @@ GameObject:
   - component: {fileID: 596876632}
   - component: {fileID: 596876631}
   m_Layer: 5
-  m_Name: Text (6)
+  m_Name: Wep2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6908,7 +6909,7 @@ GameObject:
   - component: {fileID: 1035744061}
   - component: {fileID: 1035744060}
   m_Layer: 5
-  m_Name: Text (5)
+  m_Name: Wep1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7062,7 +7063,7 @@ GameObject:
   - component: {fileID: 1065809622}
   - component: {fileID: 1065809621}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Display Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7084,7 +7085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 329.98, y: 216.53}
+  m_AnchoredPosition: {x: 324, y: 216.53}
   m_SizeDelta: {x: 91.6, y: 38.045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065809621
@@ -8490,12 +8491,12 @@ PrefabInstance:
     - target: {fileID: 69495781869298888, guid: 8d725cdddb4934b0dae471b2c09cf35e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1145
+      value: 463.4
       objectReference: {fileID: 0}
     - target: {fileID: 69495781869298888, guid: 8d725cdddb4934b0dae471b2c09cf35e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.5
+      value: -87
       objectReference: {fileID: 0}
     - target: {fileID: 69495781869298888, guid: 8d725cdddb4934b0dae471b2c09cf35e,
         type: 3}
@@ -9393,7 +9394,7 @@ GameObject:
   - component: {fileID: 1256269857}
   - component: {fileID: 1256269856}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Brek1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9973,7 +9974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1314019647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10511,7 +10512,7 @@ GameObject:
   - component: {fileID: 1375610372}
   - component: {fileID: 1375610371}
   m_Layer: 5
-  m_Name: Text
+  m_Name: 'Ship Level:'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12808,7 +12809,7 @@ GameObject:
   - component: {fileID: 1777795657}
   - component: {fileID: 1777795656}
   m_Layer: 5
-  m_Name: Text (7)
+  m_Name: Brek2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13143,7 +13144,7 @@ GameObject:
   - component: {fileID: 1807699313}
   - component: {fileID: 1807699312}
   m_Layer: 5
-  m_Name: Text (8)
+  m_Name: Rng2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13595,7 +13596,7 @@ GameObject:
   - component: {fileID: 1952621067}
   - component: {fileID: 1952621066}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Rng1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15124,5 +15125,15 @@ PrefabInstance:
       propertyPath: button3
       value: 
       objectReference: {fileID: 758093526}
+    - target: {fileID: 5805430053951218161, guid: 4ecc37ada2357431191161167136f6a2,
+        type: 3}
+      propertyPath: smelterPanel
+      value: 
+      objectReference: {fileID: 1203415401}
+    - target: {fileID: 5805430053951218161, guid: 4ecc37ada2357431191161167136f6a2,
+        type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 314859827}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecc37ada2357431191161167136f6a2, type: 3}
