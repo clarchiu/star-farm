@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6979637525683287366
 Transform:
   m_ObjectHideFlags: 0
@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663abff5119e83e4bbeae1680ba934f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstClip: {fileID: 8300000, guid: ab943912c0a38f04480a8d3da48a71bf, type: 3}
+  MpPlayer: {fileID: 0}

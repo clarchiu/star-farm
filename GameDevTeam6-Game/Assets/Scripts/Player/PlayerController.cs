@@ -2,15 +2,21 @@
 
 public class PlayerController : MonoBehaviour, ITargetable
 {
+    
+    
+
     //Configuration Parameters
     [SerializeField] float moveSpeed = 3f;
     private float maxX = 58, minX = 0, maxY = 58, minY = 0;
 
+
     //Reference Variables
     private Rigidbody2D playerRB;
 
+
     private void Awake() {
         FindPlayerRB();
+
     }
 
     private void FindPlayerRB() {
@@ -26,6 +32,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         PlayerMove();
     }
     private void PlayerMove() {
+
         var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime;
         var deltaY = Input.GetAxisRaw("Vertical") * Time.fixedDeltaTime;
 
@@ -63,6 +70,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
+       
 
 
         //Stop going off screen
@@ -89,7 +97,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         //throw new System.NotImplementedException();
     }
 
-    void ITargetable.RemoveHealth(GameObject source, int amount) //no need to use source 
+    void ITargetable.RemoveHealth(GameObject source, int amount) //no need to use source
     {
         if (health - amount > 0)
         {
@@ -98,7 +106,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         {
             health = 0;
             //Destroy(gameObject);
-            //TODO: what is the logic for when a player dies? - Clarence 
+            //TODO: what is the logic for when a player dies? - Clarence
             Debug.Log("player died");
         }
     }

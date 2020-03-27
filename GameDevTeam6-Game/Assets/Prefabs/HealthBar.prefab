@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5145030864339939749
@@ -191,6 +191,22 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &986018713900098345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145030864339939749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfaee0acbad5478681fc97142a0b650, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  healthBar: 0
+  gameover: {fileID: 8300000, guid: 25da35384969a77418a3fd0a859d6a32, type: 3}
+  attacked_sound: {fileID: 8300000, guid: e9401f9462aa87b46848ace2e8bdb017, type: 3}
+  volume: 0.5
