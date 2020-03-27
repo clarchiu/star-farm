@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MultiTool : MonoBehaviour
 {
+
     private ToolModes mode;
-    int index;
 
     private MultiTool multiTool;
     private GameObject wheel;
@@ -22,6 +22,7 @@ public class MultiTool : MonoBehaviour
     private Color32 white;
 
 
+
     private void Start() {
         mode = ToolModes.defaultMode;
 
@@ -33,7 +34,7 @@ public class MultiTool : MonoBehaviour
         bottomRight = wheel.transform.Find("bottomRight").GetComponent<Image>();
 
         currentImage = null;
-        selectedImage = null;
+        selectedImage = bottomRight;
 
         blue = new Color32(182, 205, 242, 190);
         darkBlue = new Color32(34, 90, 200, 190);
@@ -98,27 +99,127 @@ public class MultiTool : MonoBehaviour
         }
         else if (Input.GetKeyUp("tab"))
         {
-            wheel.SetActive(false);
-            if (currentImage == topLeft)
+                 wheel.SetActive(false);
+            if (selectedImage == topLeft)
             {
                 mode = ToolModes.buildingMode;
             }
-            else if (currentImage == topRight)
+            else if (selectedImage == topRight)
             {
                 mode = ToolModes.farmMode;
             }
-            else if (currentImage == bottomLeft)
+            else if (selectedImage == bottomLeft)
             {
                 mode = ToolModes.combatMode;
                 //Tutorial.Instance.TriggerDialogue(8);
             }
-            else if (currentImage == bottomRight)
+            else if (selectedImage == bottomRight)
             {
                 mode = ToolModes.wateringMode;
             }
 
         }
-        
+
+        // Cycles through tools with a Q
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+                mode += 1;
+            if (mode == ToolModes.end)
+                mode = ToolModes.defaultMode;
+
+            if (mode == ToolModes.farmMode)
+            {
+                selectedImage = topRight;
+                //QDBuildTool.alpha = 1;
+
+            }
+
+            else if (mode == ToolModes.buildingMode)
+            {
+                selectedImage = topLeft;
+
+            }
+
+            else if (mode == ToolModes.defaultMode)
+            {
+
+                selectedImage = bottomRight;
+            }
+
+            else if (mode == ToolModes.combatMode)
+            {
+
+                selectedImage = bottomLeft;
+
+            }
+
+        }
+
+        //Cylces backwards with E
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            mode -= 1;
+            if (mode == ToolModes.start)
+                mode = ToolModes.farmMode;
+
+
+            if (mode == ToolModes.farmMode)
+            {
+                selectedImage = topRight;
+
+            }
+
+            else if (mode == ToolModes.buildingMode)
+            {
+                selectedImage = topLeft;
+            }
+
+            else if (mode == ToolModes.defaultMode)
+            {
+
+                selectedImage = bottomRight;
+            }
+
+            else if (mode == ToolModes.combatMode)
+            {
+
+                selectedImage = bottomLeft;
+
+            }
+        }
+
+
+
+
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(Input.mousePosition);  //convert game object position to VievportPoint
+
+            resetColors();
+            if (viewportPoint.x > 0.5f && viewportPoint.y > 0.5f) {
+                currentImage = topRight;
+            } else if (viewportPoint.x < 0.5f && viewportPoint.y > 0.5f) {
+                currentImage = topLeft;
+            } else if (viewportPoint.x > 0.5f && viewportPoint.y < 0.5f) {
+                currentImage = bottomRight;
+            } else if (viewportPoint.x < 0.5f && viewportPoint.y < 0.5f) {
+                currentImage = bottomLeft;
+            } else {
+                currentImage = null;
+            }
+
+            if (currentImage != null) {
+                currentImage.color = blue;
+            }
+            if (selectedImage != null)
+            {
+                selectedImage.color = darkBlue;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                selectedImage = currentImage;
+            }
+        }
     }
 
     private void resetColors()
@@ -132,11 +233,14 @@ public class MultiTool : MonoBehaviour
             selectedImage.color = darkBlue;
         }
     }
+
 }
 
 public enum ToolModes
 {
+    start,
     defaultMode,
+    combatMode,
     buildingMode,
     farmMode,
     combatMode,

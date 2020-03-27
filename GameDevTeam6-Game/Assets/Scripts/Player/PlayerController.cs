@@ -32,10 +32,12 @@ public class PlayerController : MonoBehaviour, ITargetable
         if (PlayerStates.Instance.GetState() == playerStates.IDLE && (deltaX != 0 || deltaY != 0))
         {
             PlayerStates.Instance.ChangeState(playerStates.WALKING);
+            GetComponent<AudioSource>().Play();
         }
         if (PlayerStates.Instance.GetState() == playerStates.WALKING && (deltaX == 0 && deltaY == 0))
         {
             PlayerStates.Instance.ChangeState(playerStates.IDLE);
+            GetComponent<AudioSource>().Stop();
         }
 
         if (PlayerStates.Instance.GetState() != playerStates.WALKING) {
@@ -56,9 +58,12 @@ public class PlayerController : MonoBehaviour, ITargetable
             }*/
         }
 
+       
+
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
+
 
         //Stop going off screen
         if (transform.position.x < minX) { transform.position = new Vector2(minX, transform.position.y); }
