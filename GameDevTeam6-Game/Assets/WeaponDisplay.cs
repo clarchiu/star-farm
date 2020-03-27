@@ -15,7 +15,7 @@ public class WeaponDisplay : MonoBehaviour
 
     private ToolModes mode;
 
-    private void Start()
+    private void Start() 
     {
         QuickDisplay.SetActive(true);
         QDfarm.SetActive(true);
