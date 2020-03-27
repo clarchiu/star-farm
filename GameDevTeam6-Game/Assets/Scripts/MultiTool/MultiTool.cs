@@ -34,7 +34,7 @@ public class MultiTool : MonoBehaviour
         bottomRight = wheel.transform.Find("bottomRight").GetComponent<Image>();
 
         currentImage = null;
-        selectedImage = bottomRight;
+        selectedImage = null;
 
         blue = new Color32(182, 205, 242, 190);
         darkBlue = new Color32(34, 90, 200, 190);
@@ -95,11 +95,11 @@ public class MultiTool : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             wheel.SetActive(true);
-            mode = ToolModes.defaultMode;
+            //mode = ToolModes.defaultMode;
         }
         else if (Input.GetKeyUp("tab"))
         {
-                 wheel.SetActive(false);
+                wheel.SetActive(false);
             if (selectedImage == topLeft)
             {
                 mode = ToolModes.buildingMode;
@@ -123,7 +123,7 @@ public class MultiTool : MonoBehaviour
         // Cycles through tools with a Q
         if (Input.GetKeyUp(KeyCode.Space))
         {
-                mode += 1;
+            mode += 1;
             if (mode == ToolModes.end)
                 mode = ToolModes.defaultMode;
 
@@ -131,28 +131,26 @@ public class MultiTool : MonoBehaviour
             {
                 selectedImage = topRight;
                 //QDBuildTool.alpha = 1;
-
             }
 
             else if (mode == ToolModes.buildingMode)
             {
                 selectedImage = topLeft;
-
             }
 
-            else if (mode == ToolModes.defaultMode)
+            else if (mode == ToolModes.wateringMode)
             {
-
                 selectedImage = bottomRight;
             }
-
             else if (mode == ToolModes.combatMode)
             {
 
                 selectedImage = bottomLeft;
-
             }
-
+            else
+            {
+                selectedImage = null;
+            }
         }
 
         //Cylces backwards with E
@@ -160,31 +158,30 @@ public class MultiTool : MonoBehaviour
         {
             mode -= 1;
             if (mode == ToolModes.start)
-                mode = ToolModes.farmMode;
-
+                mode = ToolModes.wateringMode;
 
             if (mode == ToolModes.farmMode)
             {
                 selectedImage = topRight;
-
+                //QDBuildTool.alpha = 1;
             }
-
             else if (mode == ToolModes.buildingMode)
             {
                 selectedImage = topLeft;
             }
 
-            else if (mode == ToolModes.defaultMode)
+            else if (mode == ToolModes.wateringMode)
             {
-
                 selectedImage = bottomRight;
             }
-
             else if (mode == ToolModes.combatMode)
             {
 
                 selectedImage = bottomLeft;
-
+            }
+            else
+            {
+                selectedImage = null;
             }
         }
 
@@ -240,9 +237,9 @@ public enum ToolModes
 {
     start,
     defaultMode,
-    combatMode,
     buildingMode,
     farmMode,
     combatMode,
-    wateringMode
+    wateringMode,
+    end
 }

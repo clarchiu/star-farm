@@ -12,6 +12,7 @@ public class WeaponDisplay : MonoBehaviour
     public GameObject QDbuild;
     public GameObject QDcombat;
     public GameObject QuickDisplay;
+    public GameObject QDwater;
 
     private ToolModes mode;
 
@@ -21,6 +22,7 @@ public class WeaponDisplay : MonoBehaviour
         QDfarm.SetActive(true);
         QDbuild.SetActive(false);
         QDcombat.SetActive(false);
+        QDwater.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,29 +37,39 @@ public class WeaponDisplay : MonoBehaviour
             QDfarm.SetActive(true);
             QDbuild.SetActive(false);
             QDcombat.SetActive(false);
-
+            QDwater.SetActive(false);
         }
 
-        if (mode == ToolModes.buildingMode)
+        else if (mode == ToolModes.buildingMode)
         {
             QDfarm.SetActive(false);
             QDbuild.SetActive(true);
             QDcombat.SetActive(false);
+            QDwater.SetActive(false);
         }
 
-        if (mode == ToolModes.combatMode)
+        else if (mode == ToolModes.combatMode)
         {
 
             QDfarm.SetActive(false);
             QDbuild.SetActive(false);
             QDcombat.SetActive(true);
+            QDwater.SetActive(false);
         }
-
-        if (mode == ToolModes.defaultMode)
+        else if (mode == ToolModes.wateringMode)
         {
             QDfarm.SetActive(false);
             QDbuild.SetActive(false);
             QDcombat.SetActive(false);
+            QDwater.SetActive(true);
+        }
+
+        else if (mode == ToolModes.defaultMode)
+        {
+            QDfarm.SetActive(false);
+            QDbuild.SetActive(false);
+            QDcombat.SetActive(false);
+            QDwater.SetActive(false);
         }
 
     }
