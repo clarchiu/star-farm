@@ -20,7 +20,10 @@ public class MultiTool : MonoBehaviour
     private Color32 blue;
     private Color32 darkBlue;
     private Color32 white;
-
+    //creates audiosource 
+    AudioSource multitool_open;
+    public AudioClip multitool_sound;
+   
 
     private void Start() {
         mode = ToolModes.defaultMode;
@@ -41,6 +44,9 @@ public class MultiTool : MonoBehaviour
         resetColors();
 
         wheel.SetActive(false);
+        //gets component on multitool object
+        multitool_open = GetComponent<AudioSource>();
+        
     }
 
     public ToolModes GetMode()
@@ -53,10 +59,13 @@ public class MultiTool : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //plays sound when multitool opened
+            multitool_open.PlayOneShot(multitool_sound, 0.5f);
             wheel.SetActive(true);
         }
         else if (Input.GetKeyUp("tab"))
         {
+           
             wheel.SetActive(false);
             if (currentImage == topLeft)
             {
@@ -81,7 +90,6 @@ public class MultiTool : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(Input.mousePosition);  //convert game object position to VievportPoint
-
             resetColors();
             if (viewportPoint.x > 0.5f && viewportPoint.y > 0.5f) {
                 currentImage = topRight;
@@ -102,10 +110,14 @@ public class MultiTool : MonoBehaviour
             {
                 selectedImage.color = darkBlue;
             }
+           
             if (Input.GetMouseButtonDown(0))
             {
                 selectedImage = currentImage;
+                
             }
+            
+  
         }
     }
 

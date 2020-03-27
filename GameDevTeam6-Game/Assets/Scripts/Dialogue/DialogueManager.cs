@@ -14,9 +14,15 @@ public class DialogueManager : MonoBehaviour
     public Queue<Sentence> sentences;
     private Sentence currentSentence = null;
 
+    // create audiosource named AI_talking_audiosource
+    AudioSource AI_talking_audiosource;
+   
+
     void Awake()
     {
         sentences = new Queue<Sentence>();
+        // grabs the audiosource component for AI_talking_audiosource
+        AI_talking_audiosource = GetComponent<AudioSource>();
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -27,6 +33,7 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0 && currentSentence == null)
         {
             startDialogue = true;
+           
         }
 
 
@@ -37,6 +44,7 @@ public class DialogueManager : MonoBehaviour
 
         if (startDialogue)
         {
+            
             DisplayNextSentence();
         }
     }
@@ -48,7 +56,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        // plays audio from the audiosource component on the dialogue manager 
+        AI_talking_audiosource.Play();
         subtextText.text = "";
         currentSentence = sentences.Dequeue();
         StopAllCoroutines();

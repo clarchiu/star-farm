@@ -2,6 +2,8 @@
 
 public class PlayerController : MonoBehaviour, ITargetable
 {
+    
+    
 
     //Configuration Parameters
     [SerializeField] float moveSpeed = 3f;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
+       
 
         //Stop going off screen
         if (transform.position.x < minX) { transform.position = new Vector2(minX, transform.position.y); }

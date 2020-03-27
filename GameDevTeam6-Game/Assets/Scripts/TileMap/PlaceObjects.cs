@@ -14,6 +14,12 @@ public class PlaceObjects : MonoBehaviour
     private Color32 orange;
     private SpriteRenderer indicatorRenderer;
 
+    //creates audio sources and audioclips for place and destroy object sounds
+    AudioSource Placeobject_audiosource;
+    public AudioClip placeobject_sound;
+    AudioSource destroyobject_audiosource;
+    public AudioClip destroyobject_sound;
+
     private void Awake() {
         tool = FindObjectOfType<MultiTool>();
         if (!tool) {
@@ -28,6 +34,9 @@ public class PlaceObjects : MonoBehaviour
         green = new Color32(30, 255, 0, 100);
         orange = new Color32(200, 150, 0, 100);
         indicatorRenderer = indicator.GetComponent<SpriteRenderer>();
+        // gets audiosource components
+        Placeobject_audiosource = GetComponent<AudioSource>();
+        destroyobject_audiosource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -47,6 +56,8 @@ public class PlaceObjects : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     CreateObject(currentObject, tileX, tileY);
+                    //plays place object sound once
+                    Placeobject_audiosource.PlayOneShot(placeobject_sound, 0.5f);
                 }
             }
             else {
@@ -54,6 +65,8 @@ public class PlaceObjects : MonoBehaviour
                 if (Input.GetMouseButtonDown(1)) {
                     DestroyObject(tileX, tileY);
                     PlayAttackAnimation();
+                    //plays destry object sound once
+                    destroyobject_audiosource.PlayOneShot(destroyobject_sound, 0.5f);
                 }
             }
         } else
