@@ -15,25 +15,24 @@ public class ResourceManager : MonoBehaviour
     public Sprite[] wallSprites = new Sprite[13];
     public Sprite treeShadow1, treeShadow2, playersAndEnemiesShadow;
     public Material shadowMaterial;
-    public GameObject dropItem;
+    public GameObject dropItem, healthBar;
 
 
     private static ResourceManager _instance;
-    public static ResourceManager Instance { get { return _instance; } }
+    public static ResourceManager Instance { get {
+        if (_instance == null) {
+            _instance = FindObjectOfType<ResourceManager>();
+        }
+        if (_instance == null) {
+            Debug.Log("resource manager script not found!, Add resource manager prefab to your scene!");
+        }
+        return _instance;
+    } }
 
     #region Setup
     //Singleton
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
         SetupMineralMap();
     }
     private static Dictionary<string, Sprite> mineralMap;

@@ -33,7 +33,7 @@ public class PlayerMelee : MonoBehaviour
     IEnumerator runAttack()
     {
         checkMelee();
-        GetComponent<PlayerGFX>().MyState = GFXStates.ATTACKING;
+        GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
 
         yield return new WaitForSeconds(0.5f);
         //  attackDelay = 1;

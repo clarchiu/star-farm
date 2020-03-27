@@ -15,6 +15,7 @@ TagManager:
   - Walkable
   - AStarSquare
   - Wall
+  - Structure
   layers:
   - Default
   - TransparentFX
@@ -76,7 +77,7 @@ TagManager:
   - name: Ship
     uniqueID: 407277549
     locked: 0
-  - name: Blocks
+  - name: ChangeWithY
     uniqueID: 2850191433
     locked: 0
   - name: Healthbar

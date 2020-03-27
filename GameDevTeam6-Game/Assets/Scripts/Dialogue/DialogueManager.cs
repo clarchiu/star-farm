@@ -17,9 +17,16 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         sentences = new Queue<Sentence>();
-        animator = GameObject.Find("DialogueBox").GetComponent<Animator>();
-        subtextText = GameObject.Find("subtext").GetComponent<Text>();
-        dialogueText = GameObject.Find("Dialogue text").GetComponent<Text>();
+        try
+        {
+            animator = GameObject.Find("DialogueBox").GetComponent<Animator>();
+            subtextText = GameObject.Find("subtext").GetComponent<Text>();
+            dialogueText = GameObject.Find("Dialogue text").GetComponent<Text>();
+        } catch (System.Exception e)
+        {
+            Debug.Log("Could not find UI item with names either: DialogueBox, subtext, or Dialogue text");
+            this.enabled = false;
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -56,6 +63,8 @@ public class DialogueManager : MonoBehaviour
         currentSentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentSentence));
+
+        //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.aiTalk);
     }
 
     IEnumerator TypeSentence(Sentence sentence)
@@ -66,6 +75,12 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
+        /*
+        if (SoundEffects_.Instance.aiTalk.isPlaying)
+        {
+            SoundEffects_.Instance.aiTalk.Stop();
+        }
+        */
         displaySubtext(sentence);
     }
 

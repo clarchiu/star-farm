@@ -12,8 +12,18 @@ public class DropShadow: MonoBehaviour
     private GameObject shadow;
     SpriteRenderer parentRenderer;
     SpriteRenderer shadowRenderer;
+    private bool initialized = false;
+
 
     private void Start()
+    {
+        if (!initialized)
+        {
+            Initialize();
+        }
+    }
+
+    private void Initialize()
     {
         shadow = new GameObject("Shadow");
         shadow.transform.parent = transform;
@@ -22,33 +32,41 @@ public class DropShadow: MonoBehaviour
         shadow.transform.localRotation = Quaternion.identity;
         shadow.AddComponent<SpriteRenderer>();
 
-        if (shadowType == ShadowType.tree1)
-        {
-            shadow.GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.treeShadow1;
-            shadow.GetComponent<SpriteRenderer>().material = ResourceManager.Instance.shadowMaterial;
-        }
-        else if (shadowType == ShadowType.tree2)
-        {
-            shadow.GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.treeShadow2;
-            shadow.GetComponent<SpriteRenderer>().material = ResourceManager.Instance.shadowMaterial;
-        }
-        else if (shadowType == ShadowType.reflect)
-        {
-            shadow.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
-            shadow.GetComponent<SpriteRenderer>().material = ResourceManager.Instance.shadowMaterial;
-        }
-        else if (shadowType == ShadowType.playersAndEnemies)
-        {
-            shadow.GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.playersAndEnemiesShadow;
-            shadow.GetComponent<SpriteRenderer>().material = ResourceManager.Instance.shadowMaterial;
-            shadow.AddComponent<MoveShadow>();
-            shadow.GetComponent<MoveShadow>().Initialize(offset, gameObject);
-        }
-
         parentRenderer = GetComponent<SpriteRenderer>();
         shadowRenderer = shadow.GetComponent<SpriteRenderer>();
         shadowRenderer.sortingLayerName = parentRenderer.sortingLayerName;
         shadowRenderer.sortingOrder = parentRenderer.sortingOrder - 10;
+        initialized = true;
+        UpdateShadow();
+    }
+
+    public void UpdateShadow() {
+        if (!initialized)
+        {
+            Initialize();
+        }
+        if (shadowType == ShadowType.tree1)
+        {
+            shadowRenderer.sprite = ResourceManager.Instance.treeShadow1;
+            shadowRenderer.material = ResourceManager.Instance.shadowMaterial;
+        }
+        else if (shadowType == ShadowType.tree2)
+        {
+            shadowRenderer.sprite = ResourceManager.Instance.treeShadow2;
+            shadowRenderer.material = ResourceManager.Instance.shadowMaterial;
+        }
+        else if (shadowType == ShadowType.reflect)
+        {
+            shadowRenderer.sprite = GetComponent<SpriteRenderer>().sprite;
+            shadowRenderer.material = ResourceManager.Instance.shadowMaterial;
+        }
+        else if (shadowType == ShadowType.playersAndEnemies)
+        {
+            shadowRenderer.sprite = ResourceManager.Instance.playersAndEnemiesShadow;
+            shadowRenderer.material = ResourceManager.Instance.shadowMaterial;
+            shadow.AddComponent<MoveShadow>();
+            shadow.GetComponent<MoveShadow>().Initialize(offset, gameObject);
+        }
     }
 
 }

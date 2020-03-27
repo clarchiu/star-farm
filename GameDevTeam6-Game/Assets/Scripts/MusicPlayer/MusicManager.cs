@@ -14,8 +14,15 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        player = FindObjectOfType<MusicPlayer>();
-        time = FindObjectOfType<TimeSystem>();
+        try
+        {
+            player = FindObjectOfType<MusicPlayer>();
+            time = FindObjectOfType<TimeSystem>();
+        } catch
+        {
+            Debug.Log("Could not find player or time prefab");
+
+        }
     }
     // Start is called before the first frame update
     void Start()

@@ -7,18 +7,21 @@ public class PlayerStates : MonoBehaviour
     private playerStates state;
 
     private static PlayerStates _instance;
-    public static PlayerStates Instance { get { return _instance; } }
-
-    // Start is called before the first frame update
-    void Awake()
+    public static PlayerStates Instance
     {
-        if (_instance != null && _instance != this)
+        get
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<PlayerStates>();
+                }
+                if (_instance == null)
+                {
+                    Debug.Log("PlayerStates script not found!, Add resource manager prefab to your scene!");
+                }
+                return _instance;
+            }
         }
     }
 
@@ -27,6 +30,10 @@ public class PlayerStates : MonoBehaviour
         if (state == playerStates.INTERACTING && proposedState == playerStates.WALKING)
         {
             Debug.Log("Illegal state change, can't go from walking to attacking");
+        }
+        if (state == playerStates.INTERACTING && proposedState == playerStates.INTERACTING)
+        {
+            //Clicking too fast, ignore
         } else {
             state = proposedState;
             if (state == playerStates.WALKING) {

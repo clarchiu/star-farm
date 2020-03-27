@@ -27,10 +27,10 @@ public class MultiTool : MonoBehaviour
 
         multiTool = FindObjectOfType<MultiTool>();
         wheel = GameObject.FindWithTag("wheel");
-        topLeft = wheel.transform.Find("TopLeft").GetComponent<Image>();
-        topRight = wheel.transform.Find("TopRight").GetComponent<Image>();
-        bottomLeft = wheel.transform.Find("BottomLeft").GetComponent<Image>();
-        bottomRight = wheel.transform.Find("BottomRight").GetComponent<Image>();
+        topLeft = wheel.transform.Find("topLeft").GetComponent<Image>();
+        topRight = wheel.transform.Find("topRight").GetComponent<Image>();
+        bottomLeft = wheel.transform.Find("bottomLeft").GetComponent<Image>();
+        bottomRight = wheel.transform.Find("bottomRight").GetComponent<Image>();
 
         currentImage = null;
         selectedImage = null;
@@ -51,9 +51,50 @@ public class MultiTool : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(Input.mousePosition);  //convert game object position to VievportPoint
+
+            resetColors();
+            if (viewportPoint.x > 0.5f && viewportPoint.y > 0.5f)
+            {
+                currentImage = topRight;
+            }
+            else if (viewportPoint.x < 0.5f && viewportPoint.y > 0.5f)
+            {
+                currentImage = topLeft;
+            }
+            else if (viewportPoint.x > 0.5f && viewportPoint.y < 0.5f)
+            {
+                currentImage = bottomRight;
+            }
+            else if (viewportPoint.x < 0.5f && viewportPoint.y < 0.5f)
+            {
+                currentImage = bottomLeft;
+            }
+            else
+            {
+                currentImage = null;
+            }
+
+            if (currentImage != null)
+            {
+                currentImage.color = blue;
+            }
+            if (selectedImage != null)
+            {
+                selectedImage.color = darkBlue;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                selectedImage = currentImage;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             wheel.SetActive(true);
+            mode = ToolModes.defaultMode;
         }
         else if (Input.GetKeyUp("tab"))
         {
@@ -73,40 +114,11 @@ public class MultiTool : MonoBehaviour
             }
             else if (currentImage == bottomRight)
             {
-                mode = ToolModes.defaultMode;
+                mode = ToolModes.wateringMode;
             }
 
         }
-
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            Vector2 viewportPoint = Camera.main.ScreenToViewportPoint(Input.mousePosition);  //convert game object position to VievportPoint
-
-            resetColors();
-            if (viewportPoint.x > 0.5f && viewportPoint.y > 0.5f) {
-                currentImage = topRight;
-            } else if (viewportPoint.x < 0.5f && viewportPoint.y > 0.5f) {
-                currentImage = topLeft;
-            } else if (viewportPoint.x > 0.5f && viewportPoint.y < 0.5f) {
-                currentImage = bottomRight;
-            } else if (viewportPoint.x < 0.5f && viewportPoint.y < 0.5f) {
-                currentImage = bottomLeft;
-            } else {
-                currentImage = null;
-            }
-
-            if (currentImage != null) {
-                currentImage.color = blue;
-            }
-            if (selectedImage != null)
-            {
-                selectedImage.color = darkBlue;
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                selectedImage = currentImage;
-            }
-        }
+        
     }
 
     private void resetColors()
@@ -127,5 +139,6 @@ public enum ToolModes
     defaultMode,
     buildingMode,
     farmMode,
-    combatMode
+    combatMode,
+    wateringMode
 }

@@ -65,6 +65,7 @@ internal class SearchState: EnemyState
         gameObjs.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure")));
         gameObjs.Add(GameObject.FindGameObjectWithTag("Player"));
         gameObjs.Add(GameObject.FindGameObjectWithTag("Ship"));
+        gameObjs.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Wall")));
 
         GameObject closestObj = null;
 

@@ -8,7 +8,7 @@ public class Tutorial : MonoBehaviour
     private MultiTool multiTool;
 
     private Dialogue[] dialogues;
-    private int numOfDialogues = 12;
+    private int numOfDialogues = 27;
     private int currentDialogue = 0;
     private TimeSystem timeSystem;
 
@@ -16,20 +16,25 @@ public class Tutorial : MonoBehaviour
 
     private static Tutorial _instance;
 
-    public static Tutorial Instance { get { return _instance; } }
+    public static Tutorial Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Tutorial>();
+            }
+            if (_instance == null)
+            {
+                Debug.Log("Tutorial script not found!, Add resource manager prefab to your scene!");
+            }
+            return _instance;
+        }
+    }
 
     //Singleton
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
         shipInfo = GameObject.Find("Ship info");
         multiTool = FindObjectOfType<MultiTool>();
         timeSystem = FindObjectOfType<TimeSystem>();
@@ -119,7 +124,7 @@ public class Tutorial : MonoBehaviour
         dialogues[8].sentences[0].subtext = "Clear more enemies until the day comes";
 
         dialogues[9].initializeSentences(2);
-        dialogues[9].sentences[0].text = "Looks like the hostile creatures have turned into rust! We need to find out why in the future.";
+        dialogues[9].sentences[0].text = "Looks like the hostile creatures have all disappeared!";
         dialogues[9].sentences[1].text = "Look like the seeds you planted have matured! Try to harvest them with your multi-tool";
         dialogues[9].sentences[1].subtext = "Use farming mode, right click to harvest resources from the plant ";
 
@@ -128,8 +133,60 @@ public class Tutorial : MonoBehaviour
         dialogues[10].sentences[0].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
 
         dialogues[11].initializeSentences(1);
-        dialogues[11].sentences[0].text = "";
-        dialogues[11].sentences[0].subtext = "Thank you for playing the tutorial!";
+        dialogues[11].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our ship";
+        dialogues[11].sentences[0].subtext = "You can craft smelter and defenses in your ship, you will need to continue upgrading the ship to return back to Earth";
+
+        dialogues[12].initializeSentences(2);
+        dialogues[12].sentences[0].text = "Looks like these natives are relentless, I wonder what disturbed them.";
+        dialogues[12].sentences[1].text = "Grunt: Must….Consume…..";
+
+        dialogues[13].initializeSentences(2);
+        dialogues[13].sentences[0].text = "Grunt: The sorcerer has conjured up a Golem…";
+        dialogues[13].sentences[1].text = "Alert! Alert! Sensor detecting powerful energy clusters";
+
+        dialogues[14].initializeSentences(2);
+        dialogues[14].sentences[0].text = "Grunt: The sorcerer has conjured up a Golem…";
+        dialogues[14].sentences[1].text = "Alert! Alert! Sensor detecting powerful energy clusters";
+
+        dialogues[15].initializeSentences(1);
+        dialogues[15].sentences[0].text = "Captain! Now the smelter system has been restored! The smelter makes you mix metals into more advanced materials!";
+
+        dialogues[16].initializeSentences(1);
+        dialogues[16].sentences[0].text = "With the advanced materials that just acquired, we can make some defenses!";
+
+        dialogues[17].initializeSentences(1);
+        dialogues[17].sentences[0].text = "With the advanced materials that just acquired, we can make some defenses!";
+        dialogues[17].sentences[0].subtext = "Now we have material to build walls and turrets. Cement can be used to build walls while other metals can be made into defensive turrets";
+
+        dialogues[18].initializeSentences(1);
+        dialogues[18].sentences[0].text = "These materials radiate cosmic energy, we could make more powerful tools with this. We can improve your multi-tool to be even more powerful";
+
+        dialogues[19].initializeSentences(1);
+        dialogues[19].sentences[0].text = "Sensor detects spikes of energy signal, the natives seem to be gathering for a big attack!";
+
+        dialogues[20].initializeSentences(1);
+        dialogues[20].sentences[0].text = "You brought it here… We must survive";
+
+        dialogues[21].initializeSentences(1);
+        dialogues[21].sentences[0].text = "It seems that the Natives are not only here for our resources, why are they becomes so aggressive towards us?";
+
+        dialogues[22].initializeSentences(1);
+        dialogues[22].sentences[0].text = "You.. despicable..outsider";
+
+        dialogues[23].initializeSentences(1);
+        dialogues[23].sentences[0].text = "Captain! Sensor detects these twirling pools of materials contain powerful energy! This is nothing we have encountered before.";
+
+        dialogues[24].initializeSentences(1);
+        dialogues[24].sentences[0].text = "The Natives are getting desperate. Their attacks have become increasingly ferocious. We need to repair the ship as soon as possible.";
+
+        dialogues[25].initializeSentences(1);
+        dialogues[25].sentences[0].text = "Captain! It looks like the quantity of the Chromatic Metal is very limited. We do not have enough to upgrade our tools and fixing the ship altogether!";
+        dialogues[25].sentences[0].subtext = "You can choose to upgrade your ship to the final tier and finish the game or choosing to upgrade your multi-tool weapon in order to defeat the escaped Specimen.";
+
+        //If choose to upgrade ship, following won't play
+
+        dialogues[26].initializeSentences(1);
+        dialogues[26].sentences[0].text = "But… we need these materials to repair the ship. The ship is our only chance of getting out of here! Captain! We…";
 
     }
 

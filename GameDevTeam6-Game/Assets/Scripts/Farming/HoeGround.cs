@@ -12,7 +12,11 @@ public class HoeGround : MonoBehaviour
     public GameObject indicator;
     private SpriteRenderer indicatorRenderer;
 
-    public GameObject plant, farmTile; //Temporary
+    public GameObject farmTile; //Temporary
+
+    public GameObject[] plant;
+    private int selectedPlantIndex = 0;
+    private GameObject selectedPlant;
 
     private Color32 red, green, orange;
 
@@ -30,10 +34,23 @@ public class HoeGround : MonoBehaviour
         red = new Color32(255, 0, 0, 100);
         green = new Color32(30, 255, 0, 100);
         orange = new Color32(200, 150, 0, 100);
+        selectedPlant = plant[0];
     }
 
     private void Update()
     {
+        //Temp***********
+        if (Input.GetKeyDown("p"))
+        {
+            selectedPlantIndex += 1;
+            if (selectedPlantIndex >= plant.Length)
+            {
+                selectedPlantIndex = 0;
+            }
+            selectedPlant = plant[selectedPlantIndex];
+        }
+        //********************temp end
+
         if (!(tool.GetMode() == ToolModes.farmMode))
         {
             return;
@@ -52,11 +69,11 @@ public class HoeGround : MonoBehaviour
         if (!isFarmTile) {
             indicator.GetComponent<SpriteRenderer>().sprite = farmTile.GetComponent<SpriteRenderer>().sprite;
         } else {
-            indicator.GetComponent<SpriteRenderer>().sprite = plant.GetComponent<SpriteRenderer>().sprite;
+            indicator.GetComponent<SpriteRenderer>().sprite = selectedPlant.GetComponent<SpriteRenderer>().sprite;
         }
 
         //Set indicator color
-        if (!place.InBounds(tileX, tileY) || !place.NearPlayer(tileX, tileY, 2))
+        if (!place.InBounds(tileX, tileY) || !place.NearPlayer(tileX, tileY, 2) || (objectExists && !isFarmTile))
         {
             indicatorRenderer.color = red;
             return;
@@ -70,7 +87,7 @@ public class HoeGround : MonoBehaviour
         if (isFarmTile && leftMouse && !plantExists)
         {
             Tutorial.Instance.TriggerDialogue(6);
-            GameObject plantObj = Instantiate(plant, new Vector2(tileX, tileY), Quaternion.identity);
+            GameObject plantObj = Instantiate(selectedPlant, new Vector2(tileX, tileY), Quaternion.identity);
             TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant = plantObj;
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
         }
@@ -78,7 +95,6 @@ public class HoeGround : MonoBehaviour
         else if (plantExists && rightMouse)
         {
             Tutorial.Instance.TriggerDialogue(10);
-            Tutorial.Instance.TriggerDialogue(11);
             GameObject plant = TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant;
             place.DropItem(plant);
             Destroy(plant);

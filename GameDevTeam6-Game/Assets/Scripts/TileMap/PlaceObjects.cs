@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlaceObjects : MonoBehaviour
 {
     public GameObject currentObject;
-    public GameObject indicator;
+    private GameObject indicator;
 
     private MultiTool tool;
     private GameObject player;
@@ -13,14 +13,52 @@ public class PlaceObjects : MonoBehaviour
     private Color32 green;
     private Color32 orange;
     private SpriteRenderer indicatorRenderer;
+    public bool doneInitialize = false;
+
+    private static PlaceObjects _instance;
+    public static PlaceObjects Instance
+    {
+        get
+        {
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<PlaceObjects>();
+                }
+                if (_instance == null)
+                {
+                    Debug.Log("PlaceObjects script not found!, Add TileMap controller prefab to your scene!");
+                }
+                return _instance;
+            }
+        }
+    }
 
     private void Awake() {
+
+
         tool = FindObjectOfType<MultiTool>();
         if (!tool) {
             gameObject.SetActive(false);
-            Debug.LogWarning("no tool found!!");
+            Debug.LogWarning("Multitool object was not found! Place multiTool prefab into your scene!");
+            gameObject.SetActive(false);
         }
-        player = GameObject.FindGameObjectWithTag("Player");
+        try
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        } catch (System.Exception e)
+        {
+            Debug.Log("Player prefab not found! Put player prefab into your scene!");
+            gameObject.SetActive(false);
+        }
+        try
+        {
+            indicator = GameObject.Find("Indicator");
+        } catch (System.Exception e)
+        {
+            Debug.Log("Indicator prefab not found! Put Indicator prefab into your scene!");
+            gameObject.SetActive(false);
+        }
     }
 
     private void Start() {
@@ -52,7 +90,8 @@ public class PlaceObjects : MonoBehaviour
             else {
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
-                    DestroyObject(tileX, tileY);
+                    //DestroyObject(tileX, tileY);
+                    DamageObject(tileX, tileY);
                     player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 }
             }
@@ -72,15 +111,39 @@ public class PlaceObjects : MonoBehaviour
         ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject oldObj = tile.getObjectOnTile();
         if (oldObj == null) {
+            //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.objectPlace);
             Vector2 position = new Vector2(x, y);
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
+            if (doneInitialize)
+            {
+                AstarPath.active.Scan(); //scans the map to create grid graph for pathfinding
+            }
             if (obj.GetComponent<SpriteRenderer>() != null)
             {
                 obj.GetComponent<SpriteRenderer>().sortingOrder = -y;
             }
         }
     }
+
+    private void DamageObject(int x, int y)
+    {
+        ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
+        GameObject objectOnTile = tile.getObjectOnTile();
+
+        if (objectOnTile.GetComponent<ITargetable>() == null)
+        {
+            Debug.Log("Object behavior not attached to object. Destroying objects require this script to be attached");
+        } else
+        {
+            if (PlayerStates.Instance.GetState() == playerStates.IDLE)
+            {
+                //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.breaking);
+                objectOnTile.GetComponent<ITargetable>().RemoveHealth(objectOnTile, PlayerUpgrades.Instance.obstacleAttackDamage);
+            }   
+        }
+    }
+
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
         Tutorial.Instance.TriggerDialogue(5);
@@ -93,6 +156,10 @@ public class PlaceObjects : MonoBehaviour
         if (objectOnTile != null && tile.getBreakMode() != TileMode.unbreakable) {
             GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
             Destroy(objectOnTile);
+            if (doneInitialize)
+            {
+                AstarPath.active.Scan(); //scans the map to create grid graph for pathfinding
+            }
             PlayEffect.Instance.PlayBreakEffect(new Vector2(x,y));
             DropItem(objectOnTile);
         }

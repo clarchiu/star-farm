@@ -18,10 +18,16 @@ public class Wall : MonoBehaviour
 
     public void UpdateSprite(bool updateSelf)
     {
-        NeighbourUp    = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y + 1));
-        NeighbourDown  = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y - 1));
-        NeighbourLeft  = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x - 1), Mathf.RoundToInt(transform.position.y));
-        NeighbourRight = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y));
+        try
+        {
+            NeighbourUp = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y + 1));
+            NeighbourDown = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y - 1));
+            NeighbourLeft = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x - 1), Mathf.RoundToInt(transform.position.y));
+            NeighbourRight = TileLayout.Instance.GetTile(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y));
+        } catch (System.Exception e)
+        {
+            return;
+        }
 
         Sprite startingSprite = GetComponent<SpriteRenderer>().sprite;
 
@@ -43,6 +49,8 @@ public class Wall : MonoBehaviour
             else if (MatchNeighbour(true, true, false, true)) { GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.wallSprites[2]; }
             else if (MatchNeighbour(true, true, true, false)) { GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.wallSprites[2]; }
             else if (MatchNeighbour(true, true, true, true)) { GetComponent<SpriteRenderer>().sprite = ResourceManager.Instance.wallSprites[7]; } //Replace later
+
+            GetComponent<DropShadow>().UpdateShadow();
         }
         if (GetComponent<SpriteRenderer>().sprite != startingSprite || !updateSelf)
         {

@@ -39,6 +39,7 @@ public class ProjectileSpawner : MonoBehaviour
 
         Projectile projectile = Instantiate(bullet, position, rotation) as Projectile;
         projectile.InitializeVelocity(rotation.eulerAngles);
+        //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.laserGun);
         return projectile;
     }
 }

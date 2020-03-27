@@ -11,21 +11,23 @@ public class Inventory_mineral_UI : MonoBehaviour
     private GameObject panel;
 
     private static Inventory_mineral_UI _instance;
-    public static Inventory_mineral_UI Instance { get { return _instance; } }
-
-    //Singleton
-    private void Awake()
+    public static Inventory_mineral_UI Instance
     {
-        if (_instance != null && _instance != this)
+        get
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<Inventory_mineral_UI>();
+                }
+                if (_instance == null)
+                {
+                    Debug.Log("Inventory_mineral_UI script not found!, Add InventoryController prefab to your scene!");
+                }
+                return _instance;
+            }
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown("e"))

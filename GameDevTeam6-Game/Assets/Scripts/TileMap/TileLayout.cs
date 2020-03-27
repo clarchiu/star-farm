@@ -9,20 +9,23 @@ public class TileLayout : MonoBehaviour
     ObjectTile[,] tiles;
 
     private static TileLayout _instance;
-    public static TileLayout Instance { get { return _instance; } }
+    public static TileLayout Instance
+    {
+        get
+        {
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<TileLayout>();
+                }
+                return _instance;
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
         Initialize();
     }
 

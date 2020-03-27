@@ -37,12 +37,13 @@ public class Intro : MonoBehaviour
         {
 
             currentDialogue += 1;
-            if (currentDialogue == 10)
+            if (currentDialogue == dialogues.Length)
             {
                 SceneManager.LoadScene("RandyScene");
             }
             else
             {
+                StopAllCoroutines();
                 StartCoroutine(TypeSentence(dialogues[currentDialogue]));
             }
 

@@ -52,4 +52,12 @@ public class TimeSystem : MonoBehaviour
         }
     }
 
+    public void skipDay()
+    {
+        if (hour < 13)
+        {
+            hour = 13;
+        }
+    }
+
 }

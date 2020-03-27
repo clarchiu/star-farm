@@ -7,34 +7,47 @@ using Pathfinding;
 public class InitializeObjects : MonoBehaviour
 {
     public Tilemap map;
-    public GameObject boulder;
+    public GameObject[] minerals;
     public GameObject tree;
     public GameObject tree2;
     public GameObject invisibleCollision, invisbleBarrierNoCollision;
 
-    public Sprite[] boulderSprites;
+    public Sprite[] mineralSprites;
     public Sprite[] treeSprites;
     public Sprite[] tree2Sprites;
-
+    private Vector2 center;
+    float maxDistanceToEdgeOfMap;
+    float dividesDistanceBetweenMinerals;
 
     private TileLayout layout;
-    private PlaceObjects place;
 
     int tileCountX;
     int tileCountY;
 
     private void Awake()
     {
-        layout = FindObjectOfType<TileLayout>();
-        place = FindObjectOfType<PlaceObjects>();
+        try
+        {
+            layout = FindObjectOfType<TileLayout>();
+        } catch(System.Exception e)
+        {
+            Debug.Log("Could not find tileLayout or placeObject scipt. Please add");
+        }
         tileCountX = layout.getTileCountX();
         tileCountY = layout.getTileCountY();
+        center = new Vector2(tileCountX / 2, tileCountY / 2);
+        maxDistanceToEdgeOfMap = Mathf.Sqrt((tileCountX/2)*(tileCountX/2) + (tileCountY/2)*(tileCountY/2));
+        dividesDistanceBetweenMinerals = maxDistanceToEdgeOfMap / minerals.Length;
     }
 
     private void Start()
     {
         PlaceObstacles();
         PlaceInvisibleCollisions();
+        PlaceObjects.Instance.doneInitialize = true;
+
+        //this is critical - Clarence
+        AstarPath.active.Scan(); //scans the map to create grid graph for pathfinding
     }
 
     string[] tilesToPlaceObstaclesOn =
@@ -60,19 +73,37 @@ public class InitializeObjects : MonoBehaviour
                     if (spr.name == checkname) {
                         //To spawn or not
                         if (Random.Range(1, 20) > 4)  {
-                            //Pick object to spawn
-                            int random = Random.Range(0, 20);
-                            if (random < 15)  {
-                                place.CreateObject(boulder, i, j);
-                                TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = boulderSprites[Random.Range(0, boulderSprites.Length)];
-                            }
-                            else if (random < 18) {
-                                place.CreateObject(tree, i, j);
-                                TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = treeSprites[Random.Range(0, treeSprites.Length)];
-                            }
-                            else  {
-                                place.CreateObject(tree2, i, j);
-                                TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = tree2Sprites[Random.Range(0, tree2Sprites.Length)];
+
+                            if (Random.Range(1, 20) > 2)
+                            {
+                                //Pick object to spawn
+                                int random = Random.Range(0, 20);
+                                float distance = Vector2.Distance(center, new Vector2(i, j));
+
+                                // Debug.Log(distance);
+
+                                int offset = Random.Range(-1, 1);
+                                int mineralIndex = Mathf.RoundToInt(distance / dividesDistanceBetweenMinerals);
+
+
+                                mineralIndex += offset;
+
+                                if (mineralIndex > minerals.Length - 1) { mineralIndex = minerals.Length - 1; }
+                                else if (mineralIndex < 0) { mineralIndex = 0; }
+                                GameObject mineralToSpawn = minerals[mineralIndex];
+                                PlaceObjects.Instance.CreateObject(mineralToSpawn, i, j);
+                            } else
+                            {
+                                if (Random.Range(0, 4) == 0)
+                                {
+                                    PlaceObjects.Instance.CreateObject(tree2, i, j);
+                                } else
+                                {
+                                    int spriteIndex = Random.Range(0, treeSprites.Length);
+                                    PlaceObjects.Instance.CreateObject(tree, i, j);
+                                    TileLayout.Instance.GetTile(i, j).getObjectOnTile().GetComponent<SpriteRenderer>().sprite = treeSprites[spriteIndex];
+                                }
+
                             }
                         }
                         break;
@@ -80,9 +111,6 @@ public class InitializeObjects : MonoBehaviour
                 }
             }
         }
-
-        //this is critical - Clarence
-        AstarPath.active.Scan(); //scans the map to create grid graph for pathfinding
     }
 
     string[] tilesToPlaceCollisionOn = {
@@ -143,7 +171,7 @@ public class InitializeObjects : MonoBehaviour
                 {
                     if (spr.name == spriteNameToCheck)
                     {
-                        place.CreateObject(invisibleCollision, i, j);
+                        PlaceObjects.Instance.CreateObject(invisibleCollision, i, j);
                         TileLayout.Instance.GetTile(i, j).setBreakMode(TileMode.unbreakable);
                         break;
                     }
@@ -153,8 +181,9 @@ public class InitializeObjects : MonoBehaviour
 
         foreach (Vector2Int tilePos in shipTilePositions)
         {
-            place.CreateObject(invisbleBarrierNoCollision, tilePos.x, tilePos.y);
+            PlaceObjects.Instance.CreateObject(invisbleBarrierNoCollision, tilePos.x, tilePos.y);
             TileLayout.Instance.GetTile(tilePos.x, tilePos.y).setBreakMode(TileMode.unbreakable);
         }
     }
 }
+
