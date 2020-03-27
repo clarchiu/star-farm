@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2061891946130427798}
   - component: {fileID: 1511851894733946113}
   - component: {fileID: 7395691673546404798}
+  - component: {fileID: 196680904}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Ship
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444775863
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7f6c54840f0dc5a4e8b899fd3d2e3570, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,6 +127,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoPanel: {fileID: 0}
+  shipLevel: 0
+  displayLevel: {fileID: 0}
+  metal1: {fileID: 0}
+  metal2: {fileID: 0}
+  fixNum1: {fileID: 0}
+  fixNum2: {fileID: 0}
+  textBox: {fileID: 0}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
+  smelterPanel: {fileID: 0}
+  upgradePanel: {fileID: 0}
+  ship: {fileID: 0}
 --- !u!114 &400111496640638840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bar: {fileID: 5145030864339939749, guid: 9853c13182537a6469ef9e6e19195e1d, type: 3}
 --- !u!114 &2061891946130427798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +230,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowType: 0
   offset: 0.125
+--- !u!114 &196680904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805430053951217933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab6b3078a05c5c4fb5fb3633b477bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoPanel: {fileID: 0}
+  displayLevel: {fileID: 0}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+  button3: {fileID: 0}
+  wepText1: {fileID: 0}
+  wepText2: {fileID: 0}
+  breakText1: {fileID: 0}
+  breakText2: {fileID: 0}
+  rangText1: {fileID: 0}
+  rangText2: {fileID: 0}
+  Ship: {fileID: 5805430053951217933}

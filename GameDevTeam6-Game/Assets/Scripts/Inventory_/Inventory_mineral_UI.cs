@@ -11,17 +11,7 @@ public class Inventory_mineral_UI : MonoBehaviour
     private GameObject panel;
 
     private static Inventory_mineral_UI _instance;
-    public static Inventory_mineral_UI Instance { get { return _instance; } }
-
-    bool invON;
-    bool buttonPress;
-
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
-
-    //Singleton
-    private void Awake()
+    public static Inventory_mineral_UI Instance
     {
         get
         {
@@ -37,6 +27,18 @@ public class Inventory_mineral_UI : MonoBehaviour
                 return _instance;
             }
         }
+    }
+
+    bool invON;
+    bool buttonPress;
+
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+
+    //Singleton
+    private void Awake()
+    {
         panel.SetActive(false);
         invON = true;
         button1.SetActive(false);

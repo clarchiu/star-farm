@@ -13,7 +13,7 @@ public class TimeUI : MonoBehaviour
     private void Start()
     {
         system = GetComponent<TimeSystem>();
-        timeText =  GameObject.Find("Time").GetComponent<Text>();
+        timeText =  GameObject.Find("Time").GetComponent<Text>();      
         showDayText = GameObject.Find("DayNumber").GetComponent<Text>();
 
         showDayText.enabled = false;
