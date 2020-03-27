@@ -11,7 +11,7 @@ internal class FollowState: EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in follow state");
+        //Debug.Log("enemy in follow state");
 
         base.Enter(parent);
     }

@@ -16,7 +16,7 @@ internal class PathState : EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in path state");
+        //Debug.Log("enemy in path state");
 
         base.Enter(parent);
 

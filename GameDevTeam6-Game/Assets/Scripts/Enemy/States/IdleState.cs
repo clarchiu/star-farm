@@ -4,7 +4,7 @@ internal class IdleState: EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in idle state");
+        //Debug.Log("enemy in idle state");
 
         base.Enter(parent);
     }

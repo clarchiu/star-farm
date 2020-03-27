@@ -15,7 +15,7 @@ internal class AttackState: EnemyState
 
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enenmy in attack state");
+        //Debug.Log("enenmy in attack state");
 
         base.Enter(parent);
     }
@@ -77,7 +77,6 @@ internal class AttackState: EnemyState
         targetable.KnockBack(parent.transform.position, 50f); //TODO: make amount of knockback scale with damage?
 
         yield return new WaitForSeconds(parent.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is
-        Debug.Log(parent.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
 
         isAttacking = false;
 

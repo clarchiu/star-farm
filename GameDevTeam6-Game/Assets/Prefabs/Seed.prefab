@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 834598487
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e3c1fa24b3955247b7f02744b75a461, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -112,3 +112,5 @@ MonoBehaviour:
   plantImg3: {fileID: 21300000, guid: 7d8173790dde6644f9711b96b9843c63, type: 3}
   plantImg4: {fileID: 21300000, guid: 0b4643e66bb414a49b901e779903feb9, type: 3}
   plantImg5: {fileID: 21300000, guid: 04386a2312a9c5f458bc628522049743, type: 3}
+  timeSystem: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+    type: 3}

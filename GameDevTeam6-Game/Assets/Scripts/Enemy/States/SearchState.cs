@@ -16,7 +16,7 @@ internal class SearchState: EnemyState
 
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in search state");
+        //Debug.Log("enemy in search state");
 
         base.Enter(parent);
 
@@ -83,7 +83,7 @@ internal class SearchState: EnemyState
             }
         }
 
-        Debug.Log(closestObj.tag);
+        //DDebug.Log(closestObj.tag);
         return closestObj;
     }
 
