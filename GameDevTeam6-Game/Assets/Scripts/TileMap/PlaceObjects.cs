@@ -150,6 +150,7 @@ public class PlaceObjects : MonoBehaviour
             if (PlayerStates.Instance.GetState() == playerStates.IDLE)
             {
                 //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.breaking);
+                destroyobject_audiosource.PlayOneShot(destroyobject_sound, 0.5f);
                 objectOnTile.GetComponent<ITargetable>().RemoveHealth(objectOnTile, PlayerUpgrades.Instance.obstacleAttackDamage);
             }
         }

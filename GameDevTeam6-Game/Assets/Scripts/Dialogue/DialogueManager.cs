@@ -84,12 +84,12 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
-        /*
-        if (SoundEffects_.Instance.aiTalk.isPlaying)
+        
+        if (AI_talking_audiosource.isPlaying)
         {
-            SoundEffects_.Instance.aiTalk.Stop();
+            AI_talking_audiosource.Stop();
         }
-        */
+        
         displaySubtext(sentence);
     }
 

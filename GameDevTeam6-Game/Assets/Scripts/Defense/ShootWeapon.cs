@@ -27,6 +27,7 @@ public class ShootWeapon : MonoBehaviour
             {
                 if (GetComponent<PlayerStates>().GetState() != playerStates.INTERACTING)
                 {
+                    laser.PlayOneShot(laser_fire, 1f);
                     GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 }
             }
