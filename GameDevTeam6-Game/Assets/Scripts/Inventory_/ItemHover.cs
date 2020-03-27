@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class ItemHover : MonoBehaviour
+public class ItemHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject infoBox;
     public Text itemName;
     public Text itemDescription;
     public int boxNum;
-
+    
     RectTransform infoPos;
     RectTransform itemPos;
     // Start is called before the first frame update
@@ -23,15 +25,30 @@ public class ItemHover : MonoBehaviour
             infoPos = infoBox.GetComponent<RectTransform>();
             itemPos = GetComponent<RectTransform>();
             ChangeMineralText(Inventory_mineral.Instance.items[boxNum].GetMineralType());
-            infoPos.anchoredPosition = new Vector2(itemPos.anchoredPosition.x, itemPos.anchoredPosition.y);
+          //  infoPos.anchoredPosition = new Vector2(itemPos.anchoredPosition.x - 1000, itemPos.anchoredPosition.y - 500);
             
         }
     }
     void OnMouseExit()
     {
-        Debug.Log("Off");
         infoBox.SetActive(false);
     }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(boxNum < Inventory_mineral.Instance.items.Count){
+            infoBox.SetActive(true);
+            infoPos = infoBox.GetComponent<RectTransform>();
+            itemPos = GetComponent<RectTransform>();
+            ChangeMineralText(Inventory_mineral.Instance.items[boxNum].GetMineralType());
+            infoPos.anchoredPosition = new Vector2(itemPos.anchoredPosition.x - 1000, itemPos.anchoredPosition.y - 500);
+
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        infoBox.SetActive(false);
+    }
+
 
     private void ChangeMineralText(Mineral_type type)
     {

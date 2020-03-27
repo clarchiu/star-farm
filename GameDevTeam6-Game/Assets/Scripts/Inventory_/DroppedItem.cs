@@ -18,7 +18,6 @@ public class DroppedItem : MonoBehaviour
         if(typeType == 1)
         {
             Inventory_Seeds.Instance.GainItem(Stype, 1);
-            Debug.Log("Sent seeds to Inventory_Seeds.instance...");
         }
         
         Destroy(gameObject);

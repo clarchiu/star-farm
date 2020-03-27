@@ -24,7 +24,6 @@ public class Seed_item
     {
         amount += i;
         Inventory_seeds_UI.Instance.RefreshImages();
-        Debug.Log("Where is this coming from?");
     }
 
     public void RemoveAmount(int i)

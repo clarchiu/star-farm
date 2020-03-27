@@ -23,11 +23,7 @@ public class InventorySelector: MonoBehaviour
         if (buttonNum < Inventory_mineral.Instance.items.Count)
         {
             Inventory_mineral.Instance.items[buttonNum].GetMineralType();
-            Debug.Log("You h clicked the button!");
-            Debug.Log(Inventory_mineral.Instance.items[buttonNum].GetMineralType().ToString());
-
-
-
+          
             if (smelterUI.smelterPanel.activeSelf == true)
             {
                 smelterUI.setItems(buttonNum);
