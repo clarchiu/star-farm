@@ -10,6 +10,7 @@ public class Intro : MonoBehaviour
     string[] dialogues;
     int currentDialogue;
     public Text text;
+    public GameObject[] backgrounds;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,19 @@ public class Intro : MonoBehaviour
 
         currentDialogue = 0;
         text.text = dialogues[0];
+
+        foreach (GameObject bg in backgrounds)
+        {
+            bg.SetActive(false);
+        }
+        try
+        {
+            backgrounds[currentDialogue].SetActive(true);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("No background was found for " + currentDialogue);
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +51,20 @@ public class Intro : MonoBehaviour
         {
 
             currentDialogue += 1;
+
+            foreach (GameObject bg in backgrounds)
+            {
+                bg.active = false;
+            }
+            try
+            {
+                backgrounds[currentDialogue].active = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("No background was found for " + currentDialogue);
+            }
+
             if (currentDialogue == dialogues.Length)
             {
                 SceneManager.LoadScene("RandyScene");
