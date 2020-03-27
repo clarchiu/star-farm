@@ -158,7 +158,7 @@ public class PlaceObjects : MonoBehaviour
 
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
-        Tutorial.Instance.TriggerDialogue(5);
+        //Tutorial.Instance.TriggerDialogue(5);
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;

@@ -11,7 +11,17 @@ public class Inventory_mineral_UI : MonoBehaviour
     private GameObject panel;
 
     private static Inventory_mineral_UI _instance;
-    public static Inventory_mineral_UI Instance
+    public static Inventory_mineral_UI Instance { get { return _instance; } }
+
+    bool invON;
+    bool buttonPress;
+
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+
+    //Singleton
+    private void Awake()
     {
         get
         {
@@ -27,23 +37,47 @@ public class Inventory_mineral_UI : MonoBehaviour
                 return _instance;
             }
         }
+        panel.SetActive(false);
+        invON = true;
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
     }
     private void Update()
     {
         if (Input.GetKeyDown("e"))
         {
+            buttonPress = true;
             ToggleInventory();
+            ToggleButtons();
         }
     }
     public void ToggleInventory()
     {
-        if (!panel.activeSelf)
+        if (!panel.activeSelf && invON == true)
         {
             panel.SetActive(true);
             RefreshImages();
-        } else
+            buttonPress = false;
+        } else if(buttonPress == true)
         {
+            buttonPress = false;
             panel.SetActive(false);
+        }
+    }
+    public void ToggleButtons()
+    {
+        if (!button1.activeSelf)
+        {
+            button1.SetActive(true);
+            button2.SetActive(true);
+            button3.SetActive(true);
+        }
+        else
+        {
+            button1.SetActive(false);
+            button2.SetActive(false);
+            button3.SetActive(false);
         }
     }
 
@@ -57,5 +91,19 @@ public class Inventory_mineral_UI : MonoBehaviour
                 images[i].GetComponentInChildren<Text>().text = Inventory_mineral.Instance.items[i].GetAmount().ToString();
             }
         }
-    }    
+    }
+    public void OnTaskClick(int buttonNum)
+    {
+        if(buttonNum == 0)
+        {
+            invON = true;
+            ToggleInventory();
+        }
+        else
+        {
+            invON = false;
+            buttonPress = true;
+            ToggleInventory();
+        }
+    }
 }

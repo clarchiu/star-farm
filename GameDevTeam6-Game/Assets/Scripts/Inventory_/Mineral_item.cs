@@ -8,7 +8,6 @@ public class Mineral_item
     private Mineral_type type;
     private int amount;
 
-
     public Mineral_item(Mineral_type t, int amount)
     {
         type = t;
@@ -42,5 +41,19 @@ public enum Mineral_type
 {
     copper,
     iron,
-    tin
+    tin,
+    adamantite,
+    bronze,
+    chromatic1,
+    chromatic2,
+    coal,
+    cobalt,
+    concrete,
+    granite,
+    mithril,
+    orichalum,
+    silver,
+    steel,
+    tartarite,
+    tungsten
 }
