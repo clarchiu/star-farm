@@ -22,7 +22,7 @@ public class ItemHover : MonoBehaviour
             Debug.Log("ON");
             infoPos = infoBox.GetComponent<RectTransform>();
             itemPos = GetComponent<RectTransform>();
-            ChangeText(Inventory_mineral.Instance.items[boxNum].GetMineralType());
+            ChangeMineralText(Inventory_mineral.Instance.items[boxNum].GetMineralType());
             infoPos.anchoredPosition = new Vector2(itemPos.anchoredPosition.x, itemPos.anchoredPosition.y);
             
         }
@@ -33,7 +33,7 @@ public class ItemHover : MonoBehaviour
         infoBox.SetActive(false);
     }
 
-    private void ChangeText(Mineral_type type)
+    private void ChangeMineralText(Mineral_type type)
     {
         if (type == Mineral_type.copper)
         {

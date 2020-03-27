@@ -37,6 +37,8 @@ public class SmelterUI : MonoBehaviour
     Text resultNume;
     Text resulte;
     bool smelterDone;
+    public GameObject fuelBar;
+    float fuelAmount;
 
     private void Start()
     {
@@ -94,9 +96,15 @@ public class SmelterUI : MonoBehaviour
             //Debug.Log(progressTime);
             if (timeRemaining >= 0)
             {
-               // Debug.Log(timeRemaining);
-                timeRemaining = timeRemaining - 100 * Time.deltaTime;
-                progressBar.transform.localScale = new Vector2(1 - timeRemaining / progressTime, 1);
+                // Debug.Log(timeRemaining);
+                if (fuelAmount > 0)
+                {
+                    timeRemaining = timeRemaining - 100 * Time.deltaTime;
+                    progressBar.transform.localScale = new Vector2(1 - timeRemaining / progressTime, 1);
+                    fuelAmount -= Time.deltaTime/10;
+                    fuelBar.transform.localScale = new Vector2(fuelAmount / 100f, 1);
+                }
+               
             }
             else
             {
@@ -151,6 +159,29 @@ public class SmelterUI : MonoBehaviour
                 resultImg.GetComponent<Image>().sprite = blank;
             }
         }
+        if(buttonNum == 5)
+        {
+            if(Inventory_mineral.Instance.FindAmount(Mineral_type.coal) > 0 && fuelAmount <= 90)
+            {
+                Inventory_mineral.Instance.RemoveItem(Mineral_type.coal, 1);
+                fuelAmount += 10f;
+                if(fuelAmount > 100)
+                {
+                    fuelAmount = 100;
+                }
+                fuelBar.transform.localScale = new Vector2(fuelAmount/100f, 1);
+            }
+        }
+        if (buttonNum == 6)
+        {
+            smelterPanel.SetActive(false);
+
+        }
+        if(buttonNum == 7)
+        {
+            smelterPanel.SetActive(true);
+        }
+
     }
 
     private bool CheckSmeltRecipe()
@@ -167,11 +198,6 @@ public class SmelterUI : MonoBehaviour
         {
             return false;
         }
-    }
-
-    private void OnMouseDown()
-    {
-        toggleInfoPanel();
     }
 
     private void toggleInfoPanel()
@@ -192,14 +218,14 @@ public class SmelterUI : MonoBehaviour
             item1Amount = 0;
             item2Amount = 0;
         }
-        if (smelterPanel.activeSelf)
-        {
-            smelterPanel.SetActive(false);
-        }
-        else
-        {
+//        if (smelterPanel.activeSelf)
+  //      {
+    //        smelterPanel.SetActive(false);
+      //  }
+        //else
+       // {
             smelterPanel.SetActive(true);
-        }
+       // }
 
     }
     public void setItems(int buttonNum)

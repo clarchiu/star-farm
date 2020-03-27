@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory_mineral_UI : MonoBehaviour
+public class Inventory_general_UI : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> images;
     [SerializeField]
     private GameObject panel;
-
-    private static Inventory_mineral_UI _instance;
-    public static Inventory_mineral_UI Instance { get { return _instance; } }
-
     bool invON;
+    private static Inventory_general_UI _instance;
+    public static Inventory_general_UI Instance { get { return _instance; } }
     bool buttonPress;
 
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
 
     //Singleton
     private void Awake()
@@ -32,10 +27,7 @@ public class Inventory_mineral_UI : MonoBehaviour
             _instance = this;
         }
         panel.SetActive(false);
-        invON = true;
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
+        invON = false;
     }
 
     private void Update()
@@ -44,7 +36,6 @@ public class Inventory_mineral_UI : MonoBehaviour
         {
             buttonPress = true;
             ToggleInventory();
-            ToggleButtons();
         }
     }
     public void ToggleInventory()
@@ -54,42 +45,27 @@ public class Inventory_mineral_UI : MonoBehaviour
             panel.SetActive(true);
             RefreshImages();
             buttonPress = false;
-        } else if(buttonPress == true)
+        }
+        else if (buttonPress == true)
         {
-            buttonPress = false;
             panel.SetActive(false);
-        }
-    }
-    public void ToggleButtons()
-    {
-        if (!button1.activeSelf)
-        {
-            button1.SetActive(true);
-            button2.SetActive(true);
-            button3.SetActive(true);
-        }
-        else
-        {
-            button1.SetActive(false);
-            button2.SetActive(false);
-            button3.SetActive(false);
         }
     }
 
     public void RefreshImages()
     {
-        for (int i = 0; i < Inventory_mineral.Instance.items.Count; i++)
+        for (int i = 0; i < Inventory_gen.Instance.items.Count; i++)
         {
             if (i < images.Count)
             {
-                images[i].GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(Inventory_mineral.Instance.items[i].GetMineralType());
-                images[i].GetComponentInChildren<Text>().text = Inventory_mineral.Instance.items[i].GetAmount().ToString();
+                images[i].GetComponent<Image>().sprite = ResourceManager.Instance.GetGenSprite(Inventory_gen.Instance.items[i].GetGenType());
+                images[i].GetComponentInChildren<Text>().text = Inventory_gen.Instance.items[i].GetAmount().ToString();
             }
         }
     }
     public void OnTaskClick(int buttonNum)
     {
-        if(buttonNum == 0)
+        if (buttonNum == 2)
         {
             invON = true;
             ToggleInventory();

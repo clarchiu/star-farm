@@ -12,6 +12,8 @@ public class ResourceManager : MonoBehaviour
 
     //Resources
     public List<Sprite> mineralSprites;
+    public List<Sprite> seedSprites;
+    public List<Sprite> genSprites;
     public Sprite[] wallSprites = new Sprite[13];
     public Sprite treeShadow1, treeShadow2, playersAndEnemiesShadow;
     public Material shadowMaterial;
@@ -35,8 +37,12 @@ public class ResourceManager : MonoBehaviour
         }
 
         SetupMineralMap();
+        SetupSeedMap();
+        SetupGenMap();
     }
     private static Dictionary<string, Sprite> mineralMap;
+    private static Dictionary<string, Sprite> seedMap;
+    private static Dictionary<string, Sprite> genMap;
 
     private void SetupMineralMap()
     {
@@ -55,11 +61,66 @@ public class ResourceManager : MonoBehaviour
             }
         }
     }
+
+    private void SetupSeedMap()
+    {
+        seedMap = new Dictionary<string, Sprite>();
+
+        string[] PieceTypeNames = System.Enum.GetNames(typeof(Seed_type));
+        for (int i = 0; i < PieceTypeNames.Length; i++)
+        {
+            if (i < seedSprites.Count)
+            {
+                seedMap.Add(PieceTypeNames[i], seedSprites[i]);
+            }
+            else
+            {
+                throw new System.Exception("Not all sprites are set for each seed type!! Check ItemInfo in Inventory controller!");
+            }
+        }
+    }
+    private void SetupGenMap()
+    {
+        genMap = new Dictionary<string, Sprite>();
+
+        string[] PieceTypeNames = System.Enum.GetNames(typeof(Gen_type));
+        for (int i = 0; i < PieceTypeNames.Length; i++)
+        {
+            if (i < genSprites.Count)
+            {
+                genMap.Add(PieceTypeNames[i], genSprites[i]);
+            }
+            else
+            {
+                throw new System.Exception("Not all sprites are set for each seed type!! Check ItemInfo in Inventory controller!");
+            }
+        }
+    }
     #endregion
 
     public Sprite GetMineralSprite(Mineral_type type)
     {
         Sprite sprite = mineralMap[type.ToString()];
+        if (sprite == null)
+        {
+            throw new System.Exception("No sprite corresponding to type: " + type.ToString());
+        }
+        return sprite;
+    }
+
+    public Sprite GetSeedSprite(Seed_type type)
+    {
+        Sprite sprite = seedMap[type.ToString()];
+        if (sprite == null)
+        {
+            throw new System.Exception("No sprite corresponding to type: " + type.ToString());
+        }
+        return sprite;
+    }
+
+    public Sprite GetGenSprite(Gen_type type)
+    {
+        Sprite sprite = genMap[type.ToString()];
         if (sprite == null)
         {
             throw new System.Exception("No sprite corresponding to type: " + type.ToString());

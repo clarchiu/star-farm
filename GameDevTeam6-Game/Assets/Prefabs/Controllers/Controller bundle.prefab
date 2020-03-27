@@ -34016,6 +34016,8 @@ GameObject:
   - component: {fileID: 5747283068854458780}
   - component: {fileID: 5747283068854458769}
   - component: {fileID: 5747283068854458770}
+  - component: {fileID: 665216798271918007}
+  - component: {fileID: 6299320323878176592}
   m_Layer: 0
   m_Name: InventoryController
   m_TagString: Untagged
@@ -34081,6 +34083,30 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   panel: {fileID: 0}
+--- !u!114 &665216798271918007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747283068854458781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf26afdce71487649901a657b37daf5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6299320323878176592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747283068854458781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709c8a23dfe35fe4d80b12c7eaadbf85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5747283069006691673
 GameObject:
   m_ObjectHideFlags: 0
@@ -34337,9 +34363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da7e150de4f7f8438869dfa2a38d46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtextText: {fileID: 0}
-  dialogueText: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!114 &5747283069877043566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34352,7 +34375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b8acb9057266c4b946000615d0ef7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipInfo: {fileID: 0}
 --- !u!1001 &5747283068920795316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34440,11 +34462,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5747283069689683336}
     m_Modifications:
-    - target: {fileID: 4507754868288457465, guid: d9401dde48e984fdf81e4640abc71457,
-        type: 3}
-      propertyPath: m_Name
-      value: A_
-      objectReference: {fileID: 0}
     - target: {fileID: 4507754868288457471, guid: d9401dde48e984fdf81e4640abc71457,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34499,6 +34516,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507754868288457465, guid: d9401dde48e984fdf81e4640abc71457,
+        type: 3}
+      propertyPath: m_Name
+      value: A_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9401dde48e984fdf81e4640abc71457, type: 3}
@@ -34596,16 +34618,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5747283069689683336}
     m_Modifications:
-    - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: hour
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 902452993071033453, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
-        type: 3}
-      propertyPath: m_Name
-      value: TimeController
-      objectReference: {fileID: 0}
     - target: {fileID: 902452993071033442, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34665,6 +34677,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TimeController
+      objectReference: {fileID: 0}
+    - target: {fileID: 902452993071033453, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+        type: 3}
+      propertyPath: m_Name
+      value: TimeController
+      objectReference: {fileID: 0}
+    - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+        type: 3}
+      propertyPath: hour
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
         type: 3}

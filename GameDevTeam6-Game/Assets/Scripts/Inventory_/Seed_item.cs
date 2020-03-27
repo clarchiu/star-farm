@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mineral_item
+public class Seed_item
 {
 
-    private Mineral_type type;
+    private Seed_type type;
     private int amount;
 
-    public Mineral_item(Mineral_type t, int amount)
+
+    public Seed_item(Seed_type t, int amount)
     {
         type = t;
         this.amount = amount;
     }
 
-    public Mineral_type GetMineralType()
+    public Seed_type GetSeedType()
     {
         return type;
     }
@@ -22,13 +23,14 @@ public class Mineral_item
     public void AddAmount(int i)
     {
         amount += i;
-        Inventory_mineral_UI.Instance.RefreshImages();
+        Inventory_seeds_UI.Instance.RefreshImages();
+        Debug.Log("Where is this coming from?");
     }
 
     public void RemoveAmount(int i)
     {
         amount -= i;
-        Inventory_mineral_UI.Instance.RefreshImages();
+        Inventory_seeds_UI.Instance.RefreshImages();
     }
 
     public int GetAmount()
@@ -37,15 +39,12 @@ public class Mineral_item
     }
 }
 
-public enum Mineral_type
+public enum Seed_type
 {
     copper,
     iron,
     tin,
     adamantite,
-    bronze,
-    chromatic1,
-    chromatic2,
     coal,
     cobalt,
     concrete,
@@ -53,7 +52,5 @@ public enum Mineral_type
     mithril,
     orichalum,
     silver,
-    steel,
-    tartarite,
     tungsten
 }
