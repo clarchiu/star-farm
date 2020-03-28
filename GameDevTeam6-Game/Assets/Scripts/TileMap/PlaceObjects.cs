@@ -130,7 +130,7 @@ public class PlaceObjects : MonoBehaviour
         ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject oldObj = tile.getObjectOnTile();
         if (oldObj == null) {
-            //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.objectPlace);
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.objectPlace);
             Vector2 position = new Vector2(x, y);
             GameObject obj = Instantiate(newObj, position, Quaternion.identity);
             tile.setObjectOnTile(obj);
@@ -166,7 +166,6 @@ public class PlaceObjects : MonoBehaviour
 
     //Destroys object at Tile[x,y] if there is an object there
     public void DestroyObject(int x, int y) {
-        //Tutorial.Instance.TriggerDialogue(5);
         if (!InBounds(x, y)) {
             Debug.Log("Tried to destroy an object outside of bounds and failed");
             return;
@@ -174,6 +173,7 @@ public class PlaceObjects : MonoBehaviour
         ObjectTile tile = GetComponent<TileLayout>().GetTile(x, y);
         GameObject objectOnTile = tile.getObjectOnTile();
         if (objectOnTile != null && tile.getBreakMode() != TileMode.unbreakable) {
+            Tutorial.Instance.TriggerDialogue(5);
             GetComponent<TileLayout>().GetTile(x, y).ResetTileInfo();
             Destroy(objectOnTile);
             if (doneInitialize)

@@ -19,7 +19,7 @@ public class DroppedItem : MonoBehaviour
         {
             Inventory_Seeds.Instance.GainItem(Stype, 1);
         }
-        
+        SoundEffects_.Instance.PlaySoundEffect(SoundEffect.collect);
         Destroy(gameObject);
     }
 }

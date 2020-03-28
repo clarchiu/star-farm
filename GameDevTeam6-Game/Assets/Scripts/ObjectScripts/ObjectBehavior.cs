@@ -24,7 +24,11 @@ public class ObjectBehavior : MonoBehaviour, ITargetable
 
     void ITargetable.RemoveHealth(GameObject source, int amount)
     {
+        Debug.Log(health);
+        Debug.Log("amount" + amount);
         health -= amount;
+        Debug.Log(health);
+
         if (health <= 0) {
             PlaceObjects.Instance.DestroyObject(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
         }

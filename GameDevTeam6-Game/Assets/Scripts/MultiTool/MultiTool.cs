@@ -95,11 +95,13 @@ public class MultiTool : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 selectedImage = currentImage;
+                SoundEffects_.Instance.PlaySoundEffect(SoundEffect.button);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.button);
             //plays sound when multitool opened
             multitool_open.PlayOneShot(multitool_sound, 0.5f);
             wheel.SetActive(true);
@@ -107,7 +109,7 @@ public class MultiTool : MonoBehaviour
         }
         else if (Input.GetKeyUp("tab"))
         {
-                wheel.SetActive(false);
+            wheel.SetActive(false);
             if (selectedImage == topLeft)
             {
                 mode = ToolModes.buildingMode;
@@ -119,7 +121,6 @@ public class MultiTool : MonoBehaviour
             else if (selectedImage == bottomLeft)
             {
                 mode = ToolModes.combatMode;
-                //Tutorial.Instance.TriggerDialogue(8);
             }
             else if (selectedImage == bottomRight)
             {
@@ -131,6 +132,7 @@ public class MultiTool : MonoBehaviour
         // Cycles through tools with a Q
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.button);
             mode += 1;
             if (mode == ToolModes.end)
                 mode = ToolModes.defaultMode;
@@ -164,6 +166,7 @@ public class MultiTool : MonoBehaviour
         //Cylces backwards with E
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.button);
             mode -= 1;
             if (mode == ToolModes.start)
                 mode = ToolModes.wateringMode;

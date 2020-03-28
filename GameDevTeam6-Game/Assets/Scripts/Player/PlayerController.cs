@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         if (time.isDay())
         {
             health = maxHealth;
+            healthBar.UpdateHealthBar(health / maxHealth);
             //reset health to max during the day
         }
     }
@@ -59,20 +60,19 @@ public class PlayerController : MonoBehaviour, ITargetable
 
         if (PlayerStates.Instance.GetState() != playerStates.WALKING) {
             playerRB.velocity = new Vector2(0,0);
-            /*
+            
             if (SoundEffects_.Instance.walkLoud.isPlaying)
             {
                 SoundEffects_.Instance.walkLoud.Stop();
-            }*/
+            }
             return;
 
         } else
-        {
-            /*
+        {        
             if (!SoundEffects_.Instance.walkLoud.isPlaying)
             {
                 SoundEffects_.Instance.PlaySoundEffect(SoundEffect.walkLoud);
-            }*/
+            }
         }
 
        

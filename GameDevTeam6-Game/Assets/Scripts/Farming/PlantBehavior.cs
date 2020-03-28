@@ -6,60 +6,21 @@ public class PlantBehavior : MonoBehaviour
 {
 
     private Plants plantProperties;
-    private TimeSystem system;
-    public float timeCounter;
-    private int delay = 10;
-    private int previousTime;
+    [HideInInspector]
+    public int delay = 60;
 
     void Start()
     {
         plantProperties = GetComponent<Plants>();
-        //system = GetComponent<TimeSystem>();
-        previousTime = 0;
+        StartCoroutine(Grow());
     }
 
-    void Update()
+    IEnumerator Grow()
     {
-        timeCounter+= Time.deltaTime;
-        //float currTime = system.getSeconds();
-        growing(timeCounter);
-        //growFruits(currTime);
-    }
-
-
-    public void growing(float time)
-    {
-        int stages = plantProperties.getStages();
-
-        if (previousTime + delay < time && stages <= 5) //change stage 360 sec after growing() is callled
+        while (plantProperties.getStages() <= 4)
         {
-            previousTime += delay;
-            plantProperties.setStages(stages + 1);
+            plantProperties.setStages(plantProperties.getStages() + 1);
+            yield return new WaitForSecondsRealtime(delay);
         }
     }
-
-    public void harvesting()
-    {
-        int countFruits = plantProperties.getCountFruits();
-
-        if (countFruits > 0)
-        {
-            //put fruit into inventory
-            plantProperties.setArrFruits(countFruits, false);
-            plantProperties.setCountFruits(countFruits - 1);
-        }
-    }
-    /*
-    public void growFruits(float time)
-    {
-        int countFruits = plant.getCountFruits();
-
-        if (timeCounter - time >= 480 && countFruits < 5) //add fruit 480 sec (8min) after growFruits() is called
-        {
-            plant.setArrFruits(countFruits, true);
-            plantProperties.setCountFruits(countFruits + 1);
-        }
-
-    }
-    */
 }

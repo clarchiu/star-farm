@@ -20,6 +20,7 @@ public class Inventory_general_UI : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
+            Debug.Log("Destorying");
             Destroy(this.gameObject);
         }
         else

@@ -6,8 +6,12 @@ public class ShipStatus : MonoBehaviour, ITargetable
 {
     public int MaxHealth;
     public int health;
-    public HealthBar_ healthBar;
+    private HealthBar_ healthBar;
 
+    private void Awake()
+    {
+        healthBar = gameObject.AddComponent<HealthBar_>();
+    }
     void ITargetable.GainHealth(int amount)
     {
         health += amount;

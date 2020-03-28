@@ -15,13 +15,19 @@ public class Plants : MonoBehaviour, ITargetable
     private int countFruits;
 
     public TimeSystem timeSystem;
+    private HealthBar_ healthBar;
+
+    public int maxHealth;
+    private int curHealth = 100;
 
     void Start()
     {
+        healthBar = gameObject.AddComponent<HealthBar_>();
         /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
          Sprite plantImage = renderer.sprite;*/
         //plantBehav.planting("species1");
         timeSystem = FindObjectOfType<TimeSystem>();
+        curHealth = maxHealth;
     } 
 
     void Update()
@@ -50,6 +56,10 @@ public class Plants : MonoBehaviour, ITargetable
     public void setStages(int st)
     {
         stages = st;
+        if (stages > 5)
+        {
+            stages = 5;
+        }
 
         switch(stages)
         {
@@ -85,24 +95,31 @@ public class Plants : MonoBehaviour, ITargetable
         this.countFruits = countFruits;
     }
 
-    private readonly int maxHealth = 25;
-    private int curHealth = 25;
-
     void ITargetable.SetHealth(int amount)
     {
        if (amount <= maxHealth)
         {
             curHealth = amount;
+            healthBar.UpdateHealthBar((float)curHealth / maxHealth);
         }
     }
 
     void ITargetable.RemoveHealth(GameObject source, int amount)
     {
+        Debug.Log(maxHealth);
         curHealth -= amount;
+        healthBar.UpdateHealthBar((float)curHealth / maxHealth);
         if (curHealth <= 0)
         {
+            int tileX = Mathf.RoundToInt(gameObject.transform.position.x);
+            int tileY = Mathf.RoundToInt(gameObject.transform.position.y);
+
+            PlayEffect.Instance.PlayBreakEffect(new Vector2(tileX, tileY));
             Destroy(gameObject);
+            TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant = null;
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.harvest);
         }
+
     }
 
     void ITargetable.GainHealth(int amount)

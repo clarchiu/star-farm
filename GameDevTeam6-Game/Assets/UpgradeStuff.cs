@@ -38,6 +38,14 @@ public class UpgradeStuff : MonoBehaviour
         rangLev = 1;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseAll();
+        }
+    }
+
     public void TaskOnClick(int buttonNum)
     {
         if (buttonNum == 2)
@@ -53,39 +61,33 @@ public class UpgradeStuff : MonoBehaviour
         {
             if (buttonNum == 4)
             {
-                Debug.Log(neededType1.ToString());
-                Debug.Log(neededType2.ToString());
                 if (Inventory_mineral.Instance.FindAmount(neededType1) >= 4 && Inventory_mineral.Instance.FindAmount(neededType2) >= 4)
                 {
-                    Debug.Log("UPGRAIDING!");
-                    wepLev++;
+                    PlayerUpgrades.Instance.UpgradeMeleeDamage();
                     Inventory_mineral.Instance.RemoveItem(neededType1, 4);
                     Inventory_mineral.Instance.RemoveItem(neededType2, 4);
                     refreshInfo();
+                } else
+                {
+                    ShowShipError.Instance.DisplayError("Not enough resources to upgrade!");
                 }
-
             }
-
-
-
-
 
             if (buttonNum == 5)
             {
-                infoPanel.SetActive(false);
-                button1.SetActive(false);
-                button2.SetActive(false);
-                button3.SetActive(false);
+                CloseAll();
             }
             if (buttonNum == 6)
             {
                 if (Inventory_mineral.Instance.FindAmount(neededType3) >= 4 && Inventory_mineral.Instance.FindAmount(neededType4) >= 4)
                 {
-                    Debug.Log("UPGRAIDING!");
-                    breakLev++;
+                    PlayerUpgrades.Instance.UpgradeObstacleDamage();
                     Inventory_mineral.Instance.RemoveItem(neededType3, 4);
                     Inventory_mineral.Instance.RemoveItem(neededType4, 4);
                     refreshInfo();
+                } else
+                {
+                    ShowShipError.Instance.DisplayError("Not enough resources to upgrade!");
                 }
 
             }
@@ -93,11 +95,13 @@ public class UpgradeStuff : MonoBehaviour
             {
                 if (Inventory_mineral.Instance.FindAmount(neededType5) >= 4 && Inventory_mineral.Instance.FindAmount(neededType6) >= 4)
                 {
-                    Debug.Log("UPGRAIDING!");
-                    rangLev++;
+                    PlayerUpgrades.Instance.UpgradeRangedDamage();
                     Inventory_mineral.Instance.RemoveItem(neededType5, 4);
                     Inventory_mineral.Instance.RemoveItem(neededType6, 4);
                     refreshInfo();
+                } else
+                {
+                    ShowShipError.Instance.DisplayError("Not enough resources to upgrade!");
                 }
 
             }
@@ -145,8 +149,6 @@ public class UpgradeStuff : MonoBehaviour
             neededType2 = mineral2;
             wepText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
             wepText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
-
-
         }
         if (num == 2)
         {
@@ -154,7 +156,6 @@ public class UpgradeStuff : MonoBehaviour
             neededType4 = mineral2;
             breakText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
             breakText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
-
         }
         if (num == 3)
         {
@@ -162,7 +163,14 @@ public class UpgradeStuff : MonoBehaviour
             neededType6 = mineral2;
             rangText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
             rangText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
-
         }
+    }
+
+    private void CloseAll()
+    {
+        infoPanel.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
     }
 }

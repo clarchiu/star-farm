@@ -14,9 +14,8 @@ public class HoeGround : MonoBehaviour
 
     public GameObject farmTile; //Temporary
 
-    public GameObject[] plant;
     private int selectedPlantIndex = 0;
-    private GameObject selectedPlant;
+    public Sprite indicatorSprite;
 
     private Color32 red, green, orange;
 
@@ -34,22 +33,10 @@ public class HoeGround : MonoBehaviour
         red = new Color32(255, 0, 0, 100);
         green = new Color32(30, 255, 0, 100);
         orange = new Color32(200, 150, 0, 100);
-        selectedPlant = plant[0];
     }
 
     private void Update()
     {
-        //Temp***********
-        if (Input.GetKeyDown("p"))
-        {
-            selectedPlantIndex += 1;
-            if (selectedPlantIndex >= plant.Length)
-            {
-                selectedPlantIndex = 0;
-            }
-            selectedPlant = plant[selectedPlantIndex];
-        }
-        //********************temp end
 
         if (!(tool.GetMode() == ToolModes.farmMode))
         {
@@ -69,7 +56,7 @@ public class HoeGround : MonoBehaviour
         if (!isFarmTile) {
             indicator.GetComponent<SpriteRenderer>().sprite = farmTile.GetComponent<SpriteRenderer>().sprite;
         } else {
-            indicator.GetComponent<SpriteRenderer>().sprite = selectedPlant.GetComponent<SpriteRenderer>().sprite;
+            indicator.GetComponent<SpriteRenderer>().sprite = indicatorSprite;
         }
 
         //Set indicator color
@@ -86,21 +73,33 @@ public class HoeGround : MonoBehaviour
         //Create plant
         if (isFarmTile && leftMouse && !plantExists)
         {
-            Tutorial.Instance.TriggerDialogue(6);
-            GameObject plantObj = Instantiate(selectedPlant, new Vector2(tileX, tileY), Quaternion.identity);
-            TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant = plantObj;
+            if (Inventory_Seeds.Instance.FindAmount(SeedSelector.Instance.chosenSeed) > 0) {
+                GameObject selectedPlant = ResourceManager.Instance.GetSeedObject(SeedSelector.Instance.chosenSeed);
+                Tutorial.Instance.TriggerDialogue(6);
+                GameObject plantObj = Instantiate(selectedPlant, new Vector2(tileX, tileY), Quaternion.identity);
+                Inventory_Seeds.Instance.RemoveItem(SeedSelector.Instance.chosenSeed, 1);
+                TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant = plantObj;
+
+                SoundEffects_.Instance.PlaySoundEffect(SoundEffect.objectPlace);
+            }
+
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
         }
         //Remove plant
         else if (plantExists && rightMouse)
         {
-            Tutorial.Instance.TriggerDialogue(10);
             GameObject plant = TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant;
-            place.DropItem(plant);
+            if (plant.GetComponent<Plants>().getStages() == 5)
+            {
+                Tutorial.Instance.TriggerDialogue(10);
+                place.DropItem(plant);
+            }
+            PlayEffect.Instance.PlayBreakEffect(new Vector2(tileX, tileY));
             Destroy(plant);
             TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant = null;
-            Inventory_mineral.Instance.GainItem(Mineral_type.copper, 1);
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
+
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.harvest);
         }
         //Create farm tile
         else if (!isFarmTile && leftMouse)
@@ -108,13 +107,18 @@ public class HoeGround : MonoBehaviour
             place.CreateObject(farmTile, tileX, tileY);
             TileLayout.Instance.GetTile(tileX, tileY).setBreakMode(TileMode.farm);
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
+
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.hit);
         }
         //Remove farm tile
         else if (isFarmTile && rightMouse && !plantExists)
         {    
             place.DestroyObject(tileX, tileY);
             TileLayout.Instance.GetTile(tileX, tileY).ResetTileInfo();
+            PlayEffect.Instance.PlayBreakEffect(new Vector2(tileX, tileY));
             player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
+
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.hit);
         }
     }
 }
