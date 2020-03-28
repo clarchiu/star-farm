@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1075479851366763531}
   - component: {fileID: 3332359340548302458}
   - component: {fileID: 1561527715970307067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boulder
   m_TagString: Unwalkable
   m_Icon: {fileID: 0}

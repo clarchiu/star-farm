@@ -69,17 +69,20 @@ public class EnemyAI: MonoBehaviour, ITargetable
     private IState currentState;
     #endregion
 
-    private void Awake()
+    public static List<EnemyAI> enemies = new List<EnemyAI>();
+
+    protected void Awake()
     {
+        enemies.Add(this);
         SetupComponents();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         ChangeState(new SearchState());
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         currentState.Update();
     }
@@ -121,6 +124,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         else
         {
             MyAttributes.currentHealth = 0;
+            enemies.Remove(this);
             Destroy(gameObject);
         }
     }

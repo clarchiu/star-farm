@@ -15,6 +15,7 @@ TagManager:
   - Walkable
   - AStarSquare
   - Structure
+  - TurretProjectile
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - 
   - 
   - Obstacle
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
