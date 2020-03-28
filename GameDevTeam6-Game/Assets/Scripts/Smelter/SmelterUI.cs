@@ -194,6 +194,20 @@ public class SmelterUI : MonoBehaviour
             timeRemaining = 5100;
             return true;
         }
+        else if ((itemType1 == Mineral_type.coal && itemType2 == Mineral_type.iron) || (itemType2 == Mineral_type.coal && itemType1 == Mineral_type.iron))
+        {
+            resultType = Mineral_type.steel;
+            progressTime = 6500;
+            timeRemaining = 6500;
+            return true;
+        }
+        if ((itemType1 == Mineral_type.adamantite && itemType2 == Mineral_type.mithril) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.mithril))
+        {
+            resultType = Mineral_type.tartarite;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
         else
         {
             return false;

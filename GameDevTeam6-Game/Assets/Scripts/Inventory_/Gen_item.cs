@@ -40,7 +40,6 @@ public class Gen_item
 public enum Gen_type
 {
    wall,
-   turret,
-   smelter
+   turret
 }
 
