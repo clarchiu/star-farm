@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShowShipInfo : MonoBehaviour
 {
@@ -98,6 +99,10 @@ public class ShowShipInfo : MonoBehaviour
                     Inventory_mineral.Instance.RemoveItem(neededType2, reqAmount2);
                     refreshInfo();
                     button3.SetActive(true);
+                    if (shipLevel == 9)
+                    {
+                        SceneManager.LoadScene("Ending_1");
+                    }
 
                     Tutorial.Instance.TriggerDialogue(11);
                 } else
@@ -119,15 +124,59 @@ public class ShowShipInfo : MonoBehaviour
         if (shipLevel == 1)
         {
             SetImages(Mineral_type.copper, Mineral_type.tin);
-            reqAmount1 = 5;
-            reqAmount2 = 5;
+            reqAmount1 = 10;
+            reqAmount2 = 10;
             flavorText.text = "Find some basic materials and fix the basic functions of the ship! With these improvements, we should be able to forge new things!";
 
         }
         if(shipLevel == 2)
         {
-            SetImages(Mineral_type.bronze, Mineral_type.steel);
+            SetImages(Mineral_type.iron, Mineral_type.tin);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
             flavorText.text = "Now we can craft new metals and items using the forge! The forge uses up coal to turn your metals into something new! Use it to upgrade the ship again";
+        }
+        if (shipLevel == 3)
+        {
+            SetImages(Mineral_type.bronze, Mineral_type.steel);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "Keep upgrading the ship so we can go home!";
+        }
+        if (shipLevel == 4)
+        {
+            SetImages(Mineral_type.granite, Mineral_type.tungsten);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "Keep upgrading the ship so we can go home!";
+        }
+        if (shipLevel == 5)
+        {
+            SetImages(Mineral_type.adamantite, Mineral_type.cobalt);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "Keep upgrading the ship so we can go home!";
+        }
+        if (shipLevel == 6)
+        {
+            SetImages(Mineral_type.mithril, Mineral_type.silver);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "Keep upgrading the ship so we can go home!";
+        }
+        if (shipLevel == 7)
+        {
+            SetImages(Mineral_type.tartarite, Mineral_type.concrete);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "Keep upgrading the ship so we can go home!";
+        }
+        if (shipLevel == 8)
+        {
+            SetImages(Mineral_type.orichalum, Mineral_type.chromatic1);
+            reqAmount1 = 10;
+            reqAmount2 = 10;
+            flavorText.text = "The ship will be completely fixed after this final upgrade! You can choose to upgrade your ship to the final tier and finish the game or choosing to upgrade your multi-tool weapon in order to defeat the escaped Specimen.";
         }
         levelNum.text = shipLevel.ToString();
         numText1.text = reqAmount1.ToString();

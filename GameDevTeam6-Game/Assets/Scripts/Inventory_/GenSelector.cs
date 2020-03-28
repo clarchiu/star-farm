@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public class SeedSelector : MonoBehaviour
+public class GenSelector : MonoBehaviour
 {
 
-    private static SeedSelector _instance;
-    public static SeedSelector Instance { get { return _instance; } }
+    private static GenSelector _instance;
+    public static GenSelector Instance { get { return _instance; } }
 
     //Singleton
     private void Awake()
@@ -26,12 +26,12 @@ public class SeedSelector : MonoBehaviour
 
 
     private void Update()
-    { 
-       // Debug.Log(chosenSeed);
+    {
+        // Debug.Log(chosenSeed);
     }
     RectTransform selectRect;
     RectTransform imgRect;
-    public Seed_type chosenSeed;
+    public Gen_type chosenSeed;
     bool selected = false;
 
     public void TaskOnClick(int buttonNum)
@@ -40,13 +40,12 @@ public class SeedSelector : MonoBehaviour
         {
             if (!selected)
             {
-                chosenSeed = Inventory_Seeds.Instance.items[0].GetSeedType();
-                selected = true;
+                chosenSeed = Inventory_gen.Instance.items[0].GetGenType();
             }
         }
-        else if (buttonNum < Inventory_Seeds.Instance.items.Count)
+        else if (buttonNum < Inventory_gen.Instance.items.Count)
         {
-            chosenSeed = Inventory_Seeds.Instance.items[buttonNum].GetSeedType();
+            chosenSeed = Inventory_gen.Instance.items[buttonNum].GetGenType();
         }
         selected = true;
     }

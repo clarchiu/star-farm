@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SmelterUI : MonoBehaviour
 {
     public GameObject smelterPanel;
+    public GameObject button1, button2, button3;
 
     public GameObject item1;
 
@@ -29,6 +30,8 @@ public class SmelterUI : MonoBehaviour
     Text item2Text;
     bool smelterRunning;
     Mineral_type resultType;
+    Gen_type genResultType;
+    
     public GameObject resultNum;
     public GameObject result;
     public GameObject progressBar;
@@ -51,11 +54,17 @@ public class SmelterUI : MonoBehaviour
         smelterPanel.SetActive(false);
         resultNume = resultNum.GetComponent<Text>();
         resulte = result.GetComponent<Text>();
-
+        fuelBar.transform.localScale = new Vector3(0,1,1);
+        progressBar.transform.localScale = new Vector3(0, 1, 1);
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseAll();
+        }
+
         if (item1In == true)
         {
             itemNum1.SetActive(true);
@@ -84,6 +93,12 @@ public class SmelterUI : MonoBehaviour
                 resultNume.text = (item1Amount+item2Amount).ToString();
                 resulte.text = char.ToUpper(resultType.ToString()[0]) + resultType.ToString().Substring(1);
             }
+            if (CheckItemRecipe())
+            {
+                resultImg.GetComponent<Image>().sprite = ResourceManager.Instance.GetGenSprite(genResultType);
+                resultNume.text = "1";
+                resulte.text = char.ToUpper(genResultType.ToString()[0]) + genResultType.ToString().Substring(1);
+            }
             else 
             {
                 resultNume.text = "";
@@ -99,6 +114,7 @@ public class SmelterUI : MonoBehaviour
                 // Debug.Log(timeRemaining);
                 if (fuelAmount > 0)
                 {
+                    Debug.Log(timeRemaining);
                     timeRemaining = timeRemaining - 100 * Time.deltaTime;
                     progressBar.transform.localScale = new Vector2(1 - timeRemaining / progressTime, 1);
                     fuelAmount -= Time.deltaTime/10;
@@ -112,6 +128,8 @@ public class SmelterUI : MonoBehaviour
             }
         }
     }
+
+    string resultTypeString;
 
     public void TaskOnClick(int buttonNum)
     {
@@ -132,7 +150,15 @@ public class SmelterUI : MonoBehaviour
         {
             if (CheckSmeltRecipe() == true && Inventory_mineral.Instance.FindAmount(itemType1) >= item1Amount && Inventory_mineral.Instance.FindAmount(itemType2) >= item2Amount && item1Amount != 0 && item2Amount != 0 && smelterRunning == false && smelterDone == false) 
             {
+                resultTypeString = "mineral";
                // Debug.Log("SmelterRecipe Correct");
+                Inventory_mineral.Instance.RemoveItem(itemType1, item1Amount);
+                Inventory_mineral.Instance.RemoveItem(itemType2, item2Amount);
+                smelterRunning = true;
+            }
+            if (CheckItemRecipe() && Inventory_mineral.Instance.FindAmount(itemType1) >= item1Amount && Inventory_mineral.Instance.FindAmount(itemType2) >= item2Amount && item1Amount != 0 && item2Amount != 0 && smelterRunning == false && smelterDone == false)
+            {
+                resultTypeString = "item";
                 Inventory_mineral.Instance.RemoveItem(itemType1, item1Amount);
                 Inventory_mineral.Instance.RemoveItem(itemType2, item2Amount);
                 smelterRunning = true;
@@ -142,7 +168,13 @@ public class SmelterUI : MonoBehaviour
         {
             if(smelterDone == true)
             {
-                Inventory_mineral.Instance.GainItem(resultType, item1Amount+item2Amount);
+                if (resultTypeString == "mineral")
+                {
+                    Inventory_mineral.Instance.GainItem(resultType, item1Amount + item2Amount);
+                } else
+                {
+                    Inventory_gen.Instance.GainItem(genResultType, 1);
+                }
                 smelterDone = false;
                 smelterRunning = false;
                 item1In = false;
@@ -201,9 +233,52 @@ public class SmelterUI : MonoBehaviour
             timeRemaining = 6500;
             return true;
         }
-        if ((itemType1 == Mineral_type.adamantite && itemType2 == Mineral_type.mithril) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.mithril))
+        else if ((itemType1 == Mineral_type.granite && itemType2 == Mineral_type.tungsten) || (itemType2 == Mineral_type.granite && itemType1 == Mineral_type.tungsten))
+        {
+            resultType = Mineral_type.adamantite;
+            progressTime = 6500;
+            timeRemaining = 6500;
+            return true;
+        }
+        if ((itemType1 == Mineral_type.steel && itemType2 == Mineral_type.cobalt) || (itemType2 == Mineral_type.steel && itemType1 == Mineral_type.cobalt))
+        {
+            resultType = Mineral_type.mithril;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
+        if ((itemType1 == Mineral_type.silver && itemType2 == Mineral_type.mithril) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.mithril))
         {
             resultType = Mineral_type.tartarite;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
+        if ((itemType1 == Mineral_type.concrete && itemType2 == Mineral_type.tartarite) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.tartarite))
+        {
+            resultType = Mineral_type.orichalum;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool CheckItemRecipe()
+    {
+        if ((itemType1 == Mineral_type.adamantite && itemType2 == Mineral_type.concrete) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.concrete))
+        {
+            genResultType = Gen_type.turret;
+            progressTime = 5100;
+            timeRemaining = 5100;
+            return true;
+        }
+        else if ((itemType1 == Mineral_type.steel && itemType2 == Mineral_type.iron) || (itemType2 == Mineral_type.steel && itemType1 == Mineral_type.iron))
+        {
+            genResultType = Gen_type.wall;
             progressTime = 5100;
             timeRemaining = 5100;
             return true;
@@ -232,13 +307,13 @@ public class SmelterUI : MonoBehaviour
             item1Amount = 0;
             item2Amount = 0;
         }
-//        if (smelterPanel.activeSelf)
-  //      {
-    //        smelterPanel.SetActive(false);
-      //  }
+        //        if (smelterPanel.activeSelf)
+        //      {
+        //        smelterPanel.SetActive(false);
+        //  }
         //else
-       // {
-            smelterPanel.SetActive(true);
+        // {
+        CloseAll();
        // }
 
     }
@@ -275,5 +350,13 @@ public class SmelterUI : MonoBehaviour
                 swap = false;
             }
         }
+    }
+
+    private void CloseAll()
+    {
+        smelterPanel.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
     }
 }

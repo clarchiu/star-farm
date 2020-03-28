@@ -69,8 +69,6 @@ public class Ending2 : MonoBehaviour
             {
                 Debug.Log("No background was found for " + currentDialogue);
             }
-
-
         }
     }
 

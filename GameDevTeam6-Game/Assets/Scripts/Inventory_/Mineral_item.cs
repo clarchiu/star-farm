@@ -39,21 +39,21 @@ public class Mineral_item
 
 public enum Mineral_type
 {
-    copper,
-    iron,
-    tin,
-    adamantite,
-    bronze,
-    chromatic1,
-    chromatic2,
-    coal,
-    cobalt,
-    concrete,
-    granite,
-    mithril,
-    orichalum,
-    silver,
-    steel,
-    tartarite,
-    tungsten
+    copper,//
+    iron,//
+    tin,//
+    adamantite,//
+    bronze,//
+    chromatic1,//
+    chromatic2,//--
+    coal,//
+    cobalt,//
+    concrete,//
+    granite,//
+    mithril,//
+    orichalum,//
+    silver,//
+    steel,//
+    tartarite,//
+    tungsten//
 }

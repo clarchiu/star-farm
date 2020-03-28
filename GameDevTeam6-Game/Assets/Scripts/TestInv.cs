@@ -7,6 +7,7 @@ public class TestInv : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        /*
         Inventory_mineral.Instance.GainItem(Mineral_type.coal, 10);
         Inventory_mineral.Instance.GainItem(Mineral_type.tin, 10);
         Inventory_mineral.Instance.GainItem(Mineral_type.cobalt, 10);
@@ -18,6 +19,12 @@ public class TestInv : MonoBehaviour
         Inventory_mineral.Instance.GainItem(Mineral_type.copper, 1000);
         Inventory_mineral.Instance.GainItem(Mineral_type.tin, 100);
         Inventory_mineral.Instance.GainItem(Mineral_type.iron, 100);
-        Inventory_mineral.Instance.GainItem(Mineral_type.bronze, 100);
+        //Inventory_mineral.Instance.GainItem(Mineral_type.bronze, 100);
+        */
+        //Inventory_gen.Instance.GainItem(Gen_type.turret, 100);
+        //Inventory_gen.Instance.GainItem(Gen_type.wall, 100);
+
+        //Inventory_Seeds.Instance.GainItem(Seed_type.copper, 100);
+        //Inventory_Seeds.Instance.GainItem(Seed_type.iron, 100);
     }
 }

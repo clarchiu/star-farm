@@ -9,8 +9,8 @@ public class PlayerUpgrades : MonoBehaviour
     private int rangedAttackLevel = 0;
 
     int[] obstacleAttackUpgrade = new int[] { 40, 100, 200, 400, 800, 1500 };
-    int[] meleeAttackUpgrade = new int[] { 20, 25, 30, 35, 40, 45 };
-    int[] rangedAttackUpgrade = new int[] { 20, 25, 30, 35, 40, 45 };
+    int[] meleeAttackUpgrade = new int[] { 20, 25, 30, 35, 40, 100 };
+    int[] rangedAttackUpgrade = new int[] { 10, 15, 20, 25, 30, 60 };
 
     public int obstacleAttackDamage { get { return obstacleAttackUpgrade[obstacleAttackLevel]; } }
     public int meleeAttackDamage { get { return meleeAttackUpgrade[meleeAttackLevel]; } }

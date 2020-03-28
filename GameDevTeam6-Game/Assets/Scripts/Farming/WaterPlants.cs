@@ -64,7 +64,7 @@ public class WaterPlants : MonoBehaviour
             {
                 player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().WaterTile();
-                TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant.GetComponent<PlantBehavior>().delay = 30;
+                TileLayout.Instance.GetTile(tileX, tileY).getObjectOnTile().GetComponent<FarmTile>().plant.GetComponent<PlantBehavior>().growDelay = 30;
             }
         }
          

@@ -12,8 +12,6 @@ public class Tutorial : MonoBehaviour
     private int currentDialogue = 0;
     private TimeSystem timeSystem;
 
-    private bool timeRunOnce = true;
-
     private static Tutorial _instance;
 
     public static Tutorial Instance
@@ -60,7 +58,7 @@ public class Tutorial : MonoBehaviour
                 break;
             case 4: CheckForTab();
                 break;
-            case 7: SetTime();
+            case 7: WaitForNight();
                 break;
             case 8: WaitForCombatMode();
                 break;
@@ -143,9 +141,9 @@ public class Tutorial : MonoBehaviour
         dialogues[13].sentences[0].text = "Grunt: The sorcerer has conjured up a Golem…";
         dialogues[13].sentences[1].text = "Alert! Alert! Sensor detecting powerful energy clusters";
 
-        dialogues[14].initializeSentences(2);
-        dialogues[14].sentences[0].text = "Grunt: The sorcerer has conjured up a Golem…";
-        dialogues[14].sentences[1].text = "Alert! Alert! Sensor detecting powerful energy clusters";
+        dialogues[14].initializeSentences(1);
+        dialogues[14].sentences[0].text = "Captain! You need to defeat the Golem!";
+        dialogues[14].sentences[0].subtext = "Defeat the golem";
 
         dialogues[15].initializeSentences(1);
         dialogues[15].sentences[0].text = "Captain! Now the smelter system has been restored! The smelter makes you mix metals into more advanced materials!";
@@ -207,15 +205,9 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void SetTime()
+    private void WaitForNight()
     {
-        if (timeRunOnce)
-        {
-            timeSystem.hour = 19;
-            timeSystem.minute = 0;
-            timeRunOnce = false;
-        }
-        if (timeSystem.hour == 20)
+        if (!timeSystem.isDay())
         {
             TriggerDialogue(7);
         }

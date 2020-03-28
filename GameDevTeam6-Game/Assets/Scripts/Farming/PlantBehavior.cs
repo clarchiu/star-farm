@@ -7,20 +7,26 @@ public class PlantBehavior : MonoBehaviour
 
     private Plants plantProperties;
     [HideInInspector]
-    public int delay = 60;
+    public int growDelay = 80;
+    private float timer;
 
     void Start()
     {
         plantProperties = GetComponent<Plants>();
-        StartCoroutine(Grow());
+        timer = 0;
+
     }
 
-    IEnumerator Grow()
+    private void Update()
     {
-        while (plantProperties.getStages() <= 4)
+        if (plantProperties.getStages() <= 4)
         {
-            plantProperties.setStages(plantProperties.getStages() + 1);
-            yield return new WaitForSecondsRealtime(delay);
+            timer += Time.deltaTime;
+            if (timer >= growDelay)
+            {
+                plantProperties.setStages(plantProperties.getStages() + 1);
+                timer = 0;
+            }
         }
     }
 }

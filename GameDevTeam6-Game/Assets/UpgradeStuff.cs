@@ -144,13 +144,13 @@ public class UpgradeStuff : MonoBehaviour
             setNames(Mineral_type.bronze, Mineral_type.granite, 1);
         }
         else if (wepLev == 3) {
-            setNames(Mineral_type.steel, Mineral_type.tungsten, 1);
+            setNames(Mineral_type.steel, Mineral_type.adamantite, 1);
         }
         else if (wepLev == 4) {
-            setNames(Mineral_type.adamantite, Mineral_type.orichalum, 1);
+            setNames(Mineral_type.concrete, Mineral_type.silver, 1);
         }
         else if (wepLev == 5) {
-            setNames(Mineral_type.mithril, Mineral_type.chromatic1, 1);
+            setNames(Mineral_type.orichalum, Mineral_type.chromatic1, 1);
         } else if (wepLev > 5)
         {
             wepText1.GetComponent<Text>().text = "Fully upgraded!";
@@ -175,11 +175,11 @@ public class UpgradeStuff : MonoBehaviour
         } else if(breakLev == 2) {
             setNames(Mineral_type.granite, Mineral_type.steel, 2);
         } else if (breakLev == 3) {
-            setNames(Mineral_type.tin, Mineral_type.tin, 2);
+            setNames(Mineral_type.tin, Mineral_type.tungsten, 2);
         } else if (breakLev == 4) {
-            setNames(Mineral_type.concrete, Mineral_type.mithril, 2);
+            setNames(Mineral_type.cobalt, Mineral_type.mithril, 2);
         } else if (breakLev == 5) {
-            setNames(Mineral_type.tartarite, Mineral_type.chromatic1, 2);
+            setNames(Mineral_type.tartarite, Mineral_type.orichalum, 2);
         } else if (breakLev > 5)
         {
             breakText1.GetComponent<Text>().text = "Fully upgraded!";
@@ -200,7 +200,7 @@ public class UpgradeStuff : MonoBehaviour
         ///************************************************************************
         if (rangLev == 1)
         {
-            setNames(Mineral_type.copper, Mineral_type.iron, 3);
+            setNames(Mineral_type.copper, Mineral_type.tin, 3);
         }
         else if (rangLev == 2)
         {

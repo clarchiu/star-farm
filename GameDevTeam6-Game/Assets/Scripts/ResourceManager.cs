@@ -15,6 +15,7 @@ public class ResourceManager : MonoBehaviour
     public List<Sprite> seedSprites;
     public List<Sprite> genSprites;
     public List<GameObject> seedObjects;
+    public List<GameObject> genObjects;
     public Sprite[] wallSprites = new Sprite[13];
     public Sprite treeShadow1, treeShadow2, playersAndEnemiesShadow;
     public Material shadowMaterial;
@@ -40,11 +41,13 @@ public class ResourceManager : MonoBehaviour
         SetupSeedMap();
         SetupGenMap();
         SetupSeedObjectMap();
+        SetupGenObjectMap();
     }
     private static Dictionary<string, Sprite> mineralMap;
     private static Dictionary<string, Sprite> seedMap;
     private static Dictionary<string, Sprite> genMap;
     private static Dictionary<string, GameObject> seedObjectMap;
+    private static Dictionary<string, GameObject> genObjectMap;
 
     private void SetupMineralMap()
     {
@@ -74,6 +77,24 @@ public class ResourceManager : MonoBehaviour
             if (i < seedObjects.Count)
             {
                 seedObjectMap.Add(PieceTypeNames[i], seedObjects[i]);
+            }
+            else
+            {
+                throw new System.Exception("Not all sprites are set for each mineral type!! Check ItemInfo in Inventory controller!");
+            }
+        }
+    }
+
+    private void SetupGenObjectMap()
+    {
+        genObjectMap = new Dictionary<string, GameObject>();
+
+        string[] PieceTypeNames = System.Enum.GetNames(typeof(Gen_type));
+        for (int i = 0; i < PieceTypeNames.Length; i++)
+        {
+            if (i < genObjects.Count)
+            {
+                genObjectMap.Add(PieceTypeNames[i], genObjects[i]);
             }
             else
             {
@@ -152,6 +173,16 @@ public class ResourceManager : MonoBehaviour
     public GameObject GetSeedObject(Seed_type type)
     {
         GameObject obj = seedObjectMap[type.ToString()];
+        if (obj == null)
+        {
+            throw new System.Exception("No object corresponding to type: " + type.ToString());
+        }
+        return obj;
+    }
+
+    public GameObject GetGenObject(Gen_type type)
+    {
+        GameObject obj = genObjectMap[type.ToString()];
         if (obj == null)
         {
             throw new System.Exception("No object corresponding to type: " + type.ToString());

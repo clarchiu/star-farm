@@ -46,6 +46,13 @@ public class TimeSystem : MonoBehaviour
                 OnDayIncrease(day);
             }
         }
+
+        if (day == 7 && !isDay())
+        {
+            Tutorial.Instance.TriggerDialogue(12);
+            Tutorial.Instance.TriggerDialogue(13);
+            Tutorial.Instance.TriggerDialogue(14);
+        }
     }
 
     public bool isDay()

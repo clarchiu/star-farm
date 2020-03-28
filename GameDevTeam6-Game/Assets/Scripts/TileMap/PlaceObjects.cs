@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlaceObjects : MonoBehaviour
 {
-    public GameObject currentObject;
     private GameObject indicator;
 
     private MultiTool tool;
@@ -12,6 +11,7 @@ public class PlaceObjects : MonoBehaviour
     private Color32 red;
     private Color32 green;
     private Color32 orange;
+    public Sprite blank;
     private SpriteRenderer indicatorRenderer;
     public bool doneInitialize = false;
 
@@ -85,7 +85,16 @@ public class PlaceObjects : MonoBehaviour
         {
             return;
         }
-        indicatorRenderer.sprite = currentObject.GetComponent<SpriteRenderer>().sprite;
+
+        GameObject currentObject = ResourceManager.Instance.GetGenObject(GenSelector.Instance.chosenSeed);
+
+        if (Inventory_gen.Instance.FindAmount(GenSelector.Instance.chosenSeed) > 0)
+        {
+            indicatorRenderer.sprite = currentObject.GetComponent<SpriteRenderer>().sprite;
+        } else
+        {
+            indicatorRenderer.sprite = blank;
+        }
         GetMouseTile(out int tileX, out int tileY);
         indicator.transform.position = new Vector2(tileX, tileY);
 
@@ -97,7 +106,21 @@ public class PlaceObjects : MonoBehaviour
                 indicatorRenderer.color = green;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    CreateObject(currentObject, tileX, tileY);
+                    if (Inventory_gen.Instance.FindAmount(GenSelector.Instance.chosenSeed) > 0)
+                    {
+                        if (!InBounds(tileX, tileY))
+                        {
+                            Debug.Log("Tried to create an object outside of bounds and failed");
+                            return;
+                        }
+                        ObjectTile tile = GetComponent<TileLayout>().GetTile(tileX, tileY);
+                        GameObject oldObj = tile.getObjectOnTile();
+                        if (oldObj == null)
+                        {
+                            Inventory_gen.Instance.RemoveItem(GenSelector.Instance.chosenSeed, 1);
+                            CreateObject(currentObject, tileX, tileY);
+                        }
+                    }
                     //plays place object sound once
                     Placeobject_audiosource.PlayOneShot(placeobject_sound, 0.5f);
                 }
@@ -158,7 +181,7 @@ public class PlaceObjects : MonoBehaviour
             if (PlayerStates.Instance.GetState() == playerStates.IDLE)
             {
                 //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.breaking);
-                destroyobject_audiosource.PlayOneShot(destroyobject_sound, 0.5f);
+                destroyobject_audiosource.PlayOneShot(destroyobject_sound, 1);
                 objectOnTile.GetComponent<ITargetable>().RemoveHealth(objectOnTile, PlayerUpgrades.Instance.obstacleAttackDamage);
             }
         }

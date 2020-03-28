@@ -57,4 +57,6 @@ public class ShipStatus : MonoBehaviour, ITargetable
     {
         
     }
+
+
 }
