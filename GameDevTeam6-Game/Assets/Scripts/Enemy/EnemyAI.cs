@@ -117,12 +117,14 @@ public class EnemyAI: MonoBehaviour, ITargetable
                     Target = source;
                 }
             }
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain);
         }
         else
         {
             MyAttributes.currentHealth = 0;
             Destroy(gameObject);
             PlayEffect.Instance.PlayBreakEffect(gameObject.transform.position);
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain2);
         }
     }
 

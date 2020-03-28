@@ -14,6 +14,7 @@ public class ResourceManager : MonoBehaviour
     public List<Sprite> mineralSprites;
     public List<Sprite> seedSprites;
     public List<Sprite> genSprites;
+    public List<GameObject> seedObjects;
     public Sprite[] wallSprites = new Sprite[13];
     public Sprite treeShadow1, treeShadow2, playersAndEnemiesShadow;
     public Material shadowMaterial;
@@ -38,10 +39,12 @@ public class ResourceManager : MonoBehaviour
         SetupMineralMap();
         SetupSeedMap();
         SetupGenMap();
+        SetupSeedObjectMap();
     }
     private static Dictionary<string, Sprite> mineralMap;
     private static Dictionary<string, Sprite> seedMap;
     private static Dictionary<string, Sprite> genMap;
+    private static Dictionary<string, GameObject> seedObjectMap;
 
     private void SetupMineralMap()
     {
@@ -60,6 +63,25 @@ public class ResourceManager : MonoBehaviour
             }
         }
     }
+
+    private void SetupSeedObjectMap()
+    {
+        seedObjectMap = new Dictionary<string, GameObject>();
+
+        string[] PieceTypeNames = System.Enum.GetNames(typeof(Seed_type));
+        for (int i = 0; i < PieceTypeNames.Length; i++)
+        {
+            if (i < seedObjects.Count)
+            {
+                seedObjectMap.Add(PieceTypeNames[i], seedObjects[i]);
+            }
+            else
+            {
+                throw new System.Exception("Not all sprites are set for each mineral type!! Check ItemInfo in Inventory controller!");
+            }
+        }
+    }
+
 
     private void SetupSeedMap()
     {
@@ -125,6 +147,16 @@ public class ResourceManager : MonoBehaviour
             throw new System.Exception("No sprite corresponding to type: " + type.ToString());
         }
         return sprite;
+    }
+
+    public GameObject GetSeedObject(Seed_type type)
+    {
+        GameObject obj = seedObjectMap[type.ToString()];
+        if (obj == null)
+        {
+            throw new System.Exception("No object corresponding to type: " + type.ToString());
+        }
+        return obj;
     }
 
 }

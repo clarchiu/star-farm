@@ -35,7 +35,6 @@ public class Tutorial : MonoBehaviour
     //Singleton
     private void Awake()
     {
-        shipInfo = GameObject.Find("Ship info");
         multiTool = FindObjectOfType<MultiTool>();
         timeSystem = FindObjectOfType<TimeSystem>();
     }
@@ -59,11 +58,11 @@ public class Tutorial : MonoBehaviour
         {
             case 2: CheckForWASD();
                 break;
-            case 3: WaitForShipInteraction();
-                break;
             case 4: CheckForTab();
                 break;
             case 7: SetTime();
+                break;
+            case 8: WaitForCombatMode();
                 break;
             case 9: WaitForDay();
                 break;
@@ -94,21 +93,21 @@ public class Tutorial : MonoBehaviour
 
         dialogues[2].initializeSentences(1);
         dialogues[2].sentences[0].text = "Captain! If you don’t remember, this heap of wreck is your ship! My sensors shows the overall damage is 84%! I am the only part working right now!";
-        dialogues[2].sentences[0].subtext = "This is your ship, left click to interact.";
+        dialogues[2].sentences[0].subtext = "This is your ship, [Left click] on ship to interact.";
 
         dialogues[3].initializeSentences(1);
         dialogues[3].sentences[0].text = "Captain! I have equipped you with your universal multi-tool. Model MIDA-X872A made from the most durable alloys ever. It is suitable for any hazardous environment in this universe!";
-        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game. Hold tab to select mode.";
+        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game. Hold [Tab] to select mode.";
 
         dialogues[4].initializeSentences(1);
         dialogues[4].sentences[0].text = "Sensor detecting familiar metal object. Captain! Can you please use your multi-tool to obtain a sample so I can analyze its component.";
-        dialogues[4].sentences[0].subtext = "Select build mode on your multi-tool and try to break the first obstacle using right mouse button.";
+        dialogues[4].sentences[0].subtext = "Select build mode (top left) on your multi-tool and try to break the first obstacle using right mouse button. You can also cycle through modes by pressing [Space key]";
 
         dialogues[5].initializeSentences(3);
         dialogues[5].sentences[0].text = "Analyzing unknown structure.. It appears that this unknown object has similar organic structure as the native fauna.";
         dialogues[5].sentences[1].text = "Captain! Could this unknown object be a seed of the native plants over there?";
         dialogues[5].sentences[2].text = "Your multi-tool is specifically equipped to interact with alien environment, why not try it out?";
-        dialogues[5].sentences[2].subtext = "Press tab to open the multi-tool wheel and select farming mode. Right mouse click to process ground and Left mouse click to plant seed";
+        dialogues[5].sentences[2].subtext = "Press [E] to open your inventory, once you have selected the seed you want to plant, use your multi tool to select farming mode. [Left click] to process ground and plant seeds";
 
         dialogues[6].initializeSentences(1);
         dialogues[6].sentences[0].text = "Captain! As the alien object lay growing, you should explore the surroundings and find some more similar space rocks! I always wanted to leave this ship and see a new planet!";
@@ -125,16 +124,16 @@ public class Tutorial : MonoBehaviour
 
         dialogues[9].initializeSentences(2);
         dialogues[9].sentences[0].text = "Looks like the hostile creatures have all disappeared!";
-        dialogues[9].sentences[1].text = "Look like the seeds you planted have matured! Try to harvest them with your multi-tool";
-        dialogues[9].sentences[1].subtext = "Use farming mode, right click to harvest resources from the plant ";
+        dialogues[9].sentences[1].text = "Look like the seed you planted is maturing! Try to harvest them with your multi-tool when they fully mature";
+        dialogues[9].sentences[1].subtext = "Once the plants are fully matured, use farming mode and [Right click] to harvest resources from the plant ";
 
         dialogues[10].initializeSentences(1);
-        dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our storage";
-        dialogues[10].sentences[0].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
+        dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our ship";
+        dialogues[10].sentences[0].subtext = "By clicking on the ship, you can upgrade it with resources you collect.";
 
         dialogues[11].initializeSentences(1);
-        dialogues[11].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our ship";
-        dialogues[11].sentences[0].subtext = "You can craft smelter and defenses in your ship, you will need to continue upgrading the ship to return back to Earth";
+        dialogues[11].sentences[0].text = "You will need to continue upgrading the ship to return back to Earth"; ;
+        dialogues[11].sentences[0].subtext = "You will need to continue upgrading the ship to return back to Earth";
 
         dialogues[12].initializeSentences(2);
         dialogues[12].sentences[0].text = "Looks like these natives are relentless, I wonder what disturbed them.";
@@ -199,13 +198,6 @@ public class Tutorial : MonoBehaviour
             }
         }
     }
-    private void WaitForShipInteraction()
-    {
-        if (shipInfo.activeSelf)
-        {
-            TriggerDialogue(3);
-        }
-    }
 
     private void CheckForTab()
     {
@@ -234,6 +226,14 @@ public class Tutorial : MonoBehaviour
         if (timeSystem.isDay())
         {
             TriggerDialogue(9);
+        }
+    }
+
+    private void WaitForCombatMode()
+    {
+        if (multiTool.GetMode() == ToolModes.combatMode)
+        {
+            TriggerDialogue(8);
         }
     }
 }

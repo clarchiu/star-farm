@@ -43,6 +43,14 @@ public class ShowShipInfo : MonoBehaviour
         refreshInfo();
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseAll();
+        }
+    }
     private void OnMouseDown() {
         toggleInfoPanel();
     }
@@ -51,6 +59,7 @@ public class ShowShipInfo : MonoBehaviour
     {
         if (!infoPanel.activeSelf && !upgradePanel.activeSelf && !smelterPanel.activeSelf)
         {
+            Tutorial.Instance.TriggerDialogue(3);
             button1.SetActive(true);
             button2.SetActive(true);
             if (shipLevel > 1)
@@ -67,6 +76,8 @@ public class ShowShipInfo : MonoBehaviour
     }
     public void TaskOnClick(int buttonNum)
     {
+        SoundEffects_.Instance.PlaySoundEffect(SoundEffect.button);
+
         if (buttonNum == 1)
         {
             infoPanel.SetActive(true);
@@ -87,15 +98,17 @@ public class ShowShipInfo : MonoBehaviour
                     Inventory_mineral.Instance.RemoveItem(neededType2, reqAmount2);
                     refreshInfo();
                     button3.SetActive(true);
+
+                    Tutorial.Instance.TriggerDialogue(11);
+                } else
+                {
+                    ShowShipError.Instance.DisplayError("Not enough resources to upgrade!");
                 }
 
             }
             if(buttonNum == 5)
             {
-                infoPanel.SetActive(false);
-                button1.SetActive(false);
-                button2.SetActive(false);
-                button3.SetActive(false);
+                CloseAll();
             }
         } 
       
@@ -114,11 +127,11 @@ public class ShowShipInfo : MonoBehaviour
         if(shipLevel == 2)
         {
             SetImages(Mineral_type.bronze, Mineral_type.steel);
+            flavorText.text = "Now we can craft new metals and items using the forge! The forge uses up coal to turn your metals into something new! Use it to upgrade the ship again";
         }
         levelNum.text = shipLevel.ToString();
         numText1.text = reqAmount1.ToString();
         numText2.text = reqAmount2.ToString();
-        flavorText.text = "Now we can craft new metals and items using the forge! The forge uses up coal to turn your metals into something new! Use it to upgrade the ship again";
     }
 
     void SetImages(Mineral_type mineral1, Mineral_type mineral2)
@@ -127,5 +140,13 @@ public class ShowShipInfo : MonoBehaviour
         metal2.GetComponent<Image>().sprite = ResourceManager.Instance.GetMineralSprite(mineral2);
         neededType1 = mineral1;
         neededType2 = mineral2;
+    }
+
+    void CloseAll()
+    {
+        infoPanel.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
     }
 }

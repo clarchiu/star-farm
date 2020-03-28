@@ -6,18 +6,39 @@ using UnityEngine.UIElements;
 
 public class SeedSelector : MonoBehaviour
 {
+
+    private static SeedSelector _instance;
+    public static SeedSelector Instance { get { return _instance; } }
+
+    //Singleton
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
+    }
+
+
+    private void Update()
+    { 
+       // Debug.Log(chosenSeed);
+    }
     public GameObject selector;
     RectTransform selectRect;
     RectTransform imgRect;
-    Seed_type chosenSeed;
+    public Seed_type chosenSeed;
 
     public void TaskOnClick(int buttonNum)
     {
         if (buttonNum < Inventory_Seeds.Instance.items.Count)
         {
             chosenSeed = Inventory_Seeds.Instance.items[buttonNum].GetSeedType();
-            Debug.Log("You h clicked the button!");
-            Debug.Log(Inventory_Seeds.Instance.items[buttonNum].GetSeedType().ToString());
         }
 
     }
