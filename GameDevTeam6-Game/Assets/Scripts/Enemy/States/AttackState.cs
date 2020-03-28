@@ -15,7 +15,7 @@ internal class AttackState: EnemyState
 
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enenmy in attack state");
+        //Debug.Log("enenmy in attack state");
 
         base.Enter(parent);
     }

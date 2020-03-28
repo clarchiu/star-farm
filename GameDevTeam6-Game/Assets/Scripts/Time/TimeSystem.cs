@@ -10,6 +10,9 @@ public class TimeSystem : MonoBehaviour
     public float seconds;
     public int day;
 
+    public event OnDayIncreaseDelegate OnDayIncrease;
+    public delegate void OnDayIncreaseDelegate(int day);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,10 @@ public class TimeSystem : MonoBehaviour
         {
             hour -= 24;
             day += 1;
+            if (day > 1) // call delegate if it's second day or later
+            {
+                OnDayIncrease(day);
+            }
         }
     }
 

@@ -177,7 +177,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
             InAttackRange = true;
-            Debug.Log("enemy in range");
+            //Debug.Log("enemy in range");
         }
     }
 
@@ -186,7 +186,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
             InAttackRange = false;
-            Debug.Log("enemy out of range");
+            //Debug.Log("enemy out of range");
         }
     }
     #endregion

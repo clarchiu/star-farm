@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plants : MonoBehaviour
+public class Plants : MonoBehaviour, ITargetable
 {
     public Sprite plantImg2;
     public Sprite plantImg3;
@@ -14,12 +14,24 @@ public class Plants : MonoBehaviour
     private bool[] arrFruits = new bool[5];
     private int countFruits;
 
+    public TimeSystem timeSystem;
+
     void Start()
     {
         /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
          Sprite plantImage = renderer.sprite;*/
         //plantBehav.planting("species1");
     }
+
+    void Update()
+    {
+        if (timeSystem.isDay())
+        {
+            curHealth = maxHealth;
+            //reset health to max during the day
+        }
+    }
+
 
     public Plants(string species)
     {
@@ -72,5 +84,33 @@ public class Plants : MonoBehaviour
         this.countFruits = countFruits;
     }
 
+    private readonly int maxHealth = 25;
+    private int curHealth = 25;
 
- }
+    void ITargetable.SetHealth(int amount)
+    {
+       if (amount <= maxHealth)
+        {
+            curHealth = amount;
+        }
+    }
+
+    void ITargetable.RemoveHealth(GameObject source, int amount)
+    {
+        curHealth -= amount;
+        if (curHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void ITargetable.GainHealth(int amount)
+    {
+        //should not be implemented for plants
+    }
+
+    void ITargetable.KnockBack(Vector2 origin, float amount)
+    {
+        //should not be implemented for plants
+    }
+}

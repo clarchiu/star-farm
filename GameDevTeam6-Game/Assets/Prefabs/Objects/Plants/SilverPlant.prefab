@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 834598487
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e3c1fa24b3955247b7f02744b75a461, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a1e740f7b06fa499578201178909d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   timeCounter: 0
 --- !u!114 &6625258815456783713
 MonoBehaviour:
@@ -108,36 +108,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fb357630f29156459b766cc9f4fb591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   plantImg2: {fileID: 21300000, guid: fb14c21746fde094f9be6888a78bad1c, type: 3}
   plantImg3: {fileID: 21300000, guid: 7d8173790dde6644f9711b96b9843c63, type: 3}
   plantImg4: {fileID: 21300000, guid: 0b4643e66bb414a49b901e779903feb9, type: 3}
   plantImg5: {fileID: 21300000, guid: 04386a2312a9c5f458bc628522049743, type: 3}
---- !u!114 &-5127010179554132745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6303488983831204135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1440261cdf47d41a50c38c25e0df89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mtype: 13
-  Stype: 10
---- !u!114 &4524445581224443621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6303488983831204135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6c1205a2492cf44b489fdf25cf88a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
+  timeSystem: {fileID: 902452993071033443, guid: ba3c4600ff86d8547a4b8d129fa68ca4,
+    type: 3}

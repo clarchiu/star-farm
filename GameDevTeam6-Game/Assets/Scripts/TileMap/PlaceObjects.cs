@@ -44,7 +44,8 @@ public class PlaceObjects : MonoBehaviour
 
 
         tool = FindObjectOfType<MultiTool>();
-        if (!tool) {
+        if (!tool)
+        {
             gameObject.SetActive(false);
             Debug.LogWarning("Multitool object was not found! Place multiTool prefab into your scene!");
             gameObject.SetActive(false);
@@ -67,7 +68,8 @@ public class PlaceObjects : MonoBehaviour
         }
     }
 
-    private void Start() {
+    private void Start()
+    {
         red = new Color32(255, 0, 0, 100);
         green = new Color32(30, 255, 0, 100);
         orange = new Color32(200, 150, 0, 100);
@@ -77,8 +79,10 @@ public class PlaceObjects : MonoBehaviour
         destroyobject_audiosource = GetComponent<AudioSource>();
     }
 
-    void Update() {
-        if (!(tool.GetMode() == ToolModes.buildingMode)) {
+    void Update()
+    {
+        if (!(tool.GetMode() == ToolModes.buildingMode))
+        {
             return;
         }
         indicatorRenderer.sprite = currentObject.GetComponent<SpriteRenderer>().sprite;
@@ -98,7 +102,8 @@ public class PlaceObjects : MonoBehaviour
                     Placeobject_audiosource.PlayOneShot(placeobject_sound, 0.5f);
                 }
             }
-            else {
+            else
+            {
                 indicatorRenderer.color = orange;
                 if (Input.GetMouseButtonDown(1)) {
                     //DestroyObject(tileX, tileY);
@@ -106,7 +111,8 @@ public class PlaceObjects : MonoBehaviour
                     player.GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
                 }
             }
-        } else
+        }
+        else
         {
             indicatorRenderer.color = red;
         }
@@ -114,8 +120,10 @@ public class PlaceObjects : MonoBehaviour
 
 
     //Creates object at Tile[x,y] if there is no other object
-    public void CreateObject(GameObject newObj, int x, int y) {
-        if (!InBounds(x, y)) {
+    public void CreateObject(GameObject newObj, int x, int y)
+    {
+        if (!InBounds(x, y))
+        {
             Debug.Log("Tried to create an object outside of bounds and failed");
             return;
         }
@@ -190,23 +198,28 @@ public class PlaceObjects : MonoBehaviour
     }
 
 
-    public bool InBounds(int x, int y) {
-        if (x < 0 || x > GetComponent<TileLayout>().tileCountX - 1) {
+    public bool InBounds(int x, int y)
+    {
+        if (x < 0 || x > GetComponent<TileLayout>().tileCountX - 1)
+        {
             return false;
         }
-        if (y < 0 || y > GetComponent<TileLayout>().tileCountY - 1) {
+        if (y < 0 || y > GetComponent<TileLayout>().tileCountY - 1)
+        {
             return false;
         }
         return true;
     }
 
-    public void GetMouseTile(out int tileX, out int tileY) {
+    public void GetMouseTile(out int tileX, out int tileY)
+    {
         Vector2 mouseToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         tileX = Mathf.RoundToInt(mouseToWorld.x);
         tileY = Mathf.RoundToInt(mouseToWorld.y);
     }
 
-    public bool NearPlayer(int x, int y, int limit) {
+    public bool NearPlayer(int x, int y, int limit)
+    {
         int playerX = Mathf.RoundToInt(player.transform.position.x);
         int playerY = Mathf.RoundToInt(player.transform.position.y);
         return (Mathf.Abs(x - playerX) < limit && Mathf.Abs(y - playerY) < limit);

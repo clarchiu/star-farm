@@ -30,15 +30,13 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
 
-    public int totalCount;
+    private int totalCount = 0;
 
     private SpawnState state = SpawnState.COUNTING;
     
     // Use this for initialization
     void Start()
     {
-        waveCountdown = timeBetweenWaves;
-
         if (spawnPoints.Length == 0)
         {
             gameObject.SetActive(false);
@@ -56,6 +54,10 @@ public class WaveSpawner : MonoBehaviour
             gameObject.SetActive(false);
             throw new System.Exception("specify TimeSystem using inspector -Clarence");
         }
+
+        waveCountdown = timeBetweenWaves;
+        InitializeTotalCount();
+        timeSystem.OnDayIncrease += ScaleWaveWithDays;
     }
 
     // Update is called once per frame
@@ -119,10 +121,44 @@ public class WaveSpawner : MonoBehaviour
     {
         //spawn enemy
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        if (timeSystem.day > 1)
+        {
+            _enemy.gameObject.GetComponent<EnemyAI>().MyAttributes.maxHealth += timeSystem.day * 2;
+        }
         Instantiate(_enemy, _sp.position, _sp.rotation);
         totalCount--;
     }
 
+    private void ScaleWaveWithDays(int day)
+    {
+        ResetWaves();
+        foreach (Wave wave in waves)
+        {
+            wave.count += day % 2;
+            Debug.Log("wave count = " + wave.count);
+        }
+
+        InitializeTotalCount();
+    }
+
+    private void InitializeTotalCount()
+    {
+        totalCount = 0;
+        foreach (Wave wave in waves)
+        {
+            totalCount += wave.count;
+        }
+        totalCount *= 10;
+        Debug.Log("totalCount = " + totalCount);
+    }
+
+    void ResetWaves()
+    {
+        state = SpawnState.COUNTING;    //reset waves when it is day time
+        waveCountdown = timeBetweenWaves;
+        nextWaveIndex = 0;
+        Debug.Log("reset waves");
+    }
 }
 
 
