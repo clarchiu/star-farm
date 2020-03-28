@@ -54,19 +54,19 @@ public class Wall : MonoBehaviour
         }
         if (GetComponent<SpriteRenderer>().sprite != startingSprite || !updateSelf)
         {
-            if (NeighbourUp.getObjectOnTile()    != null && NeighbourUp.getObjectOnTile().tag.Equals("Wall"))    { NeighbourUp.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
-            if (NeighbourDown.getObjectOnTile()  != null && NeighbourDown.getObjectOnTile().tag.Equals("Wall"))  { NeighbourDown.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
-            if (NeighbourLeft.getObjectOnTile()  != null && NeighbourLeft.getObjectOnTile().tag.Equals("Wall"))  { NeighbourLeft.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
-            if (NeighbourRight.getObjectOnTile() != null && NeighbourRight.getObjectOnTile().tag.Equals("Wall")) { NeighbourRight.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
+            if (NeighbourUp.getObjectOnTile()    != null && NeighbourUp.getObjectOnTile().GetComponent<Wall>() != null)  { NeighbourUp.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
+            if (NeighbourDown.getObjectOnTile()  != null && NeighbourDown.getObjectOnTile().GetComponent<Wall>() != null)  { NeighbourDown.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
+            if (NeighbourLeft.getObjectOnTile()  != null && NeighbourLeft.getObjectOnTile().GetComponent<Wall>() != null) { NeighbourLeft.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
+            if (NeighbourRight.getObjectOnTile() != null && NeighbourRight.getObjectOnTile().GetComponent<Wall>() != null) { NeighbourRight.getObjectOnTile().GetComponent<Wall>().UpdateSprite(true); }
         } 
     }
 
     bool MatchNeighbour(bool up, bool down, bool left, bool right)
     {
-        if (up    != (NeighbourUp.getObjectOnTile()    != null && NeighbourUp.getObjectOnTile().tag == "Wall")) { return false; }
-        if (down  != (NeighbourDown.getObjectOnTile()  != null && NeighbourDown.getObjectOnTile().tag == "Wall")) { return false; }
-        if (left  != (NeighbourLeft.getObjectOnTile()  != null && NeighbourLeft.getObjectOnTile().tag == "Wall")) { return false; }
-        if (right != (NeighbourRight.getObjectOnTile() != null && NeighbourRight.getObjectOnTile().tag == "Wall")) { return false; }
+        if (up    != (NeighbourUp.getObjectOnTile()    != null && NeighbourUp.getObjectOnTile().GetComponent<Wall>() != null)) { return false; }
+        if (down  != (NeighbourDown.getObjectOnTile()  != null && NeighbourDown.getObjectOnTile().GetComponent<Wall>() != null)) { return false; }
+        if (left  != (NeighbourLeft.getObjectOnTile()  != null && NeighbourLeft.getObjectOnTile().GetComponent<Wall>() != null)) { return false; }
+        if (right != (NeighbourRight.getObjectOnTile() != null && NeighbourRight.getObjectOnTile().GetComponent<Wall>() != null)) { return false; }
         return true;
     }
     

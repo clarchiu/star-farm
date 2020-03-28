@@ -122,6 +122,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         {
             MyAttributes.currentHealth = 0;
             Destroy(gameObject);
+            PlayEffect.Instance.PlayBreakEffect(gameObject.transform.position);
         }
     }
 

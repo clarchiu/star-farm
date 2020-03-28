@@ -18,7 +18,7 @@ public class TimeSystem : MonoBehaviour
     {
         seconds = 0;
         minute = 0;
-        hour = 0;
+        //hour = 0;
         day = 1;
     }
 

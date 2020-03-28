@@ -11,6 +11,7 @@ public class ShipStatus : MonoBehaviour, ITargetable
     void ITargetable.GainHealth(int amount)
     {
         health += amount;
+        healthBar.UpdateHealthBar(health / MaxHealth);
     }
 
     void ITargetable.KnockBack(Vector2 origin, float amount)
@@ -29,13 +30,15 @@ public class ShipStatus : MonoBehaviour, ITargetable
         {
             health = 0;
             Debug.Log("ship destroyed");
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
+        healthBar.UpdateHealthBar(health / MaxHealth);
     }
 
     void ITargetable.SetHealth(int amount)
     {
         health = amount;
+        healthBar.UpdateHealthBar(health / MaxHealth);
     }
 
     // Start is called before the first frame update

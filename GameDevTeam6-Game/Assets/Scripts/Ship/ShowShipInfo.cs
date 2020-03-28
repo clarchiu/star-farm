@@ -118,7 +118,7 @@ public class ShowShipInfo : MonoBehaviour
         levelNum.text = shipLevel.ToString();
         numText1.text = reqAmount1.ToString();
         numText2.text = reqAmount2.ToString();
-        flavorText.text = "Now we can craft new metals and items using the forge! The forge uses up coal to trn your metals into something new! Use it to upgrade the ship again";
+        flavorText.text = "Now we can craft new metals and items using the forge! The forge uses up coal to turn your metals into something new! Use it to upgrade the ship again";
     }
 
     void SetImages(Mineral_type mineral1, Mineral_type mineral2)

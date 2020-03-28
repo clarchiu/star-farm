@@ -27,6 +27,10 @@ public class PlayerStates : MonoBehaviour
 
     public void ChangeState(playerStates proposedState)
     {
+        if (state == playerStates.DEATH)
+        {
+            return;
+        }
         if (state == playerStates.INTERACTING && proposedState == playerStates.WALKING)
         {
             Debug.Log("Illegal state change, can't go from walking to attacking");
@@ -41,6 +45,7 @@ public class PlayerStates : MonoBehaviour
             } else if (state == playerStates.IDLE) {
                 GetComponent<PlayerGFX>().MyState = GFXStates.IDLING;
             } else if (state == playerStates.INTERACTING) {
+                //Debug.Log("AAAAAA");
                 StartCoroutine(Attack());
             }
         }
@@ -62,5 +67,6 @@ public enum playerStates
 {
     WALKING,
     IDLE,
-    INTERACTING
+    INTERACTING,
+    DEATH
 }

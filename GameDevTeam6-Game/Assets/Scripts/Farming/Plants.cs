@@ -21,7 +21,8 @@ public class Plants : MonoBehaviour, ITargetable
         /* SpriteRenderer renderer = GetComponent<SpriteRenderer>();
          Sprite plantImage = renderer.sprite;*/
         //plantBehav.planting("species1");
-    }
+        timeSystem = FindObjectOfType<TimeSystem>();
+    } 
 
     void Update()
     {

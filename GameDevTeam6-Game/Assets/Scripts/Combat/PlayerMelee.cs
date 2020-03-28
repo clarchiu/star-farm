@@ -27,7 +27,7 @@ public class PlayerMelee : MonoBehaviour
     }
     IEnumerator RunAttack()
     {
-        checkMelee();
+        CheckMelee();
         GetComponent<PlayerStates>().ChangeState(playerStates.INTERACTING);
 
         yield return new WaitForSeconds(0.5f);

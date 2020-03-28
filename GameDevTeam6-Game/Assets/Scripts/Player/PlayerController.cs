@@ -1,22 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, ITargetable
 {
-    
-    
-
     //Configuration Parameters
     [SerializeField] float moveSpeed = 3f;
     private float maxX = 58, minX = 0, maxY = 58, minY = 0;
 
+    private HealthBar_ healthBar;
 
     //Reference Variables
     private Rigidbody2D playerRB;
+    private TimeSystem time;
 
 
     private void Awake() {
         FindPlayerRB();
-
+        healthBar = gameObject.AddComponent<HealthBar_>();
+        time = FindObjectOfType<TimeSystem>();
     }
 
     private void FindPlayerRB() {
@@ -30,7 +33,14 @@ public class PlayerController : MonoBehaviour, ITargetable
     private void FixedUpdate()
     {
         PlayerMove();
+
+        if (time.isDay())
+        {
+            health = maxHealth;
+            //reset health to max during the day
+        }
     }
+
     private void PlayerMove() {
 
         var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime;
@@ -84,12 +94,13 @@ public class PlayerController : MonoBehaviour, ITargetable
     }
 
     //TODO: set this somewhere else, possibly have a different script - Clarence
-    public int MaxHealth;
+    public int maxHealth;
     public int health;
 
     void ITargetable.GainHealth(int amount)
     {
         health += amount;
+        healthBar.UpdateHealthBar((float)health / maxHealth);
     }
 
     void ITargetable.KnockBack(Vector2 origin, float amount)
@@ -104,15 +115,33 @@ public class PlayerController : MonoBehaviour, ITargetable
             health -= amount;
         } else
         {
+            ActivateLayer("Death Layer");
             health = 0;
-            //Destroy(gameObject);
-            //TODO: what is the logic for when a player dies? - Clarence
-            Debug.Log("player died");
+            GetComponent<Animator>().Play("PlayerDeath1");
+            PlayerStates.Instance.ChangeState(playerStates.DEATH);
+            StartCoroutine(WaitForDeath());
         }
+        healthBar.UpdateHealthBar((float)health / maxHealth);
     }
 
     void ITargetable.SetHealth(int amount)
     {
         health = amount;
+        healthBar.UpdateHealthBar((float)health / maxHealth);
+    }
+
+    private void ActivateLayer(string layerName)
+    {
+        for (int i = 0; i < GetComponent<Animator>().layerCount; i++)
+        {
+            GetComponent<Animator>().SetLayerWeight(i, 0);
+        }
+        GetComponent<Animator>().SetLayerWeight(GetComponent<Animator>().GetLayerIndex(layerName), 1);
+    }
+
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Death");
     }
 }
