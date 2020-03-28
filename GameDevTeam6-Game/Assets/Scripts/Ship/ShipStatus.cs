@@ -25,6 +25,7 @@ public class ShipStatus : MonoBehaviour, ITargetable
 
     void ITargetable.RemoveHealth(GameObject source, int amount)
     {
+        Debug.Log("Ship damaged");
         if (health - amount > 0)
         {
             health -= amount;

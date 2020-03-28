@@ -14,10 +14,14 @@ public class Projectile : MonoBehaviour
     private Health health;
     private HealthBar hpBar;
 
+    [SerializeField] private GameObject invisibleCollider;
+
+
     void Awake(){
         FindRigidBody();
         player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), invisibleCollider.GetComponent<BoxCollider2D>(), true);
     }
 
     private void FindRigidBody(){
@@ -68,7 +72,7 @@ public class Projectile : MonoBehaviour
             //hpBar.UpdateHealthBar();
         }
 
-     Destroy(this.gameObject);
+        Destroy(this.gameObject);
 
     }
 }
