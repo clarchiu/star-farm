@@ -116,7 +116,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
             MyAttributes.currentHealth -= amount;
             healthBar.UpdateHealthBar((float)MyAttributes.currentHealth / MyAttributes.maxHealth);
 
-            if (!GameObject.ReferenceEquals(target, source))
+            if (!GameObject.ReferenceEquals(target, source) && source.CompareTag("Player"))
             {
                 if (source.GetComponent<ITargetable>() != null)
                 {
