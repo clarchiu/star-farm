@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a1e740f7b06fa499578201178909d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   delay: 5
 --- !u!114 &6625258815456783713
 MonoBehaviour:
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fb357630f29156459b766cc9f4fb591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   plantImg2: {fileID: 21300000, guid: fb14c21746fde094f9be6888a78bad1c, type: 3}
   plantImg3: {fileID: 21300000, guid: 7d8173790dde6644f9711b96b9843c63, type: 3}
   plantImg4: {fileID: 21300000, guid: 0b4643e66bb414a49b901e779903feb9, type: 3}
