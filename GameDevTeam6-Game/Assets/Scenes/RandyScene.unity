@@ -20847,7 +20847,7 @@ PrefabInstance:
         type: 3}
       propertyPath: genObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1128533525796180358, guid: 4395a4fab8b800544a30126ea9629741,
+      objectReference: {fileID: 8407125865477709405, guid: 7d9cf58907b5e42be988248a6553034f,
         type: 3}
     - target: {fileID: 7234699640857164767, guid: e59f78005be525749a733b0001b7cde7,
         type: 3}
@@ -20859,7 +20859,7 @@ PrefabInstance:
         type: 3}
       propertyPath: genSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 867f1d8e46e3d0140a0f99db080e4c94,
+      objectReference: {fileID: -1323561008597110582, guid: 6c1f50046896c41e3af128109a782c7e,
         type: 3}
     - target: {fileID: 2393275711113545279, guid: e59f78005be525749a733b0001b7cde7,
         type: 3}

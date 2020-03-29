@@ -85,6 +85,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
     protected virtual void Update()
     {
         currentState.Update();
+        transform.GetComponentInChildren<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y);
     }
 
     #region Public Methods

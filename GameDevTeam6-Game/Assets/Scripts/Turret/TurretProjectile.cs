@@ -34,6 +34,7 @@ public class TurretProjectile : MonoBehaviour
 
     private void Update()
     {
+        if (this.enemy == null) { return; }
         Vector3 targetPos = this.enemy.transform.position;
 
         InitializeVelocity(targetPos);
