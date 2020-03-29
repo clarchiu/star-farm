@@ -33,6 +33,9 @@ public class WaveSpawner : MonoBehaviour
     private int totalCount = 0;
 
     private SpawnState state = SpawnState.COUNTING;
+
+    private bool bossSpawned;
+    public Transform boss;
     
     // Use this for initialization
     void Start()
@@ -58,6 +61,7 @@ public class WaveSpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
         InitializeTotalCount();
         timeSystem.OnDayIncrease += ScaleWaveWithDays;
+        bossSpawned = false;
     }
 
     // Update is called once per frame
@@ -65,6 +69,12 @@ public class WaveSpawner : MonoBehaviour
     {
         //TODO: temporary solution, need more details about how enemies spawn progresses
         if (timeSystem.isDay()) { return; } //do nothing if it is day time
+
+        if (timeSystem.day % 7 == 0 && !bossSpawned)
+        {
+            SpawnEnemy(boss);
+            bossSpawned = true;
+        }
 
         if (state == SpawnState.WAITING)
         {
@@ -121,7 +131,7 @@ public class WaveSpawner : MonoBehaviour
     {
         //spawn enemy
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        if (timeSystem.day > 1)
+        if (timeSystem.day > 1 && timeSystem.day % 7 != 0)
         {
             _enemy.gameObject.GetComponent<EnemyAI>().MyAttributes.maxHealth += timeSystem.day * 2;
         }

@@ -265,7 +265,7 @@ MonoBehaviour:
   - {fileID: 1598756737967108082}
   - {fileID: 7487243406013402629}
   timeBetweenWaves: 5
-  totalCount: 30
+  boss: {fileID: 6357510907268668654, guid: 2c684983a0e5046878d85975849448a6, type: 3}
 --- !u!1 &4784536013485206311
 GameObject:
   m_ObjectHideFlags: 0
