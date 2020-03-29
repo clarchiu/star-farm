@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6357510907268668646}
   - component: {fileID: 6357510907268668647}
   m_Layer: 10
-  m_Name: Astar Boss
+  m_Name: SecondBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 6357510908352741224}
   - component: {fileID: 6357510908352741225}
   m_Layer: 12
-  m_Name: FirstBoss
+  m_Name: SecondBossSprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,8 @@ SpriteRenderer:
   m_SortingLayerID: -1363468489
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 932548695129453964, guid: d6a6d0f6790d0403f9d6f76cf37036d7, type: 3}
+  m_Sprite: {fileID: -844490858207735650, guid: fe6ebf34682f344509880e150563b1a5,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -322,7 +323,7 @@ Animator:
   m_GameObject: {fileID: 6357510908352741220}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e13f028d6c0d843a68279bff1379bb0b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36c23bab7681449b289ed29700df08a3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

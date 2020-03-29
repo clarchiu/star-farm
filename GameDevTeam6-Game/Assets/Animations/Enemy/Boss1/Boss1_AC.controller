@@ -121,7 +121,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_AC
+  m_Name: Boss1_AC
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: x
