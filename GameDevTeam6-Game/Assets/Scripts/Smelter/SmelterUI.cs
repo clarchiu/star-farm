@@ -247,14 +247,14 @@ public class SmelterUI : MonoBehaviour
             timeRemaining = 5100;
             return true;
         }
-        if ((itemType1 == Mineral_type.silver && itemType2 == Mineral_type.mithril) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.mithril))
+        if ((itemType1 == Mineral_type.silver && itemType2 == Mineral_type.mithril) || (itemType2 == Mineral_type.silver && itemType1 == Mineral_type.mithril))
         {
             resultType = Mineral_type.tartarite;
             progressTime = 5100;
             timeRemaining = 5100;
             return true;
         }
-        if ((itemType1 == Mineral_type.concrete && itemType2 == Mineral_type.tartarite) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.tartarite))
+        if ((itemType1 == Mineral_type.adamantite && itemType2 == Mineral_type.tartarite) || (itemType2 == Mineral_type.adamantite && itemType1 == Mineral_type.tartarite))
         {
             resultType = Mineral_type.orichalum;
             progressTime = 5100;

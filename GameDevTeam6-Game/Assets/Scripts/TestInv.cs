@@ -7,7 +7,7 @@ public class TestInv : MonoBehaviour
 
     private void Start()
     {
-        Inventory_gen.Instance.GainItem(Gen_type.turret, 10);
+        //Inventory_gen.Instance.GainItem(Gen_type.turret, 10);
     }
     // Start is called before the first frame update
     void Update()
