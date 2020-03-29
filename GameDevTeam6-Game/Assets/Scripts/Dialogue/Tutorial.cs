@@ -91,7 +91,7 @@ public class Tutorial : MonoBehaviour
 
         dialogues[2].initializeSentences(1);
         dialogues[2].sentences[0].text = "Captain! If you don’t remember, this heap of wreck is your ship! My sensors shows the overall damage is 84%! I am the only part working right now!";
-        dialogues[2].sentences[0].subtext = "This is your ship, [Left click] on ship to interact.";
+        dialogues[2].sentences[0].subtext = "This is your ship, [Left click] on ship to interact. Here you can upgrade your abilities or fix the ship, combine minerals and make new items.";
 
         dialogues[3].initializeSentences(1);
         dialogues[3].sentences[0].text = "Captain! I have equipped you with your universal multi-tool. Model MIDA-X872A made from the most durable alloys ever. It is suitable for any hazardous environment in this universe!";

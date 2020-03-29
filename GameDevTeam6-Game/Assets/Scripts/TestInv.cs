@@ -31,6 +31,7 @@ public class TestInv : MonoBehaviour
 
         //Inventory_Seeds.Instance.GainItem(Seed_type.copper, 100);
         //Inventory_Seeds.Instance.GainItem(Seed_type.iron, 100);
+        //Inventory_gen.Instance.GainItem(Gen_type.wall, 10);
         //Inventory_gen.Instance.GainItem(Gen_type.turret, 10);
     }
 }

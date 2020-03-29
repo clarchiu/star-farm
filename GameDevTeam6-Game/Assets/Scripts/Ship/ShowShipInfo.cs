@@ -123,7 +123,7 @@ public class ShowShipInfo : MonoBehaviour
     {
         if (shipLevel == 1)
         {
-            SetImages(Mineral_type.copper, Mineral_type.tin);
+            SetImages(Mineral_type.copper, Mineral_type.coal);
             reqAmount1 = 10;
             reqAmount2 = 10;
             flavorText.text = "Find some basic materials and fix the basic functions of the ship! With these improvements, we should be able to forge new things!";
