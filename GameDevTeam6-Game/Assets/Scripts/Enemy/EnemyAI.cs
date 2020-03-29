@@ -29,7 +29,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     //Combat
     private HealthBar_ healthBar;
-    private Collider2D attackRangeCollider;
+    private CircleCollider2D attackRangeCollider;
     #endregion
 
     #region Public Properties
@@ -62,6 +62,13 @@ public class EnemyAI: MonoBehaviour, ITargetable
             if (target != null)
             {
                 destSetter.target = this.target.transform;
+                if (this.attackRangeCollider.IsTouching(target.GetComponent<BoxCollider2D>()))
+                {
+                    InAttackRange = true;
+                } else
+                {
+                    InAttackRange = false;
+                }
                 //Debug.Log("new target: " + target.tag);
             }
         }
@@ -122,7 +129,6 @@ public class EnemyAI: MonoBehaviour, ITargetable
                 {
                     //Debug.Log("changing state");
                     Target = source;
-                    InAttackRange = false;
                     ChangeState(new PathState());
                 }
             }
@@ -179,33 +185,28 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
 
         aiPath.maxSpeed = MyAttributes.speed;
-        ((CircleCollider2D) attackRangeCollider).radius = MyAttributes.attackRange;
+        attackRangeCollider.radius = MyAttributes.attackRange;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
             InAttackRange = true;
-            //Debug.Log("Enter says true");
+            Debug.Log("Enter says true");
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (GameObject.ReferenceEquals(target, collision.gameObject))
-        {
-            InAttackRange = true;
-            ////Debug.Log("Stay says true");
-        }
-        else
-        {
-            InAttackRange = false;
-            ////Debug.Log("Stay says false");
-        }
-    }
+    //protected void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (GameObject.ReferenceEquals(target, collision.gameObject))
+    //    {
+    //        InAttackRange = true;
+    //        Debug.Log("Stay says true");
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision)
     {
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
@@ -214,4 +215,10 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
     }
     #endregion
+
+    public virtual void Attack(ITargetable target)
+    {
+        target.RemoveHealth(gameObject, MyAttributes.attackDamage);
+        target.KnockBack(transform.position, 50f); //TODO: make amount of knockback scale with damage?
+    }
 }

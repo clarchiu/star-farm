@@ -11,7 +11,7 @@ internal class FollowState: EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        //Debug.Log("enemy in follow state");
+        Debug.Log("enemy in follow state");
 
         base.Enter(parent);
     }
@@ -31,8 +31,9 @@ internal class FollowState: EnemyState
         if (parent.Target != null)
         {
             //Find the target's direction
-            Vector2 direction = (parent.Target.transform.position - parent.transform.position).normalized;             
-            parent.RB.velocity = direction * parent.MyAttributes.speed; 
+            Vector3 targetDir = (parent.Target.transform.position - parent.transform.position).normalized;
+            parent.RB.velocity = targetDir * parent.MyAttributes.speed;
+            //parent.transform.position = targetDir * parent.MyAttributes.speed * Time.deltaTime;
 
             SetGFXDirection();
 
@@ -52,6 +53,7 @@ internal class FollowState: EnemyState
     protected override void SetGFXDirection()
     {
         parent.GFX.Direction = parent.RB.velocity.normalized;
+        //parent.GFX.Direction = targetDir;
     }
 
     protected override void SetGFXState()

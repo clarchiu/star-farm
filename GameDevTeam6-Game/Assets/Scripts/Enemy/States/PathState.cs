@@ -16,7 +16,7 @@ internal class PathState : EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        //Debug.Log("enemy in path state");
+        Debug.Log("enemy in path state");
 
         base.Enter(parent);
 
@@ -40,15 +40,16 @@ internal class PathState : EnemyState
             parent.ChangeState(new SearchState());
             return;
         }
-        else if ( parent.aiPath.reachedEndOfPath == true )
-        {
-            parent.ChangeState(new FollowState());
-            return;
-        }
         else if (parent.InAttackRange)
         {
-            //Debug.Log("in range");
+            Debug.Log("in range");
             parent.ChangeState(new AttackState());
+            return;
+        }
+        else if (parent.aiPath.reachedEndOfPath == true)
+        {
+            Debug.Log("changing to follow state from path state");
+            parent.ChangeState(new FollowState());
             return;
         }
     }
