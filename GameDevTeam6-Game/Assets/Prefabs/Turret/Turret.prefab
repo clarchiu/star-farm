@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8407125865477709407}
   - component: {fileID: 8407125865477709406}
   - component: {fileID: 8407125865477709408}
+  - component: {fileID: 3676793761775691306}
   m_Layer: 8
   m_Name: Turret
   m_TagString: Structure
@@ -48,10 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfTurretProjectile: {fileID: 4739132967771279710, guid: 983392176f1144fea9c08db3f23d578d,
     type: 3}
-  maxRange: 0
-  timeBetweenAttacks: 0
-  attackCoolDown: 0
+  maxRange: 6
+  timeBetweenAttacks: 1
+  attackCoolDown: 1
   damage: 10
+  maxHealth: 100
 --- !u!61 &8407125865477709408
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,6 +80,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &3676793761775691306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407125865477709405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bar: {fileID: 5145030864339939749, guid: 9853c13182537a6469ef9e6e19195e1d, type: 3}
 --- !u!1 &8407125866141868475
 GameObject:
   m_ObjectHideFlags: 0
