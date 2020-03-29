@@ -65,13 +65,13 @@ public class UpgradeStuff : MonoBehaviour
         {
             if (buttonNum == 4)
             {
-                if (Inventory_mineral.Instance.FindAmount(neededType1) >= 4 && Inventory_mineral.Instance.FindAmount(neededType2) >= 4)
+                if (Inventory_mineral.Instance.FindAmount(neededType1) >= 10 && Inventory_mineral.Instance.FindAmount(neededType2) >= 10)
                 {
                     if (wepLev <= 5)
                     {
                         wepLev++;
                         PlayerUpgrades.Instance.UpgradeMeleeDamage();
-                        Inventory_mineral.Instance.RemoveItem(neededType1, 4);
+                        Inventory_mineral.Instance.RemoveItem(neededType1, 10);
                         Inventory_mineral.Instance.RemoveItem(neededType2, 4);
                         refreshInfo();
                     }
@@ -87,14 +87,14 @@ public class UpgradeStuff : MonoBehaviour
             }
             if (buttonNum == 6)
             {
-                if (Inventory_mineral.Instance.FindAmount(neededType3) >= 4 && Inventory_mineral.Instance.FindAmount(neededType4) >= 4)
+                if (Inventory_mineral.Instance.FindAmount(neededType3) >= 10 && Inventory_mineral.Instance.FindAmount(neededType4) >= 10)
                 {
                     if (breakLev <= 5)
                     {
                         breakLev++;
                         PlayerUpgrades.Instance.UpgradeObstacleDamage();
-                        Inventory_mineral.Instance.RemoveItem(neededType3, 4);
-                        Inventory_mineral.Instance.RemoveItem(neededType4, 4);
+                        Inventory_mineral.Instance.RemoveItem(neededType3, 10);
+                        Inventory_mineral.Instance.RemoveItem(neededType4, 10);
                         refreshInfo();
                     }
                 } else
@@ -105,14 +105,14 @@ public class UpgradeStuff : MonoBehaviour
             }
             if (buttonNum == 7)
             {
-                if (Inventory_mineral.Instance.FindAmount(neededType5) >= 4 && Inventory_mineral.Instance.FindAmount(neededType6) >= 4)
+                if (Inventory_mineral.Instance.FindAmount(neededType5) >= 10 && Inventory_mineral.Instance.FindAmount(neededType6) >= 10)
                 {
                     if (rangLev <= 5)
                     {
                         rangLev++;
                         PlayerUpgrades.Instance.UpgradeRangedDamage();
-                        Inventory_mineral.Instance.RemoveItem(neededType5, 4);
-                        Inventory_mineral.Instance.RemoveItem(neededType6, 4);
+                        Inventory_mineral.Instance.RemoveItem(neededType5, 10);
+                        Inventory_mineral.Instance.RemoveItem(neededType6, 10);
                         refreshInfo();
                     }
                 } else
@@ -242,22 +242,22 @@ public class UpgradeStuff : MonoBehaviour
         {
             neededType1 = mineral1;
             neededType2 = mineral2;
-            wepText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
-            wepText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
+            wepText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 10";
+            wepText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 10";
         }
         if (num == 2)
         {
             neededType3 = mineral1;
             neededType4 = mineral2;
-            breakText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
-            breakText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
+            breakText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 10";
+            breakText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 10";
         }
         if (num == 3)
         {
             neededType5 = mineral1;
             neededType6 = mineral2;
-            rangText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 4";
-            rangText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 4";
+            rangText1.GetComponent<Text>().text = char.ToUpper(mineral1.ToString()[0]) + mineral1.ToString().Substring(1) + " X 10";
+            rangText2.GetComponent<Text>().text = char.ToUpper(mineral2.ToString()[0]) + mineral2.ToString().Substring(1) + " X 10";
         }
     }
 

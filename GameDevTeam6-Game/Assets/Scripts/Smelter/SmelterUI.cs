@@ -93,7 +93,7 @@ public class SmelterUI : MonoBehaviour
                 resultNume.text = (item1Amount+item2Amount).ToString();
                 resulte.text = char.ToUpper(resultType.ToString()[0]) + resultType.ToString().Substring(1);
             }
-            if (CheckItemRecipe())
+            else if (CheckItemRecipe())
             {
                 resultImg.GetComponent<Image>().sprite = ResourceManager.Instance.GetGenSprite(genResultType);
                 resultNume.text = "1";
@@ -156,7 +156,7 @@ public class SmelterUI : MonoBehaviour
                 Inventory_mineral.Instance.RemoveItem(itemType2, item2Amount);
                 smelterRunning = true;
             }
-            if (CheckItemRecipe() && Inventory_mineral.Instance.FindAmount(itemType1) >= item1Amount && Inventory_mineral.Instance.FindAmount(itemType2) >= item2Amount && item1Amount != 0 && item2Amount != 0 && smelterRunning == false && smelterDone == false)
+            else if (CheckItemRecipe() && Inventory_mineral.Instance.FindAmount(itemType1) >= item1Amount && Inventory_mineral.Instance.FindAmount(itemType2) >= item2Amount && item1Amount != 0 && item2Amount != 0 && smelterRunning == false && smelterDone == false)
             {
                 resultTypeString = "item";
                 Inventory_mineral.Instance.RemoveItem(itemType1, item1Amount);

@@ -139,42 +139,42 @@ public class ShowShipInfo : MonoBehaviour
         if (shipLevel == 3)
         {
             SetImages(Mineral_type.bronze, Mineral_type.steel);
-            reqAmount1 = 10;
-            reqAmount2 = 10;
+            reqAmount1 = 20;
+            reqAmount2 = 20;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 4)
         {
             SetImages(Mineral_type.granite, Mineral_type.tungsten);
-            reqAmount1 = 10;
-            reqAmount2 = 10;
+            reqAmount1 = 40;
+            reqAmount2 = 40;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 5)
         {
             SetImages(Mineral_type.adamantite, Mineral_type.cobalt);
-            reqAmount1 = 10;
-            reqAmount2 = 10;
+            reqAmount1 = 60;
+            reqAmount2 = 60;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 6)
         {
             SetImages(Mineral_type.mithril, Mineral_type.silver);
-            reqAmount1 = 10;
-            reqAmount2 = 10;
+            reqAmount1 = 120;
+            reqAmount2 = 120;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 7)
         {
             SetImages(Mineral_type.tartarite, Mineral_type.concrete);
-            reqAmount1 = 10;
-            reqAmount2 = 10;
+            reqAmount1 = 240;
+            reqAmount2 = 240;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 8)
         {
             SetImages(Mineral_type.orichalum, Mineral_type.chromatic1);
-            reqAmount1 = 10;
+            reqAmount1 = 300;
             reqAmount2 = 10;
             flavorText.text = "The ship will be completely fixed after this final upgrade! You can choose to upgrade your ship to the final tier and finish the game or choosing to upgrade your multi-tool weapon in order to defeat the escaped Specimen.";
         }
