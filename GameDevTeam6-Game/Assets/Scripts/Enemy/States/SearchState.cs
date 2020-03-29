@@ -84,7 +84,7 @@ internal class SearchState: EnemyState
             }
         }
 
-        //DDebug.Log(closestObj.tag);
+        //Debug.Log(closestObj.tag);
         return closestObj;
     }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossAI : EnemyAI
+public class BossAI : EnemyAI, ITargetable
 {
     // Use this for initialization
     protected override void Start()
@@ -13,5 +13,10 @@ public class BossAI : EnemyAI
     protected override void Update()
     {
         base.Update();
+    }
+
+    public override void KnockBack(Vector2 origin, float amount)
+    {
+        //should not be implemented
     }
 }

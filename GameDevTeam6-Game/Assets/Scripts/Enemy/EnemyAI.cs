@@ -29,7 +29,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     //Combat
     private HealthBar_ healthBar;
-    private CircleCollider2D attackRangeCollider;
+    private Collider2D attackRangeCollider;
     #endregion
 
     #region Public Properties
@@ -60,7 +60,10 @@ public class EnemyAI: MonoBehaviour, ITargetable
             target = value;
 
             if (target != null)
+            {
                 destSetter.target = this.target.transform;
+                //Debug.Log("new target: " + target.tag);
+            }
         }
     }
     #endregion
@@ -102,23 +105,26 @@ public class EnemyAI: MonoBehaviour, ITargetable
     #endregion
 
     #region ITargetable Implementation
-    void ITargetable.SetHealth(int amount)
+    public virtual void SetHealth(int amount)
     {
         MyAttributes.currentHealth = amount;
     }
 
-    void ITargetable.RemoveHealth(GameObject source, int amount)
+    public virtual void RemoveHealth(GameObject source, int amount)
     {
         if (MyAttributes.currentHealth - amount > 0)
         {
             MyAttributes.currentHealth -= amount;
-            healthBar.UpdateHealthBar((float) MyAttributes.currentHealth / MyAttributes.maxHealth);
+            healthBar.UpdateHealthBar((float)MyAttributes.currentHealth / MyAttributes.maxHealth);
 
-            if (!GameObject.ReferenceEquals(target, source))
+            if (!GameObject.ReferenceEquals(target, source) && source.CompareTag("Player"))
             {
                 if (source.GetComponent<ITargetable>() != null)
                 {
+                    //Debug.Log("changing state");
                     Target = source;
+                    InAttackRange = false;
+                    ChangeState(new PathState());
                 }
             }
             SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain);
@@ -133,14 +139,14 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
     }
 
-    void ITargetable.GainHealth(int amount)
+    public virtual void GainHealth(int amount)
     {
         MyAttributes.currentHealth += amount;
     }
 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    public virtual void KnockBack(Vector2 origin, float amount)
     {
-        Vector2 deltaPosition = ((Vector2) this.transform.position - origin).normalized * amount;
+        Vector2 deltaPosition = ((Vector2)this.transform.position - origin).normalized * amount;
 
         if (aiPath.canMove == true)
         {
@@ -177,7 +183,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         }
 
         aiPath.maxSpeed = MyAttributes.speed;
-        attackRangeCollider.radius = MyAttributes.attackRange;
+        ((CircleCollider2D) attackRangeCollider).radius = MyAttributes.attackRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -185,7 +191,21 @@ public class EnemyAI: MonoBehaviour, ITargetable
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
             InAttackRange = true;
-            //Debug.Log("enemy in range");
+            //Debug.Log("Enter says true");
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (GameObject.ReferenceEquals(target, collision.gameObject))
+        {
+            InAttackRange = true;
+            ////Debug.Log("Stay says true");
+        }
+        else
+        {
+            InAttackRange = false;
+            ////Debug.Log("Stay says false");
         }
     }
 
@@ -194,7 +214,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
         if (GameObject.ReferenceEquals(target, collision.gameObject))
         {
             InAttackRange = false;
-            //Debug.Log("enemy out of range");
+            //Debug.Log("exit says false");
         }
     }
     #endregion

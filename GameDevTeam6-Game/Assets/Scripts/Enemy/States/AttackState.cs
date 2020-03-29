@@ -22,6 +22,7 @@ internal class AttackState: EnemyState
 
     public override void Exit()
     {
+        //Debug.Log("leaving attack state");
         isAttacking = false;
     }
 

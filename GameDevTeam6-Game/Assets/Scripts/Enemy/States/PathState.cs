@@ -47,6 +47,7 @@ internal class PathState : EnemyState
         }
         else if (parent.InAttackRange)
         {
+            //Debug.Log("in range");
             parent.ChangeState(new AttackState());
             return;
         }
