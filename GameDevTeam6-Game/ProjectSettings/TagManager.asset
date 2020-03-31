@@ -33,8 +33,9 @@ TagManager:
   - Projectile
   - BossSprite
   - AttackRange
-  - 
-  -
+  - DropItem
+  - Bullets
+  - WaterBlock
   -
   -
   -
