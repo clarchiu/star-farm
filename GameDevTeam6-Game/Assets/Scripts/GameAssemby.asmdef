@@ -1,4 +1,4 @@
 ﻿{
 	"name": "NewAssembly",
-    "references": [ "AstarPathfindingProject" ]
+    "references": [ "AstarPathfindingProject"]
 }

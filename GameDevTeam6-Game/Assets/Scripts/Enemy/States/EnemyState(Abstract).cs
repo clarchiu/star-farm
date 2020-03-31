@@ -3,18 +3,25 @@ using UnityEngine;
 
 public abstract class EnemyState : IState
 {
-    protected EnemyAI parent;
+    protected EnemyAI enemy;
+    protected static float attackCoolDown = 0f;
 
-    public virtual void Enter(EnemyAI parent)
+    public virtual void Enter(EnemyAI enemy)
     {
-        this.parent = parent;
+        this.enemy = enemy;
 
         SetGFXState();
     }
 
     public abstract void Exit();
 
-    public abstract void Update();
+    public virtual void Update()
+    {
+        if (attackCoolDown > 0)
+        {
+            attackCoolDown -= Time.deltaTime;
+        }
+    }
 
     protected abstract void SetGFXState();
 

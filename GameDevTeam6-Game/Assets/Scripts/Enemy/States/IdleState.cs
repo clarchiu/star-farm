@@ -16,6 +16,7 @@ internal class IdleState: EnemyState
 
     public override void Update()
     {
+        base.Update();
         //implementation not needed
     }
 
@@ -26,7 +27,7 @@ internal class IdleState: EnemyState
 
     protected override void SetGFXState()
     {
-        parent.GFX.MyState = GFXStates.IDLING;
+        enemy.GFX.MyState = GFXStates.IDLING;
     }
 }
 

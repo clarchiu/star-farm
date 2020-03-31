@@ -72,7 +72,7 @@ public class PlayerMelee : MonoBehaviour
                  */
                 ITargetable targetable = hitColliders[i].GetComponent<ITargetable>();
                 targetable.RemoveHealth(player, 15);
-                targetable.KnockBack(player.transform.position, 1f);
+                targetable.KnockBack(player.transform.position, 0.5f);
             }
         }
 

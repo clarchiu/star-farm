@@ -12,7 +12,7 @@ using Pathfinding;
  * - Clarence
  */
 
-public class EnemyAI: MonoBehaviour, ITargetable
+public class EnemyAI: MonoBehaviour, ITargetable, ICombative
 {
     #region Components
     //GFX
@@ -29,18 +29,15 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     //Combat
     private HealthBar_ healthBar;
-    private CircleCollider2D attackRangeCollider;
     #endregion
 
     #region Public Properties
-    //Constants for enemy type
-    public EnemyAttributes MyAttributes;
+    public static List<EnemyAI> enemies = new List<EnemyAI>();
 
-    //Set by attackRangeCollider
-    public bool InAttackRange { get; private set; } = false;
+    public EnemyAttributes MyAttributes;    //Constants for enemy type
 
-    //Set target to null if not in aggro range
-    public bool TargetInAggroRange
+    public bool IsTargetInAttackRange { get; private set; } //Set by attackRangeCollider
+    public bool IsTargetInAggroRange  //Set target to null if not in aggro range
     {
         get
         {   //calculates whether target is within 5 units of enemy
@@ -62,14 +59,7 @@ public class EnemyAI: MonoBehaviour, ITargetable
             if (target != null)
             {
                 destSetter.target = this.target.transform;
-                if (this.attackRangeCollider.IsTouching(target.GetComponent<BoxCollider2D>()))
-                {
-                    InAttackRange = true;
-                } else
-                {
-                    InAttackRange = false;
-                }
-                //Debug.Log("new target: " + target.tag);
+                OnNewTarget();
             }
         }
     }
@@ -79,12 +69,47 @@ public class EnemyAI: MonoBehaviour, ITargetable
     private IState currentState;
     #endregion
 
-    public static List<EnemyAI> enemies = new List<EnemyAI>();
+    #region Setup Methods
+    protected virtual void SetUp()
+    {
+        SetupComponents();
+        SetUpAttributes();
+    }
 
+    private void SetupComponents()
+    {
+        healthBar = GetComponent<HealthBar_>();
+        destSetter = GetComponent<AIDestinationSetter>();
+        rb = GetComponent<Rigidbody2D>();
+        gfx = GetComponentInChildren<EnemyGFX>();
+
+        if (healthBar == null || destSetter == null || rb == null
+            || gfx == null || aiPath == null)
+        {
+            this.gameObject.SetActive(false);
+            throw new System.Exception("missing components on enemy, add in inspector");
+        }
+    }
+
+    protected virtual void SetUpAttributes()
+    {
+        if (MyAttributes.currentHealth == 0 && MyAttributes.maxHealth == 0 && MyAttributes.speed == 0
+            && MyAttributes.attackCoolDown == 0 && MyAttributes.attackDamage == 0 && MyAttributes.attackRange == 0)
+        {
+            this.gameObject.SetActive(false);
+            throw new System.Exception("missing MyStats values on EnemyAI script in inspector");
+        }
+
+        IsTargetInAttackRange = false;
+        aiPath.maxSpeed = MyAttributes.speed;
+    }
+    #endregion
+
+    #region Monobehaviour methods
     protected void Awake()
     {
         enemies.Add(this);
-        SetupComponents();
+        SetUp();
     }
 
     protected virtual void Start()
@@ -96,8 +121,9 @@ public class EnemyAI: MonoBehaviour, ITargetable
     {
         currentState.Update();
     }
+    #endregion
 
-    #region Public Methods
+    #region Enemy State Methods
     public void ChangeState(IState newState)
     {
         if (currentState != null)
@@ -107,6 +133,31 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
         currentState = newState;
         currentState.Enter(this);
+    }
+    #endregion
+
+    #region ICombative implementation
+    public void SetInAttackRange(bool inRange)
+    {
+        IsTargetInAttackRange = inRange;
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
+    }
+
+    public event OnNewTargetDelegate OnNewTarget;
+
+    public virtual void PrimaryAttack(ITargetable target)
+    {
+        target.RemoveHealth(gameObject, MyAttributes.attackDamage);
+        target.KnockBack(transform.position, 0.5f); //TODO: make amount of knockback scale with damage?
+    }
+
+    public virtual void SecondaryAttack(ITargetable target)
+    {
+        // no secondary attack
     }
     #endregion
 
@@ -148,77 +199,44 @@ public class EnemyAI: MonoBehaviour, ITargetable
 
     public virtual void KnockBack(Vector2 origin, float amount)
     {
+        Debug.Log("knockback");
         Vector2 deltaPosition = ((Vector2)this.transform.position - origin).normalized * amount;
 
         if (aiPath.canMove == true)
         {
+            Debug.Log("astar knockback");
             aiPath.Move(deltaPosition);
         }
         else
         {
-            rb.AddForce(deltaPosition * amount * 1000f, ForceMode2D.Force);
+            Debug.Log("physics knockback");
+            rb.AddForce(deltaPosition * 50f);
         }
-    }
-    #endregion
-
-    #region Private Methods
-    private void SetupComponents()
-    {
-        healthBar = GetComponent<HealthBar_>();
-        destSetter = GetComponent<AIDestinationSetter>();
-        rb = GetComponent<Rigidbody2D>();
-        gfx = GetComponentInChildren<EnemyGFX>();
-        attackRangeCollider = GetComponent<CircleCollider2D>();
-
-        if (healthBar == null || destSetter == null || rb == null
-            || gfx == null || aiPath == null || attackRangeCollider == null)
-        {
-            this.gameObject.SetActive(false);
-            throw new System.Exception("missing components on enemy, add in inspector");
-        }
-
-        if (MyAttributes.currentHealth == 0 && MyAttributes.maxHealth == 0 && MyAttributes.speed == 0
-            && MyAttributes.attackCoolDown == 0 && MyAttributes.attackDamage == 0 && MyAttributes.attackRange == 0)
-        {
-            this.gameObject.SetActive(false);
-            throw new System.Exception("missing MyStats values on EnemyAI script in inspector");
-        }
-
-        aiPath.maxSpeed = MyAttributes.speed;
-        attackRangeCollider.radius = MyAttributes.attackRange;
+        //StartCoroutine(KnockBackTimeout());
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (GameObject.ReferenceEquals(target, collision.gameObject))
-        {
-            InAttackRange = true;
-            Debug.Log("Enter says true");
-        }
-    }
-
-    //protected void OnTriggerStay2D(Collider2D collision)
+    //public virtual IEnumerator KnockbackTimeOut(float knockbackPwr, Vector2 origin)
     //{
-    //    if (GameObject.ReferenceEquals(target, collision.gameObject))
+    //    float knockDuration = 2f;
+    //    float timer = 0;
+
+    //    if (aiPath.canMove)
     //    {
-    //        InAttackRange = true;
-    //        Debug.Log("Stay says true");
+    //        aiPath.canMove = false;
+    //        Debug.Log("aipath cannot move");
     //    }
+
+    //    while (knockDuration > timer)
+    //    {
+    //        timer += Time.deltaTime;
+    //        Vector2 deltaPosition = ((Vector2)this.transform.position - origin).normalized;
+    //        rb.AddForce(deltaPosition * knockbackPwr);
+    //    }
+
+    //    yield return new WaitForSeconds(2f);
+
+    //    aiPath.canMove = true;
+    //    Debug.Log("aipath can move");
     //}
-
-    protected void OnTriggerExit2D(Collider2D collision)
-    {
-        if (GameObject.ReferenceEquals(target, collision.gameObject))
-        {
-            InAttackRange = false;
-            //Debug.Log("exit says false");
-        }
-    }
     #endregion
-
-    public virtual void Attack(ITargetable target)
-    {
-        target.RemoveHealth(gameObject, MyAttributes.attackDamage);
-        target.KnockBack(transform.position, 50f); //TODO: make amount of knockback scale with damage?
-    }
 }

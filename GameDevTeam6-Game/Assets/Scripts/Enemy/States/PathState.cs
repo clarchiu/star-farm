@@ -16,8 +16,6 @@ internal class PathState : EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
-        Debug.Log("enemy in path state");
-
         base.Enter(parent);
 
         parent.aiPath.canMove = true;
@@ -26,41 +24,40 @@ internal class PathState : EnemyState
 
     public override void Exit()
     {
-        parent.aiPath.canMove = false;
-        parent.aiPath.canSearch = false;
+        enemy.aiPath.canMove = false;
+        enemy.aiPath.canSearch = false;
     }
 
     public override void Update()
     {
+        base.Update();
         SetGFXDirection();
 
-        if (parent.Target == null)
+        if (enemy.Target == null)
         {
             //Debug.Log("target null");
-            parent.ChangeState(new SearchState());
+            enemy.ChangeState(new SearchState());
             return;
         }
-        else if (parent.InAttackRange)
+        else if (enemy.IsTargetInAttackRange)
         {
-            Debug.Log("in range");
-            parent.ChangeState(new AttackState());
+            enemy.ChangeState(new AttackState());
             return;
         }
-        else if (parent.aiPath.reachedEndOfPath == true)
+        else if (enemy.aiPath.reachedEndOfPath == true)
         {
-            Debug.Log("changing to follow state from path state");
-            parent.ChangeState(new FollowState());
+            enemy.ChangeState(new FollowState());
             return;
         }
     }
 
     protected override void SetGFXDirection()
     {
-        parent.GFX.Direction = parent.aiPath.velocity.normalized;
+        enemy.GFX.Direction = enemy.aiPath.velocity.normalized;
     }
 
     protected override void SetGFXState()
     {
-        parent.GFX.MyState = GFXStates.MOVING;
+        enemy.GFX.MyState = GFXStates.MOVING;
     }
 }

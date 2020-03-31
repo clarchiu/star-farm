@@ -14,11 +14,11 @@ internal class SearchState: EnemyState
 {
     private float searchCoolDown; 
 
-    public override void Enter(EnemyAI parent)
+    public override void Enter(EnemyAI enemy)
     {
         Debug.Log("enemy in search state");
 
-        base.Enter(parent);
+        base.Enter(enemy);
 
         searchCoolDown = 2f;
     }
@@ -30,7 +30,8 @@ internal class SearchState: EnemyState
 
     public override void Update()
     {
-        if (parent.Target == null && searchCoolDown <= 0)
+        base.Update();
+        if (enemy.Target == null && searchCoolDown <= 0)
         {
             GameObject target = FindClosestTarget();
 
@@ -38,8 +39,8 @@ internal class SearchState: EnemyState
             {
                 //Debug.Log("target found");
 
-                parent.Target = target;
-                parent.ChangeState(new PathState());
+                enemy.Target = target;
+                enemy.ChangeState(new PathState());
                 return;
             }
             else
@@ -69,7 +70,7 @@ internal class SearchState: EnemyState
         GameObject closestObj = null;
 
         float closestDis = Mathf.Infinity;
-        Vector3 selfPos = parent.transform.position;
+        Vector3 selfPos = enemy.transform.position;
 
         foreach (GameObject obj in gameObjs)
         {
@@ -89,7 +90,7 @@ internal class SearchState: EnemyState
 
     protected override void SetGFXState()
     {
-        parent.GFX.MyState = GFXStates.IDLING;
+        enemy.GFX.MyState = GFXStates.IDLING;
     }
 
     protected override void SetGFXDirection()

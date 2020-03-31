@@ -9,55 +9,54 @@
 
 internal class FollowState: EnemyState
 {
-    public override void Enter(EnemyAI parent)
+    public override void Enter(EnemyAI enemy)
     {
-        Debug.Log("enemy in follow state");
-
-        base.Enter(parent);
+        base.Enter(enemy);
     }
 
     public override void Exit()
     {
-        parent.RB.velocity = Vector2.zero;
+        enemy.RB.velocity = Vector2.zero;
     }
 
     public override void Update()
     {
-        if (!parent.TargetInAggroRange)
+        base.Update();
+        if (!enemy.IsTargetInAggroRange)
         {
-            parent.Target = null;
+            enemy.Target = null;
         }
 
-        if (parent.Target != null)
+        if (enemy.Target != null)
         {
             //Find the target's direction
-            Vector3 targetDir = (parent.Target.transform.position - parent.transform.position).normalized;
-            parent.RB.velocity = targetDir * parent.MyAttributes.speed;
+            Vector3 targetDir = (enemy.Target.transform.position - enemy.transform.position).normalized;
+            enemy.RB.velocity = targetDir * enemy.MyAttributes.speed;
             //parent.transform.position = targetDir * parent.MyAttributes.speed * Time.deltaTime;
 
             SetGFXDirection();
 
-            if (parent.InAttackRange) 
+            if (enemy.IsTargetInAttackRange) 
             {
-                parent.ChangeState(new AttackState());
+                enemy.ChangeState(new AttackState());
                 return;
             }
         }
         else
         {
-            parent.ChangeState(new SearchState());
+            enemy.ChangeState(new SearchState());
             return;
         }
     }
 
     protected override void SetGFXDirection()
     {
-        parent.GFX.Direction = parent.RB.velocity.normalized;
+        enemy.GFX.Direction = enemy.RB.velocity.normalized;
         //parent.GFX.Direction = targetDir;
     }
 
     protected override void SetGFXState()
     {
-        parent.GFX.MyState = GFXStates.MOVING;
+        enemy.GFX.MyState = GFXStates.MOVING;
     }
 }

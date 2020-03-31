@@ -10,11 +10,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float projectileSpeed = 10f;
     private GameObject player;
 
-    private float lifeTime = 2;
-    private float currentTime = 0;
-    private Health health;
-    private HealthBar hpBar;
-
     void Awake(){
         FindRigidBody();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -50,7 +45,7 @@ public class Projectile : MonoBehaviour
         //Add Object Pooling to Avoid Memory Issues
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
 
         if (col.gameObject.CompareTag("Enemy"))
@@ -61,12 +56,7 @@ public class Projectile : MonoBehaviour
              * - Clarence
              */
             ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
-            targetable.RemoveHealth(player,10);
-
-            //health = col.gameObject.GetComponent<Health>();
-            //health.RemoveHealth(10);
-            //hpBar = col.gameObject.GetComponent<HealthBar>();
-            //hpBar.UpdateHealthBar();
+            targetable.RemoveHealth(player, 10);
         }
 
      Destroy(this.gameObject);
