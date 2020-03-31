@@ -7,21 +7,24 @@ public class Inventory_mineral : MonoBehaviour
     public List<Mineral_item> items;
 
     private static Inventory_mineral _instance;
-    public static Inventory_mineral Instance { get { return _instance; } }
-
-    //Singleton
-    private void Awake()
+    public static Inventory_mineral Instance
     {
-        if (_instance != null && _instance != this)
+        get
         {
-            Destroy(this.gameObject);
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<Inventory_mineral>();
+                }
+                if (_instance == null)
+                {
+                    Debug.Log("Tutorial script not found!, Add resource manager prefab to your scene!");
+                }
+                return _instance;
+            }
         }
-        else
-        {
-            _instance = this;
-        }
-
     }
+
 
     private void Start()
     {
@@ -35,13 +38,12 @@ public class Inventory_mineral : MonoBehaviour
             
             if (i.GetMineralType().ToString().Equals(item.ToString()))
             {
-                Debug.Log("yeeee");
                 i.AddAmount(amount);
                 return;
             }
         }
         //If not found
-        items.Add(new Mineral_item(item, 1));
+        items.Add(new Mineral_item(item, amount));
         Inventory_mineral_UI.Instance.RefreshImages();
     }
 

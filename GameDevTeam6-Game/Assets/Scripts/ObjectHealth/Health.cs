@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log(this.transform.gameObject.name);
         gameObject.SetActive(false);
         throw new System.Exception("Health is deprecated. Use ITargetable interface instead, read the comment at the top of this script definition to see why - Clarence");
     }
@@ -30,7 +31,8 @@ public class Health : MonoBehaviour
         healthBar = health;
     }
 
-    public void RemoveHealth(int amount) {
+    public void RemoveHealth(int amount)
+    {
         healthBar -= amount;
         //Debug.Log(amount + " health removed");
         //Debug.Log(healthBar);
@@ -42,7 +44,8 @@ public class Health : MonoBehaviour
         //Debug.Log("Health remaining: " + healthBar);
     }
 
-    public void GainHealth(int amount) {
+    public void GainHealth(int amount)
+    {
         healthBar += amount;
     }
 }

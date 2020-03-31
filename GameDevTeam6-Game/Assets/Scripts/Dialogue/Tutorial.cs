@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    public GameObject shipInfo;
+    private GameObject shipInfo;
     private MultiTool multiTool;
 
     private Dialogue[] dialogues;
-    private int numOfDialogues = 12;
+    private int numOfDialogues = 27;
     private int currentDialogue = 0;
     private TimeSystem timeSystem;
 
-    private bool timeRunOnce = true;
-
     private static Tutorial _instance;
 
-    public static Tutorial Instance { get { return _instance; } }
+    public static Tutorial Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Tutorial>();
+            }
+            if (_instance == null)
+            {
+                Debug.Log("Tutorial script not found!, Add resource manager prefab to your scene!");
+            }
+            return _instance;
+        }
+    }
 
     //Singleton
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
         multiTool = FindObjectOfType<MultiTool>();
         timeSystem = FindObjectOfType<TimeSystem>();
     }
@@ -53,11 +56,11 @@ public class Tutorial : MonoBehaviour
         {
             case 2: CheckForWASD();
                 break;
-            case 3: WaitForShipInteraction();
-                break;
             case 4: CheckForTab();
                 break;
-            case 7: SetTime();
+            case 7: WaitForNight();
+                break;
+            case 8: WaitForCombatMode();
                 break;
             case 9: WaitForDay();
                 break;
@@ -88,21 +91,21 @@ public class Tutorial : MonoBehaviour
 
         dialogues[2].initializeSentences(1);
         dialogues[2].sentences[0].text = "Captain! If you don’t remember, this heap of wreck is your ship! My sensors shows the overall damage is 84%! I am the only part working right now!";
-        dialogues[2].sentences[0].subtext = "This is your ship, left click to interact.";
+        dialogues[2].sentences[0].subtext = "This is your ship, [Left click] on ship to interact. Here you can upgrade your abilities or fix the ship, combine minerals and make new items.";
 
         dialogues[3].initializeSentences(1);
         dialogues[3].sentences[0].text = "Captain! I have equipped you with your universal multi-tool. Model MIDA-X872A made from the most durable alloys ever. It is suitable for any hazardous environment in this universe!";
-        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game. Hold tab to select mode.";
+        dialogues[3].sentences[0].subtext = "Your multi-tool will be all thing you need for the game. Hold [Tab] to select mode.";
 
         dialogues[4].initializeSentences(1);
         dialogues[4].sentences[0].text = "Sensor detecting familiar metal object. Captain! Can you please use your multi-tool to obtain a sample so I can analyze its component.";
-        dialogues[4].sentences[0].subtext = "Select build mode on your multi-tool and try to break the first obstacle using right mouse button.";
+        dialogues[4].sentences[0].subtext = "Select build mode (top left) on your multi-tool and try to break the first obstacle using right mouse button. You can also cycle through modes by pressing [Space key]";
 
         dialogues[5].initializeSentences(3);
         dialogues[5].sentences[0].text = "Analyzing unknown structure.. It appears that this unknown object has similar organic structure as the native fauna.";
         dialogues[5].sentences[1].text = "Captain! Could this unknown object be a seed of the native plants over there?";
         dialogues[5].sentences[2].text = "Your multi-tool is specifically equipped to interact with alien environment, why not try it out?";
-        dialogues[5].sentences[2].subtext = "Press tab to open the multi-tool wheel and select farming mode. Right mouse click to process ground and Left mouse click to plant seed";
+        dialogues[5].sentences[2].subtext = "Press [E] to open your inventory, once you have selected the seed you want to plant, use your multi tool to select farming mode. [Left click] to process ground and plant seeds";
 
         dialogues[6].initializeSentences(1);
         dialogues[6].sentences[0].text = "Captain! As the alien object lay growing, you should explore the surroundings and find some more similar space rocks! I always wanted to leave this ship and see a new planet!";
@@ -118,17 +121,69 @@ public class Tutorial : MonoBehaviour
         dialogues[8].sentences[0].subtext = "Clear more enemies until the day comes";
 
         dialogues[9].initializeSentences(2);
-        dialogues[9].sentences[0].text = "Looks like the hostile creatures have turned into rust! We need to find out why in the future.";
-        dialogues[9].sentences[1].text = "Look like the seeds you planted have matured! Try to harvest them with your multi-tool";
-        dialogues[9].sentences[1].subtext = "Use farming mode, right click to harvest resources from the plant ";
+        dialogues[9].sentences[0].text = "Looks like the hostile creatures have all disappeared!";
+        dialogues[9].sentences[1].text = "Look like the seed you planted is maturing! Try to harvest them with your multi-tool when they fully mature";
+        dialogues[9].sentences[1].subtext = "Once the plants are fully matured, use farming mode and [Right click] to harvest resources from the plant ";
 
         dialogues[10].initializeSentences(1);
-        dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our storage";
-        dialogues[10].sentences[0].subtext = "You can craft utilities in your ship, as the ship gets upgraded you will have access to more buildings";
+        dialogues[10].sentences[0].text = "Captain! As the resources starting to pour in, it’s better to upgrade our ship";
+        dialogues[10].sentences[0].subtext = "By clicking on the ship, you can upgrade it with resources you collect.";
 
         dialogues[11].initializeSentences(1);
-        dialogues[11].sentences[0].text = "";
-        dialogues[11].sentences[0].subtext = "Thank you for playing the tutorial!";
+        dialogues[11].sentences[0].text = "You will need to continue upgrading the ship to return back to Earth"; ;
+        dialogues[11].sentences[0].subtext = "You will need to continue upgrading the ship to return back to Earth";
+
+        dialogues[12].initializeSentences(2);
+        dialogues[12].sentences[0].text = "Looks like these natives are relentless, I wonder what disturbed them.";
+        dialogues[12].sentences[1].text = "Grunt: Must….Consume…..";
+
+        dialogues[13].initializeSentences(2);
+        dialogues[13].sentences[0].text = "Grunt: The sorcerer has conjured up a Golem…";
+        dialogues[13].sentences[1].text = "Alert! Alert! Sensor detecting powerful energy clusters";
+
+        dialogues[14].initializeSentences(1);
+        dialogues[14].sentences[0].text = "Captain! You need to defeat the Golem!";
+        dialogues[14].sentences[0].subtext = "Defeat the golem";
+
+        dialogues[15].initializeSentences(1);
+        dialogues[15].sentences[0].text = "Captain! Now the smelter system has been restored! The smelter makes you mix metals into more advanced materials!";
+
+        dialogues[16].initializeSentences(1);
+        dialogues[16].sentences[0].text = "With the advanced materials that just acquired, we can make some defenses!";
+
+        dialogues[17].initializeSentences(1);
+        dialogues[17].sentences[0].text = "With the advanced materials that just acquired, we can make some defenses!";
+        dialogues[17].sentences[0].subtext = "Now we have material to build walls and turrets. Cement can be used to build walls while other metals can be made into defensive turrets";
+
+        dialogues[18].initializeSentences(1);
+        dialogues[18].sentences[0].text = "These materials radiate cosmic energy, we could make more powerful tools with this. We can improve your multi-tool to be even more powerful";
+
+        dialogues[19].initializeSentences(1);
+        dialogues[19].sentences[0].text = "Sensor detects spikes of energy signal, the natives seem to be gathering for a big attack!";
+
+        dialogues[20].initializeSentences(1);
+        dialogues[20].sentences[0].text = "You brought it here… We must survive";
+
+        dialogues[21].initializeSentences(1);
+        dialogues[21].sentences[0].text = "It seems that the Natives are not only here for our resources, why are they becomes so aggressive towards us?";
+
+        dialogues[22].initializeSentences(1);
+        dialogues[22].sentences[0].text = "You.. despicable..outsider";
+
+        dialogues[23].initializeSentences(1);
+        dialogues[23].sentences[0].text = "Captain! Sensor detects these twirling pools of materials contain powerful energy! This is nothing we have encountered before.";
+
+        dialogues[24].initializeSentences(1);
+        dialogues[24].sentences[0].text = "The Natives are getting desperate. Their attacks have become increasingly ferocious. We need to repair the ship as soon as possible.";
+
+        dialogues[25].initializeSentences(1);
+        dialogues[25].sentences[0].text = "Captain! It looks like the quantity of the Chromatic Metal is very limited. We do not have enough to upgrade our tools and fixing the ship altogether!";
+        dialogues[25].sentences[0].subtext = "You can choose to upgrade your ship to the final tier and finish the game or choosing to upgrade your multi-tool weapon in order to defeat the escaped Specimen.";
+
+        //If choose to upgrade ship, following won't play
+
+        dialogues[26].initializeSentences(1);
+        dialogues[26].sentences[0].text = "But… we need these materials to repair the ship. The ship is our only chance of getting out of here! Captain! We…";
 
     }
 
@@ -141,13 +196,6 @@ public class Tutorial : MonoBehaviour
             }
         }
     }
-    private void WaitForShipInteraction()
-    {
-        if (shipInfo.activeSelf)
-        {
-            TriggerDialogue(3);
-        }
-    }
 
     private void CheckForTab()
     {
@@ -157,15 +205,9 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void SetTime()
+    private void WaitForNight()
     {
-        if (timeRunOnce)
-        {
-            timeSystem.hour = 19;
-            timeSystem.minute = 0;
-            timeRunOnce = false;
-        }
-        if (timeSystem.hour == 20)
+        if (!timeSystem.isDay())
         {
             TriggerDialogue(7);
         }
@@ -176,6 +218,14 @@ public class Tutorial : MonoBehaviour
         if (timeSystem.isDay())
         {
             TriggerDialogue(9);
+        }
+    }
+
+    private void WaitForCombatMode()
+    {
+        if (multiTool.GetMode() == ToolModes.combatMode)
+        {
+            TriggerDialogue(8);
         }
     }
 }

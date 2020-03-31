@@ -120,6 +120,7 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
     protected virtual void Update()
     {
         currentState.Update();
+        transform.GetComponentInChildren<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y);
     }
     #endregion
 
@@ -183,12 +184,15 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
                     ChangeState(new PathState());
                 }
             }
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain);
         }
         else
         {
             MyAttributes.currentHealth = 0;
             enemies.Remove(this);
             Destroy(gameObject);
+            PlayEffect.Instance.PlayBreakEffect(gameObject.transform.position);
+            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain2);
         }
     }
 

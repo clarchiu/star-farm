@@ -23,7 +23,7 @@ public class ProjectileSpawner : MonoBehaviour
     IEnumerator ShootCoroutine() {
         shooting = true;
         while (shootProjectiles) {
-            SpawnProjectile(gameObject.transform.position, GetComponent<PlayerDirection>().GetLookDirection());
+            SpawnProjectile(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.2f), GetComponent<PlayerDirection>().GetLookDirection());
             yield return new WaitForSeconds(rateOfFire);
         }
         shooting = false;
@@ -33,6 +33,7 @@ public class ProjectileSpawner : MonoBehaviour
 
         Projectile projectile = Instantiate(bullet, position, rotation) as Projectile;
         projectile.InitializeVelocity(rotation.eulerAngles);
+        //SoundEffects_.Instance.PlaySoundEffect(SoundEffect.laserGun);
         return projectile;
     }
 }

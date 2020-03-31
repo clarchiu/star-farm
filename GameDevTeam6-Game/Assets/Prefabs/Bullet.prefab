@@ -70,10 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1444775863
-  m_SortingLayer: 2
+  m_SortingLayerID: -1005293379
+  m_SortingLayer: 5
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 51432c9f4dbca024c8f3243fb54b64c1, type: 3}
+  m_Sprite: {fileID: 9158279208903615627, guid: 05e93050f4483024c8349d542597cb06,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.125, y: 0.125}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.125, y: 0.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -120,9 +121,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e088674884ae84b87f550f57c864c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   projectileSpeed: 10
+  invisibleCollider: {fileID: 29549391653788627, guid: 61a5101d6b805fc4c93f8e262bf1810a,
+    type: 3}
 --- !u!50 &5126531584563851942
 Rigidbody2D:
   serializedVersion: 4

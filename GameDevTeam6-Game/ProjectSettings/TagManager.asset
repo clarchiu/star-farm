@@ -14,17 +14,19 @@ TagManager:
   - Unwalkable
   - Walkable
   - AStarSquare
+  - Wall
   - Structure
-  - TurretProjectile
+  - QD
+  - WaterBlock
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - Obstacle
   - Player
   - Enemy
@@ -32,23 +34,23 @@ TagManager:
   - BossSprite
   - AttackRange
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -56,17 +58,29 @@ TagManager:
   - name: Background
     uniqueID: 1622155443
     locked: 0
-  - name: Blocks
-    uniqueID: 2850191433
+  - name: Farm tile background
+    uniqueID: 1427697533
+    locked: 0
+  - name: Farm tile
+    uniqueID: 478479845
     locked: 0
   - name: Dropped items
     uniqueID: 3097193473
     locked: 0
+  - name: Bullets
+    uniqueID: 3289673917
+    locked: 0
   - name: Plant
     uniqueID: 834598487
     locked: 0
-  - name: Player
-    uniqueID: 2931498807
+  - name: Break effect
+    uniqueID: 491766129
+    locked: 0
+  - name: Ship
+    uniqueID: 407277549
+    locked: 0
+  - name: Blocks
+    uniqueID: 2850191433
     locked: 0
   - name: Healthbar
     uniqueID: 1520299531

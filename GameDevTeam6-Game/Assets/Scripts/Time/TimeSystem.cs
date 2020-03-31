@@ -18,7 +18,7 @@ public class TimeSystem : MonoBehaviour
     {
         seconds = 0;
         minute = 0;
-        hour = 0;
+        //hour = 0;
         day = 1;
     }
 
@@ -46,6 +46,13 @@ public class TimeSystem : MonoBehaviour
                 OnDayIncrease(day);
             }
         }
+
+        if (day == 7 && !isDay())
+        {
+            Tutorial.Instance.TriggerDialogue(12);
+            Tutorial.Instance.TriggerDialogue(13);
+            Tutorial.Instance.TriggerDialogue(14);
+        }
     }
 
     public bool isDay()
@@ -56,6 +63,14 @@ public class TimeSystem : MonoBehaviour
         } else
         {
             return false;
+        }
+    }
+
+    public void skipDay()
+    {
+        if (hour < 13)
+        {
+            hour = 13;
         }
     }
 
