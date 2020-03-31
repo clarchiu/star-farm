@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1511851894733946113}
   - component: {fileID: 7395691673546404798}
   - component: {fileID: 196680904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444775863
-  m_SortingLayer: 9
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7f6c54840f0dc5a4e8b899fd3d2e3570, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6b3ff2aeba3ead468fe96276e2e6269, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   infoPanel: {fileID: 0}
   shipLevel: 0
   displayLevel: {fileID: 0}
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2061891946130427798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,11 +162,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad5e4f612c16a4954ae8e78582f37f03, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxHealth: 1000
   health: 1000
-  healthBar: {fileID: 400111496640638840}
 --- !u!60 &1511851894733946113
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -226,8 +225,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b549f6d0b9f997644908dc45cc5a3b9f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   shadowType: 0
   offset: 0.125
 --- !u!114 &196680904
@@ -240,8 +239,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ab6b3078a05c5c4fb5fb3633b477bf9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   infoPanel: {fileID: 0}
   displayLevel: {fileID: 0}
   button1: {fileID: 0}
@@ -253,4 +252,13 @@ MonoBehaviour:
   breakText2: {fileID: 0}
   rangText1: {fileID: 0}
   rangText2: {fileID: 0}
+  neededImage1: {fileID: 0}
+  neededImage2: {fileID: 0}
+  neededImage3: {fileID: 0}
+  neededImage4: {fileID: 0}
+  neededImage5: {fileID: 0}
+  neededImage6: {fileID: 0}
+  wepLevText: {fileID: 0}
+  breakLevText: {fileID: 0}
+  rangLevelText: {fileID: 0}
   Ship: {fileID: 5805430053951217933}

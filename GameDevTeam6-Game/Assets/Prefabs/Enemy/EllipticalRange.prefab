@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5207441795204010178}
   - component: {fileID: 5610948778534849069}
   - component: {fileID: 7991966724804436584}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: EllipticalRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

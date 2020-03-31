@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4360992755720161875}
   - component: {fileID: 223918053639351865}
   - component: {fileID: -3485802004601962122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Iron
   m_TagString: Unwalkable
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444775863
-  m_SortingLayer: 9
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2006765479483123057, guid: af47a85a507d92b4eb884454a3795587,
     type: 3}

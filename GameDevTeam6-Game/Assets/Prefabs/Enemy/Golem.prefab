@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1363468489
-  m_SortingLayer: 5
+  m_SortingLayerID: 1472409851
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 932548695129453964, guid: d6a6d0f6790d0403f9d6f76cf37036d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 5175883043421286308}
   - component: {fileID: 7599546344618897102}
   m_Layer: 10
-  m_Name: FirstBoss
+  m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,7 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bar: {fileID: 5145030864339939749, guid: 9853c13182537a6469ef9e6e19195e1d, type: 3}
 --- !u!114 &7599546344618897102
 MonoBehaviour:
   m_ObjectHideFlags: 0

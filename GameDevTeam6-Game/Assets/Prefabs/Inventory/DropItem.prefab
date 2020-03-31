@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3641657498936865203}
   - component: {fileID: 6501027414765548059}
   - component: {fileID: -3407047499440773684}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: DropItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1197773823
+  m_SortingLayerID: 1520578461
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
@@ -126,4 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cd6d6df99e54443a183f9269dd0f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  Mtype: 0
+  Stype: 0
+  typeType: 0

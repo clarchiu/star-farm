@@ -22,67 +22,72 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
+  - 
+  - 
   - Obstacle
   - Player
   - Enemy
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - Projectile
+  - AttackRange
+  - DropItem
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 1622155443
+    uniqueID: 1998345647
     locked: 0
   - name: Farm tile background
-    uniqueID: 1427697533
+    uniqueID: 4055141275
     locked: 0
   - name: Farm tile
-    uniqueID: 478479845
+    uniqueID: 307468339
     locked: 0
   - name: Dropped items
-    uniqueID: 3097193473
+    uniqueID: 1520578461
     locked: 0
-  - name: Bullets
-    uniqueID: 3289673917
+  - name: Projectile
+    uniqueID: 1189220103
     locked: 0
   - name: Plant
-    uniqueID: 834598487
+    uniqueID: 3760664595
     locked: 0
   - name: Break effect
-    uniqueID: 491766129
+    uniqueID: 3228763161
     locked: 0
   - name: Ship
-    uniqueID: 407277549
+    uniqueID: 2271288683
     locked: 0
   - name: Blocks
-    uniqueID: 2850191433
+    uniqueID: 1472409851
     locked: 0
   - name: Healthbar
-    uniqueID: 1520299531
+    uniqueID: 2155577701
     locked: 0
   - name: Indicator
-    uniqueID: 2527238437
+    uniqueID: 3315341107
     locked: 0
   - name: UI
-    uniqueID: 2385230443
+    uniqueID: 2906440141
     locked: 0
