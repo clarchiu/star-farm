@@ -127,7 +127,7 @@ public class Plants : MonoBehaviour, ITargetable
         //should not be implemented for plants
     }
 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    void ITargetable.GetKnockedBack(Vector2 origin, float amount)
     {
         //should not be implemented for plants
     }

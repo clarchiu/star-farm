@@ -16,15 +16,18 @@ public class PlayerController : MonoBehaviour, ITargetable
     private TimeSystem time;
 
 
-    private void Awake() {
+    private void Awake()
+    {
         FindPlayerRB();
         healthBar = gameObject.AddComponent<HealthBar_>();
         time = FindObjectOfType<TimeSystem>();
     }
 
-    private void FindPlayerRB() {
+    private void FindPlayerRB()
+    {
         playerRB = GetComponent<Rigidbody2D>();
-        if (!playerRB) {
+        if (!playerRB)
+        {
             Debug.LogError("No Rigidbody2D Component Found on Player!");
             gameObject.SetActive(false);
         }
@@ -42,7 +45,8 @@ public class PlayerController : MonoBehaviour, ITargetable
         }
     }
 
-    private void PlayerMove() {
+    private void PlayerMove()
+    {
 
         var deltaX = Input.GetAxisRaw("Horizontal") * Time.fixedDeltaTime;
         var deltaY = Input.GetAxisRaw("Vertical") * Time.fixedDeltaTime;
@@ -58,29 +62,31 @@ public class PlayerController : MonoBehaviour, ITargetable
             //GetComponent<AudioSource>().Stop();
         }
 
-        if (PlayerStates.Instance.GetState() != playerStates.WALKING) {
-            playerRB.velocity = new Vector2(0,0);
-            
+        if (PlayerStates.Instance.GetState() != playerStates.WALKING)
+        {
+            playerRB.velocity = new Vector2(0, 0);
+
             if (SoundEffects_.Instance.walkLoud.isPlaying)
             {
                 SoundEffects_.Instance.walkLoud.Stop();
             }
             return;
 
-        } else
-        {        
+        }
+        else
+        {
             if (!SoundEffects_.Instance.walkLoud.isPlaying)
             {
                 SoundEffects_.Instance.PlaySoundEffect(SoundEffect.walkLoud);
             }
         }
 
-       
+
 
         Vector2 newVelocity = new Vector2(deltaX, deltaY);
         newVelocity.Normalize();
         playerRB.velocity = newVelocity * moveSpeed;
-       
+
 
 
         //Stop going off screen
@@ -103,7 +109,7 @@ public class PlayerController : MonoBehaviour, ITargetable
         healthBar.UpdateHealthBar((float)health / maxHealth);
     }
 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    void ITargetable.GetKnockedBack(Vector2 origin, float amount)
     {
         //throw new System.NotImplementedException();
     }
@@ -113,7 +119,8 @@ public class PlayerController : MonoBehaviour, ITargetable
         if (health - amount > 0)
         {
             health -= amount;
-        } else
+        }
+        else
         {
             ActivateLayer("Death Layer");
             health = 0;

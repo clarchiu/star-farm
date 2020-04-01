@@ -7,7 +7,7 @@
  * - Clarence 
  */
 
-internal class FollowState: EnemyState
+public class FollowState: EnemyState
 {
     public override void Enter(EnemyAI enemy)
     {
@@ -16,47 +16,46 @@ internal class FollowState: EnemyState
 
     public override void Exit()
     {
-        enemy.RB.velocity = Vector2.zero;
+        base.Exit();
+        enemy.rb.velocity = Vector2.zero;
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (!enemy.CanMove) { return; }
+        
         if (!enemy.IsTargetInAggroRange)
         {
             enemy.Target = null;
         }
-
-        if (enemy.Target != null)
-        {
-            //Find the target's direction
-            Vector3 targetDir = (enemy.Target.transform.position - enemy.transform.position).normalized;
-            enemy.RB.velocity = targetDir * enemy.MyAttributes.speed;
-            //parent.transform.position = targetDir * parent.MyAttributes.speed * Time.deltaTime;
-
-            SetGFXDirection();
-
-            if (enemy.IsTargetInAttackRange) 
-            {
-                enemy.ChangeState(new AttackState());
-                return;
-            }
-        }
-        else
+        if (!enemy.Target)
         {
             enemy.ChangeState(new SearchState());
+            return;
+        }
+        //Find the target's direction
+        Vector3 targetDir = (enemy.Target.transform.position - enemy.transform.position).normalized;
+        enemy.rb.velocity = targetDir * enemy.MyAttributes.speed;
+        //parent.transform.position = targetDir * parent.MyAttributes.speed * Time.deltaTime;
+        SetGFXDirection();
+
+        if (enemy.IsTargetInAttackRange)
+        {
+            enemy.ChangeState(new AttackState());
             return;
         }
     }
 
     protected override void SetGFXDirection()
     {
-        enemy.GFX.Direction = enemy.RB.velocity.normalized;
+        enemy.gfx.Direction = enemy.rb.velocity.normalized;
         //parent.GFX.Direction = targetDir;
     }
 
     protected override void SetGFXState()
     {
-        enemy.GFX.MyState = GFXStates.MOVING;
+        enemy.gfx.MyState = GFXStates.MOVING;
     }
 }

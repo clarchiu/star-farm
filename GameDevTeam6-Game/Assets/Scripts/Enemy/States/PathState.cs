@@ -12,52 +12,56 @@ using Pathfinding;
  * - Clarence 
  */
 
-internal class PathState : EnemyState
+public class PathState : EnemyState
 {
-    public override void Enter(EnemyAI parent)
+    public override void Enter(EnemyAI enemy)
     {
-        base.Enter(parent);
-
-        parent.aiPath.canMove = true;
-        parent.aiPath.canSearch = true;
+        base.Enter(enemy);
+        //parent.aiPath.canMove = true;
+        //parent.aiPath.canSearch = true;
+        enemy.CanMove = true;
     }
 
     public override void Exit()
     {
-        enemy.aiPath.canMove = false;
-        enemy.aiPath.canSearch = false;
+        base.Exit();
+        //enemy.aiPath.canMove = false;
+        //enemy.aiPath.canSearch = false;
+        enemy.CanMove = false;
     }
 
     public override void Update()
     {
         base.Update();
-        SetGFXDirection();
-
-        if (enemy.Target == null)
+        if (!enemy.Target)
         {
             //Debug.Log("target null");
             enemy.ChangeState(new SearchState());
             return;
         }
-        else if (enemy.IsTargetInAttackRange)
-        {
-            enemy.ChangeState(new AttackState());
-            return;
-        }
-        else if (enemy.aiPath.reachedEndOfPath == true)
+
+        SetGFXDirection();
+
+        if (enemy.aiPath.reachedEndOfPath == true)
         {
             enemy.ChangeState(new FollowState());
             return;
         }
+        //else if (enemy.IsTargetInAttackRange)
+        //{
+        //    Debug.Log("in attack range");
+        //    enemy.ChangeState(new AttackState());
+        //    return;
+        //}
     }
 
     protected override void SetGFXDirection()
     {
-        enemy.GFX.Direction = enemy.aiPath.velocity.normalized;
+        enemy.gfx.Direction = enemy.aiPath.velocity.normalized;
     }
 
     protected override void SetGFXState()
     {
-        enemy.GFX.MyState = GFXStates.MOVING;
+        enemy.gfx.MyState = GFXStates.MOVING;
     }
 }

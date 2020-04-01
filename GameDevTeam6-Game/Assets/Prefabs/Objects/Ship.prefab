@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5805430053951217935}
   - component: {fileID: 5805430053951217934}
   - component: {fileID: 5805430053951218161}
-  - component: {fileID: 400111496640638840}
   - component: {fileID: 2061891946130427798}
   - component: {fileID: 1511851894733946113}
   - component: {fileID: 7395691673546404798}
   - component: {fileID: 196680904}
+  - component: {fileID: 1024977755570041854}
   m_Layer: 8
   m_Name: Ship
   m_TagString: Ship
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1444775863
-  m_SortingLayer: 0
+  m_SortingLayerID: -2023678613
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7f6c54840f0dc5a4e8b899fd3d2e3570, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -139,19 +139,7 @@ MonoBehaviour:
   button3: {fileID: 0}
   smelterPanel: {fileID: 0}
   upgradePanel: {fileID: 0}
-  ship: {fileID: 0}
---- !u!114 &400111496640638840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5805430053951217933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  ship: {fileID: 5805430053951217933}
 --- !u!114 &2061891946130427798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,10 +186,10 @@ PolygonCollider2D:
       - {x: 1.2172966, y: 0.4155903}
       - {x: 0.98645973, y: 0.7061825}
       - {x: 1.0619926, y: 1.09375}
-      - {x: 1.0310822, y: 1.1555748}
-      - {x: 0.1871624, y: 1.4682446}
-      - {x: -0.15625, y: 1.4368267}
-      - {x: -0.18665695, y: 1.4375}
+      - {x: 1.0021954, y: 1.1555748}
+      - {x: -0.21724892, y: 1.237154}
+      - {x: -0.21402168, y: 1.2923946}
+      - {x: -0.33109093, y: 1.0619755}
       - {x: -0.34064865, y: 1.033781}
       - {x: -0.7063217, y: 0.83234596}
       - {x: -0.74881744, y: 0.46790695}
@@ -262,3 +250,16 @@ MonoBehaviour:
   breakLevText: {fileID: 0}
   rangLevelText: {fileID: 0}
   Ship: {fileID: 5805430053951217933}
+--- !u!114 &1024977755570041854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805430053951217933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c393dfe34d915e44bafb8ed8e145dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}

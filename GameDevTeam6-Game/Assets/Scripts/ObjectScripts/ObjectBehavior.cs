@@ -39,7 +39,7 @@ public class ObjectBehavior : MonoBehaviour, ITargetable
     }
 
     //you can leave the implementation blank if your object doesn't need to 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    void ITargetable.GetKnockedBack(Vector2 origin, float amount)
     {
         //Doen't need
         return;

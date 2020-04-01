@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3542677389670790379}
   - component: {fileID: 6625258815456783713}
   - component: {fileID: -2674088960763701566}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SilverPlant
   m_TagString: Plant
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 834598487
+  m_SortingLayerID: -534302701
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e3c1fa24b3955247b7f02744b75a461, type: 3}
@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a1e740f7b06fa499578201178909d0, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  delay: 5
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growDelay: 80
 --- !u!114 &6625258815456783713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fb357630f29156459b766cc9f4fb591, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   plantImg2: {fileID: 21300000, guid: fb14c21746fde094f9be6888a78bad1c, type: 3}
   plantImg3: {fileID: 21300000, guid: 7d8173790dde6644f9711b96b9843c63, type: 3}
   plantImg4: {fileID: 21300000, guid: 0b4643e66bb414a49b901e779903feb9, type: 3}

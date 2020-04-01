@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6357510907268668647}
   m_Layer: 10
   m_Name: Magician
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 6357510908352741227}
   - {fileID: 1638737469346677719}
+  - {fileID: 1671491521889122858}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +76,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!114 &6357510907268668649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3078973710d64047b62c5825edc3995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gfx: {fileID: 6357510908352741225}
   aiPath: {fileID: 6357510907268668650}
+  destSetter: {fileID: 6357510907268668651}
+  rb: {fileID: 6357510907268668655}
   MyAttributes:
     speed: 2
     maxHealth: 500
@@ -198,8 +202,8 @@ GameObject:
   - component: {fileID: 6357510908352741231}
   - component: {fileID: 6357510908352741224}
   - component: {fileID: 6357510908352741225}
-  m_Layer: 10
-  m_Name: SecondBossSprite
+  m_Layer: 14
+  m_Name: MagicianGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,8 +217,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6357510908352741220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 1.06, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: -0.03, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6357510907268668654}
   m_RootOrder: 0
@@ -301,6 +305,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240bbe9bfc44d40e887b4c8c7d494cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7371183254776147596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671491521889122858}
+  - component: {fileID: 6671961367022849427}
+  - component: {fileID: 5254028856733881492}
+  - component: {fileID: 8067163570615225282}
+  m_Layer: 17
+  m_Name: MagicianHitBox
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1671491521889122858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371183254776147596}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6357510907268668654}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6671961367022849427
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371183254776147596}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.014770508, y: 0.6292381}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7308273, y: 2.1156693}
+  m_EdgeRadius: 0
+--- !u!114 &5254028856733881492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371183254776147596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1773f7e9f9c8548a184eb819db04d994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8067163570615225282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371183254776147596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e43d3a839234ff987c83550f967766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6357510907268668647}
+  healthBar: {fileID: 5254028856733881492}
 --- !u!1001 &4201549074308580144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 3238951886845427940, guid: 5c6349c305fdc41f788958973c9a704e,
         type: 3}
       propertyPath: m_Name
-      value: CircularRange
+      value: MagicianRange
       objectReference: {fileID: 0}
     - target: {fileID: 3238951886845427940, guid: 5c6349c305fdc41f788958973c9a704e,
         type: 3}
@@ -326,7 +415,7 @@ PrefabInstance:
     - target: {fileID: 3238951886845427943, guid: 5c6349c305fdc41f788958973c9a704e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3238951886845427943, guid: 5c6349c305fdc41f788958973c9a704e,
         type: 3}
@@ -378,11 +467,27 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3238951886845427942, guid: 5c6349c305fdc41f788958973c9a704e,
+        type: 3}
+      propertyPath: attackRangeCollider
+      value: 
+      objectReference: {fileID: 1638737469346677713}
+    - target: {fileID: 3238951886845427942, guid: 5c6349c305fdc41f788958973c9a704e,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6357510907268668647}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c6349c305fdc41f788958973c9a704e, type: 3}
 --- !u!4 &1638737469346677719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3238951886845427943, guid: 5c6349c305fdc41f788958973c9a704e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4201549074308580144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1638737469346677713 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3238951886845427937, guid: 5c6349c305fdc41f788958973c9a704e,
     type: 3}
   m_PrefabInstance: {fileID: 4201549074308580144}
   m_PrefabAsset: {fileID: 0}

@@ -104,7 +104,7 @@ public class TurretAI : MonoBehaviour, ITargetable
         currentHealth += amount;
     }
 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    void ITargetable.GetKnockedBack(Vector2 origin, float amount)
     {
         //should not be implemented
     }

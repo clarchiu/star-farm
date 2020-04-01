@@ -56,13 +56,13 @@ public class TurretProjectile : MonoBehaviour
         //rb.velocity = targetDir * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
             ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
+            targetable.GetKnockedBack(origin, 0.5f);
             targetable.RemoveHealth(gameObject, damage);
-            targetable.KnockBack(origin, 0.5f);
         }
 
         Destroy(this.gameObject);

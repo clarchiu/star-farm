@@ -9,6 +9,9 @@ public class PlayerMelee : MonoBehaviour
     private PlayerDirection_ direction;
     float attackDelay = 0;
 
+    //use layer mask to detect enemy hitbox
+    public LayerMask enemyHitBoxLayer;
+
 
     private void Awake()
     {
@@ -58,7 +61,7 @@ public class PlayerMelee : MonoBehaviour
         {
             hitPosY -= 0.75f;
         }
-        hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(1.5f, 1.5f), 0f);
+        hitColliders = Physics2D.OverlapBoxAll(new Vector2(hitPosX, hitPosY), new Vector2(1.5f, 1.5f), 0f, enemyHitBoxLayer);
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
@@ -72,8 +75,8 @@ public class PlayerMelee : MonoBehaviour
                  *- Clarence
                  */
                 ITargetable targetable = hitColliders[i].GetComponent<ITargetable>();
+                targetable.GetKnockedBack(player.transform.position, 1f);
                 targetable.RemoveHealth(player, 15);
-                targetable.KnockBack(player.transform.position, 0.5f);
             }
         }
 

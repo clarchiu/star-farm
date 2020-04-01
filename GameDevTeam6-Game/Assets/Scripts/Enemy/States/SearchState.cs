@@ -10,7 +10,7 @@ using UnityEngine;
  * - Clarence 
  */
 
-internal class SearchState: EnemyState
+public class SearchState: EnemyState
 {
     private float searchCoolDown; 
 
@@ -25,13 +25,14 @@ internal class SearchState: EnemyState
 
     public override void Exit()
     {
-        //implementation not needed
+        base.Exit();//implementation not needed
     }
 
     public override void Update()
     {
         base.Update();
-        if (enemy.Target == null && searchCoolDown <= 0)
+
+        if (!enemy.Target && searchCoolDown <= 0)
         {
             GameObject target = FindClosestTarget();
 
@@ -59,8 +60,9 @@ internal class SearchState: EnemyState
         return GameObject.FindGameObjectWithTag("Player");
     }
 
-    //TODO: needs to be different for different enemies
-    private GameObject FindClosestTarget()
+    //TODO needs to be different for different enemies
+    //ToDO change this to coroutine
+    private GameObject FindClosestTarget()  
     {
         List<GameObject> gameObjs = new List<GameObject>(GameObject.FindGameObjectsWithTag("Plant"));
         gameObjs.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Structure")));
@@ -78,7 +80,7 @@ internal class SearchState: EnemyState
             Vector3 diff = obj.transform.position - selfPos;
             float curDistance = diff.sqrMagnitude;
 
-            if (curDistance < closestDis)
+            if (curDistance < closestDis && obj.GetComponent<ITargetable>() != null)
             {
                 closestObj = obj;
                 closestDis = curDistance;
@@ -91,7 +93,7 @@ internal class SearchState: EnemyState
 
     protected override void SetGFXState()
     {
-        enemy.GFX.MyState = GFXStates.IDLING;
+        enemy.gfx.MyState = GFXStates.IDLING;
     }
 
     protected override void SetGFXDirection()

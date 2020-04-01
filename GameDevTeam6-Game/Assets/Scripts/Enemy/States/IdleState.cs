@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-internal class IdleState: EnemyState
+public class IdleState: EnemyState
 {
     public override void Enter(EnemyAI parent)
     {
@@ -11,7 +11,7 @@ internal class IdleState: EnemyState
 
     public override void Exit()
     {
-        //implementation not needed
+        base.Exit();//implementation not needed
     }
 
     public override void Update()
@@ -27,7 +27,7 @@ internal class IdleState: EnemyState
 
     protected override void SetGFXState()
     {
-        enemy.GFX.MyState = GFXStates.IDLING;
+        enemy.gfx.MyState = GFXStates.IDLING;
     }
 }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6613071792142264690}
   - component: {fileID: 6613071792142264695}
   - component: {fileID: 1620803663786699168}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: DreglingGFX
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1363468489
-  m_SortingLayer: 5
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3251893252893223399, guid: 5b6421cd2e5a04e4594969874c5eface,
     type: 3}
@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 6613071792142264683}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77994936a66f34a40a3b8c8df1d12c9d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 61e68cd5ae87f1b47bce8b711b7ba216, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

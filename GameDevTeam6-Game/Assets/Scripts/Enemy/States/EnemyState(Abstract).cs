@@ -4,23 +4,24 @@ using UnityEngine;
 public abstract class EnemyState : IState
 {
     protected EnemyAI enemy;
-    protected static float attackCoolDown = 0f;
+    protected bool hasExited;
 
     public virtual void Enter(EnemyAI enemy)
     {
         this.enemy = enemy;
+        this.hasExited = false;
 
         SetGFXState();
     }
 
-    public abstract void Exit();
+    public virtual void Exit()
+    {
+        hasExited = true;
+    }
 
     public virtual void Update()
     {
-        if (attackCoolDown > 0)
-        {
-            attackCoolDown -= Time.deltaTime;
-        }
+        if (hasExited) { return; };
     }
 
     protected abstract void SetGFXState();

@@ -11,8 +11,6 @@ public class Projectile : MonoBehaviour
     private GameObject player;
 
     private float lifeTime = 2;
-    private Health health;
-    private HealthBar hpBar;
 
     [SerializeField] private GameObject invisibleCollider;
 
@@ -63,13 +61,9 @@ public class Projectile : MonoBehaviour
              * easier to implement custom logic for when enemy dies
              * - Clarence
              */
-            ITargetable targetable = col.gameObject.GetComponent<ITargetable>();
+            ITargetable targetable = col.gameObject.GetComponent<ITargetable>(); 
+            targetable.GetKnockedBack(player.transform.position, 1f); //knockback before doing damge otherwise enemy might die first
             targetable.RemoveHealth(player, PlayerUpgrades.Instance.rangedAttackDamage);
-
-            //health = col.gameObject.GetComponent<Health>();
-            //health.RemoveHealth(10);
-            //hpBar = col.gameObject.GetComponent<HealthBar>();
-            //hpBar.UpdateHealthBar();
         }
 
         Destroy(this.gameObject);

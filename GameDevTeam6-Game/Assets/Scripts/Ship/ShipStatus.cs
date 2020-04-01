@@ -18,7 +18,7 @@ public class ShipStatus : MonoBehaviour, ITargetable
         healthBar.UpdateHealthBar(health / MaxHealth);
     }
 
-    void ITargetable.KnockBack(Vector2 origin, float amount)
+    void ITargetable.GetKnockedBack(Vector2 origin, float amount)
     {
         //implementation not necessary
     }

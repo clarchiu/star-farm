@@ -8,19 +8,21 @@ using UnityEngine;
  * - Clarence 
  */
 
-internal class AttackState: EnemyState
+public class AttackState: EnemyState
 {
     private bool isAttacking = false;
+    private ITargetable targetable;
+    private float attackCoolDown = 0f;
 
     public override void Enter(EnemyAI enemy)
     {
-        Debug.Log("enenmy in attack state");
-
         base.Enter(enemy);
+        targetable = enemy.Target.GetComponent<ITargetable>(); //get component only once
     }
 
     public override void Exit()
     {
+        base.Exit();
         //Debug.Log("leaving attack state");
         isAttacking = false;
     }
@@ -29,40 +31,36 @@ internal class AttackState: EnemyState
     {
         base.Update();
 
-        if (enemy.Target != null)
-        {
-            SetGFXDirection();
+        SetGFXDirection();
 
-            if (enemy.IsTargetInAttackRange)
-            {
-                ITargetable targetable = enemy.Target.GetComponent<ITargetable>();
-
-                if (targetable != null && attackCoolDown <= 0 && !isAttacking)
-                {
-                    enemy.StartCoroutine(Attack(targetable));
-                }
-            } else if (!isAttacking) // finish attack first
-            {
-                enemy.ChangeState(new FollowState());
-                return;
-            }
-        }
-        else
+        if (!enemy.Target)
         {
             enemy.ChangeState(new SearchState());
             return;
         }
+        if (!enemy.IsTargetInAttackRange && !isAttacking) // finish attack first
+        {
+            enemy.ChangeState(new FollowState());
+            return;
+        }
+        if (enemy.IsTargetInAttackRange && !isAttacking && attackCoolDown <= 0)
+        {
+            //Debug.Log("attacking");
+            enemy.StartCoroutine(Attack(targetable));
+        }
+        
+        attackCoolDown -= Time.deltaTime;
     }
 
     protected override void SetGFXDirection() //this makes it so that the enemy always faces the target
     {
         Vector2 directionToTarget = (enemy.Target.transform.position - enemy.transform.position).normalized;
-        enemy.GFX.Direction = directionToTarget; //set direction on GFX layer
+        enemy.gfx.Direction = directionToTarget; //set direction on GFX layer
     }
 
     protected override void SetGFXState()
     {
-        enemy.GFX.MyState = GFXStates.ATTACKING;
+        enemy.gfx.MyState = GFXStates.ATTACKING;
     }
 
     private IEnumerator Attack(ITargetable targetable) //TODO: might be able to define this in EnemyGFX
@@ -71,13 +69,12 @@ internal class AttackState: EnemyState
 
         attackCoolDown = enemy.MyAttributes.attackCoolDown; 
 
-        enemy.GFX.MyAnimator.SetTrigger("attack");
-
-        yield return new WaitForSeconds(enemy.GFX.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is
+        enemy.gfx.MyAnimator.SetTrigger("attack");
+        
+        yield return new WaitForSeconds(enemy.gfx.MyAnimator.GetCurrentAnimatorStateInfo(2).length); //check how long the animation is
 
         enemy.PrimaryAttack(targetable);
-        isAttacking = false;
 
-        yield break;
+        isAttacking = false;
     }
 }

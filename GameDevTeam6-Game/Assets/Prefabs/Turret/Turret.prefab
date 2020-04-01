@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3676793761775691306}
   - component: {fileID: -5552859149691577543}
   - component: {fileID: 8889352353038345741}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Turret
   m_TagString: Structure
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8407125866141868476}
   - component: {fileID: 8407125866141868477}
   - component: {fileID: 3498404406169444520}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: TurretSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1444775863
-  m_SortingLayer: 9
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5089549676181412696, guid: 6c1f50046896c41e3af128109a782c7e,
     type: 3}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8407125866866195142}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ProjectileOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

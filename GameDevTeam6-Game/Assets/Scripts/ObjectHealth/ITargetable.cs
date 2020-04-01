@@ -16,5 +16,5 @@ public interface ITargetable
     void GainHealth(int amount);
 
     //you can leave the implementation blank if your object doesn't need to 
-    void KnockBack(Vector2 origin, float amount);
+    void GetKnockedBack(Vector2 origin, float amount);
 }

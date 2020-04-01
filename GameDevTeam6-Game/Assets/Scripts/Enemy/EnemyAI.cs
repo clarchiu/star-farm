@@ -12,31 +12,52 @@ using Pathfinding;
  * - Clarence
  */
 
-public class EnemyAI: MonoBehaviour, ITargetable, ICombative
+[RequireComponent(typeof(EnemyGFX))]
+[RequireComponent(typeof(AIPath))]
+[RequireComponent(typeof(AIDestinationSetter))]
+[RequireComponent(typeof(Rigidbody2D))]
+public class EnemyAI: MonoBehaviour
 {
-    #region Components
-    //GFX
-    private EnemyGFX gfx;
-    public EnemyGFX GFX { get => gfx; }
-
-    //Pathing
-    public AIPath aiPath;
-    private AIDestinationSetter destSetter;
-
-    //Physics
-    private Rigidbody2D rb;
-    public Rigidbody2D RB { get => rb; }
-
-    //Combat
-    private HealthBar_ healthBar;
-    #endregion
-
-    #region Public Properties
+    #region Fields
     public static List<EnemyAI> enemies = new List<EnemyAI>();
+
+    public EnemyGFX gfx;
+    public AIPath aiPath;   //public because I need to set this in inspector
+    public AIDestinationSetter destSetter;
+    public Rigidbody2D rb;
+
+    private bool canMove;
+    public bool CanMove
+    {
+        get
+        {
+            if (currentState is PathState)
+            {
+                return aiPath.canMove;
+            }
+            return canMove;
+        }
+        set
+        {
+            if (currentState is PathState)
+            {
+                aiPath.canMove = value;
+                aiPath.canSearch = value;
+                canMove = !aiPath.canMove;
+            } else
+            {
+                canMove = value;
+                aiPath.canMove = false; 
+                aiPath.canSearch = false;
+            }
+        }
+    }
+
+    private IState currentState;
 
     public EnemyAttributes MyAttributes;    //Constants for enemy type
 
-    public bool IsTargetInAttackRange { get; private set; } //Set by attackRangeCollider
+    public bool IsTargetInAttackRange { get; set; } //Set by attackRangeCollider
     public bool IsTargetInAggroRange  //Set target to null if not in aggro range
     {
         get
@@ -44,6 +65,9 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
             return (target.transform.position - transform.position).sqrMagnitude <= 5 * 5;
         }
     }
+
+    public delegate void OnNewTargetDelegate();
+    public event OnNewTargetDelegate OnNewTarget;
 
     private GameObject target;
     public GameObject Target
@@ -56,7 +80,7 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
         {
             target = value;
 
-            if (target != null)
+            if (target)
             {
                 destSetter.target = this.target.transform;
                 OnNewTarget();
@@ -65,34 +89,14 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
     }
     #endregion
 
-    #region Private Fields
-    private IState currentState;
-    #endregion
-
-    #region Setup Methods
     protected virtual void SetUp()
     {
-        SetupComponents();
-        SetUpAttributes();
-    }
-
-    private void SetupComponents()
-    {
-        healthBar = GetComponent<HealthBar_>();
-        destSetter = GetComponent<AIDestinationSetter>();
-        rb = GetComponent<Rigidbody2D>();
-        gfx = GetComponentInChildren<EnemyGFX>();
-
-        if (healthBar == null || destSetter == null || rb == null
-            || gfx == null || aiPath == null)
+        if (!gfx || !aiPath || !destSetter|| !rb)
         {
             this.gameObject.SetActive(false);
-            throw new System.Exception("missing components on enemy, add in inspector");
+            throw new System.Exception("missing components on EnemyAI script in inspector");
         }
-    }
 
-    protected virtual void SetUpAttributes()
-    {
         if (MyAttributes.currentHealth == 0 && MyAttributes.maxHealth == 0 && MyAttributes.speed == 0
             && MyAttributes.attackCoolDown == 0 && MyAttributes.attackDamage == 0 && MyAttributes.attackRange == 0)
         {
@@ -100,10 +104,10 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
             throw new System.Exception("missing MyStats values on EnemyAI script in inspector");
         }
 
+        CanMove = true;
         IsTargetInAttackRange = false;
         aiPath.maxSpeed = MyAttributes.speed;
     }
-    #endregion
 
     #region Monobehaviour methods
     protected void Awake()
@@ -124,7 +128,7 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
     }
     #endregion
 
-    #region Enemy State Methods
+    #region Public Methods
     public void ChangeState(IState newState)
     {
         if (currentState != null)
@@ -135,112 +139,30 @@ public class EnemyAI: MonoBehaviour, ITargetable, ICombative
         currentState = newState;
         currentState.Enter(this);
     }
-    #endregion
-
-    #region ICombative implementation
-    public void SetInAttackRange(bool inRange)
-    {
-        IsTargetInAttackRange = inRange;
-    }
-
-    public GameObject GetTarget()
-    {
-        return target;
-    }
-
-    public event OnNewTargetDelegate OnNewTarget;
 
     public virtual void PrimaryAttack(ITargetable target)
     {
         target.RemoveHealth(gameObject, MyAttributes.attackDamage);
-        target.KnockBack(transform.position, 0.5f); //TODO: make amount of knockback scale with damage?
+        //target.GetKnockedBack(transform.position, 0.5f); //TODO: make amount of knockback scale with damage?
     }
 
     public virtual void SecondaryAttack(ITargetable target)
     {
-        // no secondary attack
-    }
-    #endregion
-
-    #region ITargetable Implementation
-    public virtual void SetHealth(int amount)
-    {
-        MyAttributes.currentHealth = amount;
+        PrimaryAttack(target);// no secondary attack
     }
 
-    public virtual void RemoveHealth(GameObject source, int amount)
+    public virtual IEnumerator GetKnockedBack(Vector2 origin, float amount)
     {
-        if (MyAttributes.currentHealth - amount > 0)
-        {
-            MyAttributes.currentHealth -= amount;
-            healthBar.UpdateHealthBar((float)MyAttributes.currentHealth / MyAttributes.maxHealth);
-
-            if (!GameObject.ReferenceEquals(target, source) && source.CompareTag("Player"))
-            {
-                if (source.GetComponent<ITargetable>() != null)
-                {
-                    //Debug.Log("changing state");
-                    Target = source;
-                    ChangeState(new PathState());
-                }
-            }
-            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain);
-        }
-        else
-        {
-            MyAttributes.currentHealth = 0;
-            enemies.Remove(this);
-            Destroy(gameObject);
-            PlayEffect.Instance.PlayBreakEffect(gameObject.transform.position);
-            SoundEffects_.Instance.PlaySoundEffect(SoundEffect.gruntInPain2);
-        }
-    }
-
-    public virtual void GainHealth(int amount)
-    {
-        MyAttributes.currentHealth += amount;
-    }
-
-    public virtual void KnockBack(Vector2 origin, float amount)
-    {
-        Debug.Log("knockback");
+        //Debug.Log("knockback");
         Vector2 deltaPosition = ((Vector2)this.transform.position - origin).normalized * amount;
 
-        if (aiPath.canMove == true)
-        {
-            Debug.Log("astar knockback");
-            aiPath.Move(deltaPosition);
-        }
-        else
-        {
-            Debug.Log("physics knockback");
-            rb.AddForce(deltaPosition * 50f);
-        }
-        //StartCoroutine(KnockBackTimeout());
+        CanMove = false;
+
+        rb.velocity = Vector2.zero;
+        rb.AddForce(deltaPosition, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.5f);
+
+        CanMove = true;
     }
-
-    //public virtual IEnumerator KnockbackTimeOut(float knockbackPwr, Vector2 origin)
-    //{
-    //    float knockDuration = 2f;
-    //    float timer = 0;
-
-    //    if (aiPath.canMove)
-    //    {
-    //        aiPath.canMove = false;
-    //        Debug.Log("aipath cannot move");
-    //    }
-
-    //    while (knockDuration > timer)
-    //    {
-    //        timer += Time.deltaTime;
-    //        Vector2 deltaPosition = ((Vector2)this.transform.position - origin).normalized;
-    //        rb.AddForce(deltaPosition * knockbackPwr);
-    //    }
-
-    //    yield return new WaitForSeconds(2f);
-
-    //    aiPath.canMove = true;
-    //    Debug.Log("aipath can move");
-    //}
-    #endregion
+    #endregion 
 }

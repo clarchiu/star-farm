@@ -18,6 +18,7 @@ TagManager:
   - Structure
   - QD
   - WaterBlock
+  - TurretProjectile
   layers:
   - Default
   - TransparentFX
@@ -30,13 +31,13 @@ TagManager:
   - Obstacle
   - Player
   - Enemy
-  - Projectile
-  - AttackRange
+  - PlayerAttack
+  - EnemyRange
   - DropItem
-  - 
-  - 
-  - 
-  - 
+  - GFX
+  - PlayerStructure
+  - EnemyAttack
+  - EnemyHitBox
   - 
   - 
   - 
