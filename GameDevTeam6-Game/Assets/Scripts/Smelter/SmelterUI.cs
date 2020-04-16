@@ -173,7 +173,7 @@ public class SmelterUI : MonoBehaviour
                     Inventory_mineral.Instance.GainItem(resultType, item1Amount + item2Amount);
                 } else
                 {
-                    Inventory_gen.Instance.GainItem(genResultType, 1);
+                    Inventory_gen.Instance.GainItem(genResultType, item1Amount + item2Amount);
                 }
                 smelterDone = false;
                 smelterRunning = false;

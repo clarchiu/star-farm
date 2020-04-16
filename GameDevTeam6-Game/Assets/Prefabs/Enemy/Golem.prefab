@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5175883043421286317
 Transform:
   m_ObjectHideFlags: 0
@@ -468,16 +468,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5175883043421286317}
     m_Modifications:
-    - target: {fileID: 7991966724804436584, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1,
-        type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 7599546344618897102}
-    - target: {fileID: 7991966724804436584, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1,
-        type: 3}
-      propertyPath: attackRangeCollider
-      value: 
-      objectReference: {fileID: 2258424067317026483}
     - target: {fileID: 9122193339892995735, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1,
         type: 3}
       propertyPath: m_Name
@@ -538,6 +528,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7991966724804436584, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 7599546344618897102}
+    - target: {fileID: 7991966724804436584, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1,
+        type: 3}
+      propertyPath: attackRangeCollider
+      value: 
+      objectReference: {fileID: 2258424067317026483}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa0d0bab6cdd478d98c964c5b1cedd1, type: 3}
 --- !u!1 &948701074782778643 stripped

@@ -31,7 +31,6 @@ public class EnemyRange : MonoBehaviour
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (GameObject.ReferenceEquals(enemy.Target, collision.gameObject))
         {
             enemy.IsTargetInAttackRange = false;

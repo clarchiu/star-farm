@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour
     private int currentDialogue = 0;
     private TimeSystem timeSystem;
 
+    [SerializeField] private GameObject tutorialPrompt;
+
     private static Tutorial _instance;
 
     public static Tutorial Instance
@@ -45,6 +47,15 @@ public class Tutorial : MonoBehaviour
         }
 
         InitializeDialogues();
+    }
+
+    public void DisablePrompt()
+    {
+        tutorialPrompt.SetActive(false);
+    }
+
+    public void StartDialogue()
+    {
 
         TriggerDialogue(0);
         TriggerDialogue(1);
