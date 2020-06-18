@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Death.unity
     guid: ada4638abb519534fa127f2a368eba62
+  - enabled: 1
+    path: Assets/Scenes/RandyScene 1.unity
+    guid: 2ce0f24ab5f474e5eb7b39ff5898e6b5
   m_configObjects: {}

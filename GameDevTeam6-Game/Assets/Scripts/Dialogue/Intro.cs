@@ -67,7 +67,7 @@ public class Intro : MonoBehaviour
 
             if (currentDialogue == dialogues.Length)
             {
-                SceneManager.LoadScene("RandyScene");
+                SceneManager.LoadScene("RandyScene 1");
             }
             else
             {

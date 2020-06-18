@@ -214,7 +214,7 @@ public class PlaceObjects : MonoBehaviour
             Debug.Log("No object drop item set for this object");
         }
         else  {
-            for (int i = 0; i < Random.Range(2, 5); i++) {
+            for (int i = 0; i < Random.Range(1, 4); i++) {
                 obj.GetComponent<Drop_mineral>().DropItem(obj.transform.position.x, obj.transform.position.y);
             }
         }

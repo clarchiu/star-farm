@@ -18,4 +18,12 @@ public class FirstBossAI : EnemyAI
     //    //- add ellipsecollider2D
     //    //- set values
     //    //- then delete the ellipsecollider2D script leaving the polygon collider
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GetComponent<Drop_mineral>().DropItem(transform.position.x, transform.position.y);
+        }
+    }
 }

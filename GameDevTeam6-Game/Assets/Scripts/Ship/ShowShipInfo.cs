@@ -160,22 +160,22 @@ public class ShowShipInfo : MonoBehaviour
         if (shipLevel == 6)
         {
             SetImages(Mineral_type.mithril, Mineral_type.silver);
-            reqAmount1 = 120;
-            reqAmount2 = 120;
+            reqAmount1 = 50;
+            reqAmount2 = 50;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 7)
         {
             SetImages(Mineral_type.tartarite, Mineral_type.concrete);
-            reqAmount1 = 240;
-            reqAmount2 = 240;
+            reqAmount1 = 50;
+            reqAmount2 = 50;
             flavorText.text = "Keep upgrading the ship so we can go home!";
         }
         if (shipLevel == 8)
         {
             SetImages(Mineral_type.orichalum, Mineral_type.chromatic1);
-            reqAmount1 = 300;
-            reqAmount2 = 10;
+            reqAmount1 = 50;
+            reqAmount2 = 1;
             flavorText.text = "The ship will be completely fixed after this final upgrade! You can choose to upgrade your ship to the final tier and finish the game or choosing to upgrade your multi-tool weapon in order to defeat the escaped Specimen.";
         }
         levelNum.text = shipLevel.ToString();

@@ -70,7 +70,7 @@ public class WaveSpawner : MonoBehaviour
         //TODO: temporary solution, need more details about how enemies spawn progresses
         if (timeSystem.isDay()) { return; } //do nothing if it is day time
 
-        if (timeSystem.day % 7 == 0 && !bossSpawned)
+        if (timeSystem.day % 3 == 0 && !bossSpawned)
         {
             SpawnEnemy(boss);
             bossSpawned = true;
