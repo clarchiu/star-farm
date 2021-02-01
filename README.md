@@ -1,3 +1,11 @@
-# GameDevTeam6
-Please make sure you have Unity version 2019.3 beta. If Unity ever prompts you about an update, DON't update! Everyone needs to be on the same version of unity to avoid troubles :)
-- Randy
+# Star Farm
+
+### Presented by UBC Game Dev Team 6
+
+**Programming:** Clarence Chiu, Kyle van Winkoop, Randy Russell, Santiago Sira, Brian Chau\
+**Artwork:** Anna Yun, Michelle Kim\
+**Writing:** Connor Zhou\
+**Music:** Shaoxin Deng
+
+![Game preview](docs/main.png)
+
