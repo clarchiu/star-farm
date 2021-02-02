@@ -35,3 +35,35 @@ The player’s multitool provides them with the means to alter the world around 
 | Farm minerals  | Build walls & turrets to defend your ship |
 | ![combat](docs/boss.png)  | ![forge](docs/forge.png)  |
 | Engage in battles with enemies and bosses  | Use the forge to craft new items |
+
+### Game Guide
+
+#### Controls
+
+[WASD] to move\
+[Tab] for mode selection\
+[Space] for cycling through modes\
+[Left shift] for cycling through modes backwards
+
+#### Building mode
+
+[Left click] to place down structures (Structure needs to be selected in general inventory)\
+[Right click] to damage structures
+
+#### Farming mode
+
+[Left click] to till ground
+[Left click] on tilled ground to place seeds (Seed needs to be selected in seed inventory)
+[Right click] to harvest grown plants
+
+#### Combat mode
+
+[Left click] to melee attack nearby enemies
+[Right click] to shoot enemies from range
+
+#### Watering mode
+
+[Left click] on tilled ground to water plants and make them grow faster
+
+
+
