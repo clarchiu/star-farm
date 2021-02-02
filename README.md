@@ -36,6 +36,12 @@ The player’s multitool provides them with the means to alter the world around 
 | ![combat](docs/boss.png)  | ![forge](docs/forge.png)  |
 | Engage in battles with enemies and bosses  | Use the forge to craft new items |
 
+### Play
+
+Download `Star-Farm.exe` from the Github repo and try out the game!\
+
+Requires Windows OS
+
 ### Game Guide
 
 #### Controls
