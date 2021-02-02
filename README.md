@@ -38,7 +38,7 @@ The player’s multitool provides them with the means to alter the world around 
 
 ### Play
 
-Download `Star-Farm.exe` from the Github repo and try out the game!\
+Download `Star-Farm.exe` from the Github repo and try out the game!
 
 Requires Windows OS
 
