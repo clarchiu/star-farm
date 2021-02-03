@@ -101,6 +101,6 @@ Eventually, once we feel that we have exhausted the potential of the concept, we
 
 Having started this project in October 2019, the team has certainly learned and grown a lot. Working on the game for six months have not only helped us develop technical and artistic skills, but also taught us a lot about the process of game development as a whole. Many members of our team were new to game development, and developing a game from start to finish in only six months taught us to quickly learn new skills and adapt new and unfamiliar changes.
 
-Throughout the process, there were many times when we had to change and reconsider different aspects of the game. With such little time to complete the game, we had to be able to quickly adapt to new changes and made adjustments to the content to allow everything to move smoothly.  Learning to adapt to changes was one of the main ways we grew as during this project.
+Throughout the process, there were many times when we had to change and reconsider different aspects of the game. With such little time to complete the game, we had to be able to quickly adapt to new changes and made adjustments to the content to allow everything to move smoothly.  Learning to adapt to changes was one of the main ways we grew during this project.
 
 
