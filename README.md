@@ -1,5 +1,6 @@
 # Star Farm
 
+### Won UBC Game Dev Club [Best Gameplay and Game of the Year!](https://www.ubcgamedev.com/20192020/)
 ### Presented by UBC Game Dev Team 6
 
 **Development:** Clarence Chiu, Kyle van Winkoop, Randy Russell, Santiago Sira, Brian Chau\
